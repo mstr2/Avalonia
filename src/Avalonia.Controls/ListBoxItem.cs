@@ -14,7 +14,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsSelected"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsSelectedProperty =
-            AvaloniaProperty.Register<ListBoxItem, bool>(nameof(IsSelected));
+            DependencyProperty.Register<ListBoxItem, bool>(nameof(IsSelected));
 
         /// <summary>
         /// Initializes static members of the <see cref="ListBoxItem"/> class.

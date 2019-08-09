@@ -9,7 +9,7 @@ namespace Avalonia.Data
     {
         public IndexerBinding(
             IAvaloniaObject source,
-            AvaloniaProperty property,
+            DependencyProperty property,
             BindingMode mode)
         {
             Source = source;
@@ -18,12 +18,12 @@ namespace Avalonia.Data
         }
 
         private IAvaloniaObject Source { get; }
-        public AvaloniaProperty Property { get; }
+        public DependencyProperty Property { get; }
         private BindingMode Mode { get; }
 
         public InstancedBinding Initiate(
             IAvaloniaObject target,
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor = null,
             bool enableDataValidation = false)
         {

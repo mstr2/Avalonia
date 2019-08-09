@@ -6,10 +6,10 @@ namespace Avalonia.Media
     public class DrawingGroup : Drawing
     {
         public static readonly StyledProperty<double> OpacityProperty =
-            AvaloniaProperty.Register<DrawingGroup, double>(nameof(Opacity), 1);
+            DependencyProperty.Register<DrawingGroup, double>(nameof(Opacity), 1);
 
         public static readonly StyledProperty<Transform> TransformProperty =
-            AvaloniaProperty.Register<DrawingGroup, Transform>(nameof(Transform));
+            DependencyProperty.Register<DrawingGroup, Transform>(nameof(Transform));
 
         public double Opacity
         {

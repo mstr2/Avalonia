@@ -77,21 +77,21 @@ namespace Avalonia.Base.UnitTests.Data.Core
                 new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => o.Foo", string.Empty),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                 result);
         }
 
         [Fact]
         public async Task Should_Return_BindingNotification_Error_For_Root_UnsetValue()
         {
-            var target = ExpressionObserver.Create(AvaloniaProperty.UnsetValue, o => (o as Class3).Foo);
+            var target = ExpressionObserver.Create(DependencyProperty.UnsetValue, o => (o as Class3).Foo);
             var result = await target.Take(1);
 
             Assert.Equal(
                 new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => (o As Class3).Foo", string.Empty),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                 result);
         }
 
@@ -105,21 +105,21 @@ namespace Avalonia.Base.UnitTests.Data.Core
                 new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => o.Foo", string.Empty),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                 result);
         }
 
         [Fact]
         public async void Should_Return_BindingNotification_Error_For_Observable_Root_UnsetValue()
         {
-            var target = ExpressionObserver.Create<object, string>(Observable.Return(AvaloniaProperty.UnsetValue), o => (o as Class3).Foo);
+            var target = ExpressionObserver.Create<object, string>(Observable.Return(DependencyProperty.UnsetValue), o => (o as Class3).Foo);
             var result = await target.Take(1);
 
             Assert.Equal(
                 new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => (o As Class3).Foo", string.Empty),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                 result);
             
         }
@@ -164,7 +164,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
                     new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => o.Foo.Foo.Length", "Foo"),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                 },
                 result);
 
@@ -293,7 +293,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
                     new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => ((o.Next As Class2).Next As Class2).Bar", "Next.Next"),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue),
+                        DependencyProperty.UnsetValue),
                     "bar"
                 },
                 result);
@@ -534,7 +534,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
                     new BindingNotification(
                         new MarkupBindingChainException("Null value", "o => o.Foo", string.Empty),
                         BindingErrorType.Error,
-                        AvaloniaProperty.UnsetValue)
+                        DependencyProperty.UnsetValue)
                 },
                 result);
 

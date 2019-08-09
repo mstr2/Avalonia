@@ -31,19 +31,19 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="ViewportSize"/> property.
         /// </summary>
         public static readonly StyledProperty<double> ViewportSizeProperty =
-            AvaloniaProperty.Register<ScrollBar, double>(nameof(ViewportSize), defaultValue: double.NaN);
+            DependencyProperty.Register<ScrollBar, double>(nameof(ViewportSize), defaultValue: double.NaN);
 
         /// <summary>
         /// Defines the <see cref="Visibility"/> property.
         /// </summary>
         public static readonly StyledProperty<ScrollBarVisibility> VisibilityProperty =
-            AvaloniaProperty.Register<ScrollBar, ScrollBarVisibility>(nameof(Visibility));
+            DependencyProperty.Register<ScrollBar, ScrollBarVisibility>(nameof(Visibility));
 
         /// <summary>
         /// Defines the <see cref="Orientation"/> property.
         /// </summary>
         public static readonly StyledProperty<Orientation> OrientationProperty =
-            AvaloniaProperty.Register<ScrollBar, Orientation>(nameof(Orientation), Orientation.Vertical);
+            DependencyProperty.Register<ScrollBar, Orientation>(nameof(Orientation), Orientation.Vertical);
 
         private Button _lineUpButton;
         private Button _lineDownButton;

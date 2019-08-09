@@ -14,7 +14,7 @@ namespace Avalonia.Controls
     internal class RecyclePool
     {
         public static readonly AttachedProperty<IDataTemplate> OriginTemplateProperty =
-            AvaloniaProperty.RegisterAttached<Control, IDataTemplate>("OriginTemplate", typeof(RecyclePool));
+            DependencyProperty.RegisterAttached<Control, IDataTemplate>("OriginTemplate", typeof(RecyclePool));
 
         private static ConditionalWeakTable<IDataTemplate, RecyclePool> s_pools = new ConditionalWeakTable<IDataTemplate, RecyclePool>();
         private readonly Dictionary<string, List<ElementInfo>> _elements = new Dictionary<string, List<ElementInfo>>();

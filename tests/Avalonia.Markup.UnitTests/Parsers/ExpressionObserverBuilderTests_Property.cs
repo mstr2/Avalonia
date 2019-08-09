@@ -57,7 +57,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
 
             Assert.IsType<BindingNotification>(values[1]);
             var bn = values[1] as BindingNotification;
-            Assert.Equal(AvaloniaProperty.UnsetValue, bn.Value);
+            Assert.Equal(DependencyProperty.UnsetValue, bn.Value);
             Assert.Equal(BindingErrorType.Error, bn.ErrorType);
 
             Assert.Equal(3, values.Count);
@@ -82,7 +82,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
 
             Assert.IsType<BindingNotification>(values[1]);
             var bn = values[1] as BindingNotification;
-            Assert.Equal(AvaloniaProperty.UnsetValue, bn.Value);
+            Assert.Equal(DependencyProperty.UnsetValue, bn.Value);
             Assert.Equal(BindingErrorType.Error, bn.ErrorType);
 
             Assert.Equal(3, values.Count);

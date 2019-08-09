@@ -13,7 +13,7 @@ namespace Avalonia.Styling
     /// <see cref="Source"/> observable which produces the activated value. When the activator 
     /// produces true, the <see cref="ActivatedObservable"/> will produce the current activated 
     /// value. When the activator produces false it will produce
-    /// <see cref="AvaloniaProperty.UnsetValue"/>.
+    /// <see cref="DependencyProperty.UnsetValue"/>.
     /// </remarks>
     internal class ActivatedObservable : ActivatedValue, IDescription
     {
@@ -29,7 +29,7 @@ namespace Avalonia.Styling
             IObservable<bool> activator,
             IObservable<object> source,
             string description)
-            : base(activator, AvaloniaProperty.UnsetValue, description)
+            : base(activator, DependencyProperty.UnsetValue, description)
         {
             Contract.Requires<ArgumentNullException>(source != null);
 

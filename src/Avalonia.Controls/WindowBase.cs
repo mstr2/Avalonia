@@ -25,19 +25,19 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsActive"/> property.
         /// </summary>
         public static readonly DirectProperty<WindowBase, bool> IsActiveProperty =
-            AvaloniaProperty.RegisterDirect<WindowBase, bool>(nameof(IsActive), o => o.IsActive);
+            DependencyProperty.RegisterDirect<WindowBase, bool>(nameof(IsActive), o => o.IsActive);
 
         /// <summary>
         /// Defines the <see cref="Owner"/> property.
         /// </summary>
         public static readonly DirectProperty<WindowBase, WindowBase> OwnerProperty =
-            AvaloniaProperty.RegisterDirect<WindowBase, WindowBase>(
+            DependencyProperty.RegisterDirect<WindowBase, WindowBase>(
                 nameof(Owner),
                 o => o.Owner,
                 (o, v) => o.Owner = v);
 
         public static readonly StyledProperty<bool> TopmostProperty =
-            AvaloniaProperty.Register<WindowBase, bool>(nameof(Topmost));
+            DependencyProperty.Register<WindowBase, bool>(nameof(Topmost));
 
         private bool _hasExecutedInitialLayoutPass;
         private bool _isActive;
@@ -271,7 +271,7 @@ namespace Avalonia.Controls
             Deactivated?.Invoke(this, EventArgs.Empty);
         }
 
-        private void IsVisibleChanged(AvaloniaPropertyChangedEventArgs e)
+        private void IsVisibleChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_ignoreVisibilityChange)
             {

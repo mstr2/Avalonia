@@ -20,19 +20,19 @@ namespace Avalonia.Controls
         /// Defines the <see cref="AllowSpin"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> AllowSpinProperty =
-            AvaloniaProperty.Register<ButtonSpinner, bool>(nameof(AllowSpin), true);
+            DependencyProperty.Register<ButtonSpinner, bool>(nameof(AllowSpin), true);
 
         /// <summary>
         /// Defines the <see cref="ShowButtonSpinner"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> ShowButtonSpinnerProperty =
-            AvaloniaProperty.Register<ButtonSpinner, bool>(nameof(ShowButtonSpinner), true);
+            DependencyProperty.Register<ButtonSpinner, bool>(nameof(ShowButtonSpinner), true);
 
         /// <summary>
         /// Defines the <see cref="ButtonSpinnerLocation"/> property.
         /// </summary>
         public static readonly StyledProperty<Location> ButtonSpinnerLocationProperty =
-            AvaloniaProperty.Register<ButtonSpinner, Location>(nameof(ButtonSpinnerLocation), Location.Right);
+            DependencyProperty.Register<ButtonSpinner, Location>(nameof(ButtonSpinnerLocation), Location.Right);
 
         private Button _decreaseButton;
         /// <summary>
@@ -220,7 +220,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="AllowSpin"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void AllowSpinChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void AllowSpinChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is ButtonSpinner spinner)
             {

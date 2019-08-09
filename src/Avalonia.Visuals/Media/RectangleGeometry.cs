@@ -14,7 +14,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Rect"/> property.
         /// </summary>
         public static readonly StyledProperty<Rect> RectProperty =
-            AvaloniaProperty.Register<RectangleGeometry, Rect>(nameof(Rect));
+            DependencyProperty.Register<RectangleGeometry, Rect>(nameof(Rect));
 
         static RectangleGeometry()
         {

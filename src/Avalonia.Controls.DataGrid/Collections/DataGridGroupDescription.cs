@@ -254,14 +254,14 @@ namespace Avalonia.Collections
 
                     // we shouldn't get here, but just in case...
 
-                    return AvaloniaProperty.UnsetValue;
+                    return DependencyProperty.UnsetValue;
                 }
                 else
                 {
                     // the group is empty, or it has explicit subgroups.
                     // In either case, we cannot determine the first item -
                     // it could have gone into any of the subgroups.
-                    return AvaloniaProperty.UnsetValue;
+                    return DependencyProperty.UnsetValue;
                 }
             }
         }
@@ -322,7 +322,7 @@ namespace Avalonia.Collections
                 for (index = low; index < high; ++index)
                 {
                     object seed1 = (ProtectedItems[index] is DataGridCollectionViewGroupInternal subgroup) ? subgroup.SeedItem : ProtectedItems[index];
-                    if (seed1 == AvaloniaProperty.UnsetValue)
+                    if (seed1 == DependencyProperty.UnsetValue)
                     {
                         continue;
                     }

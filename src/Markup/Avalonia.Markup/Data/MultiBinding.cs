@@ -60,7 +60,7 @@ namespace Avalonia.Data
         /// <inheritdoc/>
         public InstancedBinding Initiate(
             IAvaloniaObject target,
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor = null,
             bool enableDataValidation = false)
         {
@@ -102,7 +102,7 @@ namespace Avalonia.Data
                 return converted;
             }
 
-            if (converted == AvaloniaProperty.UnsetValue)
+            if (converted == DependencyProperty.UnsetValue)
             {
                 converted = FallbackValue;
             }

@@ -120,24 +120,24 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<int> NonValidatedProperty =
-                AvaloniaProperty.Register<Class1, int>(
+                DependencyProperty.Register<Class1, int>(
                     nameof(NonValidated));
 
             public static readonly DirectProperty<Class1, int> NonValidatedDirectProperty =
-                AvaloniaProperty.RegisterDirect<Class1, int>(
+                DependencyProperty.RegisterDirect<Class1, int>(
                     nameof(NonValidatedDirect),
                     o => o.NonValidatedDirect,
                     (o, v) => o.NonValidatedDirect = v);
 
             public static readonly DirectProperty<Class1, int> ValidatedDirectIntProperty =
-                AvaloniaProperty.RegisterDirect<Class1, int>(
+                DependencyProperty.RegisterDirect<Class1, int>(
                     nameof(ValidatedDirectInt),
                     o => o.ValidatedDirectInt,
                     (o, v) => o.ValidatedDirectInt = v,
                     enableDataValidation: true);
 
             public static readonly DirectProperty<Class1, string> ValidatedDirectStringProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>(
+                DependencyProperty.RegisterDirect<Class1, string>(
                     nameof(ValidatedDirectString),
                     o => o.ValidatedDirectString,
                     (o, v) => o.ValidatedDirectString = v,
@@ -173,7 +173,7 @@ namespace Avalonia.Base.UnitTests
 
             public IList<BindingNotification> Notifications { get; } = new List<BindingNotification>();
 
-            protected override void UpdateDataValidation(AvaloniaProperty property, BindingNotification notification)
+            protected override void UpdateDataValidation(DependencyProperty property, BindingNotification notification)
             {
                 Notifications.Add(notification);
             }

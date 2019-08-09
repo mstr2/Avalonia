@@ -947,8 +947,8 @@ do we need it?")]
     }
     public class BasicTestsAttachedPropertyHolder
     {
-        public static AvaloniaProperty<string> FooProperty =
-            AvaloniaProperty.RegisterAttached<BasicTestsAttachedPropertyHolder, AvaloniaObject, string>("Foo");
+        public static DependencyProperty<string> FooProperty =
+            DependencyProperty.RegisterAttached<BasicTestsAttachedPropertyHolder, AvaloniaObject, string>("Foo");
 
         public static void SetFoo(AvaloniaObject target, string value) => target.SetValue(FooProperty, value);
         public static string GetFoo(AvaloniaObject target) => (string)target.GetValue(FooProperty);

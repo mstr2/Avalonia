@@ -16,7 +16,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Color"/> property.
         /// </summary>
         public static readonly StyledProperty<Color> ColorProperty =
-            AvaloniaProperty.Register<SolidColorBrush, Color>(nameof(Color));
+            DependencyProperty.Register<SolidColorBrush, Color>(nameof(Color));
 
         static SolidColorBrush()
         {

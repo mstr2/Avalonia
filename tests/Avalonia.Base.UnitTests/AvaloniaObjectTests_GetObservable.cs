@@ -70,13 +70,13 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", "foodefault");
+                DependencyProperty.Register<Class1, string>("Foo", "foodefault");
         }
 
         private class Class2 : Class1
         {
             public static readonly StyledProperty<string> BarProperty =
-                AvaloniaProperty.Register<Class2, string>("Bar", "bardefault");
+                DependencyProperty.Register<Class2, string>("Bar", "bardefault");
         }
     }
 }

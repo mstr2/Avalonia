@@ -71,7 +71,7 @@ namespace Avalonia.Markup.Parsers
                                 throw new InvalidOperationException("Property selectors must be applied to a type.");
                             }
 
-                            var targetProperty = AvaloniaPropertyRegistry.Instance.FindRegistered(type, property.Property);
+                            var targetProperty = DependencyPropertyRegistry.Instance.FindRegistered(type, property.Property);
 
                             if (targetProperty == null)
                             {

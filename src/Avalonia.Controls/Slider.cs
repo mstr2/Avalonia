@@ -24,13 +24,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsSnapToTickEnabled"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsSnapToTickEnabledProperty =
-            AvaloniaProperty.Register<Slider, bool>(nameof(IsSnapToTickEnabled), false);
+            DependencyProperty.Register<Slider, bool>(nameof(IsSnapToTickEnabled), false);
 
         /// <summary>
         /// Defines the <see cref="TickFrequency"/> property.
         /// </summary>
         public static readonly StyledProperty<double> TickFrequencyProperty =
-            AvaloniaProperty.Register<Slider, double>(nameof(TickFrequency), 0.0);
+            DependencyProperty.Register<Slider, double>(nameof(TickFrequency), 0.0);
 
         // Slider required parts
         private Track _track;

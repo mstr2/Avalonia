@@ -17,13 +17,13 @@ namespace Avalonia.Layout
         /// Defines the <see cref="Orientation"/> property.
         /// </summary>
         public static readonly StyledProperty<Orientation> OrientationProperty =
-            AvaloniaProperty.Register<StackLayout, Orientation>(nameof(Orientation), Orientation.Vertical);
+            DependencyProperty.Register<StackLayout, Orientation>(nameof(Orientation), Orientation.Vertical);
 
         /// <summary>
         /// Defines the <see cref="Spacing"/> property.
         /// </summary>
         public static readonly StyledProperty<double> SpacingProperty =
-            AvaloniaProperty.Register<StackLayout, double>(nameof(Spacing));
+            DependencyProperty.Register<StackLayout, double>(nameof(Spacing));
 
         private readonly OrientationBasedMeasures _orientation = new OrientationBasedMeasures();
 
@@ -293,7 +293,7 @@ namespace Avalonia.Layout
             InvalidateLayout();
         }
 
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Property == OrientationProperty)
             {

@@ -14,7 +14,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Center"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativePoint> CenterProperty =
-            AvaloniaProperty.Register<RadialGradientBrush, RelativePoint>(
+            DependencyProperty.Register<RadialGradientBrush, RelativePoint>(
                 nameof(Center),
                 RelativePoint.Center);
 
@@ -22,7 +22,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="GradientOrigin"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativePoint> GradientOriginProperty =
-            AvaloniaProperty.Register<RadialGradientBrush, RelativePoint>(
+            DependencyProperty.Register<RadialGradientBrush, RelativePoint>(
                 nameof(GradientOrigin), 
                 RelativePoint.Center);
 
@@ -30,7 +30,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Radius"/> property.
         /// </summary>
         public static readonly StyledProperty<double> RadiusProperty =
-            AvaloniaProperty.Register<RadialGradientBrush, double>(
+            DependencyProperty.Register<RadialGradientBrush, double>(
                 nameof(Radius),
                 0.5);
 

@@ -17,37 +17,37 @@ namespace Avalonia.Media
         /// Defines the <see cref="Brush"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> BrushProperty =
-            AvaloniaProperty.Register<Pen, IBrush>(nameof(Brush));
+            DependencyProperty.Register<Pen, IBrush>(nameof(Brush));
 
         /// <summary>
         /// Defines the <see cref="Thickness"/> property.
         /// </summary>
         public static readonly StyledProperty<double> ThicknessProperty =
-            AvaloniaProperty.Register<Pen, double>(nameof(Thickness), 1.0);
+            DependencyProperty.Register<Pen, double>(nameof(Thickness), 1.0);
 
         /// <summary>
         /// Defines the <see cref="DashStyle"/> property.
         /// </summary>
         public static readonly StyledProperty<IDashStyle> DashStyleProperty =
-            AvaloniaProperty.Register<Pen, IDashStyle>(nameof(DashStyle));
+            DependencyProperty.Register<Pen, IDashStyle>(nameof(DashStyle));
 
         /// <summary>
         /// Defines the <see cref="LineCap"/> property.
         /// </summary>
         public static readonly StyledProperty<PenLineCap> LineCapProperty =
-            AvaloniaProperty.Register<Pen, PenLineCap>(nameof(LineCap));
+            DependencyProperty.Register<Pen, PenLineCap>(nameof(LineCap));
 
         /// <summary>
         /// Defines the <see cref="LineJoin"/> property.
         /// </summary>
         public static readonly StyledProperty<PenLineJoin> LineJoinProperty =
-            AvaloniaProperty.Register<Pen, PenLineJoin>(nameof(LineJoin));
+            DependencyProperty.Register<Pen, PenLineJoin>(nameof(LineJoin));
 
         /// <summary>
         /// Defines the <see cref="MiterLimit"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MiterLimitProperty =
-            AvaloniaProperty.Register<Pen, double>(nameof(MiterLimit), 10.0);
+            DependencyProperty.Register<Pen, double>(nameof(MiterLimit), 10.0);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Pen"/> class.
@@ -194,10 +194,10 @@ namespace Avalonia.Media
         /// After a call to this method in a pen's static constructor, any change to the
         /// property will cause the <see cref="Invalidated"/> event to be raised on the pen.
         /// </remarks>
-        protected static void AffectsRender<T>(params AvaloniaProperty[] properties)
+        protected static void AffectsRender<T>(params DependencyProperty[] properties)
             where T : Pen
         {
-            void Invalidate(AvaloniaPropertyChangedEventArgs e)
+            void Invalidate(DependencyPropertyChangedEventArgs e)
             {
                 if (e.Sender is T sender)
                 {

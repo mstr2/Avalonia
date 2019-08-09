@@ -9,7 +9,7 @@ namespace Avalonia.Controls.Shapes
     public class Polyline: Shape
     {
         public static readonly StyledProperty<IList<Point>> PointsProperty =
-            AvaloniaProperty.Register<Polyline, IList<Point>>("Points");
+            DependencyProperty.Register<Polyline, IList<Point>>("Points");
 
         static Polyline()
         {

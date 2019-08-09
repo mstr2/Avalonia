@@ -11,10 +11,10 @@ namespace Avalonia.Diagnostics.Views
     internal static class GridRepeater
     {
         public static readonly AttachedProperty<IEnumerable> ItemsProperty =
-            AvaloniaProperty.RegisterAttached<SimpleGrid, IEnumerable>("Items", typeof(GridRepeater));
+            DependencyProperty.RegisterAttached<SimpleGrid, IEnumerable>("Items", typeof(GridRepeater));
 
         public static readonly AttachedProperty<Func<object, IEnumerable<Control>>> TemplateProperty =
-            AvaloniaProperty.RegisterAttached<SimpleGrid, Func<object, IEnumerable<Control>>>("Template",
+            DependencyProperty.RegisterAttached<SimpleGrid, Func<object, IEnumerable<Control>>>("Template",
                 typeof(GridRepeater));
 
         static GridRepeater()
@@ -22,7 +22,7 @@ namespace Avalonia.Diagnostics.Views
             ItemsProperty.Changed.Subscribe(ItemsChanged);
         }
 
-        private static void ItemsChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void ItemsChanged(DependencyPropertyChangedEventArgs e)
         {
             var grid = (SimpleGrid)e.Sender;
             var items = (IEnumerable)e.NewValue;

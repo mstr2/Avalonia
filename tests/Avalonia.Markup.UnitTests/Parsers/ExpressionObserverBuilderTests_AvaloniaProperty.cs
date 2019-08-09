@@ -51,7 +51,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", defaultValue: "foo");
+                DependencyProperty.Register<Class1, string>("Foo", defaultValue: "foo");
 
             public string ClrProperty { get; } = "clr-property";
         }

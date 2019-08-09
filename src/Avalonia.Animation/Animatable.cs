@@ -17,7 +17,7 @@ namespace Avalonia.Animation
     public class Animatable : AvaloniaObject
     {
         public static readonly StyledProperty<IClock> ClockProperty =
-            AvaloniaProperty.Register<Animatable, IClock>(nameof(Clock), inherits: true);
+            DependencyProperty.Register<Animatable, IClock>(nameof(Clock), inherits: true);
 
         public IClock Clock
         {
@@ -29,14 +29,14 @@ namespace Avalonia.Animation
         /// Defines the <see cref="Transitions"/> property.
         /// </summary>
         public static readonly DirectProperty<Animatable, Transitions> TransitionsProperty =
-            AvaloniaProperty.RegisterDirect<Animatable, Transitions>(
+            DependencyProperty.RegisterDirect<Animatable, Transitions>(
                 nameof(Transitions),
                 o => o.Transitions,
                 (o, v) => o.Transitions = v);
 
         private Transitions _transitions;
 
-        private Dictionary<AvaloniaProperty, IDisposable> _previousTransitions;
+        private Dictionary<DependencyProperty, IDisposable> _previousTransitions;
 
         /// <summary>
         /// Gets or sets the property transitions for the control.
@@ -49,7 +49,7 @@ namespace Avalonia.Animation
                     _transitions = new Transitions();
 
                 if (_previousTransitions == null)
-                    _previousTransitions = new Dictionary<AvaloniaProperty, IDisposable>();
+                    _previousTransitions = new Dictionary<DependencyProperty, IDisposable>();
 
                 return _transitions;
             }
@@ -60,11 +60,11 @@ namespace Avalonia.Animation
         }
 
         /// <summary>
-        /// Reacts to a change in a <see cref="AvaloniaProperty"/> value in 
+        /// Reacts to a change in a <see cref="DependencyProperty"/> value in 
         /// order to animate the change if a <see cref="ITransition"/> is set for the property.
         /// </summary>
         /// <param name="e">The event args.</param>
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Priority != BindingPriority.Animation && Transitions != null && _previousTransitions != null)
             {

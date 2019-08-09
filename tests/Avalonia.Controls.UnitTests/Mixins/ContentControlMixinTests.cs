@@ -80,10 +80,10 @@ namespace Avalonia.Controls.UnitTests.Mixins
         private class TestControl : TemplatedControl
         {
             public static readonly StyledProperty<object> Content1Property =
-                AvaloniaProperty.Register<TestControl, object>(nameof(Content1));
+                DependencyProperty.Register<TestControl, object>(nameof(Content1));
 
             public static readonly StyledProperty<object> Content2Property =
-                AvaloniaProperty.Register<TestControl, object>(nameof(Content2));
+                DependencyProperty.Register<TestControl, object>(nameof(Content2));
 
             static TestControl()
             {

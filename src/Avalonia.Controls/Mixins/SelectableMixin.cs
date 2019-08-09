@@ -40,7 +40,7 @@ namespace Avalonia.Controls.Mixins
         /// </summary>
         /// <typeparam name="TControl">The control type.</typeparam>
         /// <param name="isSelected">The IsSelected property.</param>
-        public static void Attach<TControl>(AvaloniaProperty<bool> isSelected)
+        public static void Attach<TControl>(DependencyProperty<bool> isSelected)
             where TControl : class, IControl
         {
             Contract.Requires<ArgumentNullException>(isSelected != null);

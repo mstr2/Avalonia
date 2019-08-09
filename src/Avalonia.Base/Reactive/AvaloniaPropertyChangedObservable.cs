@@ -3,15 +3,15 @@
 namespace Avalonia.Reactive
 {
     internal class AvaloniaPropertyChangedObservable : 
-        LightweightObservableBase<AvaloniaPropertyChangedEventArgs>,
+        LightweightObservableBase<DependencyPropertyChangedEventArgs>,
         IDescription
     {
         private readonly WeakReference<IAvaloniaObject> _target;
-        private readonly AvaloniaProperty _property;
+        private readonly DependencyProperty _property;
 
         public AvaloniaPropertyChangedObservable(
             IAvaloniaObject target,
-            AvaloniaProperty property)
+            DependencyProperty property)
         {
             _target = new WeakReference<IAvaloniaObject>(target);
             _property = property;
@@ -35,7 +35,7 @@ namespace Avalonia.Reactive
             }
         }
 
-        private void PropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        private void PropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.Property == _property)
             {

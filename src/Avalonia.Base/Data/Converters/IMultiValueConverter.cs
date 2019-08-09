@@ -22,7 +22,7 @@ namespace Avalonia.Data.Converters
         /// <returns>The converted value.</returns>
         /// <remarks>
         /// This method should not throw exceptions. If the value is not convertible, return
-        /// <see cref="AvaloniaProperty.UnsetValue"/>. Any exception thrown will be treated as
+        /// <see cref="DependencyProperty.UnsetValue"/>. Any exception thrown will be treated as
         /// an application exception.
         /// </remarks>
         object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture);

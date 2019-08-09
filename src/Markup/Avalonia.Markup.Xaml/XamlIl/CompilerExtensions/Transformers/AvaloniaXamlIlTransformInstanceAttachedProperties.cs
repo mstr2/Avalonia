@@ -35,8 +35,8 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
                             var avaloniaPropertyType = avaloniaPropertyField.FieldType;
                             while (avaloniaPropertyType != null
                                    && !(avaloniaPropertyType.Namespace == "Avalonia"
-                                        && (avaloniaPropertyType.Name == "AvaloniaProperty"
-                                            || avaloniaPropertyType.Name == "AvaloniaProperty`1"
+                                        && (avaloniaPropertyType.Name == "DependencyProperty"
+                                            || avaloniaPropertyType.Name == "DependencyProperty`1"
                                         )))
                             {
                                 // Attached properties are handled by vanilla XamlIl
@@ -106,7 +106,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
 
             public IXamlIlType PropertyType { get;  }
 
-            public IXamlIlField AvaloniaProperty => _field;
+            public IXamlIlField DependencyProperty => _field;
             
             class SetterMethod : IXamlIlPropertySetter
             {
@@ -134,7 +134,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
                         );
                     if (method == null)
                         throw new XamlIlTypeSystemException(
-                            "Unable to find SetValue(AvaloniaProperty, object, BindingPriority) on AvaloniaObject");
+                            "Unable to find SetValue(DependencyProperty, object, BindingPriority) on AvaloniaObject");
                     using (var loc = emitter.LocalsPool.GetLocal(_parent.PropertyType))
                         emitter
                             .Stloc(loc.Local)
@@ -179,7 +179,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
                                          && m.Parameters[0].Equals(Parent._avaloniaPropertyType));
                     if (method == null)
                         throw new XamlIlTypeSystemException(
-                            "Unable to find T GetValue<T>(AvaloniaProperty<T>) on AvaloniaObject");
+                            "Unable to find T GetValue<T>(DependencyProperty<T>) on AvaloniaObject");
                     emitter
                         .Ldsfld(Parent._field)
                         .EmitCall(method);

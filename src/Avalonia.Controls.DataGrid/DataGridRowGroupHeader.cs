@@ -29,7 +29,7 @@ namespace Avalonia.Controls
         private double _totalIndent;
 
         public static readonly StyledProperty<bool> IsItemCountVisibleProperty =
-            AvaloniaProperty.Register<DataGridRowGroupHeader, bool>(nameof(IsItemCountVisible));
+            DependencyProperty.Register<DataGridRowGroupHeader, bool>(nameof(IsItemCountVisible));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the item count is visible.
@@ -41,7 +41,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<string> PropertyNameProperty =
-            AvaloniaProperty.Register<DataGridRowGroupHeader, string>(nameof(PropertyName));
+            DependencyProperty.Register<DataGridRowGroupHeader, string>(nameof(PropertyName));
 
         /// <summary>
         /// Gets or sets the name of the property that this <see cref="T:Avalonia.Controls.DataGrid" /> row is bound to. 
@@ -53,7 +53,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> IsPropertyNameVisibleProperty =
-            AvaloniaProperty.Register<DataGridRowGroupHeader, bool>(nameof(IsPropertyNameVisible));
+            DependencyProperty.Register<DataGridRowGroupHeader, bool>(nameof(IsPropertyNameVisible));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the property name is visible.
@@ -65,7 +65,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<double> SublevelIndentProperty =
-            AvaloniaProperty.Register<DataGridRowGroupHeader, double>(
+            DependencyProperty.Register<DataGridRowGroupHeader, double>(
                 nameof(SublevelIndent),
                 defaultValue: DataGrid.DATAGRID_defaultRowGroupSublevelIndent,
                 validate: ValidateSublevelIndent);
@@ -99,7 +99,7 @@ namespace Avalonia.Controls
             set { SetValue(SublevelIndentProperty, value); }
         }
 
-        private void OnSublevelIndentChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSublevelIndentChanged(DependencyPropertyChangedEventArgs e)
         {
             if (OwningGrid != null)
             {

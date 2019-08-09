@@ -11,8 +11,8 @@ namespace Avalonia.Styling.UnitTests
 {
     public abstract class TestTemplatedControl : ITemplatedControl, IStyleable
     {
-        public event EventHandler<AvaloniaPropertyChangedEventArgs> PropertyChanged;
-        public event EventHandler<AvaloniaPropertyChangedEventArgs> InheritablePropertyChanged;
+        public event EventHandler<DependencyPropertyChangedEventArgs> PropertyChanged;
+        public event EventHandler<DependencyPropertyChangedEventArgs> InheritablePropertyChanged;
 
         public abstract Classes Classes
         {
@@ -38,42 +38,42 @@ namespace Avalonia.Styling.UnitTests
 
         IObservable<IStyleable> IStyleable.StyleDetach { get; }
 
-        public object GetValue(AvaloniaProperty property)
+        public object GetValue(DependencyProperty property)
         {
             throw new NotImplementedException();
         }
 
-        public T GetValue<T>(AvaloniaProperty<T> property)
+        public T GetValue<T>(DependencyProperty<T> property)
         {
             throw new NotImplementedException();
         }
 
-        public void SetValue(AvaloniaProperty property, object value, BindingPriority priority)
+        public void SetValue(DependencyProperty property, object value, BindingPriority priority)
         {
             throw new NotImplementedException();
         }
 
-        public void SetValue<T>(AvaloniaProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
+        public void SetValue<T>(DependencyProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
         {
             throw new NotImplementedException();
         }
 
-        public IDisposable Bind(AvaloniaProperty property, IObservable<object> source, BindingPriority priority = BindingPriority.LocalValue)
+        public IDisposable Bind(DependencyProperty property, IObservable<object> source, BindingPriority priority = BindingPriority.LocalValue)
         {
             throw new NotImplementedException();
         }
 
-        public IDisposable Bind<T>(AvaloniaProperty<T> property, IObservable<T> source, BindingPriority priority = BindingPriority.LocalValue)
+        public IDisposable Bind<T>(DependencyProperty<T> property, IObservable<T> source, BindingPriority priority = BindingPriority.LocalValue)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsAnimating(AvaloniaProperty property)
+        public bool IsAnimating(DependencyProperty property)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsSet(AvaloniaProperty property)
+        public bool IsSet(DependencyProperty property)
         {
             throw new NotImplementedException();
         }

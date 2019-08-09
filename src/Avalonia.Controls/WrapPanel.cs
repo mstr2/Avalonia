@@ -23,7 +23,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Orientation"/> property.
         /// </summary>
         public static readonly StyledProperty<Orientation> OrientationProperty =
-            AvaloniaProperty.Register<WrapPanel, Orientation>(nameof(Orientation), defaultValue: Orientation.Horizontal);
+            DependencyProperty.Register<WrapPanel, Orientation>(nameof(Orientation), defaultValue: Orientation.Horizontal);
 
         /// <summary>
         /// Initializes static members of the <see cref="WrapPanel"/> class.

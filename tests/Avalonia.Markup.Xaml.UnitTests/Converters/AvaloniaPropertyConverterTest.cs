@@ -117,7 +117,7 @@ namespace Avalonia.Markup.Xaml.UnitTests.Converters
         private class Class1 : AvaloniaObject, IStyleable
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo");
+                DependencyProperty.Register<Class1, string>("Foo");
 
             public IAvaloniaReadOnlyList<string> Classes
             {
@@ -145,7 +145,7 @@ namespace Avalonia.Markup.Xaml.UnitTests.Converters
         private class AttachedOwner
         {
             public static readonly AttachedProperty<string> AttachedProperty =
-                AvaloniaProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached");
+                DependencyProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached");
         }
     }
 }

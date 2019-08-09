@@ -35,7 +35,7 @@ namespace Avalonia.Controls
         /// Identifies the FontFamily dependency property.
         /// </summary>
         public static readonly StyledProperty<string> FontFamilyProperty =
-            AvaloniaProperty.Register<DataGridTextColumn, string>(nameof(FontFamily));
+            DependencyProperty.Register<DataGridTextColumn, string>(nameof(FontFamily));
 
         /// <summary>
         /// Gets or sets the font name.
@@ -340,7 +340,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void SetTextFontSize(AvaloniaObject textElement, AvaloniaProperty fontSizeProperty)
+        private void SetTextFontSize(AvaloniaObject textElement, DependencyProperty fontSizeProperty)
         {
             double newFontSize = FontSize;
             if (double.IsNaN(newFontSize))

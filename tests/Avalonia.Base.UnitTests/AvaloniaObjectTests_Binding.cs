@@ -42,7 +42,7 @@ namespace Avalonia.Base.UnitTests
             Class1 source = new Class1();
 
             source.SetValue(Class1.FooProperty, "initial");
-            target.Bind((AvaloniaProperty)Class1.FooProperty, source.GetObservable(Class1.FooProperty));
+            target.Bind((DependencyProperty)Class1.FooProperty, source.GetObservable(Class1.FooProperty));
 
             Assert.Equal("initial", target.GetValue(Class1.FooProperty));
         }
@@ -55,7 +55,7 @@ namespace Avalonia.Base.UnitTests
 
             target.Bind(Class1.QuxProperty, source);
             source.OnNext(6.7);
-            source.OnNext(AvaloniaProperty.UnsetValue);
+            source.OnNext(DependencyProperty.UnsetValue);
 
             Assert.Equal(5.6, target.GetValue(Class1.QuxProperty));
             Assert.False(target.IsSet(Class1.QuxProperty));
@@ -69,7 +69,7 @@ namespace Avalonia.Base.UnitTests
 
             target.Bind(Class1.QuxProperty, new TestOneTimeBinding(source));
 
-            source.OnNext(AvaloniaProperty.UnsetValue);
+            source.OnNext(DependencyProperty.UnsetValue);
             Assert.Equal(5.6, target.GetValue(Class1.QuxProperty));
 
             source.OnNext(6.7);
@@ -118,7 +118,7 @@ namespace Avalonia.Base.UnitTests
         public void Bind_Ignores_Invalid_Value_Type()
         {
             Class1 target = new Class1();
-            target.Bind((AvaloniaProperty)Class1.FooProperty, Observable.Return((object)123));
+            target.Bind((DependencyProperty)Class1.FooProperty, Observable.Return((object)123));
             Assert.Equal("foodefault", target.GetValue(Class1.FooProperty));
         }
 
@@ -505,13 +505,13 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", "foodefault");
+                DependencyProperty.Register<Class1, string>("Foo", "foodefault");
 
             public static readonly StyledProperty<double> QuxProperty =
-                AvaloniaProperty.Register<Class1, double>("Qux", 5.6);
+                DependencyProperty.Register<Class1, double>("Qux", 5.6);
 
             public static readonly StyledProperty<double> DoubleValueProperty =
-                        AvaloniaProperty.Register<Class1, double>(nameof(DoubleValue));
+                        DependencyProperty.Register<Class1, double>(nameof(DoubleValue));
 
             public double DoubleValue
             {
@@ -523,7 +523,7 @@ namespace Avalonia.Base.UnitTests
         private class Class2 : Class1
         {
             public static readonly StyledProperty<string> BarProperty =
-                AvaloniaProperty.Register<Class2, string>("Bar", "bardefault");
+                DependencyProperty.Register<Class2, string>("Bar", "bardefault");
         }
 
         private class TestOneTimeBinding : IBinding
@@ -537,7 +537,7 @@ namespace Avalonia.Base.UnitTests
 
             public InstancedBinding Initiate(
                 IAvaloniaObject target,
-                AvaloniaProperty targetProperty,
+                DependencyProperty targetProperty,
                 object anchor = null,
                 bool enableDataValidation = false)
             {

@@ -46,7 +46,7 @@ namespace Avalonia.Controls
         private static Lazy<Cursor> _resizeCursor = new Lazy<Cursor>(() => new Cursor(StandardCursorType.SizeWestEast));
 
         public static readonly StyledProperty<IBrush> SeparatorBrushProperty =
-            AvaloniaProperty.Register<DataGridColumnHeader, IBrush>(nameof(SeparatorBrush));
+            DependencyProperty.Register<DataGridColumnHeader, IBrush>(nameof(SeparatorBrush));
 
         public IBrush SeparatorBrush
         {
@@ -55,7 +55,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> AreSeparatorsVisibleProperty =
-            AvaloniaProperty.Register<DataGridColumnHeader, bool>(
+            DependencyProperty.Register<DataGridColumnHeader, bool>(
                 nameof(AreSeparatorsVisible),
                 defaultValue: true);
 
@@ -83,7 +83,7 @@ namespace Avalonia.Controls
             PointerLeave += DataGridColumnHeader_PointerLeave;
         }
 
-        private void OnAreSeparatorsVisibleChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnAreSeparatorsVisibleChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -136,7 +136,7 @@ namespace Avalonia.Controls
             set;
         }
 
-        private void SetValueNoCallback<T>(AvaloniaProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
+        private void SetValueNoCallback<T>(DependencyProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
         {
             _areHandlersSuspended = true;
             try

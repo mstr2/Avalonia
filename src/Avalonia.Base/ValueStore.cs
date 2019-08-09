@@ -7,19 +7,19 @@ namespace Avalonia
 {
     internal class ValueStore : IPriorityValueOwner
     {
-        private readonly AvaloniaPropertyValueStore<object> _propertyValues;
-        private readonly AvaloniaPropertyValueStore<object> _deferredSetters;
+        private readonly DependencyPropertyValueStore<object> _propertyValues;
+        private readonly DependencyPropertyValueStore<object> _deferredSetters;
         private readonly AvaloniaObject _owner;
 
         public ValueStore(AvaloniaObject owner)
         {
             _owner = owner;
-            _propertyValues = new AvaloniaPropertyValueStore<object>();
-            _deferredSetters = new AvaloniaPropertyValueStore<object>();
+            _propertyValues = new DependencyPropertyValueStore<object>();
+            _deferredSetters = new DependencyPropertyValueStore<object>();
         }
 
         public IDisposable AddBinding(
-            AvaloniaProperty property,
+            DependencyProperty property,
             IObservable<object> source,
             BindingPriority priority)
         {
@@ -45,7 +45,7 @@ namespace Avalonia
             return priorityValue.Add(source, (int)priority);
         }
 
-        public void AddValue(AvaloniaProperty property, object value, int priority)
+        public void AddValue(DependencyProperty property, object value, int priority)
         {
             PriorityValue priorityValue;
 
@@ -71,7 +71,7 @@ namespace Avalonia
             }
             else
             {
-                if (value == AvaloniaProperty.UnsetValue)
+                if (value == DependencyProperty.UnsetValue)
                 {
                     return;
                 }
@@ -79,7 +79,7 @@ namespace Avalonia
                 if (priority == (int)BindingPriority.LocalValue)
                 {
                     _propertyValues.AddValue(property, Validate(property, value));
-                    Changed(property, priority, AvaloniaProperty.UnsetValue, value);
+                    Changed(property, priority, DependencyProperty.UnsetValue, value);
                     return;
                 }
                 else
@@ -92,29 +92,29 @@ namespace Avalonia
             priorityValue.SetValue(value, priority);
         }
 
-        public void BindingNotificationReceived(AvaloniaProperty property, BindingNotification notification)
+        public void BindingNotificationReceived(DependencyProperty property, BindingNotification notification)
         {
             _owner.BindingNotificationReceived(property, notification);
         }
 
-        public void Changed(AvaloniaProperty property, int priority, object oldValue, object newValue)
+        public void Changed(DependencyProperty property, int priority, object oldValue, object newValue)
         {
             _owner.PriorityValueChanged(property, priority, oldValue, newValue);
         }
 
-        public IDictionary<AvaloniaProperty, object> GetSetValues()
+        public IDictionary<DependencyProperty, object> GetSetValues()
         {
             return _propertyValues.ToDictionary();
         }
 
-        public void LogError(AvaloniaProperty property, Exception e)
+        public void LogError(DependencyProperty property, Exception e)
         {
             _owner.LogBindingError(property, e);
         }
 
-        public object GetValue(AvaloniaProperty property)
+        public object GetValue(DependencyProperty property)
         {
-            var result = AvaloniaProperty.UnsetValue;
+            var result = DependencyProperty.UnsetValue;
 
             if (_propertyValues.TryGetValue(property, out var value))
             {
@@ -124,22 +124,22 @@ namespace Avalonia
             return result;
         }
 
-        public bool IsAnimating(AvaloniaProperty property)
+        public bool IsAnimating(DependencyProperty property)
         {
             return _propertyValues.TryGetValue(property, out var value) && value is PriorityValue priority && priority.IsAnimating;
         }
 
-        public bool IsSet(AvaloniaProperty property)
+        public bool IsSet(DependencyProperty property)
         {
             if (_propertyValues.TryGetValue(property, out var value))
             {
-                return ((value as PriorityValue)?.Value ?? value) != AvaloniaProperty.UnsetValue;
+                return ((value as PriorityValue)?.Value ?? value) != DependencyProperty.UnsetValue;
             }
 
             return false;
         }
 
-        public void Revalidate(AvaloniaProperty property)
+        public void Revalidate(DependencyProperty property)
         {
             if (_propertyValues.TryGetValue(property, out var value))
             {
@@ -149,9 +149,9 @@ namespace Avalonia
 
         public void VerifyAccess() => _owner.VerifyAccess();
 
-        private PriorityValue CreatePriorityValue(AvaloniaProperty property)
+        private PriorityValue CreatePriorityValue(DependencyProperty property)
         {
-            var validate = ((IStyledPropertyAccessor)property).GetValidationFunc(_owner.GetType());
+            var validate = ((IPropertyAccessor)property).GetValidationFunc(_owner.GetType());
             Func<object, object> validate2 = null;
 
             if (validate != null)
@@ -166,11 +166,11 @@ namespace Avalonia
                 validate2);
         }
 
-        private object Validate(AvaloniaProperty property, object value)
+        private object Validate(DependencyProperty property, object value)
         {
-            var validate = ((IStyledPropertyAccessor)property).GetValidationFunc(_owner.GetType());
+            var validate = ((IPropertyAccessor)property).GetValidationFunc(_owner.GetType());
 
-            if (validate != null && value != AvaloniaProperty.UnsetValue)
+            if (validate != null && value != DependencyProperty.UnsetValue)
             {
                 return validate(_owner, value);
             }
@@ -178,7 +178,7 @@ namespace Avalonia
             return value;
         }
 
-        private DeferredSetter<T> GetDeferredSetter<T>(AvaloniaProperty property)
+        private DeferredSetter<T> GetDeferredSetter<T>(DependencyProperty property)
         {
             if (_deferredSetters.TryGetValue(property, out var deferredSetter))
             {
@@ -192,12 +192,12 @@ namespace Avalonia
             return newDeferredSetter;
         }
 
-        public DeferredSetter<object> GetNonDirectDeferredSetter(AvaloniaProperty property)
+        public DeferredSetter<object> GetNonDirectDeferredSetter(DependencyProperty property)
         {
             return GetDeferredSetter<object>(property);
         }
 
-        public DeferredSetter<T> GetDirectDeferredSetter<T>(AvaloniaProperty<T> property)
+        public DeferredSetter<T> GetDirectDeferredSetter<T>(DependencyProperty<T> property)
         {
             return GetDeferredSetter<T>(property);
         }

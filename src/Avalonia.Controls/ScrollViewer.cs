@@ -21,7 +21,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, bool> CanHorizontallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, bool>(
+            DependencyProperty.RegisterDirect<ScrollViewer, bool>(
                 nameof(CanHorizontallyScroll),
                 o => o.CanHorizontallyScroll);
 
@@ -33,7 +33,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, bool> CanVerticallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, bool>(
+            DependencyProperty.RegisterDirect<ScrollViewer, bool>(
                 nameof(CanVerticallyScroll),
                 o => o.CanVerticallyScroll);
 
@@ -41,7 +41,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Extent"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollViewer, Size> ExtentProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, Size>(nameof(Extent),
+            DependencyProperty.RegisterDirect<ScrollViewer, Size>(nameof(Extent),
                 o => o.Extent,
                 (o, v) => o.Extent = v);
 
@@ -49,7 +49,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Offset"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollViewer, Vector> OffsetProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, Vector>(
+            DependencyProperty.RegisterDirect<ScrollViewer, Vector>(
                 nameof(Offset),
                 o => o.Offset,
                 (o, v) => o.Offset = v);
@@ -58,7 +58,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Viewport"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollViewer, Size> ViewportProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, Size>(nameof(Viewport),
+            DependencyProperty.RegisterDirect<ScrollViewer, Size>(nameof(Viewport),
                 o => o.Viewport,
                 (o, v) => o.Viewport = v);
 
@@ -70,7 +70,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> HorizontalScrollBarMaximumProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(HorizontalScrollBarMaximum),
                 o => o.HorizontalScrollBarMaximum);
 
@@ -82,7 +82,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> HorizontalScrollBarValueProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(HorizontalScrollBarValue),
                 o => o.HorizontalScrollBarValue,
                 (o, v) => o.HorizontalScrollBarValue = v);
@@ -95,7 +95,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> HorizontalScrollBarViewportSizeProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(HorizontalScrollBarViewportSize),
                 o => o.HorizontalScrollBarViewportSize);
 
@@ -103,7 +103,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="HorizontalScrollBarVisibility"/> property.
         /// </summary>
         public static readonly AttachedProperty<ScrollBarVisibility> HorizontalScrollBarVisibilityProperty =
-            AvaloniaProperty.RegisterAttached<ScrollViewer, Control, ScrollBarVisibility>(
+            DependencyProperty.RegisterAttached<ScrollViewer, Control, ScrollBarVisibility>(
                 nameof(HorizontalScrollBarVisibility),
                 ScrollBarVisibility.Hidden);
 
@@ -115,7 +115,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> VerticalScrollBarMaximumProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(VerticalScrollBarMaximum),
                 o => o.VerticalScrollBarMaximum);
 
@@ -127,7 +127,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> VerticalScrollBarValueProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(VerticalScrollBarValue),
                 o => o.VerticalScrollBarValue,
                 (o, v) => o.VerticalScrollBarValue = v);
@@ -140,7 +140,7 @@ namespace Avalonia.Controls
         /// <see cref="ScrollContentPresenter"/> in the control's template.
         /// </remarks>
         public static readonly DirectProperty<ScrollViewer, double> VerticalScrollBarViewportSizeProperty =
-            AvaloniaProperty.RegisterDirect<ScrollViewer, double>(
+            DependencyProperty.RegisterDirect<ScrollViewer, double>(
                 nameof(VerticalScrollBarViewportSize),
                 o => o.VerticalScrollBarViewportSize);
 
@@ -148,7 +148,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="VerticalScrollBarVisibility"/> property.
         /// </summary>
         public static readonly AttachedProperty<ScrollBarVisibility> VerticalScrollBarVisibilityProperty =
-            AvaloniaProperty.RegisterAttached<ScrollViewer, Control, ScrollBarVisibility>(
+            DependencyProperty.RegisterAttached<ScrollViewer, Control, ScrollBarVisibility>(
                 nameof(VerticalScrollBarVisibility),
                 ScrollBarVisibility.Auto);
 
@@ -420,7 +420,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void ScrollBarVisibilityChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ScrollBarVisibilityChanged(DependencyPropertyChangedEventArgs e)
         {
             var wasEnabled = !ScrollBarVisibility.Disabled.Equals(e.OldValue);
             var isEnabled = !ScrollBarVisibility.Disabled.Equals(e.NewValue);

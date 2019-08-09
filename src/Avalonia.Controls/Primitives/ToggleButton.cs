@@ -10,7 +10,7 @@ namespace Avalonia.Controls.Primitives
     public class ToggleButton : Button
     {
         public static readonly DirectProperty<ToggleButton, bool?> IsCheckedProperty =
-            AvaloniaProperty.RegisterDirect<ToggleButton, bool?>(
+            DependencyProperty.RegisterDirect<ToggleButton, bool?>(
                 nameof(IsChecked),
                 o => o.IsChecked,
                 (o, v) => o.IsChecked = v,
@@ -18,7 +18,7 @@ namespace Avalonia.Controls.Primitives
                 defaultBindingMode: BindingMode.TwoWay);
 
         public static readonly StyledProperty<bool> IsThreeStateProperty =
-            AvaloniaProperty.Register<ToggleButton, bool>(nameof(IsThreeState));
+            DependencyProperty.Register<ToggleButton, bool>(nameof(IsThreeState));
 
         private bool? _isChecked = false;
 

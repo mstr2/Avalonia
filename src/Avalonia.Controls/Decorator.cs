@@ -15,13 +15,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Child"/> property.
         /// </summary>
         public static readonly StyledProperty<IControl> ChildProperty =
-            AvaloniaProperty.Register<Decorator, IControl>(nameof(Child));
+            DependencyProperty.Register<Decorator, IControl>(nameof(Child));
 
         /// <summary>
         /// Defines the <see cref="Padding"/> property.
         /// </summary>
         public static readonly StyledProperty<Thickness> PaddingProperty =
-            AvaloniaProperty.Register<Decorator, Thickness>(nameof(Padding));
+            DependencyProperty.Register<Decorator, Thickness>(nameof(Padding));
 
         /// <summary>
         /// Initializes static members of the <see cref="Decorator"/> class.
@@ -67,7 +67,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Child"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void ChildChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ChildChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldChild = (Control)e.OldValue;
             var newChild = (Control)e.NewValue;

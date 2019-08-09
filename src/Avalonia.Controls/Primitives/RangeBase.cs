@@ -16,7 +16,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Minimum"/> property.
         /// </summary>
         public static readonly DirectProperty<RangeBase, double> MinimumProperty =
-            AvaloniaProperty.RegisterDirect<RangeBase, double>(
+            DependencyProperty.RegisterDirect<RangeBase, double>(
                 nameof(Minimum),
                 o => o.Minimum,
                 (o, v) => o.Minimum = v);
@@ -25,7 +25,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Maximum"/> property.
         /// </summary>
         public static readonly DirectProperty<RangeBase, double> MaximumProperty =
-            AvaloniaProperty.RegisterDirect<RangeBase, double>(
+            DependencyProperty.RegisterDirect<RangeBase, double>(
                 nameof(Maximum),
                 o => o.Maximum,
                 (o, v) => o.Maximum = v);
@@ -34,7 +34,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Value"/> property.
         /// </summary>
         public static readonly DirectProperty<RangeBase, double> ValueProperty =
-            AvaloniaProperty.RegisterDirect<RangeBase, double>(
+            DependencyProperty.RegisterDirect<RangeBase, double>(
                 nameof(Value),
                 o => o.Value,
                 (o, v) => o.Value = v,
@@ -44,13 +44,13 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="SmallChange"/> property.
         /// </summary>
         public static readonly StyledProperty<double> SmallChangeProperty =
-            AvaloniaProperty.Register<RangeBase, double>(nameof(SmallChange), 1);
+            DependencyProperty.Register<RangeBase, double>(nameof(SmallChange), 1);
 
         /// <summary>
         /// Defines the <see cref="LargeChange"/> property.
         /// </summary>
         public static readonly StyledProperty<double> LargeChangeProperty =
-            AvaloniaProperty.Register<RangeBase, double>(nameof(LargeChange), 10);
+            DependencyProperty.Register<RangeBase, double>(nameof(LargeChange), 10);
 
         private double _minimum;
         private double _maximum = 100.0;

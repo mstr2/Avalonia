@@ -56,10 +56,10 @@ namespace Avalonia.ReactiveUI
     public class RoutedViewHost : TransitioningContentControl, IActivatable, IEnableLogger
     {
         /// <summary>
-        /// <see cref="AvaloniaProperty"/> for the <see cref="Router"/> property.
+        /// <see cref="DependencyProperty"/> for the <see cref="Router"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<RoutingState> RouterProperty =
-            AvaloniaProperty.Register<RoutedViewHost, RoutingState>(nameof(Router));
+        public static readonly DependencyProperty<RoutingState> RouterProperty =
+            DependencyProperty.Register<RoutedViewHost, RoutingState>(nameof(Router));
     
         /// <summary>
         /// Initializes a new instance of the <see cref="RoutedViewHost"/> class.

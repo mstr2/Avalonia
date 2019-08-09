@@ -26,10 +26,10 @@ namespace Avalonia.Controls.Generators
         /// <param name="index">The container index for the tree</param>
         public TreeItemContainerGenerator(
             IControl owner,
-            AvaloniaProperty contentProperty,
-            AvaloniaProperty contentTemplateProperty,
-            AvaloniaProperty itemsProperty,
-            AvaloniaProperty isExpandedProperty,
+            DependencyProperty contentProperty,
+            DependencyProperty contentTemplateProperty,
+            DependencyProperty itemsProperty,
+            DependencyProperty isExpandedProperty,
             TreeContainerIndex index)
             : base(owner, contentProperty, contentTemplateProperty)
         {
@@ -52,12 +52,12 @@ namespace Avalonia.Controls.Generators
         /// <summary>
         /// Gets the item container's Items property.
         /// </summary>
-        protected AvaloniaProperty ItemsProperty { get; }
+        protected DependencyProperty ItemsProperty { get; }
 
         /// <summary>
         /// Gets the item container's IsExpanded property.
         /// </summary>
-        protected AvaloniaProperty IsExpandedProperty { get; }
+        protected DependencyProperty IsExpandedProperty { get; }
 
         /// <inheritdoc/>
         protected override IControl CreateContainer(object item)

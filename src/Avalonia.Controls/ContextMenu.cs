@@ -65,7 +65,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Control.ContextMenu"/> property changes on a control.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void ContextMenuChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void ContextMenuChanged(DependencyPropertyChangedEventArgs e)
         {
             var control = (Control)e.Sender;
 

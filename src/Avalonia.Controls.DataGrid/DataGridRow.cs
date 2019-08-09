@@ -65,7 +65,7 @@ namespace Avalonia.Controls
         /// Identifies the Header dependency property.
         /// </summary>
         public static readonly StyledProperty<object> HeaderProperty =
-            AvaloniaProperty.Register<DataGridRow, object>(nameof(Header));
+            DependencyProperty.Register<DataGridRow, object>(nameof(Header));
 
         /// <summary>
         /// Gets or sets the row header.
@@ -77,7 +77,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<DataGridRow, bool> IsValidProperty =
-            AvaloniaProperty.RegisterDirect<DataGridRow, bool>(
+            DependencyProperty.RegisterDirect<DataGridRow, bool>(
                 nameof(IsValid),
                 o => o.IsValid);
 
@@ -91,7 +91,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IDataTemplate> DetailsTemplateProperty =
-            AvaloniaProperty.Register<DataGridRow, IDataTemplate>(nameof(DetailsTemplate));
+            DependencyProperty.Register<DataGridRow, IDataTemplate>(nameof(DetailsTemplate));
 
         /// <summary>
         /// Gets or sets the template that is used to display the details section of the row.
@@ -103,7 +103,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> AreDetailsVisibleProperty =
-            AvaloniaProperty.Register<DataGridRow, bool>(nameof(AreDetailsVisible));
+            DependencyProperty.Register<DataGridRow, bool>(nameof(AreDetailsVisible));
 
         /// <summary>
         /// Gets or sets a value that indicates when the details section of the row is displayed.
@@ -141,7 +141,7 @@ namespace Avalonia.Controls
             Cells.CellRemoved += DataGridCellCollection_CellRemoved;
         }
 
-        private void SetValueNoCallback<T>(AvaloniaProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
+        private void SetValueNoCallback<T>(DependencyProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
         {
             _areHandlersSuspended = true;
             try
@@ -154,7 +154,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnHeaderChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnHeaderChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_headerElement != null)
             {
@@ -162,7 +162,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnDetailsTemplateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDetailsTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (IDataTemplate)e.OldValue;
             var newValue = (IDataTemplate)e.NewValue;
@@ -180,7 +180,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnAreDetailsVisibleChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnAreDetailsVisibleChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {

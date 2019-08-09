@@ -78,7 +78,7 @@ namespace Avalonia
             }
 
             Observable = binding;
-            Value = AvaloniaProperty.UnsetValue;
+            Value = DependencyProperty.UnsetValue;
 
             if (binding is IDescription)
             {

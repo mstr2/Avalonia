@@ -53,9 +53,9 @@ namespace Avalonia.Markup.UnitTests.Data
             var result = new Mock<IControl>();
 
             result.Setup(x => x.GetValue(Control.TemplatedParentProperty)).Returns(templatedParent);
-            result.Setup(x => x.GetValue((AvaloniaProperty)Control.TemplatedParentProperty)).Returns(templatedParent);
-            result.Setup(x => x.GetValue((AvaloniaProperty)TextBox.TextProperty)).Returns(text);
-            result.Setup(x => x.Bind(It.IsAny<AvaloniaProperty>(), It.IsAny<IObservable<object>>(), It.IsAny<BindingPriority>()))
+            result.Setup(x => x.GetValue((DependencyProperty)Control.TemplatedParentProperty)).Returns(templatedParent);
+            result.Setup(x => x.GetValue((DependencyProperty)TextBox.TextProperty)).Returns(text);
+            result.Setup(x => x.Bind(It.IsAny<DependencyProperty>(), It.IsAny<IObservable<object>>(), It.IsAny<BindingPriority>()))
                 .Returns(Disposable.Empty);
             return result;
         }

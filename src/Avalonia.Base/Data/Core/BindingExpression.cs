@@ -51,7 +51,7 @@ namespace Avalonia.Data.Core
             IValueConverter converter,
             object converterParameter = null,
             BindingPriority priority = BindingPriority.LocalValue)
-            : this(inner, targetType, AvaloniaProperty.UnsetValue, converter, converterParameter, priority)
+            : this(inner, targetType, DependencyProperty.UnsetValue, converter, converterParameter, priority)
         {
         }
 
@@ -136,7 +136,7 @@ namespace Avalonia.Data.Core
                         return;
                     }
 
-                    if (converted == AvaloniaProperty.UnsetValue)
+                    if (converted == DependencyProperty.UnsetValue)
                     {
                         converted = TypeUtilities.Default(type);
                         _inner.SetValue(converted, _priority);
@@ -153,7 +153,7 @@ namespace Avalonia.Data.Core
 
                         PublishNext(notification);
 
-                        if (_fallbackValue != AvaloniaProperty.UnsetValue)
+                        if (_fallbackValue != DependencyProperty.UnsetValue)
                         {
                             if (TypeUtilities.TryConvert(
                                 type,
@@ -223,8 +223,8 @@ namespace Avalonia.Data.Core
                     converted = notification.Value;
                 }
 
-                if (_fallbackValue != AvaloniaProperty.UnsetValue &&
-                    (converted == AvaloniaProperty.UnsetValue || converted is BindingNotification))
+                if (_fallbackValue != DependencyProperty.UnsetValue &&
+                    (converted == DependencyProperty.UnsetValue || converted is BindingNotification))
                 {
                     var fallback = ConvertFallback();
                     converted = Merge(converted, fallback);
@@ -245,7 +245,7 @@ namespace Avalonia.Data.Core
                 var converted = ConvertValue(notification.Value);
                 notification = Merge(notification, converted);
             }
-            else if (_fallbackValue != AvaloniaProperty.UnsetValue)
+            else if (_fallbackValue != DependencyProperty.UnsetValue)
             {
                 var fallback = ConvertFallback();
                 notification = Merge(notification, fallback);
@@ -258,7 +258,7 @@ namespace Avalonia.Data.Core
         {
             object converted;
 
-            if (_fallbackValue == AvaloniaProperty.UnsetValue)
+            if (_fallbackValue == DependencyProperty.UnsetValue)
             {
                 throw new AvaloniaInternalException("Cannot call ConvertFallback with no fallback value");
             }

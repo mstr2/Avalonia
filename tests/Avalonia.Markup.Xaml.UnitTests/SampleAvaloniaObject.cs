@@ -8,10 +8,10 @@ namespace Avalonia.Markup.Xaml.UnitTests
     internal class SampleAvaloniaObject : AvaloniaObject
     {
         public static readonly StyledProperty<string> StringProperty =
-            AvaloniaProperty.Register<AvaloniaObject, string>("StrProp", string.Empty);
+            DependencyProperty.Register<AvaloniaObject, string>("StrProp", string.Empty);
 
         public static readonly StyledProperty<int> IntProperty =
-            AvaloniaProperty.Register<AvaloniaObject, int>("IntProp");
+            DependencyProperty.Register<AvaloniaObject, int>("IntProp");
 
         public int Int
         {

@@ -76,7 +76,7 @@ namespace Avalonia.Controls
         /// Marks a property on a child as affecting the parent panel's arrangement.
         /// </summary>
         /// <param name="properties">The properties.</param>
-        protected static void AffectsParentArrange<TPanel>(params AvaloniaProperty[] properties)
+        protected static void AffectsParentArrange<TPanel>(params DependencyProperty[] properties)
             where TPanel : class, IPanel
         {
             foreach (var property in properties)
@@ -89,7 +89,7 @@ namespace Avalonia.Controls
         /// Marks a property on a child as affecting the parent panel's measurement.
         /// </summary>
         /// <param name="properties">The properties.</param>
-        protected static void AffectsParentMeasure<TPanel>(params AvaloniaProperty[] properties)
+        protected static void AffectsParentMeasure<TPanel>(params DependencyProperty[] properties)
             where TPanel : class, IPanel
         {
             foreach (var property in properties)
@@ -143,7 +143,7 @@ namespace Avalonia.Controls
             InvalidateMeasure();
         }
 
-        private static void AffectsParentArrangeInvalidate<TPanel>(AvaloniaPropertyChangedEventArgs e)
+        private static void AffectsParentArrangeInvalidate<TPanel>(DependencyPropertyChangedEventArgs e)
             where TPanel : class, IPanel
         {
             var control = e.Sender as IControl;
@@ -151,7 +151,7 @@ namespace Avalonia.Controls
             panel?.InvalidateArrange();
         }
 
-        private static void AffectsParentMeasureInvalidate<TPanel>(AvaloniaPropertyChangedEventArgs e)
+        private static void AffectsParentMeasureInvalidate<TPanel>(DependencyPropertyChangedEventArgs e)
             where TPanel : class, IPanel
         {
             var control = e.Sender as IControl;

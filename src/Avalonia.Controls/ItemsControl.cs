@@ -34,25 +34,25 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Items"/> property.
         /// </summary>
         public static readonly DirectProperty<ItemsControl, IEnumerable> ItemsProperty =
-            AvaloniaProperty.RegisterDirect<ItemsControl, IEnumerable>(nameof(Items), o => o.Items, (o, v) => o.Items = v);
+            DependencyProperty.RegisterDirect<ItemsControl, IEnumerable>(nameof(Items), o => o.Items, (o, v) => o.Items = v);
 
         /// <summary>
         /// Defines the <see cref="ItemCount"/> property.
         /// </summary>
         public static readonly DirectProperty<ItemsControl, int> ItemCountProperty =
-            AvaloniaProperty.RegisterDirect<ItemsControl, int>(nameof(ItemCount), o => o.ItemCount);
+            DependencyProperty.RegisterDirect<ItemsControl, int>(nameof(ItemCount), o => o.ItemCount);
 
         /// <summary>
         /// Defines the <see cref="ItemsPanel"/> property.
         /// </summary>
         public static readonly StyledProperty<ITemplate<IPanel>> ItemsPanelProperty =
-            AvaloniaProperty.Register<ItemsControl, ITemplate<IPanel>>(nameof(ItemsPanel), DefaultPanel);
+            DependencyProperty.Register<ItemsControl, ITemplate<IPanel>>(nameof(ItemsPanel), DefaultPanel);
 
         /// <summary>
         /// Defines the <see cref="ItemTemplate"/> property.
         /// </summary>
         public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
-            AvaloniaProperty.Register<ItemsControl, IDataTemplate>(nameof(ItemTemplate));
+            DependencyProperty.Register<ItemsControl, IDataTemplate>(nameof(ItemTemplate));
 
         private IEnumerable _items = new AvaloniaList<object>();
         private int _itemCount;
@@ -361,7 +361,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Items"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        protected virtual void ItemsChanged(AvaloniaPropertyChangedEventArgs e)
+        protected virtual void ItemsChanged(DependencyPropertyChangedEventArgs e)
         {
             _itemsCollectionChangedSubscription?.Dispose();
             _itemsCollectionChangedSubscription = null;
@@ -470,7 +470,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="ItemTemplate"/> changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void ItemTemplateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ItemTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_itemContainerGenerator != null)
             {

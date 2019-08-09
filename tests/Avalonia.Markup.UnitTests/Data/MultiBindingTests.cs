@@ -106,7 +106,7 @@ namespace Avalonia.Markup.UnitTests.Data
         {
             public object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture)
             {
-                return AvaloniaProperty.UnsetValue;
+                return DependencyProperty.UnsetValue;
             }
         }
     }

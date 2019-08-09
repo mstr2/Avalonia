@@ -15,7 +15,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Transform"/> property.
         /// </summary>
         public static readonly StyledProperty<Transform> TransformProperty =
-            AvaloniaProperty.Register<Geometry, Transform>(nameof(Transform));
+            DependencyProperty.Register<Geometry, Transform>(nameof(Transform));
 
         private bool _isDirty = true;
         private IGeometryImpl _platformImpl;
@@ -118,7 +118,7 @@ namespace Avalonia.Media
         /// After a call to this method in a control's static constructor, any change to the
         /// property will cause <see cref="InvalidateGeometry"/> to be called on the element.
         /// </remarks>
-        protected static void AffectsGeometry(params AvaloniaProperty[] properties)
+        protected static void AffectsGeometry(params DependencyProperty[] properties)
         {
             foreach (var property in properties)
             {
@@ -142,7 +142,7 @@ namespace Avalonia.Media
             Changed?.Invoke(this, EventArgs.Empty);
         }
 
-        private void TransformChanged(AvaloniaPropertyChangedEventArgs e)
+        private void TransformChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (Transform)e.OldValue;
             var newValue = (Transform)e.NewValue;
@@ -183,7 +183,7 @@ namespace Avalonia.Media
             Changed?.Invoke(this, EventArgs.Empty);
         }
 
-        private static void AffectsGeometryInvalidate(AvaloniaPropertyChangedEventArgs e)
+        private static void AffectsGeometryInvalidate(DependencyPropertyChangedEventArgs e)
         {
             var control = e.Sender as Geometry;
             control?.InvalidateGeometry();

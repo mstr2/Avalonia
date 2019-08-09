@@ -27,7 +27,7 @@ namespace Avalonia.Animation.Animators
         /// <summary>
         /// Gets or sets the target property for the keyframe.
         /// </summary>
-        public AvaloniaProperty Property { get; set; }
+        public DependencyProperty Property { get; set; }
 
         public Animator()
         {
@@ -116,7 +116,7 @@ namespace Avalonia.Animation.Animators
                 clock ?? control.Clock ?? Clock.GlobalClock,
                 onComplete,
                 InterpolationHandler);
-            return control.Bind<T>((AvaloniaProperty<T>)Property, instance, BindingPriority.Animation);
+            return control.Bind<T>((DependencyProperty<T>)Property, instance, BindingPriority.Animation);
         }
 
         /// <summary>

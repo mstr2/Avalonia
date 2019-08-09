@@ -14,13 +14,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="StartPoint"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> StartPointProperty =
-            AvaloniaProperty.Register<LineGeometry, Point>(nameof(StartPoint));
+            DependencyProperty.Register<LineGeometry, Point>(nameof(StartPoint));
 
         /// <summary>
         /// Defines the <see cref="EndPoint"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> EndPointProperty =
-            AvaloniaProperty.Register<LineGeometry, Point>(nameof(EndPoint));
+            DependencyProperty.Register<LineGeometry, Point>(nameof(EndPoint));
 
         static LineGeometry()
         {

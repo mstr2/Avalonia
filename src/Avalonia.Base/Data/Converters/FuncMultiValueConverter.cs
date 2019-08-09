@@ -38,7 +38,7 @@ namespace Avalonia.Data.Converters
             }
             else
             {
-                return AvaloniaProperty.UnsetValue;
+                return DependencyProperty.UnsetValue;
             }
         }
     }

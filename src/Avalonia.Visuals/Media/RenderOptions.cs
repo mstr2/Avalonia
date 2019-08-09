@@ -11,7 +11,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="BitmapInterpolationMode"/> property.
         /// </summary>
         public static readonly StyledProperty<BitmapInterpolationMode> BitmapInterpolationModeProperty =
-            AvaloniaProperty.RegisterAttached<RenderOptions, AvaloniaObject, BitmapInterpolationMode>(
+            DependencyProperty.RegisterAttached<RenderOptions, AvaloniaObject, BitmapInterpolationMode>(
                 "BitmapInterpolationMode", 
                 BitmapInterpolationMode.MediumQuality,
                 inherits: true);

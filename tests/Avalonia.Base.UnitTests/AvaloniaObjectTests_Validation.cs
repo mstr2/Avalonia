@@ -66,7 +66,7 @@ namespace Avalonia.Base.UnitTests
 
             target.Bind(Class1.QuxProperty, source);
 
-            source.OnNext(AvaloniaProperty.UnsetValue);
+            source.OnNext(DependencyProperty.UnsetValue);
         }
 
         [Fact]
@@ -81,10 +81,10 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<int> QuxProperty =
-                AvaloniaProperty.Register<Class1, int>("Qux", validate: Validate);
+                DependencyProperty.Register<Class1, int>("Qux", validate: Validate);
 
             public static readonly AttachedProperty<int> AttachedProperty =
-            AvaloniaProperty.RegisterAttached<Class1, Class2, int>("Attached", validate: Validate);
+            DependencyProperty.RegisterAttached<Class1, Class2, int>("Attached", validate: Validate);
 
             public Class1()
             {

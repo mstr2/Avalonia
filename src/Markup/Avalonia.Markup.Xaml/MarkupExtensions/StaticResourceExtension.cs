@@ -43,7 +43,7 @@ namespace Avalonia.Markup.Xaml.MarkupExtensions
                 provideTarget.TargetProperty is PropertyInfo property)
             {
                 DelayedBinding.Add(target, property, GetValue);
-                return AvaloniaProperty.UnsetValue;
+                return DependencyProperty.UnsetValue;
             }
 
             throw new KeyNotFoundException($"Static resource '{ResourceKey}' not found.");

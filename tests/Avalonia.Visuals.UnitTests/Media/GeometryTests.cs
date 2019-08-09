@@ -84,8 +84,8 @@ namespace Avalonia.Visuals.UnitTests.Media
 
         private class TestGeometry : Geometry
         {
-            public static readonly AvaloniaProperty<bool> FooProperty =
-                AvaloniaProperty.Register<TestGeometry, bool>(nameof(Foo));
+            public static readonly DependencyProperty<bool> FooProperty =
+                DependencyProperty.Register<TestGeometry, bool>(nameof(Foo));
 
             static TestGeometry()
             {

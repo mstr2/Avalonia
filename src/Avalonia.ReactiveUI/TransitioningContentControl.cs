@@ -14,17 +14,17 @@ namespace Avalonia.ReactiveUI
     public class TransitioningContentControl : ContentControl, IStyleable
     {
         /// <summary>
-        /// <see cref="AvaloniaProperty"/> for the <see cref="PageTransition"/> property.
+        /// <see cref="DependencyProperty"/> for the <see cref="PageTransition"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<IPageTransition> PageTransitionProperty =
-            AvaloniaProperty.Register<TransitioningContentControl, IPageTransition>(nameof(PageTransition),
+        public static readonly DependencyProperty<IPageTransition> PageTransitionProperty =
+            DependencyProperty.Register<TransitioningContentControl, IPageTransition>(nameof(PageTransition),
                 new CrossFade(TimeSpan.FromSeconds(0.5)));
 
         /// <summary>
-        /// <see cref="AvaloniaProperty"/> for the <see cref="DefaultContent"/> property.
+        /// <see cref="DependencyProperty"/> for the <see cref="DefaultContent"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<object> DefaultContentProperty =
-            AvaloniaProperty.Register<TransitioningContentControl, object>(nameof(DefaultContent));
+        public static readonly DependencyProperty<object> DefaultContentProperty =
+            DependencyProperty.Register<TransitioningContentControl, object>(nameof(DefaultContent));
         
         /// <summary>
         /// Gets or sets the animation played when content appears and disappears.

@@ -38,72 +38,72 @@ namespace Avalonia.Controls
         /// Defines the <see cref="ClipValueToMinMax"/> property.
         /// </summary>
         public static readonly DirectProperty<NumericUpDown, bool> ClipValueToMinMaxProperty =
-            AvaloniaProperty.RegisterDirect<NumericUpDown, bool>(nameof(ClipValueToMinMax),
+            DependencyProperty.RegisterDirect<NumericUpDown, bool>(nameof(ClipValueToMinMax),
                 updown => updown.ClipValueToMinMax, (updown, b) => updown.ClipValueToMinMax = b);
 
         /// <summary>
         /// Defines the <see cref="CultureInfo"/> property.
         /// </summary>
         public static readonly DirectProperty<NumericUpDown, CultureInfo> CultureInfoProperty =
-            AvaloniaProperty.RegisterDirect<NumericUpDown, CultureInfo>(nameof(CultureInfo), o => o.CultureInfo,
+            DependencyProperty.RegisterDirect<NumericUpDown, CultureInfo>(nameof(CultureInfo), o => o.CultureInfo,
                 (o, v) => o.CultureInfo = v, CultureInfo.CurrentCulture);
 
         /// <summary>
         /// Defines the <see cref="FormatString"/> property.
         /// </summary>
         public static readonly StyledProperty<string> FormatStringProperty =
-            AvaloniaProperty.Register<NumericUpDown, string>(nameof(FormatString), string.Empty);
+            DependencyProperty.Register<NumericUpDown, string>(nameof(FormatString), string.Empty);
 
         /// <summary>
         /// Defines the <see cref="Increment"/> property.
         /// </summary>
         public static readonly StyledProperty<double> IncrementProperty =
-            AvaloniaProperty.Register<NumericUpDown, double>(nameof(Increment), 1.0d, validate: OnCoerceIncrement);
+            DependencyProperty.Register<NumericUpDown, double>(nameof(Increment), 1.0d, validate: OnCoerceIncrement);
 
         /// <summary>
         /// Defines the <see cref="IsReadOnly"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsReadOnlyProperty =
-            AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsReadOnly));
+            DependencyProperty.Register<NumericUpDown, bool>(nameof(IsReadOnly));
 
         /// <summary>
         /// Defines the <see cref="Maximum"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MaximumProperty =
-            AvaloniaProperty.Register<NumericUpDown, double>(nameof(Maximum), double.MaxValue, validate: OnCoerceMaximum);
+            DependencyProperty.Register<NumericUpDown, double>(nameof(Maximum), double.MaxValue, validate: OnCoerceMaximum);
 
         /// <summary>
         /// Defines the <see cref="Minimum"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinimumProperty =
-            AvaloniaProperty.Register<NumericUpDown, double>(nameof(Minimum), double.MinValue, validate: OnCoerceMinimum);
+            DependencyProperty.Register<NumericUpDown, double>(nameof(Minimum), double.MinValue, validate: OnCoerceMinimum);
 
         /// <summary>
         /// Defines the <see cref="ParsingNumberStyle"/> property.
         /// </summary>
         public static readonly DirectProperty<NumericUpDown, NumberStyles> ParsingNumberStyleProperty =
-            AvaloniaProperty.RegisterDirect<NumericUpDown, NumberStyles>(nameof(ParsingNumberStyle),
+            DependencyProperty.RegisterDirect<NumericUpDown, NumberStyles>(nameof(ParsingNumberStyle),
                 updown => updown.ParsingNumberStyle, (updown, style) => updown.ParsingNumberStyle = style);
 
         /// <summary>
         /// Defines the <see cref="Text"/> property.
         /// </summary>
         public static readonly DirectProperty<NumericUpDown, string> TextProperty =
-            AvaloniaProperty.RegisterDirect<NumericUpDown, string>(nameof(Text), o => o.Text, (o, v) => o.Text = v,
+            DependencyProperty.RegisterDirect<NumericUpDown, string>(nameof(Text), o => o.Text, (o, v) => o.Text = v,
                 defaultBindingMode: BindingMode.TwoWay);
 
         /// <summary>
         /// Defines the <see cref="Value"/> property.
         /// </summary>
         public static readonly DirectProperty<NumericUpDown, double> ValueProperty =
-            AvaloniaProperty.RegisterDirect<NumericUpDown, double>(nameof(Value), updown => updown.Value,
+            DependencyProperty.RegisterDirect<NumericUpDown, double>(nameof(Value), updown => updown.Value,
                 (updown, v) => updown.Value = v, defaultBindingMode: BindingMode.TwoWay);
 
         /// <summary>
         /// Defines the <see cref="Watermark"/> property.
         /// </summary>
         public static readonly StyledProperty<string> WatermarkProperty =
-            AvaloniaProperty.Register<NumericUpDown, string>(nameof(Watermark));
+            DependencyProperty.Register<NumericUpDown, string>(nameof(Watermark));
 
         private IDisposable _textBoxTextChangedSubscription;
 
@@ -617,7 +617,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="CultureInfo"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnCultureInfoChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnCultureInfoChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -631,7 +631,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Increment"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void IncrementChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void IncrementChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -645,7 +645,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="FormatString"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void FormatStringChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void FormatStringChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -659,7 +659,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="IsReadOnly"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnIsReadOnlyChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnIsReadOnlyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -673,7 +673,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Maximum"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnMaximumChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnMaximumChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -687,7 +687,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Minimum"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnMinimumChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnMinimumChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -701,7 +701,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Text"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnTextChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnTextChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {
@@ -715,7 +715,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Value"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnValueChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnValueChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is NumericUpDown upDown)
             {

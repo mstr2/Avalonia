@@ -54,49 +54,49 @@ namespace Avalonia.Controls
         /// Defines the <see cref="SizeToContent"/> property.
         /// </summary>
         public static readonly StyledProperty<SizeToContent> SizeToContentProperty =
-            AvaloniaProperty.Register<Window, SizeToContent>(nameof(SizeToContent));
+            DependencyProperty.Register<Window, SizeToContent>(nameof(SizeToContent));
 
         /// <summary>
         /// Enables or disables system window decorations (title bar, buttons, etc)
         /// </summary>
         public static readonly StyledProperty<bool> HasSystemDecorationsProperty =
-            AvaloniaProperty.Register<Window, bool>(nameof(HasSystemDecorations), true);
+            DependencyProperty.Register<Window, bool>(nameof(HasSystemDecorations), true);
 
         /// <summary>
         /// Enables or disables the taskbar icon
         /// </summary>
         public static readonly StyledProperty<bool> ShowInTaskbarProperty =
-            AvaloniaProperty.Register<Window, bool>(nameof(ShowInTaskbar), true);
+            DependencyProperty.Register<Window, bool>(nameof(ShowInTaskbar), true);
 
         /// <summary>
         /// Represents the current window state (normal, minimized, maximized)
         /// </summary>
         public static readonly StyledProperty<WindowState> WindowStateProperty =
-            AvaloniaProperty.Register<Window, WindowState>(nameof(WindowState));
+            DependencyProperty.Register<Window, WindowState>(nameof(WindowState));
 
         /// <summary>
         /// Defines the <see cref="Title"/> property.
         /// </summary>
         public static readonly StyledProperty<string> TitleProperty =
-            AvaloniaProperty.Register<Window, string>(nameof(Title), "Window");
+            DependencyProperty.Register<Window, string>(nameof(Title), "Window");
 
         /// <summary>
         /// Defines the <see cref="Icon"/> property.
         /// </summary>
         public static readonly StyledProperty<WindowIcon> IconProperty =
-            AvaloniaProperty.Register<Window, WindowIcon>(nameof(Icon));
+            DependencyProperty.Register<Window, WindowIcon>(nameof(Icon));
 
         /// <summary>
         /// Defines the <see cref="WindowStartupLocation"/> property.
         /// </summary>
         public static readonly DirectProperty<Window, WindowStartupLocation> WindowStartupLocationProperty =
-            AvaloniaProperty.RegisterDirect<Window, WindowStartupLocation>(
+            DependencyProperty.RegisterDirect<Window, WindowStartupLocation>(
                 nameof(WindowStartupLocation),
                 o => o.WindowStartupLocation,
                 (o, v) => o.WindowStartupLocation = v);
 
         public static readonly StyledProperty<bool> CanResizeProperty =
-            AvaloniaProperty.Register<Window, bool>(nameof(CanResize), true);
+            DependencyProperty.Register<Window, bool>(nameof(CanResize), true);
 
         /// <summary>
         /// Routed event that can be used for global tracking of window destruction

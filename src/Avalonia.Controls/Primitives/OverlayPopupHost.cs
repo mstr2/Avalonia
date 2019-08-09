@@ -55,7 +55,7 @@ namespace Avalonia.Controls.Primitives
             // Topmost property is not supported
             var bindings = new List<IDisposable>();
 
-            void Bind(AvaloniaProperty what, AvaloniaProperty to) => bindings.Add(this.Bind(what, popup[~to]));
+            void Bind(DependencyProperty what, DependencyProperty to) => bindings.Add(this.Bind(what, popup[~to]));
             Bind(WidthProperty, widthProperty);
             Bind(MinWidthProperty, minWidthProperty);
             Bind(MaxWidthProperty, maxWidthProperty);

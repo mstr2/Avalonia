@@ -98,7 +98,7 @@ namespace Avalonia.Base.UnitTests
         {
             Class1 target = new Class1();
 
-            Assert.False(AvaloniaPropertyRegistry.Instance.IsRegistered(target, Class2.BarProperty));
+            Assert.False(DependencyPropertyRegistry.Instance.IsRegistered(target, Class2.BarProperty));
 
             target.SetValue(Class2.BarProperty, "bar");
 
@@ -110,7 +110,7 @@ namespace Avalonia.Base.UnitTests
         {
             Class1 target = new Class1();
 
-            Assert.False(AvaloniaPropertyRegistry.Instance.IsRegistered(target, AttachedOwner.AttachedProperty));
+            Assert.False(DependencyPropertyRegistry.Instance.IsRegistered(target, AttachedOwner.AttachedProperty));
 
             target.SetValue(AttachedOwner.AttachedProperty, "bar");
 
@@ -133,7 +133,7 @@ namespace Avalonia.Base.UnitTests
         {
             Class2 target = new Class2();
 
-            target.SetValue((AvaloniaProperty)Class2.FlobProperty, 4);
+            target.SetValue((DependencyProperty)Class2.FlobProperty, 4);
 
             var value = target.GetValue(Class2.FlobProperty);
             Assert.IsType<double>(value);
@@ -145,7 +145,7 @@ namespace Avalonia.Base.UnitTests
         {
             Class2 target = new Class2();
 
-            target.SetValue((AvaloniaProperty)Class2.FlobProperty, new ImplictDouble(4));
+            target.SetValue((DependencyProperty)Class2.FlobProperty, new ImplictDouble(4));
 
             var value = target.GetValue(Class2.FlobProperty);
             Assert.IsType<double>(value);
@@ -157,7 +157,7 @@ namespace Avalonia.Base.UnitTests
         {
             Class2 target = new Class2();
 
-            target.SetValue((AvaloniaProperty)Class2.FredProperty, 4.0);
+            target.SetValue((DependencyProperty)Class2.FredProperty, 4.0);
 
             var value = target.GetValue(Class2.FredProperty);
             Assert.IsType<double>(value);
@@ -183,7 +183,7 @@ namespace Avalonia.Base.UnitTests
             Class1 target = new Class1();
 
             target.SetValue(Class1.FooProperty, "newvalue");
-            target.SetValue(Class1.FooProperty, AvaloniaProperty.UnsetValue);
+            target.SetValue(Class1.FooProperty, DependencyProperty.UnsetValue);
 
             Assert.Equal("foodefault", target.GetValue(Class1.FooProperty));
         }
@@ -191,19 +191,19 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", "foodefault");
+                DependencyProperty.Register<Class1, string>("Foo", "foodefault");
         }
 
         private class Class2 : Class1
         {
             public static readonly StyledProperty<string> BarProperty =
-                AvaloniaProperty.Register<Class2, string>("Bar", "bardefault");
+                DependencyProperty.Register<Class2, string>("Bar", "bardefault");
 
             public static readonly StyledProperty<double> FlobProperty =
-                AvaloniaProperty.Register<Class2, double>("Flob");
+                DependencyProperty.Register<Class2, double>("Flob");
 
             public static readonly StyledProperty<double?> FredProperty =
-                AvaloniaProperty.Register<Class2, double?>("Fred");
+                DependencyProperty.Register<Class2, double?>("Fred");
 
             public Class1 Parent
             {
@@ -215,7 +215,7 @@ namespace Avalonia.Base.UnitTests
         private class AttachedOwner
         {
             public static readonly AttachedProperty<string> AttachedProperty =
-                AvaloniaProperty.RegisterAttached<AttachedOwner, Class2, string>("Attached");
+                DependencyProperty.RegisterAttached<AttachedOwner, Class2, string>("Attached");
         }
 
         private class ImplictDouble

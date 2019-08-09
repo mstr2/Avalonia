@@ -153,7 +153,7 @@ namespace Avalonia.Controls
         /// Identifies the CanUserReorderColumns dependency property.
         /// </summary>
         public static readonly StyledProperty<bool> CanUserReorderColumnsProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(CanUserReorderColumns));
+            DependencyProperty.Register<DataGrid, bool>(nameof(CanUserReorderColumns));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the user can change 
@@ -169,7 +169,7 @@ namespace Avalonia.Controls
         /// Identifies the CanUserResizeColumns dependency property.
         /// </summary>
         public static readonly StyledProperty<bool> CanUserResizeColumnsProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(CanUserResizeColumns));
+            DependencyProperty.Register<DataGrid, bool>(nameof(CanUserResizeColumns));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the user can adjust column widths using the mouse.
@@ -184,7 +184,7 @@ namespace Avalonia.Controls
         /// Identifies the CanUserSortColumns dependency property.
         /// </summary>
         public static readonly StyledProperty<bool> CanUserSortColumnsProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(CanUserSortColumns), true);
+            DependencyProperty.Register<DataGrid, bool>(nameof(CanUserSortColumns), true);
 
         /// <summary>
         /// Gets or sets a value that indicates whether the user can sort columns by clicking the column header.
@@ -199,7 +199,7 @@ namespace Avalonia.Controls
         /// Identifies the ColumnHeaderHeight dependency property.
         /// </summary>
         public static readonly StyledProperty<double> ColumnHeaderHeightProperty =
-            AvaloniaProperty.Register<DataGrid, double>(
+            DependencyProperty.Register<DataGrid, double>(
                 nameof(ColumnHeaderHeight),
                 defaultValue: double.NaN,
                 validate: ValidateColumnHeaderHeight);
@@ -231,7 +231,7 @@ namespace Avalonia.Controls
         /// Identifies the ColumnWidth dependency property.
         /// </summary>
         public static readonly StyledProperty<DataGridLength> ColumnWidthProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridLength>(nameof(ColumnWidth), defaultValue: DataGridLength.Auto);
+            DependencyProperty.Register<DataGrid, DataGridLength>(nameof(ColumnWidth), defaultValue: DataGridLength.Auto);
 
         /// <summary>
         /// Gets or sets the standard width or automatic sizing mode of columns in the control.
@@ -243,7 +243,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IBrush> AlternatingRowBackgroundProperty =
-            AvaloniaProperty.Register<DataGrid, IBrush>(nameof(AlternatingRowBackground));
+            DependencyProperty.Register<DataGrid, IBrush>(nameof(AlternatingRowBackground));
 
         /// <summary>
         /// Gets or sets the <see cref="T:System.Windows.Media.Brush" /> that is used to paint the background of odd-numbered rows.
@@ -260,7 +260,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<int> FrozenColumnCountProperty =
-            AvaloniaProperty.Register<DataGrid, int>(
+            DependencyProperty.Register<DataGrid, int>(
                 nameof(FrozenColumnCount),
                 validate: ValidateFrozenColumnCount);
 
@@ -284,7 +284,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DataGridGridLinesVisibility> GridLinesVisibilityProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridGridLinesVisibility>(nameof(GridLinesVisibility));
+            DependencyProperty.Register<DataGrid, DataGridGridLinesVisibility>(nameof(GridLinesVisibility));
 
         /// <summary>
         /// Gets or sets a value that indicates which grid lines separating inner cells are shown.
@@ -296,7 +296,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DataGridHeadersVisibility> HeadersVisibilityProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridHeadersVisibility>(nameof(HeadersVisibility));
+            DependencyProperty.Register<DataGrid, DataGridHeadersVisibility>(nameof(HeadersVisibility));
 
         /// <summary>
         /// Gets or sets a value that indicates the visibility of row and column headers.
@@ -308,7 +308,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IBrush> HorizontalGridLinesBrushProperty =
-            AvaloniaProperty.Register<DataGrid, IBrush>(nameof(HorizontalGridLinesBrush));
+            DependencyProperty.Register<DataGrid, IBrush>(nameof(HorizontalGridLinesBrush));
 
         /// <summary>
         /// Gets or sets the <see cref="T:System.Windows.Media.Brush" /> that is used to paint grid lines separating rows.
@@ -320,7 +320,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<ScrollBarVisibility> HorizontalScrollBarVisibilityProperty =
-            AvaloniaProperty.Register<DataGrid, ScrollBarVisibility>(nameof(HorizontalScrollBarVisibility));
+            DependencyProperty.Register<DataGrid, ScrollBarVisibility>(nameof(HorizontalScrollBarVisibility));
 
         /// <summary>
         /// Gets or sets a value that indicates how the horizontal scroll bar is displayed.
@@ -332,7 +332,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> IsReadOnlyProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(IsReadOnly));
+            DependencyProperty.Register<DataGrid, bool>(nameof(IsReadOnly));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the user can edit the values in the control.
@@ -344,7 +344,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> AreRowGroupHeadersFrozenProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(
+            DependencyProperty.Register<DataGrid, bool>(
                 nameof(AreRowGroupHeadersFrozen),
                 defaultValue: true);
 
@@ -358,7 +358,7 @@ namespace Avalonia.Controls
             set { SetValue(AreRowGroupHeadersFrozenProperty, value); }
         }
 
-        private void OnAreRowGroupHeadersFrozenChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnAreRowGroupHeadersFrozenChanged(DependencyPropertyChangedEventArgs e)
         {
             var value = (bool)e.NewValue;
             ProcessFrozenColumnCount();
@@ -382,7 +382,7 @@ namespace Avalonia.Controls
         private bool _isValid = true;
 
         public static readonly DirectProperty<DataGrid, bool> IsValidProperty =
-            AvaloniaProperty.RegisterDirect<DataGrid, bool>(
+            DependencyProperty.RegisterDirect<DataGrid, bool>(
                 nameof(IsValid),
                 o => o.IsValid);
 
@@ -393,7 +393,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<double> MaxColumnWidthProperty =
-            AvaloniaProperty.Register<DataGrid, double>(
+            DependencyProperty.Register<DataGrid, double>(
                 nameof(MaxColumnWidth),
                 defaultValue: DATAGRID_defaultMaxColumnWidth,
                 validate: ValidateMaxColumnWidth);
@@ -431,7 +431,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<double> MinColumnWidthProperty =
-            AvaloniaProperty.Register<DataGrid, double>(
+            DependencyProperty.Register<DataGrid, double>(
                 nameof(MinColumnWidth),
                 defaultValue: DATAGRID_defaultMinColumnWidth,
                 validate: ValidateMinColumnWidth);
@@ -468,7 +468,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IBrush> RowBackgroundProperty =
-            AvaloniaProperty.Register<DataGrid, IBrush>(nameof(RowBackground));
+            DependencyProperty.Register<DataGrid, IBrush>(nameof(RowBackground));
 
         /// <summary>
         /// Gets or sets the <see cref="T:System.Windows.Media.Brush" /> that is used to paint row backgrounds.
@@ -480,7 +480,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<double> RowHeightProperty =
-            AvaloniaProperty.Register<DataGrid, double>(
+            DependencyProperty.Register<DataGrid, double>(
                 nameof(RowHeight),
                 defaultValue: double.NaN,
                 validate: ValidateRowHeight);
@@ -508,7 +508,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<double> RowHeaderWidthProperty =
-            AvaloniaProperty.Register<DataGrid, double>(
+            DependencyProperty.Register<DataGrid, double>(
                 nameof(RowHeaderWidth),
                 defaultValue: double.NaN,
                 validate: ValidateRowHeaderWidth);
@@ -536,7 +536,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DataGridSelectionMode> SelectionModeProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridSelectionMode>(nameof(SelectionMode));
+            DependencyProperty.Register<DataGrid, DataGridSelectionMode>(nameof(SelectionMode));
 
         /// <summary>
         /// Gets or sets the selection behavior of the data grid.
@@ -548,7 +548,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IBrush> VerticalGridLinesBrushProperty =
-            AvaloniaProperty.Register<DataGrid, IBrush>(nameof(VerticalGridLinesBrush));
+            DependencyProperty.Register<DataGrid, IBrush>(nameof(VerticalGridLinesBrush));
 
         /// <summary>
         /// Gets or sets the <see cref="T:System.Windows.Media.Brush" /> that is used to paint grid lines separating columns. 
@@ -560,7 +560,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<ScrollBarVisibility> VerticalScrollBarVisibilityProperty =
-            AvaloniaProperty.Register<DataGrid, ScrollBarVisibility>(nameof(VerticalScrollBarVisibility));
+            DependencyProperty.Register<DataGrid, ScrollBarVisibility>(nameof(VerticalScrollBarVisibility));
 
         /// <summary>
         /// Gets or sets a value that indicates how the vertical scroll bar is displayed.
@@ -572,7 +572,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<ITemplate<IControl>> DropLocationIndicatorTemplateProperty =
-            AvaloniaProperty.Register<DataGrid, ITemplate<IControl>>(nameof(DropLocationIndicatorTemplate));
+            DependencyProperty.Register<DataGrid, ITemplate<IControl>>(nameof(DropLocationIndicatorTemplate));
 
         /// <summary>
         /// Gets or sets the template that is used when rendering the column headers.
@@ -587,7 +587,7 @@ namespace Avalonia.Controls
         private object _selectedItem;
 
         public static readonly DirectProperty<DataGrid, int> SelectedIndexProperty =
-            AvaloniaProperty.RegisterDirect<DataGrid, int>(
+            DependencyProperty.RegisterDirect<DataGrid, int>(
                 nameof(SelectedIndex),
                 o => o.SelectedIndex,
                 (o, v) => o.SelectedIndex = v);
@@ -605,7 +605,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<DataGrid, object> SelectedItemProperty =
-            AvaloniaProperty.RegisterDirect<DataGrid, object>(
+            DependencyProperty.RegisterDirect<DataGrid, object>(
                 nameof(SelectedItem),
                 o => o.SelectedItem,
                 (o, v) => o.SelectedItem = v);
@@ -620,7 +620,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DataGridClipboardCopyMode> ClipboardCopyModeProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridClipboardCopyMode>(
+            DependencyProperty.Register<DataGrid, DataGridClipboardCopyMode>(
                 nameof(ClipboardCopyMode),
                 defaultValue: DataGridClipboardCopyMode.ExcludeHeader);
 
@@ -634,7 +634,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> AutoGenerateColumnsProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(AutoGenerateColumns));
+            DependencyProperty.Register<DataGrid, bool>(nameof(AutoGenerateColumns));
 
         /// <summary>
         /// Gets or sets a value that indicates whether columns are created 
@@ -646,7 +646,7 @@ namespace Avalonia.Controls
             set { SetValue(AutoGenerateColumnsProperty, value); }
         }
 
-        private void OnAutoGenerateColumnsChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnAutoGenerateColumnsChanged(DependencyPropertyChangedEventArgs e)
         {
             var value = (bool)e.NewValue;
             if (value)
@@ -663,7 +663,7 @@ namespace Avalonia.Controls
         /// Identifies the ItemsSource dependency property.
         /// </summary>
         public static readonly DirectProperty<DataGrid, IEnumerable> ItemsProperty =
-            AvaloniaProperty.RegisterDirect<DataGrid, IEnumerable>(
+            DependencyProperty.RegisterDirect<DataGrid, IEnumerable>(
                 nameof(Items),
                 o => o.Items,
                 (o, v) => o.Items = v);
@@ -678,7 +678,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> AreRowDetailsFrozenProperty =
-            AvaloniaProperty.Register<DataGrid, bool>(nameof(AreRowDetailsFrozen));
+            DependencyProperty.Register<DataGrid, bool>(nameof(AreRowDetailsFrozen));
 
         /// <summary>
         /// Gets or sets a value that indicates whether the row details sections remain 
@@ -691,7 +691,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IDataTemplate> RowDetailsTemplateProperty =
-            AvaloniaProperty.Register<DataGrid, IDataTemplate>(nameof(RowDetailsTemplate));
+            DependencyProperty.Register<DataGrid, IDataTemplate>(nameof(RowDetailsTemplate));
 
         /// <summary>
         /// Gets or sets the template that is used to display the content of the details section of rows.
@@ -703,7 +703,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DataGridRowDetailsVisibilityMode> RowDetailsVisibilityModeProperty =
-            AvaloniaProperty.Register<DataGrid, DataGridRowDetailsVisibilityMode>(nameof(RowDetailsVisibilityMode));
+            DependencyProperty.Register<DataGrid, DataGridRowDetailsVisibilityMode>(nameof(RowDetailsVisibilityMode));
 
         /// <summary>
         /// Gets or sets a value that indicates when the details sections of rows are displayed.
@@ -786,7 +786,7 @@ namespace Avalonia.Controls
             RowGroupHeaderHeightEstimate = DATAGRID_defaultRowHeight;
         }
 
-        private void SetValueNoCallback<T>(AvaloniaProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
+        private void SetValueNoCallback<T>(DependencyProperty<T> property, T value, BindingPriority priority = BindingPriority.LocalValue)
         {
             _areHandlersSuspended = true;
             try
@@ -799,12 +799,12 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnRowDetailsVisibilityModeChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnRowDetailsVisibilityModeChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateRowDetailsVisibilityMode((DataGridRowDetailsVisibilityMode)e.NewValue);
         }
 
-        private void OnRowDetailsTemplateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnRowDetailsTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
 
             // Update the RowDetails templates if necessary
@@ -828,7 +828,7 @@ namespace Avalonia.Controls
         /// ItemsProperty property changed handler.
         /// </summary>
         /// <param name="e">AvaloniaPropertyChangedEventArgs.</param>
-        private void OnItemsPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnItemsPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -911,7 +911,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnSelectedIndexChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedIndexChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -929,7 +929,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnSelectedItemChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedItemChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1000,7 +1000,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnVerticalGridLinesBrushChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnVerticalGridLinesBrushChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_rowsPresenter != null)
             {
@@ -1011,7 +1011,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnSelectionModeChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectionModeChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1019,7 +1019,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnRowHeaderWidthChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnRowHeaderWidthChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1027,7 +1027,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnRowHeightChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnRowHeightChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1039,7 +1039,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnMinColumnWidthChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnMinColumnWidthChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1051,7 +1051,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnMaxColumnWidthChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnMaxColumnWidthChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1063,7 +1063,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnIsReadOnlyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnIsReadOnlyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended)
             {
@@ -1075,7 +1075,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnHorizontalGridLinesBrushChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnHorizontalGridLinesBrushChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_areHandlersSuspended && _rowsPresenter != null)
             {
@@ -1086,7 +1086,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnHeadersVisibilityChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnHeadersVisibilityChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (DataGridHeadersVisibility)e.OldValue;
             var newValue = (DataGridHeadersVisibility)e.NewValue;
@@ -1152,7 +1152,7 @@ namespace Avalonia.Controls
 
         }
 
-        private void OnGridLinesVisibilityChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnGridLinesVisibilityChanged(DependencyPropertyChangedEventArgs e)
         {
             foreach (DataGridRow row in GetAllRows())
             {
@@ -1161,7 +1161,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnFrozenColumnCountChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnFrozenColumnCountChanged(DependencyPropertyChangedEventArgs e)
         {
             ProcessFrozenColumnCount();
         }
@@ -1175,7 +1175,7 @@ namespace Avalonia.Controls
             InvalidateCellsArrange();
         }
 
-        private void OnRowBackgroundChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnRowBackgroundChanged(DependencyPropertyChangedEventArgs e)
         {
             foreach (DataGridRow row in GetAllRows())
             {
@@ -1183,7 +1183,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnColumnWidthChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnColumnWidthChanged(DependencyPropertyChangedEventArgs e)
         {
             var value = (DataGridLength)e.NewValue;
 
@@ -1198,7 +1198,7 @@ namespace Avalonia.Controls
             EnsureHorizontalLayout();
         }
 
-        private void OnCanUserResizeColumnsChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnCanUserResizeColumnsChanged(DependencyPropertyChangedEventArgs e)
         {
             EnsureHorizontalLayout();
         }
@@ -3739,7 +3739,7 @@ namespace Avalonia.Controls
         }
 
         //TODO: Check
-        private void DataGrid_IsEnabledChanged(AvaloniaPropertyChangedEventArgs e)
+        private void DataGrid_IsEnabledChanged(DependencyPropertyChangedEventArgs e)
         {
         }
 

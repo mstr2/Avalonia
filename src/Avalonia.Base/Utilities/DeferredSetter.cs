@@ -12,7 +12,7 @@ namespace Avalonia.Utilities
     /// <param name="property">Property being set.</param>
     /// <param name="backing">Backing field reference.</param>
     /// <param name="value">New value.</param>
-    internal delegate void SetAndNotifyCallback<TValue>(AvaloniaProperty property, ref TValue backing, TValue value);
+    internal delegate void SetAndNotifyCallback<TValue>(DependencyProperty property, ref TValue backing, TValue value);
 
     /// <summary>
     /// A utility class to enable deferring assignment until after property-changed notifications are sent.
@@ -29,7 +29,7 @@ namespace Avalonia.Utilities
             _pendingValues = new SingleOrQueue<TSetRecord>();
         }
 
-        private static void SetAndRaisePropertyChanged(AvaloniaObject source, AvaloniaProperty<TSetRecord> property, ref TSetRecord backing, TSetRecord value)
+        private static void SetAndRaisePropertyChanged(AvaloniaObject source, DependencyProperty<TSetRecord> property, ref TSetRecord backing, TSetRecord value)
         {
             var old = backing;
 
@@ -40,7 +40,7 @@ namespace Avalonia.Utilities
 
         public bool SetAndNotify(
             AvaloniaObject source,
-            AvaloniaProperty<TSetRecord> property,
+            DependencyProperty<TSetRecord> property,
             ref TSetRecord backing,
             TSetRecord value)
         {
@@ -70,7 +70,7 @@ namespace Avalonia.Utilities
             return false;
         }
 
-        public bool SetAndNotifyCallback<TValue>(AvaloniaProperty property, SetAndNotifyCallback<TValue> setAndNotifyCallback, ref TValue backing, TValue value)
+        public bool SetAndNotifyCallback<TValue>(DependencyProperty property, SetAndNotifyCallback<TValue> setAndNotifyCallback, ref TValue backing, TValue value)
             where TValue : TSetRecord
         {
             if (!_isNotifying)

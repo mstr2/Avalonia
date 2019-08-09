@@ -178,7 +178,7 @@ namespace Avalonia.Styling
         /// <param name="property">The property.</param>
         /// <param name="value">The property value.</param>
         /// <returns>The selector.</returns>
-        public static Selector PropertyEquals<T>(this Selector previous, AvaloniaProperty<T> property, object value)
+        public static Selector PropertyEquals<T>(this Selector previous, DependencyProperty<T> property, object value)
         {
             Contract.Requires<ArgumentNullException>(property != null);
 
@@ -192,7 +192,7 @@ namespace Avalonia.Styling
         /// <param name="property">The property.</param>
         /// <param name="value">The property value.</param>
         /// <returns>The selector.</returns>
-        public static Selector PropertyEquals(this Selector previous, AvaloniaProperty property, object value)
+        public static Selector PropertyEquals(this Selector previous, DependencyProperty property, object value)
         {
             Contract.Requires<ArgumentNullException>(property != null);
 

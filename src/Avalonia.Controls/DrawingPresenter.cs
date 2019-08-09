@@ -13,10 +13,10 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<Drawing> DrawingProperty =
-            AvaloniaProperty.Register<DrawingPresenter, Drawing>(nameof(Drawing));
+            DependencyProperty.Register<DrawingPresenter, Drawing>(nameof(Drawing));
 
         public static readonly StyledProperty<Stretch> StretchProperty =
-            AvaloniaProperty.Register<DrawingPresenter, Stretch>(nameof(Stretch), Stretch.Uniform);
+            DependencyProperty.Register<DrawingPresenter, Stretch>(nameof(Stretch), Stretch.Uniform);
 
         [Content]
         public Drawing Drawing

@@ -23,22 +23,22 @@ namespace Avalonia.Controls
         /// Defines the DataValidationErrors.Errors attached property.
         /// </summary>
         public static readonly AttachedProperty<IEnumerable<Exception>> ErrorsProperty =
-            AvaloniaProperty.RegisterAttached<DataValidationErrors, Control, IEnumerable<Exception>>("Errors");
+            DependencyProperty.RegisterAttached<DataValidationErrors, Control, IEnumerable<Exception>>("Errors");
 
         /// <summary>
         /// Defines the DataValidationErrors.HasErrors attached property.
         /// </summary>
         public static readonly AttachedProperty<bool> HasErrorsProperty =
-            AvaloniaProperty.RegisterAttached<DataValidationErrors, Control, bool>("HasErrors");
+            DependencyProperty.RegisterAttached<DataValidationErrors, Control, bool>("HasErrors");
 
         public static readonly StyledProperty<IDataTemplate> ErrorTemplateProperty =
-            AvaloniaProperty.Register<DataValidationErrors, IDataTemplate>(nameof(ErrorTemplate));
+            DependencyProperty.Register<DataValidationErrors, IDataTemplate>(nameof(ErrorTemplate));
 
 
         private Control _owner;
 
         public static readonly DirectProperty<DataValidationErrors, Control> OwnerProperty =
-            AvaloniaProperty.RegisterDirect<DataValidationErrors, Control>(
+            DependencyProperty.RegisterDirect<DataValidationErrors, Control>(
                 nameof(Owner),
                 o => o.Owner,
                 (o, v) => o.Owner = v);
@@ -59,7 +59,7 @@ namespace Avalonia.Controls
             TemplatedParentProperty.Changed.AddClassHandler<DataValidationErrors>(x => x.OnTemplatedParentChange);
         }
 
-        private void OnTemplatedParentChange(AvaloniaPropertyChangedEventArgs e)
+        private void OnTemplatedParentChange(DependencyPropertyChangedEventArgs e)
         {
             if (Owner == null)
             {
@@ -73,7 +73,7 @@ namespace Avalonia.Controls
             set { SetValue(ErrorTemplateProperty, value); }
         }
 
-        private static void ErrorsChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void ErrorsChanged(DependencyPropertyChangedEventArgs e)
         {
             var control = (Control)e.Sender;
             var errors = (IEnumerable<Exception>)e.NewValue;
@@ -84,7 +84,7 @@ namespace Avalonia.Controls
 
             control.SetValue(HasErrorsProperty, hasErrors);
         }
-        private static void HasErrorsChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void HasErrorsChanged(DependencyPropertyChangedEventArgs e)
         {
             var control = (Control)e.Sender;
             var classes = (IPseudoClasses)control.Classes;

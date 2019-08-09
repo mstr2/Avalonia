@@ -472,7 +472,7 @@ namespace Avalonia.Markup.UnitTests.Data
         private class StyledPropertyClass : AvaloniaObject
         {
             public static readonly StyledProperty<double> DoubleValueProperty =
-                        AvaloniaProperty.Register<StyledPropertyClass, double>(nameof(DoubleValue));
+                        DependencyProperty.Register<StyledPropertyClass, double>(nameof(DoubleValue));
 
             public double DoubleValue
             {
@@ -484,7 +484,7 @@ namespace Avalonia.Markup.UnitTests.Data
         private class DirectPropertyClass : AvaloniaObject
         {
             public static readonly DirectProperty<DirectPropertyClass, double> DoubleValueProperty =
-                AvaloniaProperty.RegisterDirect<DirectPropertyClass, double>(
+                DependencyProperty.RegisterDirect<DirectPropertyClass, double>(
                     nameof(DoubleValue),
                     o => o.DoubleValue,
                     (o, v) => o.DoubleValue = v);
@@ -535,7 +535,7 @@ namespace Avalonia.Markup.UnitTests.Data
         private class TwoWayBindingTest : Control
         {
             public static readonly StyledProperty<string> TwoWayProperty =
-                AvaloniaProperty.Register<TwoWayBindingTest, string>(
+                DependencyProperty.Register<TwoWayBindingTest, string>(
                     "TwoWay", 
                     defaultBindingMode: BindingMode.TwoWay);
 
@@ -577,10 +577,10 @@ namespace Avalonia.Markup.UnitTests.Data
         private class OldDataContextTest : Control
         {
             public static readonly StyledProperty<int> FooProperty =
-                AvaloniaProperty.Register<OldDataContextTest, int>("Foo");
+                DependencyProperty.Register<OldDataContextTest, int>("Foo");
 
             public static readonly StyledProperty<int> BarProperty =
-              AvaloniaProperty.Register<OldDataContextTest, int>("Bar");
+              DependencyProperty.Register<OldDataContextTest, int>("Bar");
 
             public OldDataContextTest()
             {
@@ -591,7 +591,7 @@ namespace Avalonia.Markup.UnitTests.Data
         private class InheritanceTest : Decorator
         {
             public static readonly StyledProperty<int> BazProperty =
-                AvaloniaProperty.Register<InheritanceTest, int>(nameof(Baz), defaultValue: 6, inherits: true);
+                DependencyProperty.Register<InheritanceTest, int>(nameof(Baz), defaultValue: 6, inherits: true);
 
             public int Baz
             {

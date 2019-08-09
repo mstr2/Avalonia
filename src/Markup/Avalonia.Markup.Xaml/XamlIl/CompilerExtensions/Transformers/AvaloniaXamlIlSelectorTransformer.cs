@@ -285,13 +285,13 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
         {
             if (!XamlIlAvaloniaPropertyHelper.Emit(context, codeGen, Property))
                 throw new XamlIlLoadException(
-                    $"{Property.Name} of {(Property.Setter ?? Property.Getter).DeclaringType.GetFqn()} doesn't seem to be an AvaloniaProperty",
+                    $"{Property.Name} of {(Property.Setter ?? Property.Getter).DeclaringType.GetFqn()} doesn't seem to be an DependencyProperty",
                     this);
             context.Emit(Value, codeGen, context.Configuration.WellKnownTypes.Object);
             EmitCall(context, codeGen,
                 m => m.Name == "PropertyEquals"
                      && m.Parameters.Count == 3
-                     && m.Parameters[1].FullName == "Avalonia.AvaloniaProperty"
+                     && m.Parameters[1].FullName == "Avalonia.DependencyProperty"
                      && m.Parameters[2].Equals(context.Configuration.WellKnownTypes.Object));
         }
     }

@@ -16,10 +16,10 @@ namespace Avalonia.ReactiveUI
     public class ViewModelViewHost : TransitioningContentControl, IViewFor, IEnableLogger
     {
         /// <summary>
-        /// <see cref="AvaloniaProperty"/> for the <see cref="ViewModel"/> property.
+        /// <see cref="DependencyProperty"/> for the <see cref="ViewModel"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<object> ViewModelProperty =
-            AvaloniaProperty.Register<ViewModelViewHost, object>(nameof(ViewModel));
+        public static readonly DependencyProperty<object> ViewModelProperty =
+            DependencyProperty.Register<ViewModelViewHost, object>(nameof(ViewModel));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewModelViewHost"/> class.

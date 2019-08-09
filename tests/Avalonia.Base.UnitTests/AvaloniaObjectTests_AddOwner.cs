@@ -27,7 +27,7 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>(
+                DependencyProperty.Register<Class1, string>(
                     "Foo",
                     "foodefault",
                     validate: ValidateFoo);

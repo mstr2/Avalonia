@@ -24,7 +24,7 @@ namespace Avalonia.Data
         {
         }
 
-        public TemplateBinding(AvaloniaProperty property)
+        public TemplateBinding(DependencyProperty property)
         {
             Property = property;
         }
@@ -32,7 +32,7 @@ namespace Avalonia.Data
         /// <inheritdoc/>
         public InstancedBinding Initiate(
             IAvaloniaObject target,
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor = null,
             bool enableDataValidation = false)
         {
@@ -83,7 +83,7 @@ namespace Avalonia.Data
         /// <summary>
         /// Gets or sets the name of the source property on the templated parent.
         /// </summary>
-        public AvaloniaProperty Property { get; set; }
+        public DependencyProperty Property { get; set; }
 
         /// <inheritdoc/>
         public string Description => "TemplateBinding: " + Property;
@@ -146,7 +146,7 @@ namespace Avalonia.Data
             }
             else
             {
-                PublishNext(AvaloniaProperty.UnsetValue);
+                PublishNext(DependencyProperty.UnsetValue);
             }
         }
 
@@ -160,7 +160,7 @@ namespace Avalonia.Data
             PublishValue();
         }
 
-        private void TargetPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        private void TargetPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.Property == StyledElement.TemplatedParentProperty)
             {
@@ -176,7 +176,7 @@ namespace Avalonia.Data
             }
         }
 
-        private void TemplatedParentPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        private void TemplatedParentPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.Property == Property)
             {

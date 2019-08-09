@@ -22,7 +22,7 @@ namespace Avalonia.Controls.Notifications
         /// Defines the <see cref="Position"/> property.
         /// </summary>
         public static readonly StyledProperty<NotificationPosition> PositionProperty =
-          AvaloniaProperty.Register<WindowNotificationManager, NotificationPosition>(nameof(Position), NotificationPosition.TopRight);
+          DependencyProperty.Register<WindowNotificationManager, NotificationPosition>(nameof(Position), NotificationPosition.TopRight);
 
         /// <summary>
         /// Defines which corner of the screen notifications can be displayed in.
@@ -38,7 +38,7 @@ namespace Avalonia.Controls.Notifications
         /// Defines the <see cref="MaxItems"/> property.
         /// </summary>
         public static readonly StyledProperty<int> MaxItemsProperty =
-          AvaloniaProperty.Register<WindowNotificationManager, int>(nameof(MaxItems), 5);
+          DependencyProperty.Register<WindowNotificationManager, int>(nameof(MaxItems), 5);
 
         /// <summary>
         /// Defines the maximum number of notifications visible at once.

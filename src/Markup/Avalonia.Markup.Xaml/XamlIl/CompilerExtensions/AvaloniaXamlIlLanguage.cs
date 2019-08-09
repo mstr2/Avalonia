@@ -173,11 +173,11 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions
                 return true;
             }
 
-            if (type.FullName == "Avalonia.AvaloniaProperty")
+            if (type.FullName == "Avalonia.DependencyProperty")
             {
                 var scope = context.ParentNodes().OfType<AvaloniaXamlIlTargetTypeMetadataNode>().FirstOrDefault();
                 if (scope == null)
-                    throw new XamlIlLoadException("Unable to find the parent scope for AvaloniaProperty lookup", node);
+                    throw new XamlIlLoadException("Unable to find the parent scope for DependencyProperty lookup", node);
                 if (!(node is XamlIlAstTextNode text))
                     throw new XamlIlLoadException("Property should be a text node", node);
                 result = XamlIlAvaloniaPropertyHelper.CreateNode(context, text.Text, scope.TargetType, text);

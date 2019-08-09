@@ -9,7 +9,7 @@ namespace Avalonia.Controls.Shapes
     public class Polygon : Shape
     {
         public static readonly StyledProperty<IList<Point>> PointsProperty =
-            AvaloniaProperty.Register<Polygon, IList<Point>>("Points");
+            DependencyProperty.Register<Polygon, IList<Point>>("Points");
 
         static Polygon()
         {

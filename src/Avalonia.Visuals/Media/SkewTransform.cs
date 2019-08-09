@@ -15,13 +15,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="AngleX"/> property.
         /// </summary>
         public static readonly StyledProperty<double> AngleXProperty =
-                    AvaloniaProperty.Register<SkewTransform, double>(nameof(AngleX));
+                    DependencyProperty.Register<SkewTransform, double>(nameof(AngleX));
 
         /// <summary>
         /// Defines the <see cref="AngleY"/> property.
         /// </summary>
         public static readonly StyledProperty<double> AngleYProperty =
-                    AvaloniaProperty.Register<SkewTransform, double>(nameof(AngleY));
+                    DependencyProperty.Register<SkewTransform, double>(nameof(AngleY));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SkewTransform"/> class.

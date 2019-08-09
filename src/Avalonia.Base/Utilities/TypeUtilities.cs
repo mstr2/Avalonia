@@ -112,7 +112,7 @@ namespace Avalonia.Utilities
                 return AcceptsNull(to);
             }
 
-            if (value == AvaloniaProperty.UnsetValue)
+            if (value == DependencyProperty.UnsetValue)
             {
                 result = value;
                 return true;
@@ -217,7 +217,7 @@ namespace Avalonia.Utilities
                 return AcceptsNull(to);
             }
 
-            if (value == AvaloniaProperty.UnsetValue)
+            if (value == DependencyProperty.UnsetValue)
             {
                 result = value;
                 return true;

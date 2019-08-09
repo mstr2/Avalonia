@@ -17,7 +17,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="Opacity"/> property.
         /// </summary>
         public static readonly StyledProperty<double> OpacityProperty =
-            AvaloniaProperty.Register<Brush, double>(nameof(Opacity), 1.0);
+            DependencyProperty.Register<Brush, double>(nameof(Opacity), 1.0);
 
         /// <inheritdoc/>
         public event EventHandler Invalidated;
@@ -66,10 +66,10 @@ namespace Avalonia.Media
         /// After a call to this method in a brush's static constructor, any change to the
         /// property will cause the <see cref="Invalidated"/> event to be raised on the brush.
         /// </remarks>
-        protected static void AffectsRender<T>(params AvaloniaProperty[] properties)
+        protected static void AffectsRender<T>(params DependencyProperty[] properties)
             where T : Brush
         {
-            void Invalidate(AvaloniaPropertyChangedEventArgs e)
+            void Invalidate(DependencyPropertyChangedEventArgs e)
             {
                 (e.Sender as T)?.RaiseInvalidated(EventArgs.Empty);
             }

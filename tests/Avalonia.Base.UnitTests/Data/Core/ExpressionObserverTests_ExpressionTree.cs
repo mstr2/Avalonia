@@ -211,7 +211,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
         private class Class2 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class2, string>("Foo", defaultValue: "foo");
+                DependencyProperty.Register<Class2, string>("Foo", defaultValue: "foo");
 
             public string ClrProperty { get; } = "clr-property";
         }

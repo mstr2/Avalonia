@@ -225,7 +225,7 @@ namespace Avalonia.Controls.Presenters
         /// Called when the <see cref="IsVirtualized"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void IsVirtualizedChanged(AvaloniaPropertyChangedEventArgs e)
+        private void IsVirtualizedChanged(DependencyPropertyChangedEventArgs e)
         {
             if (Panel != null)
             {
@@ -237,7 +237,7 @@ namespace Avalonia.Controls.Presenters
         /// Called when the <see cref="SelectedIndex"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private async void SelectedIndexChanged(AvaloniaPropertyChangedEventArgs e)
+        private async void SelectedIndexChanged(DependencyPropertyChangedEventArgs e)
         {
             if (Panel != null)
             {

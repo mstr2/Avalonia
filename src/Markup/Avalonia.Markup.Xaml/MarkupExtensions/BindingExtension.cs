@@ -65,7 +65,7 @@ namespace Avalonia.Markup.Xaml.MarkupExtensions
 
         public string ElementName { get; set; }
 
-        public object FallbackValue { get; set; } = AvaloniaProperty.UnsetValue;
+        public object FallbackValue { get; set; } = DependencyProperty.UnsetValue;
 
         public BindingMode Mode { get; set; }
 

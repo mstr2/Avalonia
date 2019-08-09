@@ -13,7 +13,7 @@ namespace Avalonia.Base.UnitTests
 {
     public class PriorityValueTests
     {
-        private static readonly AvaloniaProperty TestProperty = 
+        private static readonly DependencyProperty TestProperty = 
             new StyledProperty<string>(
                 "Test", 
                 typeof(PriorityValueTests), 
@@ -24,7 +24,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new PriorityValue(GetMockOwner().Object, TestProperty, typeof(string));
 
-            Assert.Same(AvaloniaProperty.UnsetValue, target.Value);
+            Assert.Same(DependencyProperty.UnsetValue, target.Value);
         }
 
         [Fact]
@@ -155,7 +155,7 @@ namespace Avalonia.Base.UnitTests
 
             Assert.Equal("bar", target.Value);
 
-            subject.OnNext(AvaloniaProperty.UnsetValue);
+            subject.OnNext(DependencyProperty.UnsetValue);
 
             Assert.Equal("foo", target.Value);
         }
@@ -168,7 +168,7 @@ namespace Avalonia.Base.UnitTests
 
             target.Add(Single("foo"), 0);
 
-            owner.Verify(x => x.Changed(target.Property, target.ValuePriority, AvaloniaProperty.UnsetValue, "foo"));
+            owner.Verify(x => x.Changed(target.Property, target.ValuePriority, DependencyProperty.UnsetValue, "foo"));
         }
 
         [Fact]
@@ -307,7 +307,7 @@ namespace Avalonia.Base.UnitTests
         private static Mock<IPriorityValueOwner> GetMockOwner()
         {
             var owner = new Mock<IPriorityValueOwner>();
-            owner.Setup(o => o.GetNonDirectDeferredSetter(It.IsAny<AvaloniaProperty>())).Returns(new DeferredSetter<object>());
+            owner.Setup(o => o.GetNonDirectDeferredSetter(It.IsAny<DependencyProperty>())).Returns(new DeferredSetter<object>());
             return owner;
         }
     }

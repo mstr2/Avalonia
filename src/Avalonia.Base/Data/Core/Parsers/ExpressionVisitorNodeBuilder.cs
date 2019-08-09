@@ -16,7 +16,7 @@ namespace Avalonia.Data.Core.Parsers
 
         static ExpressionVisitorNodeBuilder()
         {
-            AvaloniaObjectIndexer = typeof(AvaloniaObject).GetProperty("Item", new[] { typeof(AvaloniaProperty) });
+            AvaloniaObjectIndexer = typeof(AvaloniaObject).GetProperty("Item", new[] { typeof(DependencyProperty) });
             CreateDelegateMethod = typeof(MethodInfo).GetMethod("CreateDelegate", new[] { typeof(Type), typeof(object) });
         }
 
@@ -70,7 +70,7 @@ namespace Avalonia.Data.Core.Parsers
 
             if (node.Indexer == AvaloniaObjectIndexer)
             {
-                var property = GetArgumentExpressionValue<AvaloniaProperty>(node.Arguments[0]);
+                var property = GetArgumentExpressionValue<DependencyProperty>(node.Arguments[0]);
                 Nodes.Add(new AvaloniaPropertyAccessorNode(property, _enableDataValidation));
             }
             else

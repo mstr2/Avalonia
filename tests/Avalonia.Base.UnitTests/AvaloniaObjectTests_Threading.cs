@@ -144,10 +144,10 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> StyledProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", "foodefault");
+                DependencyProperty.Register<Class1, string>("Foo", "foodefault");
 
             public static readonly DirectProperty<Class1, string> DirectProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>("Qux", _ => null, (o, v) => { });
+                DependencyProperty.RegisterDirect<Class1, string>("Qux", _ => null, (o, v) => { });
         }
 
         private class ThreadingInterface : IPlatformThreadingInterface

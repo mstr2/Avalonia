@@ -10,7 +10,7 @@ namespace Avalonia.Controls
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="key">The resource key.</param>
-        /// <returns>The resource, or <see cref="AvaloniaProperty.UnsetValue"/> if not found.</returns>
+        /// <returns>The resource, or <see cref="DependencyProperty.UnsetValue"/> if not found.</returns>
         public static object FindResource(this IResourceNode control, object key)
         {
             if (control.TryFindResource(key, out var value))
@@ -18,7 +18,7 @@ namespace Avalonia.Controls
                 return value;
             }
 
-            return AvaloniaProperty.UnsetValue;
+            return DependencyProperty.UnsetValue;
         }
 
         /// <summary>

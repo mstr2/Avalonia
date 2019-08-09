@@ -78,14 +78,14 @@ namespace Avalonia.Markup.Xaml.XamlIl.Runtime
         {
             if (value is IBinding b)
             {
-                if (property is AvaloniaProperty p)
+                if (property is DependencyProperty p)
                     ((AvaloniaObject)target).Bind(p, b);
                 else
                     throw new ArgumentException("Attempt to apply binding to non-avalonia property " + property);
             }
             else if (value is UnsetValueType unset)
             {
-                if (property is AvaloniaProperty p)
+                if (property is DependencyProperty p)
                     ((AvaloniaObject)target).SetValue(p, unset);
                 //TODO: Investigate
                 //throw new ArgumentException("Attempt to apply UnsetValue to non-avalonia property " + property);

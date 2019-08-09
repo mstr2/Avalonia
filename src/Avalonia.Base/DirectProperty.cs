@@ -13,10 +13,10 @@ namespace Avalonia
     /// <typeparam name="TValue">The type of the property's value.</typeparam>
     /// <remarks>
     /// Direct avalonia properties are backed by a field on the object, but exposed via the
-    /// <see cref="AvaloniaProperty"/> system. They hold a getter and an optional setter which
+    /// <see cref="DependencyProperty"/> system. They hold a getter and an optional setter which
     /// allows the avalonia property system to read and write the current value.
     /// </remarks>
-    public class DirectProperty<TOwner, TValue> : AvaloniaProperty<TValue>, IDirectPropertyAccessor
+    public class DirectProperty<TOwner, TValue> : DependencyProperty<TValue>, IDirectPropertyAccessor
         where TOwner : IAvaloniaObject
     {
         /// <summary>
@@ -40,14 +40,14 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvaloniaProperty"/> class.
+        /// Initializes a new instance of the <see cref="DependencyProperty"/> class.
         /// </summary>
         /// <param name="source">The property to copy.</param>
         /// <param name="getter">Gets the current value of the property.</param>
         /// <param name="setter">Sets the value of the property. May be null.</param>
         /// <param name="metadata">Optional overridden metadata.</param>
         private DirectProperty(
-            AvaloniaProperty<TValue> source,
+            DependencyProperty<TValue> source,
             Func<TOwner, TValue> getter,
             Action<TOwner, TValue> setter,
             DirectPropertyMetadata<TValue> metadata)
@@ -63,7 +63,7 @@ namespace Avalonia
         public override bool IsDirect => true;
 
         /// <inheritdoc/>
-        public override bool IsReadOnly => Setter == null;
+        public override bool ReadOnly => Setter == null;
 
         /// <summary>
         /// Gets the getter function.
@@ -85,7 +85,7 @@ namespace Avalonia
         /// <param name="getter">Gets the current value of the property.</param>
         /// <param name="setter">Sets the value of the property.</param>
         /// <param name="unsetValue">
-        /// The value to use when the property is set to <see cref="AvaloniaProperty.UnsetValue"/>
+        /// The value to use when the property is set to <see cref="DependencyProperty.UnsetValue"/>
         /// </param>
         /// <param name="defaultBindingMode">The default binding mode for the property.</param>
         /// <param name="enableDataValidation">
@@ -113,7 +113,7 @@ namespace Avalonia
                 setter,
                 metadata);
 
-            AvaloniaPropertyRegistry.Instance.Register(typeof(TNewOwner), result);
+            DependencyPropertyRegistry.Instance.Register(typeof(TNewOwner), result);
             return result;
         }
 

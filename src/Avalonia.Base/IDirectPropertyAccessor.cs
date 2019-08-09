@@ -14,7 +14,7 @@ namespace Avalonia
         /// <summary>
         /// Gets a value indicating whether the property is read-only.
         /// </summary>
-        bool IsReadOnly { get; }
+        bool ReadOnly { get; }
 
         /// <summary>
         /// Gets the class that registered the property.

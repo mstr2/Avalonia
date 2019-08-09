@@ -14,10 +14,10 @@ namespace Avalonia.Controls.Primitives
     public class AdornerLayer : Canvas, ICustomSimpleHitTest
     {
         public static readonly AttachedProperty<Visual> AdornedElementProperty =
-            AvaloniaProperty.RegisterAttached<AdornerLayer, Visual, Visual>("AdornedElement");
+            DependencyProperty.RegisterAttached<AdornerLayer, Visual, Visual>("AdornedElement");
 
         private static readonly AttachedProperty<AdornedElementInfo> s_adornedElementInfoProperty =
-            AvaloniaProperty.RegisterAttached<AdornerLayer, Visual, AdornedElementInfo>("AdornedElementInfo");
+            DependencyProperty.RegisterAttached<AdornerLayer, Visual, AdornedElementInfo>("AdornedElementInfo");
 
         static AdornerLayer()
         {
@@ -71,7 +71,7 @@ namespace Avalonia.Controls.Primitives
             return finalSize;
         }
 
-        private static void AdornedElementChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void AdornedElementChanged(DependencyPropertyChangedEventArgs e)
         {
             var adorner = (Visual)e.Sender;
             var adorned = (Visual)e.NewValue;

@@ -30,7 +30,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsDropDownOpen"/> property.
         /// </summary>
         public static readonly DirectProperty<ComboBox, bool> IsDropDownOpenProperty =
-            AvaloniaProperty.RegisterDirect<ComboBox, bool>(
+            DependencyProperty.RegisterDirect<ComboBox, bool>(
                 nameof(IsDropDownOpen),
                 o => o.IsDropDownOpen,
                 (o, v) => o.IsDropDownOpen = v);
@@ -39,13 +39,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="MaxDropDownHeight"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MaxDropDownHeightProperty =
-            AvaloniaProperty.Register<ComboBox, double>(nameof(MaxDropDownHeight), 200);
+            DependencyProperty.Register<ComboBox, double>(nameof(MaxDropDownHeight), 200);
 
         /// <summary>
         /// Defines the <see cref="SelectionBoxItem"/> property.
         /// </summary>
         public static readonly DirectProperty<ComboBox, object> SelectionBoxItemProperty =
-            AvaloniaProperty.RegisterDirect<ComboBox, object>(nameof(SelectionBoxItem), o => o.SelectionBoxItem);
+            DependencyProperty.RegisterDirect<ComboBox, object>(nameof(SelectionBoxItem), o => o.SelectionBoxItem);
 
         /// <summary>
         /// Defines the <see cref="VirtualizationMode"/> property.
@@ -276,7 +276,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void SelectedItemChanged(AvaloniaPropertyChangedEventArgs e)
+        private void SelectedItemChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateSelectionBoxItem(e.NewValue);
             TryFocusSelectedItem();

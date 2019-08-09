@@ -10,7 +10,7 @@ namespace Avalonia
     /// <summary>
     /// Metadata for styled avalonia properties.
     /// </summary>
-    public class StyledPropertyMetadata<TValue> : PropertyMetadata, IStyledPropertyMetadata
+    public class StyledPropertyMetadata<TValue> : AvaloniaPropertyMetadata, IStyledPropertyMetadata
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StyledPropertyMetadata{TValue}"/> class.
@@ -43,7 +43,7 @@ namespace Avalonia
         Func<IAvaloniaObject, object, object> IStyledPropertyMetadata.Validate => Cast(Validate);
 
         /// <inheritdoc/>
-        public override void Merge(PropertyMetadata baseMetadata, AvaloniaProperty property)
+        public override void Merge(IPropertyMetadata baseMetadata, DependencyProperty property)
         {
             base.Merge(baseMetadata, property);
 

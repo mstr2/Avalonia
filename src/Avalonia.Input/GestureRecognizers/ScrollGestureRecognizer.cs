@@ -26,7 +26,7 @@ namespace Avalonia.Input.GestureRecognizers
         /// Defines the <see cref="CanHorizontallyScroll"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollGestureRecognizer, bool> CanHorizontallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollGestureRecognizer, bool>(
+            DependencyProperty.RegisterDirect<ScrollGestureRecognizer, bool>(
                 nameof(CanHorizontallyScroll),
                 o => o.CanHorizontallyScroll,
                 (o, v) => o.CanHorizontallyScroll = v);
@@ -35,7 +35,7 @@ namespace Avalonia.Input.GestureRecognizers
         /// Defines the <see cref="CanVerticallyScroll"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollGestureRecognizer, bool> CanVerticallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollGestureRecognizer, bool>(
+            DependencyProperty.RegisterDirect<ScrollGestureRecognizer, bool>(
                 nameof(CanVerticallyScroll),
                 o => o.CanVerticallyScroll,
                 (o, v) => o.CanVerticallyScroll = v);

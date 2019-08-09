@@ -36,7 +36,7 @@ namespace Avalonia.Diagnostics
                 builder.Append(" ");
                 builder.AppendLine(control.Classes.ToString());
 
-                foreach (var property in AvaloniaPropertyRegistry.Instance.GetRegistered(control))
+                foreach (var property in DependencyPropertyRegistry.Instance.GetRegistered(control))
                 {
                     var value = control.GetDiagnostic(property);
 

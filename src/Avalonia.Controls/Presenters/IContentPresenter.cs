@@ -32,6 +32,6 @@ namespace Avalonia.Controls.Presenters
         /// by <see cref="ContentControlMixin"/> in order to update the host control's logical
         /// children.
         /// </remarks>
-        event EventHandler<AvaloniaPropertyChangedEventArgs> ChildChanging;
+        event EventHandler<DependencyPropertyChangedEventArgs> ChildChanging;
     }
 }

@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 namespace Avalonia.Animation
 {
     /// <summary>
-    /// Transition class that handles <see cref="AvaloniaProperty"/> with <see cref="int"/> types.
+    /// Transition class that handles <see cref="DependencyProperty"/> with <see cref="int"/> types.
     /// </summary>  
     public class IntegerTransition : Transition<int>
     {

@@ -17,7 +17,7 @@ namespace Avalonia.Controls
         IDataTemplate _cellTemplate;
 
         public static readonly DirectProperty<DataGridTemplateColumn, IDataTemplate> CellTemplateProperty =
-            AvaloniaProperty.RegisterDirect<DataGridTemplateColumn, IDataTemplate>(
+            DependencyProperty.RegisterDirect<DataGridTemplateColumn, IDataTemplate>(
                 nameof(CellTemplate),
                 o => o.CellTemplate,
                 (o, v) => o.CellTemplate = v);
@@ -28,7 +28,7 @@ namespace Avalonia.Controls
             set { SetAndRaise(CellTemplateProperty, ref _cellTemplate, value); }
         }
 
-        private void OnCellTemplateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnCellTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (IDataTemplate)e.OldValue;
             var value = (IDataTemplate)e.NewValue;

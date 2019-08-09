@@ -22,7 +22,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="TabStripPlacement"/> property.
         /// </summary>
         public static readonly StyledProperty<Dock> TabStripPlacementProperty =
-            AvaloniaProperty.Register<TabControl, Dock>(nameof(TabStripPlacement), defaultValue: Dock.Top);
+            DependencyProperty.Register<TabControl, Dock>(nameof(TabStripPlacement), defaultValue: Dock.Top);
 
         /// <summary>
         /// Defines the <see cref="HorizontalContentAlignment"/> property.
@@ -46,13 +46,13 @@ namespace Avalonia.Controls
         /// The selected content property
         /// </summary>
         public static readonly StyledProperty<object> SelectedContentProperty =
-            AvaloniaProperty.Register<TabControl, object>(nameof(SelectedContent));
+            DependencyProperty.Register<TabControl, object>(nameof(SelectedContent));
 
         /// <summary>
         /// The selected content template property
         /// </summary>
         public static readonly StyledProperty<IDataTemplate> SelectedContentTemplateProperty =
-            AvaloniaProperty.Register<TabControl, IDataTemplate>(nameof(SelectedContentTemplate));
+            DependencyProperty.Register<TabControl, IDataTemplate>(nameof(SelectedContentTemplate));
 
         /// <summary>
         /// The default value for the <see cref="ItemsControl.ItemsPanel"/> property.

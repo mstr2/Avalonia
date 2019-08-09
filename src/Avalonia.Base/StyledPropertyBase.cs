@@ -9,7 +9,7 @@ namespace Avalonia
     /// <summary>
     /// Base class for styled properties.
     /// </summary>
-    public class StyledPropertyBase<TValue> : AvaloniaProperty<TValue>, IStyledPropertyAccessor
+    public class StyledPropertyBase<TValue> : DependencyProperty<TValue>, IPropertyAccessor
     {
         private bool _inherits;
 
@@ -20,7 +20,7 @@ namespace Avalonia
         /// <param name="ownerType">The type of the class that registers the property.</param>
         /// <param name="metadata">The property metadata.</param>
         /// <param name="inherits">Whether the property inherits its value.</param>
-        /// <param name="notifying">A <see cref="AvaloniaProperty.Notifying"/> callback.</param>
+        /// <param name="notifying">A <see cref="DependencyProperty.Notifying"/> callback.</param>
         protected StyledPropertyBase(
             string name,
             Type ownerType,            
@@ -157,14 +157,14 @@ namespace Avalonia
         }
 
         /// <inheritdoc/>
-        Func<IAvaloniaObject, object, object> IStyledPropertyAccessor.GetValidationFunc(Type type)
+        Func<IAvaloniaObject, object, object> IPropertyAccessor.GetValidationFunc(Type type)
         {
             Contract.Requires<ArgumentNullException>(type != null);
             return ((IStyledPropertyMetadata)base.GetMetadata(type)).Validate;
         }
 
         /// <inheritdoc/>
-        object IStyledPropertyAccessor.GetDefaultValue(Type type) => GetDefaultValue(type);
+        object IPropertyAccessor.GetDefaultValue(Type type) => GetDefaultValue(type);
 
         [DebuggerHidden]
         private Func<IAvaloniaObject, TValue, TValue> Cast<THost>(Func<THost, TValue, TValue> validate)

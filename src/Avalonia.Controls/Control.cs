@@ -27,19 +27,19 @@ namespace Avalonia.Controls
         /// Defines the <see cref="FocusAdorner"/> property.
         /// </summary>
         public static readonly StyledProperty<ITemplate<IControl>> FocusAdornerProperty =
-            AvaloniaProperty.Register<Control, ITemplate<IControl>>(nameof(FocusAdorner));
+            DependencyProperty.Register<Control, ITemplate<IControl>>(nameof(FocusAdorner));
 
         /// <summary>
         /// Defines the <see cref="Tag"/> property.
         /// </summary>
         public static readonly StyledProperty<object> TagProperty =
-            AvaloniaProperty.Register<Control, object>(nameof(Tag));
+            DependencyProperty.Register<Control, object>(nameof(Tag));
         
         /// <summary>
         /// Defines the <see cref="ContextMenu"/> property.
         /// </summary>
         public static readonly StyledProperty<ContextMenu> ContextMenuProperty =
-            AvaloniaProperty.Register<Control, ContextMenu>(nameof(ContextMenu));
+            DependencyProperty.Register<Control, ContextMenu>(nameof(ContextMenu));
 
         /// <summary>
         /// Event raised when an element wishes to be scrolled into view.

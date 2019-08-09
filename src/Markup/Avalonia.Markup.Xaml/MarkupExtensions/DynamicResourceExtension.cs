@@ -39,7 +39,7 @@ namespace Avalonia.Markup.Xaml.MarkupExtensions
 
         InstancedBinding IBinding.Initiate(
             IAvaloniaObject target,
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor,
             bool enableDataValidation)
         {

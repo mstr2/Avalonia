@@ -3,7 +3,7 @@
     public class GeometryDrawing : Drawing
     {
         public static readonly StyledProperty<Geometry> GeometryProperty =
-            AvaloniaProperty.Register<GeometryDrawing, Geometry>(nameof(Geometry));
+            DependencyProperty.Register<GeometryDrawing, Geometry>(nameof(Geometry));
 
         public Geometry Geometry
         {
@@ -12,7 +12,7 @@
         }
 
         public static readonly StyledProperty<IBrush> BrushProperty =
-            AvaloniaProperty.Register<GeometryDrawing, IBrush>(nameof(Brush), Brushes.Transparent);
+            DependencyProperty.Register<GeometryDrawing, IBrush>(nameof(Brush), Brushes.Transparent);
 
         public IBrush Brush
         {
@@ -21,7 +21,7 @@
         }
 
         public static readonly StyledProperty<Pen> PenProperty =
-            AvaloniaProperty.Register<GeometryDrawing, Pen>(nameof(Pen));
+            DependencyProperty.Register<GeometryDrawing, Pen>(nameof(Pen));
 
         public IPen Pen
         {

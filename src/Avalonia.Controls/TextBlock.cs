@@ -26,7 +26,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="FontFamily"/> property.
         /// </summary>
         public static readonly AttachedProperty<FontFamily> FontFamilyProperty =
-            AvaloniaProperty.RegisterAttached<TextBlock, Control, FontFamily>(
+            DependencyProperty.RegisterAttached<TextBlock, Control, FontFamily>(
                 nameof(FontFamily),
                 defaultValue:  FontFamily.Default,
                 inherits: true);
@@ -35,7 +35,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="FontSize"/> property.
         /// </summary>
         public static readonly AttachedProperty<double> FontSizeProperty =
-            AvaloniaProperty.RegisterAttached<TextBlock, Control, double>(
+            DependencyProperty.RegisterAttached<TextBlock, Control, double>(
                 nameof(FontSize),
                 defaultValue: 12,
                 inherits: true);
@@ -44,7 +44,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="FontStyle"/> property.
         /// </summary>
         public static readonly AttachedProperty<FontStyle> FontStyleProperty =
-            AvaloniaProperty.RegisterAttached<TextBlock, Control, FontStyle>(
+            DependencyProperty.RegisterAttached<TextBlock, Control, FontStyle>(
                 nameof(FontStyle),
                 inherits: true);
 
@@ -52,7 +52,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="FontWeight"/> property.
         /// </summary>
         public static readonly AttachedProperty<FontWeight> FontWeightProperty =
-            AvaloniaProperty.RegisterAttached<TextBlock, Control, FontWeight>(
+            DependencyProperty.RegisterAttached<TextBlock, Control, FontWeight>(
                 nameof(FontWeight),
                 inherits: true,
                 defaultValue: FontWeight.Normal);
@@ -61,7 +61,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Foreground"/> property.
         /// </summary>
         public static readonly AttachedProperty<IBrush> ForegroundProperty =
-            AvaloniaProperty.RegisterAttached<TextBlock, Control, IBrush>(
+            DependencyProperty.RegisterAttached<TextBlock, Control, IBrush>(
                 nameof(Foreground),
                 Brushes.Black,
                 inherits: true);
@@ -70,7 +70,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Text"/> property.
         /// </summary>
         public static readonly DirectProperty<TextBlock, string> TextProperty =
-            AvaloniaProperty.RegisterDirect<TextBlock, string>(
+            DependencyProperty.RegisterDirect<TextBlock, string>(
                 nameof(Text),
                 o => o.Text,
                 (o, v) => o.Text = v);
@@ -79,13 +79,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="TextAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<TextAlignment> TextAlignmentProperty =
-            AvaloniaProperty.Register<TextBlock, TextAlignment>(nameof(TextAlignment));
+            DependencyProperty.Register<TextBlock, TextAlignment>(nameof(TextAlignment));
 
         /// <summary>
         /// Defines the <see cref="TextWrapping"/> property.
         /// </summary>
         public static readonly StyledProperty<TextWrapping> TextWrappingProperty =
-            AvaloniaProperty.Register<TextBlock, TextWrapping>(nameof(TextWrapping));
+            DependencyProperty.Register<TextBlock, TextWrapping>(nameof(TextWrapping));
 
         private string _text;
         private FormattedText _formattedText;

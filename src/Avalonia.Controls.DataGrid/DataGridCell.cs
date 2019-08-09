@@ -22,7 +22,7 @@ namespace Avalonia.Controls
         bool _isValid;
 
         public static readonly DirectProperty<DataGridCell, bool> IsValidProperty =
-            AvaloniaProperty.RegisterDirect<DataGridCell, bool>(
+            DependencyProperty.RegisterDirect<DataGridCell, bool>(
                 nameof(IsValid),
                 o => o.IsValid);
 

@@ -31,7 +31,7 @@ namespace Avalonia.Data.Converters
         {
             if (value == null)
             {
-                return targetType.IsValueType ? AvaloniaProperty.UnsetValue : null;
+                return targetType.IsValueType ? DependencyProperty.UnsetValue : null;
             }
 
             if (typeof(ICommand).IsAssignableFrom(targetType) && value is Delegate d && d.Method.GetParameters().Length <= 1)

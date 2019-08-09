@@ -46,7 +46,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Icon"/> property.
         /// </summary>
         public static readonly StyledProperty<object> IconProperty =
-            AvaloniaProperty.Register<MenuItem, object>(nameof(Icon));
+            DependencyProperty.Register<MenuItem, object>(nameof(Icon));
 
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.
@@ -58,7 +58,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsSubMenuOpen"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsSubMenuOpenProperty =
-            AvaloniaProperty.Register<MenuItem, bool>(nameof(IsSubMenuOpen));
+            DependencyProperty.Register<MenuItem, bool>(nameof(IsSubMenuOpen));
 
         /// <summary>
         /// Defines the <see cref="Click"/> event.
@@ -394,7 +394,7 @@ namespace Avalonia.Controls
             }
         }
 
-        protected override void UpdateDataValidation(AvaloniaProperty property, BindingNotification status)
+        protected override void UpdateDataValidation(DependencyProperty property, BindingNotification status)
         {
             base.UpdateDataValidation(property, status);
             if (property == CommandProperty)
@@ -425,7 +425,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Command"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void CommandChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void CommandChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is MenuItem menuItem)
             {
@@ -466,7 +466,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="HeaderedSelectingItemsControl.Header"/> property changes.
         /// </summary>
         /// <param name="e">The property change event.</param>
-        private void HeaderChanged(AvaloniaPropertyChangedEventArgs e)
+        private void HeaderChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is string newValue && newValue == "-")
             {
@@ -484,7 +484,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Icon"/> property changes.
         /// </summary>
         /// <param name="e">The property change event.</param>
-        private void IconChanged(AvaloniaPropertyChangedEventArgs e)
+        private void IconChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = e.OldValue as ILogical;
             var newValue = e.NewValue as ILogical;
@@ -504,7 +504,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="IsSelected"/> property changes.
         /// </summary>
         /// <param name="e">The property change event.</param>
-        private void IsSelectedChanged(AvaloniaPropertyChangedEventArgs e)
+        private void IsSelectedChanged(DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue)
             {
@@ -516,7 +516,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="IsSubMenuOpen"/> property changes.
         /// </summary>
         /// <param name="e">The property change event.</param>
-        private void SubMenuOpenChanged(AvaloniaPropertyChangedEventArgs e)
+        private void SubMenuOpenChanged(DependencyPropertyChangedEventArgs e)
         {
             var value = (bool)e.NewValue;
 

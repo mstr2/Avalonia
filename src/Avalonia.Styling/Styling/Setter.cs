@@ -16,7 +16,7 @@ namespace Avalonia.Styling
     /// A setter for a <see cref="Style"/>.
     /// </summary>
     /// <remarks>
-    /// A <see cref="Setter"/> is used to set a <see cref="AvaloniaProperty"/> value on a
+    /// A <see cref="Setter"/> is used to set a <see cref="DependencyProperty"/> value on a
     /// <see cref="AvaloniaObject"/> depending on a condition.
     /// </remarks>
     public class Setter : ISetter, IAnimationSetter
@@ -35,7 +35,7 @@ namespace Avalonia.Styling
         /// </summary>
         /// <param name="property">The property to set.</param>
         /// <param name="value">The property value.</param>
-        public Setter(AvaloniaProperty property, object value)
+        public Setter(DependencyProperty property, object value)
         {
             Property = property;
             Value = value;
@@ -44,7 +44,7 @@ namespace Avalonia.Styling
         /// <summary>
         /// Gets or sets the property to set.
         /// </summary>
-        public AvaloniaProperty Property
+        public DependencyProperty Property
         {
             get;
             set;

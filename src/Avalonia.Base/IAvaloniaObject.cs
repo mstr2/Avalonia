@@ -7,74 +7,74 @@ using Avalonia.Data;
 namespace Avalonia
 {
     /// <summary>
-    /// Interface for getting/setting <see cref="AvaloniaProperty"/> values on an object.
+    /// Interface for getting/setting <see cref="DependencyProperty"/> values on an object.
     /// </summary>
     public interface IAvaloniaObject
     {
         /// <summary>
-        /// Raised when a <see cref="AvaloniaProperty"/> value changes on this object.
+        /// Raised when a <see cref="DependencyProperty"/> value changes on this object.
         /// </summary>
-        event EventHandler<AvaloniaPropertyChangedEventArgs> PropertyChanged;
+        event EventHandler<DependencyPropertyChangedEventArgs> PropertyChanged;
 
         /// <summary>
-        /// Raised when an inheritable <see cref="AvaloniaProperty"/> value changes on this object.
+        /// Raised when an inheritable <see cref="DependencyProperty"/> value changes on this object.
         /// </summary>
-        event EventHandler<AvaloniaPropertyChangedEventArgs> InheritablePropertyChanged;
+        event EventHandler<DependencyPropertyChangedEventArgs> InheritablePropertyChanged;
 
         /// <summary>
-        /// Gets a <see cref="AvaloniaProperty"/> value.
+        /// Gets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The value.</returns>
-        object GetValue(AvaloniaProperty property);
+        object GetValue(DependencyProperty property);
 
         /// <summary>
-        /// Gets a <see cref="AvaloniaProperty"/> value.
+        /// Gets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
         /// <returns>The value.</returns>
-        T GetValue<T>(AvaloniaProperty<T> property);
+        T GetValue<T>(DependencyProperty<T> property);
 
         /// <summary>
-        /// Checks whether a <see cref="AvaloniaProperty"/> is animating.
+        /// Checks whether a <see cref="DependencyProperty"/> is animating.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>True if the property is animating, otherwise false.</returns>
-        bool IsAnimating(AvaloniaProperty property);
+        bool IsAnimating(DependencyProperty property);
 
         /// <summary>
-        /// Checks whether a <see cref="AvaloniaProperty"/> is set on this object.
+        /// Checks whether a <see cref="DependencyProperty"/> is set on this object.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>True if the property is set, otherwise false.</returns>
-        bool IsSet(AvaloniaProperty property);
+        bool IsSet(DependencyProperty property);
 
         /// <summary>
-        /// Sets a <see cref="AvaloniaProperty"/> value.
+        /// Sets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         void SetValue(
-            AvaloniaProperty property, 
+            DependencyProperty property, 
             object value, 
             BindingPriority priority = BindingPriority.LocalValue);
 
         /// <summary>
-        /// Sets a <see cref="AvaloniaProperty"/> value.
+        /// Sets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         void SetValue<T>(
-            AvaloniaProperty<T> property,
+            DependencyProperty<T> property,
             T value,
             BindingPriority priority = BindingPriority.LocalValue);
 
         /// <summary>
-        /// Binds a <see cref="AvaloniaProperty"/> to an observable.
+        /// Binds a <see cref="DependencyProperty"/> to an observable.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="source">The observable.</param>
@@ -83,12 +83,12 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         IDisposable Bind(
-            AvaloniaProperty property,
+            DependencyProperty property,
             IObservable<object> source,
             BindingPriority priority = BindingPriority.LocalValue);
 
         /// <summary>
-        /// Binds a <see cref="AvaloniaProperty"/> to an observable.
+        /// Binds a <see cref="DependencyProperty"/> to an observable.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
@@ -98,7 +98,7 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         IDisposable Bind<T>(
-            AvaloniaProperty<T> property,
+            DependencyProperty<T> property,
             IObservable<T> source,
             BindingPriority priority = BindingPriority.LocalValue);
     }

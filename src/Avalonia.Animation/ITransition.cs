@@ -18,7 +18,7 @@ namespace Avalonia.Animation
         /// <summary>
         /// Gets the property to be animated.
         /// </summary>
-        AvaloniaProperty Property { get; set; }
+        DependencyProperty Property { get; set; }
     
     }
 }

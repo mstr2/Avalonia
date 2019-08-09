@@ -35,7 +35,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[invalid]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -47,7 +47,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[invalid]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -59,7 +59,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[noindexer]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -107,7 +107,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[2]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -119,7 +119,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[1,2]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -131,7 +131,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var target = ExpressionObserverBuilder.Build(data, "Foo[2]");
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -160,7 +160,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
                 data.Foo.Add("baz");
             }
 
-            Assert.Equal(new[] { AvaloniaProperty.UnsetValue, "baz" }, result);
+            Assert.Equal(new[] { DependencyProperty.UnsetValue, "baz" }, result);
             Assert.Null(((INotifyCollectionChangedDebug)data.Foo).GetCollectionChangedSubscribers());
 
             GC.KeepAlive(data);
@@ -231,7 +231,7 @@ namespace Avalonia.Markup.UnitTests.Parsers
             var sub = target.Subscribe(x => result.Add(x));
             data.Foo.Clear();
 
-            Assert.Equal(new[] { "bar", AvaloniaProperty.UnsetValue }, result);
+            Assert.Equal(new[] { "bar", DependencyProperty.UnsetValue }, result);
 
             GC.KeepAlive(sub);
             GC.KeepAlive(data);

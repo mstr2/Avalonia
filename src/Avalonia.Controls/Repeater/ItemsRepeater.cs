@@ -21,8 +21,8 @@ namespace Avalonia.Controls
         /// <summary>
         /// Defines the <see cref="HorizontalCacheLength"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<double> HorizontalCacheLengthProperty =
-            AvaloniaProperty.Register<ItemsRepeater, double>(nameof(HorizontalCacheLength), 2.0);
+        public static readonly DependencyProperty<double> HorizontalCacheLengthProperty =
+            DependencyProperty.Register<ItemsRepeater, double>(nameof(HorizontalCacheLength), 2.0);
 
         /// <summary>
         /// Defines the <see cref="ItemTemplate"/> property.
@@ -39,17 +39,17 @@ namespace Avalonia.Controls
         /// <summary>
         /// Defines the <see cref="Layout"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<AttachedLayout> LayoutProperty =
-            AvaloniaProperty.Register<ItemsRepeater, AttachedLayout>(nameof(Layout), new StackLayout());
+        public static readonly DependencyProperty<AttachedLayout> LayoutProperty =
+            DependencyProperty.Register<ItemsRepeater, AttachedLayout>(nameof(Layout), new StackLayout());
 
         /// <summary>
         /// Defines the <see cref="VerticalCacheLength"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<double> VerticalCacheLengthProperty =
-            AvaloniaProperty.Register<ItemsRepeater, double>(nameof(VerticalCacheLength), 2.0);
+        public static readonly DependencyProperty<double> VerticalCacheLengthProperty =
+            DependencyProperty.Register<ItemsRepeater, double>(nameof(VerticalCacheLength), 2.0);
 
         private static readonly AttachedProperty<VirtualizationInfo> VirtualizationInfoProperty =
-            AvaloniaProperty.RegisterAttached<ItemsRepeater, IControl, VirtualizationInfo>("VirtualizationInfo");
+            DependencyProperty.RegisterAttached<ItemsRepeater, IControl, VirtualizationInfo>("VirtualizationInfo");
 
         internal static readonly Rect InvalidRect = new Rect(-1, -1, -1, -1);
         internal static readonly Point ClearedElementsArrangePosition = new Point(-10000.0, -10000.0);
@@ -374,7 +374,7 @@ namespace Avalonia.Controls
             _viewportManager.ResetScrollers();
         }
 
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs args)
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
             var property = args.Property;
 

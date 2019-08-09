@@ -40,13 +40,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="ClientSize"/> property.
         /// </summary>
         public static readonly DirectProperty<TopLevel, Size> ClientSizeProperty =
-            AvaloniaProperty.RegisterDirect<TopLevel, Size>(nameof(ClientSize), o => o.ClientSize);
+            DependencyProperty.RegisterDirect<TopLevel, Size>(nameof(ClientSize), o => o.ClientSize);
 
         /// <summary>
         /// Defines the <see cref="IInputRoot.PointerOverElement"/> property.
         /// </summary>
         public static readonly StyledProperty<IInputElement> PointerOverElementProperty =
-            AvaloniaProperty.Register<TopLevel, IInputElement>(nameof(IInputRoot.PointerOverElement));
+            DependencyProperty.Register<TopLevel, IInputElement>(nameof(IInputRoot.PointerOverElement));
 
         private readonly IInputManager _inputManager;
         private readonly IAccessKeyHandler _accessKeyHandler;

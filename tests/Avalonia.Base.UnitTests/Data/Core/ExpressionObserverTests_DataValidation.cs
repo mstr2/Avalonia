@@ -150,7 +150,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
                 new BindingNotification(
                     new MarkupBindingChainException("Null value", "o => o.Inner.MustBePositive", "Inner"),
                     BindingErrorType.Error,
-                    AvaloniaProperty.UnsetValue),
+                    DependencyProperty.UnsetValue),
             }, result);
 
             GC.KeepAlive(container);

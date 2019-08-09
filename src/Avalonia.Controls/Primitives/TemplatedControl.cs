@@ -75,13 +75,13 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Template"/> property.
         /// </summary>
         public static readonly StyledProperty<IControlTemplate> TemplateProperty =
-            AvaloniaProperty.Register<TemplatedControl, IControlTemplate>(nameof(Template));
+            DependencyProperty.Register<TemplatedControl, IControlTemplate>(nameof(Template));
 
         /// <summary>
         /// Defines the IsTemplateFocusTarget attached property.
         /// </summary>
         public static readonly AttachedProperty<bool> IsTemplateFocusTargetProperty =
-            AvaloniaProperty.RegisterAttached<TemplatedControl, Control, bool>("IsTemplateFocusTarget");
+            DependencyProperty.RegisterAttached<TemplatedControl, Control, bool>("IsTemplateFocusTarget");
 
         /// <summary>
         /// Defines the <see cref="TemplateApplied"/> routed event.
@@ -322,7 +322,7 @@ namespace Avalonia.Controls.Primitives
         /// Called when the <see cref="Template"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        protected virtual void OnTemplateChanged(AvaloniaPropertyChangedEventArgs e)
+        protected virtual void OnTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
             InvalidateMeasure();
         }

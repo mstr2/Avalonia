@@ -21,7 +21,7 @@ namespace Avalonia.Controls.Presenters
         /// Defines the <see cref="CanHorizontallyScroll"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollContentPresenter, bool> CanHorizontallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollContentPresenter, bool>(
+            DependencyProperty.RegisterDirect<ScrollContentPresenter, bool>(
                 nameof(CanHorizontallyScroll),
                 o => o.CanHorizontallyScroll,
                 (o, v) => o.CanHorizontallyScroll = v);
@@ -30,7 +30,7 @@ namespace Avalonia.Controls.Presenters
         /// Defines the <see cref="CanVerticallyScroll"/> property.
         /// </summary>
         public static readonly DirectProperty<ScrollContentPresenter, bool> CanVerticallyScrollProperty =
-            AvaloniaProperty.RegisterDirect<ScrollContentPresenter, bool>(
+            DependencyProperty.RegisterDirect<ScrollContentPresenter, bool>(
                 nameof(CanVerticallyScroll),
                 o => o.CanVerticallyScroll,
                 (o, v) => o.CanVerticallyScroll = v);
@@ -333,7 +333,7 @@ namespace Avalonia.Controls.Presenters
             e.Handled = BringDescendantIntoView(e.TargetObject, e.TargetRect);
         }
 
-        private void ChildChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ChildChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateScrollableSubscription((IControl)e.NewValue);
 

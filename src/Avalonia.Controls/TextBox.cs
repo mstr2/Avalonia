@@ -21,40 +21,40 @@ namespace Avalonia.Controls
     public class TextBox : TemplatedControl, UndoRedoHelper<TextBox.UndoRedoState>.IUndoRedoHost
     {
         public static readonly StyledProperty<bool> AcceptsReturnProperty =
-            AvaloniaProperty.Register<TextBox, bool>(nameof(AcceptsReturn));
+            DependencyProperty.Register<TextBox, bool>(nameof(AcceptsReturn));
 
         public static readonly StyledProperty<bool> AcceptsTabProperty =
-            AvaloniaProperty.Register<TextBox, bool>(nameof(AcceptsTab));
+            DependencyProperty.Register<TextBox, bool>(nameof(AcceptsTab));
 
         public static readonly DirectProperty<TextBox, int> CaretIndexProperty =
-            AvaloniaProperty.RegisterDirect<TextBox, int>(
+            DependencyProperty.RegisterDirect<TextBox, int>(
                 nameof(CaretIndex),
                 o => o.CaretIndex,
                 (o, v) => o.CaretIndex = v);
 
         public static readonly StyledProperty<bool> IsReadOnlyProperty =
-            AvaloniaProperty.Register<TextBox, bool>(nameof(IsReadOnly));
+            DependencyProperty.Register<TextBox, bool>(nameof(IsReadOnly));
 
         public static readonly StyledProperty<char> PasswordCharProperty =
-            AvaloniaProperty.Register<TextBox, char>(nameof(PasswordChar));
+            DependencyProperty.Register<TextBox, char>(nameof(PasswordChar));
 
         public static readonly StyledProperty<IBrush> SelectionBrushProperty =
-            AvaloniaProperty.Register<TextBox, IBrush>(nameof(SelectionBrushProperty));
+            DependencyProperty.Register<TextBox, IBrush>(nameof(SelectionBrushProperty));
 
         public static readonly StyledProperty<IBrush> SelectionForegroundBrushProperty =
-            AvaloniaProperty.Register<TextBox, IBrush>(nameof(SelectionForegroundBrushProperty));
+            DependencyProperty.Register<TextBox, IBrush>(nameof(SelectionForegroundBrushProperty));
 
         public static readonly StyledProperty<IBrush> CaretBrushProperty =
-            AvaloniaProperty.Register<TextBox, IBrush>(nameof(CaretBrushProperty));
+            DependencyProperty.Register<TextBox, IBrush>(nameof(CaretBrushProperty));
 
         public static readonly DirectProperty<TextBox, int> SelectionStartProperty =
-            AvaloniaProperty.RegisterDirect<TextBox, int>(
+            DependencyProperty.RegisterDirect<TextBox, int>(
                 nameof(SelectionStart),
                 o => o.SelectionStart,
                 (o, v) => o.SelectionStart = v);
 
         public static readonly DirectProperty<TextBox, int> SelectionEndProperty =
-            AvaloniaProperty.RegisterDirect<TextBox, int>(
+            DependencyProperty.RegisterDirect<TextBox, int>(
                 nameof(SelectionEnd),
                 o => o.SelectionEnd,
                 (o, v) => o.SelectionEnd = v);
@@ -73,13 +73,13 @@ namespace Avalonia.Controls
             TextBlock.TextWrappingProperty.AddOwner<TextBox>();
 
         public static readonly StyledProperty<string> WatermarkProperty =
-            AvaloniaProperty.Register<TextBox, string>(nameof(Watermark));
+            DependencyProperty.Register<TextBox, string>(nameof(Watermark));
 
         public static readonly StyledProperty<bool> UseFloatingWatermarkProperty =
-            AvaloniaProperty.Register<TextBox, bool>(nameof(UseFloatingWatermark));
+            DependencyProperty.Register<TextBox, bool>(nameof(UseFloatingWatermark));
 
         public static readonly DirectProperty<TextBox, string> NewLineProperty =
-            AvaloniaProperty.RegisterDirect<TextBox, string>(nameof(NewLine),
+            DependencyProperty.RegisterDirect<TextBox, string>(nameof(NewLine),
                 textbox => textbox.NewLine, (textbox, newline) => textbox.NewLine = newline);
 
         struct UndoRedoState : IEquatable<UndoRedoState>
@@ -691,7 +691,7 @@ namespace Avalonia.Controls
             }
         }
 
-        protected override void UpdateDataValidation(AvaloniaProperty property, BindingNotification status)
+        protected override void UpdateDataValidation(DependencyProperty property, BindingNotification status)
         {
             if (property == TextProperty)
             {

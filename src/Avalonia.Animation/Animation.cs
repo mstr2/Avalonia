@@ -24,7 +24,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="Duration"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, TimeSpan> DurationProperty =
-            AvaloniaProperty.RegisterDirect<Animation, TimeSpan>(
+            DependencyProperty.RegisterDirect<Animation, TimeSpan>(
                 nameof(_duration),
                 o => o._duration,
                 (o, v) => o._duration = v);
@@ -33,7 +33,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="IterationCount"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, IterationCount> IterationCountProperty =
-            AvaloniaProperty.RegisterDirect<Animation, IterationCount>(
+            DependencyProperty.RegisterDirect<Animation, IterationCount>(
                 nameof(_iterationCount),
                 o => o._iterationCount,
                 (o, v) => o._iterationCount = v);
@@ -42,7 +42,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="PlaybackDirection"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, PlaybackDirection> PlaybackDirectionProperty =
-            AvaloniaProperty.RegisterDirect<Animation, PlaybackDirection>(
+            DependencyProperty.RegisterDirect<Animation, PlaybackDirection>(
                 nameof(_playbackDirection),
                 o => o._playbackDirection,
                 (o, v) => o._playbackDirection = v);
@@ -51,7 +51,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="FillMode"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, FillMode> FillModeProperty =
-            AvaloniaProperty.RegisterDirect<Animation, FillMode>(
+            DependencyProperty.RegisterDirect<Animation, FillMode>(
                 nameof(_fillMode),
                 o => o._fillMode,
                 (o, v) => o._fillMode = v);
@@ -60,7 +60,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="Easing"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, Easing> EasingProperty =
-            AvaloniaProperty.RegisterDirect<Animation, Easing>(
+            DependencyProperty.RegisterDirect<Animation, Easing>(
                 nameof(_easing),
                 o => o._easing,
                 (o, v) => o._easing = v);
@@ -69,7 +69,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="Delay"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, TimeSpan> DelayProperty =
-            AvaloniaProperty.RegisterDirect<Animation, TimeSpan>(
+            DependencyProperty.RegisterDirect<Animation, TimeSpan>(
                 nameof(_delay),
                 o => o._delay,
                 (o, v) => o._delay = v);
@@ -78,7 +78,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="DelayBetweenIterations"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, TimeSpan> DelayBetweenIterationsProperty =
-            AvaloniaProperty.RegisterDirect<Animation, TimeSpan>(
+            DependencyProperty.RegisterDirect<Animation, TimeSpan>(
                 nameof(_delayBetweenIterations),
                 o => o._delayBetweenIterations,
                 (o, v) => o._delayBetweenIterations = v);
@@ -87,7 +87,7 @@ namespace Avalonia.Animation
         /// Defines the <see cref="SpeedRatio"/> property.
         /// </summary>
         public static readonly DirectProperty<Animation, double> SpeedRatioProperty =
-            AvaloniaProperty.RegisterDirect<Animation, double>(
+            DependencyProperty.RegisterDirect<Animation, double>(
                 nameof(_speedRatio),
                 o => o._speedRatio,
                 (o, v) => o._speedRatio = v,
@@ -197,7 +197,7 @@ namespace Avalonia.Animation
         [Content]
         public KeyFrames Children { get; } = new KeyFrames();
 
-        private readonly static List<(Func<AvaloniaProperty, bool> Condition, Type Animator)> Animators = new List<(Func<AvaloniaProperty, bool>, Type)>
+        private readonly static List<(Func<DependencyProperty, bool> Condition, Type Animator)> Animators = new List<(Func<DependencyProperty, bool>, Type)>
         {
             ( prop => typeof(bool).IsAssignableFrom(prop.PropertyType), typeof(BoolAnimator) ),
             ( prop => typeof(byte).IsAssignableFrom(prop.PropertyType), typeof(ByteAnimator) ),
@@ -212,13 +212,13 @@ namespace Avalonia.Animation
             ( prop => typeof(decimal).IsAssignableFrom(prop.PropertyType), typeof(DecimalAnimator) ),
         };
 
-        public static void RegisterAnimator<TAnimator>(Func<AvaloniaProperty, bool> condition)
+        public static void RegisterAnimator<TAnimator>(Func<DependencyProperty, bool> condition)
             where TAnimator : IAnimator
         {
             Animators.Insert(0, (condition, typeof(TAnimator)));
         }
 
-        private static Type GetAnimatorType(AvaloniaProperty property)
+        private static Type GetAnimatorType(DependencyProperty property)
         {
             foreach (var (condition, type) in Animators)
             {
@@ -232,7 +232,7 @@ namespace Avalonia.Animation
 
         private (IList<IAnimator> Animators, IList<IDisposable> subscriptions) InterpretKeyframes(Animatable control)
         {
-            var handlerList = new List<(Type type, AvaloniaProperty property)>();
+            var handlerList = new List<(Type type, DependencyProperty property)>();
             var animatorKeyFrames = new List<AnimatorKeyFrame>();
             var subscriptions = new List<IDisposable>();
 

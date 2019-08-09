@@ -8,7 +8,7 @@ namespace Avalonia.Controls
     {
         public static bool IsDesignMode { get; internal set; }
 
-        public static readonly AttachedProperty<double> HeightProperty = AvaloniaProperty
+        public static readonly AttachedProperty<double> HeightProperty = DependencyProperty
             .RegisterAttached<Control, double>("Height", typeof (Design));
 
         public static void SetHeight(Control control, double value)
@@ -21,7 +21,7 @@ namespace Avalonia.Controls
             return control.GetValue(HeightProperty);
         }
 
-        public static readonly AttachedProperty<double> WidthProperty = AvaloniaProperty
+        public static readonly AttachedProperty<double> WidthProperty = DependencyProperty
             .RegisterAttached<Control, double>("Width", typeof(Design));
 
         public static void SetWidth(Control control, double value)
@@ -34,7 +34,7 @@ namespace Avalonia.Controls
             return control.GetValue(WidthProperty);
         }
 
-        public static readonly AttachedProperty<object> DataContextProperty = AvaloniaProperty
+        public static readonly AttachedProperty<object> DataContextProperty = DependencyProperty
             .RegisterAttached<Control, object>("DataContext", typeof (Design));
 
         public static void SetDataContext(Control control, object value)
@@ -47,7 +47,7 @@ namespace Avalonia.Controls
             return control.GetValue(DataContextProperty);
         }
         
-        public static readonly AttachedProperty<Control> PreviewWithProperty = AvaloniaProperty
+        public static readonly AttachedProperty<Control> PreviewWithProperty = DependencyProperty
             .RegisterAttached<AvaloniaObject, Control>("PreviewWith", typeof (Design));
 
         public static void SetPreviewWith(AvaloniaObject target, Control control)

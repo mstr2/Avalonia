@@ -15,13 +15,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="ScaleX"/> property.
         /// </summary>
         public static readonly StyledProperty<double> ScaleXProperty =
-                    AvaloniaProperty.Register<ScaleTransform, double>(nameof(ScaleX), 1);
+                    DependencyProperty.Register<ScaleTransform, double>(nameof(ScaleX), 1);
 
         /// <summary>
         /// Defines the <see cref="ScaleY"/> property.
         /// </summary>
         public static readonly StyledProperty<double> ScaleYProperty =
-                    AvaloniaProperty.Register<ScaleTransform, double>(nameof(ScaleY), 1);
+                    DependencyProperty.Register<ScaleTransform, double>(nameof(ScaleY), 1);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScaleTransform"/> class.

@@ -19,7 +19,7 @@ namespace Avalonia.Controls
         /// called when the <see cref="ToolTip.TipProperty"/> property changes on a control.
         /// </summary>
         /// <param name="e">The event args.</param>
-        internal void TipChanged(AvaloniaPropertyChangedEventArgs e)
+        internal void TipChanged(DependencyPropertyChangedEventArgs e)
         {
             var control = (Control)e.Sender;
 

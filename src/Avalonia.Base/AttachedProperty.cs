@@ -37,7 +37,7 @@ namespace Avalonia
         /// <returns>The property.</returns>
         public new AttachedProperty<TValue> AddOwner<TOwner>() where TOwner : IAvaloniaObject
         {
-            AvaloniaPropertyRegistry.Instance.Register(typeof(TOwner), this);
+            DependencyPropertyRegistry.Instance.Register(typeof(TOwner), this);
             return this;
         }
     }

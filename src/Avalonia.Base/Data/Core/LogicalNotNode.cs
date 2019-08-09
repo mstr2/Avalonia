@@ -17,7 +17,7 @@ namespace Avalonia.Data.Core
 
         private static object Negate(object v)
         {
-            if (v != AvaloniaProperty.UnsetValue)
+            if (v != DependencyProperty.UnsetValue)
             {
                 var s = v as string;
 
@@ -58,7 +58,7 @@ namespace Avalonia.Data.Core
                 }
             }
 
-            return AvaloniaProperty.UnsetValue;
+            return DependencyProperty.UnsetValue;
         }
 
         public object Transform(object value)

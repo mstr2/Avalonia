@@ -30,10 +30,10 @@ namespace Avalonia.Styling.UnitTests
             Assert.Equal(
                 new[] 
                 {
-                    AvaloniaProperty.UnsetValue,
+                    DependencyProperty.UnsetValue,
                     1,
                     2,
-                    AvaloniaProperty.UnsetValue,
+                    DependencyProperty.UnsetValue,
                     3,
                 }, 
                 result);

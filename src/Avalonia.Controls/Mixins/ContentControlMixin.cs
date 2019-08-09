@@ -41,7 +41,7 @@ namespace Avalonia.Controls.Mixins
         /// The name of the content presenter in the control's template.
         /// </param>
         public static void Attach<TControl>(
-            AvaloniaProperty content,            
+            DependencyProperty content,            
             Func<TControl, IAvaloniaList<ILogical>> logicalChildrenSelector,
             string presenterName = "PART_ContentPresenter")
             where TControl : TemplatedControl
@@ -49,7 +49,7 @@ namespace Avalonia.Controls.Mixins
             Contract.Requires<ArgumentNullException>(content != null);
             Contract.Requires<ArgumentNullException>(logicalChildrenSelector != null);
 
-            void ChildChanging(object s, AvaloniaPropertyChangedEventArgs e)
+            void ChildChanging(object s, DependencyPropertyChangedEventArgs e)
             {
                 if (s is IControl sender && sender?.TemplatedParent is TControl parent)
                 {

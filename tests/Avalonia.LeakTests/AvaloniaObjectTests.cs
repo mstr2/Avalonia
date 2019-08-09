@@ -22,7 +22,7 @@ namespace Avalonia.LeakTests
             Func<WeakReference> setupBinding = () =>
             {
                 var source = new Subject<string>();
-                var sub = target.Bind((AvaloniaProperty)Class1.FooProperty, source);
+                var sub = target.Bind((DependencyProperty)Class1.FooProperty, source);
                 source.OnNext("foo");
                 return new WeakReference(source);
             };
@@ -43,7 +43,7 @@ namespace Avalonia.LeakTests
             Func<WeakReference> setupBinding = () =>
             {
                 var source = new Subject<string>();
-                var sub = target.Bind((AvaloniaProperty)Class1.FooProperty, source);
+                var sub = target.Bind((DependencyProperty)Class1.FooProperty, source);
                 return new WeakReference(source);
             };
 
@@ -63,7 +63,7 @@ namespace Avalonia.LeakTests
         private class Class1 : AvaloniaObject
         {
             public static readonly DirectProperty<Class1, string> FooProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>(
+                DependencyProperty.RegisterDirect<Class1, string>(
                     "Foo",
                     o => o.Foo,
                     (o, v) => o.Foo = v,

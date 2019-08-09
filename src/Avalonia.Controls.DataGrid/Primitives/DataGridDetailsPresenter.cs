@@ -17,7 +17,7 @@ namespace Avalonia.Controls.Primitives
     public sealed class DataGridDetailsPresenter : Panel
     {
         public static readonly StyledProperty<double> ContentHeightProperty =
-            AvaloniaProperty.Register<DataGridDetailsPresenter, double>(nameof(ContentHeight));
+            DependencyProperty.Register<DataGridDetailsPresenter, double>(nameof(ContentHeight));
 
         /// <summary>
         /// Gets or sets the height of the content.

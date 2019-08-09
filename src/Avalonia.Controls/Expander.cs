@@ -14,13 +14,13 @@ namespace Avalonia.Controls
     public class Expander : HeaderedContentControl
     {
         public static readonly StyledProperty<IPageTransition> ContentTransitionProperty =
-            AvaloniaProperty.Register<Expander, IPageTransition>(nameof(ContentTransition));
+            DependencyProperty.Register<Expander, IPageTransition>(nameof(ContentTransition));
 
         public static readonly StyledProperty<ExpandDirection> ExpandDirectionProperty =
-            AvaloniaProperty.Register<Expander, ExpandDirection>(nameof(ExpandDirection), ExpandDirection.Down);
+            DependencyProperty.Register<Expander, ExpandDirection>(nameof(ExpandDirection), ExpandDirection.Down);
 
         public static readonly DirectProperty<Expander, bool> IsExpandedProperty =
-            AvaloniaProperty.RegisterDirect<Expander, bool>(
+            DependencyProperty.RegisterDirect<Expander, bool>(
                 nameof(IsExpanded),
                 o => o.IsExpanded,
                 (o, v) => o.IsExpanded = v,
@@ -58,7 +58,7 @@ namespace Avalonia.Controls
             set { SetAndRaise(IsExpandedProperty, ref _isExpanded, value); }
         }
 
-        protected virtual void OnIsExpandedChanged(AvaloniaPropertyChangedEventArgs e)
+        protected virtual void OnIsExpandedChanged(DependencyPropertyChangedEventArgs e)
         {
             if (Content != null && ContentTransition != null && Presenter is Visual visualContent)
             {

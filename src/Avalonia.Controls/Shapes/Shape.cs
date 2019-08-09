@@ -11,28 +11,28 @@ namespace Avalonia.Controls.Shapes
     public abstract class Shape : Control
     {
         public static readonly StyledProperty<IBrush> FillProperty =
-            AvaloniaProperty.Register<Shape, IBrush>(nameof(Fill));
+            DependencyProperty.Register<Shape, IBrush>(nameof(Fill));
 
         public static readonly StyledProperty<Stretch> StretchProperty =
-            AvaloniaProperty.Register<Shape, Stretch>(nameof(Stretch));
+            DependencyProperty.Register<Shape, Stretch>(nameof(Stretch));
 
         public static readonly StyledProperty<IBrush> StrokeProperty =
-            AvaloniaProperty.Register<Shape, IBrush>(nameof(Stroke));
+            DependencyProperty.Register<Shape, IBrush>(nameof(Stroke));
 
         public static readonly StyledProperty<AvaloniaList<double>> StrokeDashArrayProperty =
-            AvaloniaProperty.Register<Shape, AvaloniaList<double>>(nameof(StrokeDashArray));
+            DependencyProperty.Register<Shape, AvaloniaList<double>>(nameof(StrokeDashArray));
 
         public static readonly StyledProperty<double> StrokeDashOffsetProperty =
-            AvaloniaProperty.Register<Shape, double>(nameof(StrokeDashOffset));
+            DependencyProperty.Register<Shape, double>(nameof(StrokeDashOffset));
 
         public static readonly StyledProperty<double> StrokeThicknessProperty =
-            AvaloniaProperty.Register<Shape, double>(nameof(StrokeThickness));
+            DependencyProperty.Register<Shape, double>(nameof(StrokeThickness));
 
         public static readonly StyledProperty<PenLineCap> StrokeLineCapProperty =
-            AvaloniaProperty.Register<Shape, PenLineCap>(nameof(StrokeLineCap), PenLineCap.Flat);
+            DependencyProperty.Register<Shape, PenLineCap>(nameof(StrokeLineCap), PenLineCap.Flat);
 
         public static readonly StyledProperty<PenLineJoin> StrokeJoinProperty =
-            AvaloniaProperty.Register<Shape, PenLineJoin>(nameof(StrokeJoin), PenLineJoin.Miter);
+            DependencyProperty.Register<Shape, PenLineJoin>(nameof(StrokeJoin), PenLineJoin.Miter);
 
         private Matrix _transform = Matrix.Identity;
         private Geometry _definingGeometry;
@@ -159,7 +159,7 @@ namespace Avalonia.Controls.Shapes
         /// After a call to this method in a control's static constructor, any change to the
         /// property will cause <see cref="InvalidateGeometry"/> to be called on the element.
         /// </remarks>
-        protected static void AffectsGeometry<TShape>(params AvaloniaProperty[] properties)
+        protected static void AffectsGeometry<TShape>(params DependencyProperty[] properties)
             where TShape : Shape
         {
             foreach (var property in properties)
@@ -322,7 +322,7 @@ namespace Avalonia.Controls.Shapes
             return (size, transform);
         }
 
-        private static void AffectsGeometryInvalidate(AvaloniaPropertyChangedEventArgs e)
+        private static void AffectsGeometryInvalidate(DependencyPropertyChangedEventArgs e)
         {
             if (!(e.Sender is Shape control))
             {

@@ -78,37 +78,37 @@ namespace Avalonia.Layout
         /// Defines the <see cref="ItemsJustification"/> property.
         /// </summary>
         public static readonly StyledProperty<UniformGridLayoutItemsJustification> ItemsJustificationProperty =
-            AvaloniaProperty.Register<UniformGridLayout, UniformGridLayoutItemsJustification>(nameof(ItemsJustification));
+            DependencyProperty.Register<UniformGridLayout, UniformGridLayoutItemsJustification>(nameof(ItemsJustification));
 
         /// <summary>
         /// Defines the <see cref="ItemsStretch"/> property.
         /// </summary>
         public static readonly StyledProperty<UniformGridLayoutItemsStretch> ItemsStretchProperty =
-            AvaloniaProperty.Register<UniformGridLayout, UniformGridLayoutItemsStretch>(nameof(ItemsStretch));
+            DependencyProperty.Register<UniformGridLayout, UniformGridLayoutItemsStretch>(nameof(ItemsStretch));
 
         /// <summary>
         /// Defines the <see cref="MinColumnSpacing"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinColumnSpacingProperty =
-            AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinColumnSpacing));
+            DependencyProperty.Register<UniformGridLayout, double>(nameof(MinColumnSpacing));
 
         /// <summary>
         /// Defines the <see cref="MinItemHeight"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinItemHeightProperty =
-            AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinItemHeight));
+            DependencyProperty.Register<UniformGridLayout, double>(nameof(MinItemHeight));
 
         /// <summary>
         /// Defines the <see cref="MinItemWidth"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinItemWidthProperty =
-            AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinItemWidth));
+            DependencyProperty.Register<UniformGridLayout, double>(nameof(MinItemWidth));
 
         /// <summary>
         /// Defines the <see cref="MinRowSpacing"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinRowSpacingProperty =
-            AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinRowSpacing));
+            DependencyProperty.Register<UniformGridLayout, double>(nameof(MinRowSpacing));
 
         /// <summary>
         /// Defines the <see cref="Orientation"/> property.
@@ -436,7 +436,7 @@ namespace Avalonia.Layout
             gridState.ClearElementOnDataSourceChange(context, args);
         }
 
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs args)
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
             if (args.Property == OrientationProperty)
             {

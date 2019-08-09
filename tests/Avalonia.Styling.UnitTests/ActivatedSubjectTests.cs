@@ -19,12 +19,12 @@ namespace Avalonia.Styling.UnitTests
 
             target.Subscribe();
             target.OnNext("bar");
-            Assert.Equal(AvaloniaProperty.UnsetValue, source.Value);
+            Assert.Equal(DependencyProperty.UnsetValue, source.Value);
             activator.OnNext(true);
             target.OnNext("baz");
             Assert.Equal("baz", source.Value);
             activator.OnNext(false);
-            Assert.Equal(AvaloniaProperty.UnsetValue, source.Value);
+            Assert.Equal(DependencyProperty.UnsetValue, source.Value);
             target.OnNext("bax");
             activator.OnNext(true);
             Assert.Equal("bax", source.Value);
@@ -65,7 +65,7 @@ namespace Avalonia.Styling.UnitTests
 
             public bool Completed { get; set; }
             public Exception Error { get; set; }
-            public object Value { get; set; } = AvaloniaProperty.UnsetValue;
+            public object Value { get; set; } = DependencyProperty.UnsetValue;
 
             public void OnCompleted()
             {

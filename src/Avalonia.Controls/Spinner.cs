@@ -94,7 +94,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="ValidSpinDirection"/> property.
         /// </summary>
         public static readonly StyledProperty<ValidSpinDirections> ValidSpinDirectionProperty =
-            AvaloniaProperty.Register<Spinner, ValidSpinDirections>(nameof(ValidSpinDirection),
+            DependencyProperty.Register<Spinner, ValidSpinDirections>(nameof(ValidSpinDirection),
                 ValidSpinDirections.Increase | ValidSpinDirections.Decrease);
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="ValidSpinDirection"/> property value changed.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void OnValidSpinDirectionPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void OnValidSpinDirectionPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is Spinner spinner)
             {

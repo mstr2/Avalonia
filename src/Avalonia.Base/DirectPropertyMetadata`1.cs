@@ -8,13 +8,13 @@ namespace Avalonia
     /// <summary>
     /// Metadata for direct avalonia properties.
     /// </summary>
-    public class DirectPropertyMetadata<TValue> : PropertyMetadata, IDirectPropertyMetadata
+    public class DirectPropertyMetadata<TValue> : AvaloniaPropertyMetadata, IDirectPropertyMetadata
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StyledPropertyMetadata{TValue}"/> class.
         /// </summary>
         /// <param name="unsetValue">
-        /// The value to use when the property is set to <see cref="AvaloniaProperty.UnsetValue"/>
+        /// The value to use when the property is set to <see cref="DependencyProperty.UnsetValue"/>
         /// </param>
         /// <param name="defaultBindingMode">The default binding mode.</param>
         /// <param name="enableDataValidation">
@@ -31,7 +31,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets the value to use when the property is set to <see cref="AvaloniaProperty.UnsetValue"/>.
+        /// Gets the value to use when the property is set to <see cref="DependencyProperty.UnsetValue"/>.
         /// </summary>
         public TValue UnsetValue { get; private set; }
 
@@ -50,7 +50,7 @@ namespace Avalonia
         object IDirectPropertyMetadata.UnsetValue => UnsetValue;
 
         /// <inheritdoc/>
-        public override void Merge(PropertyMetadata baseMetadata, AvaloniaProperty property)
+        public override void Merge(IPropertyMetadata baseMetadata, DependencyProperty property)
         {
             base.Merge(baseMetadata, property);
 

@@ -18,13 +18,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsVirtualized"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsVirtualizedProperty =
-            AvaloniaProperty.Register<Carousel, bool>(nameof(IsVirtualized), true);
+            DependencyProperty.Register<Carousel, bool>(nameof(IsVirtualized), true);
 
         /// <summary>
         /// Defines the <see cref="PageTransition"/> property.
         /// </summary>
         public static readonly StyledProperty<IPageTransition> PageTransitionProperty =
-            AvaloniaProperty.Register<Carousel, IPageTransition>(nameof(PageTransition));
+            DependencyProperty.Register<Carousel, IPageTransition>(nameof(PageTransition));
 
         /// <summary>
         /// The default value of <see cref="ItemsControl.ItemsPanelProperty"/> for 

@@ -12,7 +12,7 @@ namespace Avalonia.Base.UnitTests
         public AvaloniaObjectTests_Metadata()
         {
             // Ensure properties are registered.
-            AvaloniaProperty p;
+            DependencyProperty p;
             p = Class1.FooProperty;
             p = Class2.BarProperty;
             p = AttachedOwner.AttachedProperty;
@@ -42,7 +42,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
 
             target.SetValue(Class1.FooProperty, "foo");
-            target.SetValue(Class1.FooProperty, AvaloniaProperty.UnsetValue);
+            target.SetValue(Class1.FooProperty, DependencyProperty.UnsetValue);
 
             Assert.False(target.IsSet(Class1.FooProperty));
         }
@@ -50,19 +50,19 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo");
+                DependencyProperty.Register<Class1, string>("Foo");
         }
 
         private class Class2 : Class1
         {
             public static readonly StyledProperty<string> BarProperty =
-                AvaloniaProperty.Register<Class2, string>("Bar");
+                DependencyProperty.Register<Class2, string>("Bar");
         }
 
         private class AttachedOwner
         {
             public static readonly AttachedProperty<string> AttachedProperty =
-                AvaloniaProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached");
+                DependencyProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached");
         }
     }
 }

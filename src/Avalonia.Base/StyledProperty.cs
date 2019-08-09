@@ -17,7 +17,7 @@ namespace Avalonia
         /// <param name="ownerType">The type of the class that registers the property.</param>
         /// <param name="metadata">The property metadata.</param>
         /// <param name="inherits">Whether the property inherits its value.</param>
-        /// <param name="notifying">A <see cref="AvaloniaProperty.Notifying"/> callback.</param>
+        /// <param name="notifying">A <see cref="DependencyProperty.Notifying"/> callback.</param>
         public StyledProperty(
             string name,
             Type ownerType,
@@ -45,7 +45,7 @@ namespace Avalonia
         /// <returns>The property.</returns>        
         public StyledProperty<TValue> AddOwner<TOwner>() where TOwner : IAvaloniaObject
         {
-            AvaloniaPropertyRegistry.Instance.Register(typeof(TOwner), this);
+            DependencyPropertyRegistry.Instance.Register(typeof(TOwner), this);
             return this;
         }
     }

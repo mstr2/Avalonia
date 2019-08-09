@@ -20,7 +20,7 @@ namespace Avalonia.Controls.Primitives
         private Control _rootElement;
 
         public static readonly StyledProperty<IBrush> SeparatorBrushProperty =
-            AvaloniaProperty.Register<DataGridRowHeader, IBrush>(nameof(SeparatorBrush));
+            DependencyProperty.Register<DataGridRowHeader, IBrush>(nameof(SeparatorBrush));
 
         public IBrush SeparatorBrush
         {
@@ -29,7 +29,7 @@ namespace Avalonia.Controls.Primitives
         }
 
         public static readonly StyledProperty<bool> AreSeparatorsVisibleProperty =
-            AvaloniaProperty.Register<DataGridRowHeader, bool>(
+            DependencyProperty.Register<DataGridRowHeader, bool>(
                 nameof(AreSeparatorsVisible));
 
         /// <summary>

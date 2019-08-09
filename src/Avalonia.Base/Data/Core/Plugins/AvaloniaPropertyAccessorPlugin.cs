@@ -44,9 +44,9 @@ namespace Avalonia.Data.Core.Plugins
             {
                 return new Accessor(new WeakReference<AvaloniaObject>(o), p);
             }
-            else if (instance != AvaloniaProperty.UnsetValue)
+            else if (instance != DependencyProperty.UnsetValue)
             {
-                var message = $"Could not find AvaloniaProperty '{propertyName}' on '{instance}'";
+                var message = $"Could not find DependencyProperty '{propertyName}' on '{instance}'";
                 var exception = new MissingMemberException(message);
                 return new PropertyError(new BindingNotification(exception, BindingErrorType.Error));
             }
@@ -56,9 +56,9 @@ namespace Avalonia.Data.Core.Plugins
             }
         }
 
-        private static AvaloniaProperty LookupProperty(AvaloniaObject o, string propertyName)
+        private static DependencyProperty LookupProperty(AvaloniaObject o, string propertyName)
         {
-            return AvaloniaPropertyRegistry.Instance.FindRegistered(o, propertyName);
+            return DependencyPropertyRegistry.Instance.FindRegistered(o, propertyName);
         }
 
         private static bool IsOfType(Type type, string typeName)
@@ -79,10 +79,10 @@ namespace Avalonia.Data.Core.Plugins
         private class Accessor : PropertyAccessorBase
         {
             private readonly WeakReference<AvaloniaObject> _reference;
-            private readonly AvaloniaProperty _property;
+            private readonly DependencyProperty _property;
             private IDisposable _subscription;
 
-            public Accessor(WeakReference<AvaloniaObject> reference, AvaloniaProperty property)
+            public Accessor(WeakReference<AvaloniaObject> reference, DependencyProperty property)
             {
                 Contract.Requires<ArgumentNullException>(reference != null);
                 Contract.Requires<ArgumentNullException>(property != null);
@@ -106,7 +106,7 @@ namespace Avalonia.Data.Core.Plugins
 
             public override bool SetValue(object value, BindingPriority priority)
             {
-                if (!_property.IsReadOnly)
+                if (!_property.ReadOnly)
                 {
                     Instance.SetValue(_property, value, priority);
                     return true;

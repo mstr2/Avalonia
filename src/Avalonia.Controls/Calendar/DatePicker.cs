@@ -155,51 +155,51 @@ namespace Avalonia.Controls
         public CalendarBlackoutDatesCollection BlackoutDates { get; private set; }
 
         public static readonly DirectProperty<DatePicker, DateTime> DisplayDateProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, DateTime>(
+            DependencyProperty.RegisterDirect<DatePicker, DateTime>(
                 nameof(DisplayDate),
                 o => o.DisplayDate,
                 (o, v) => o.DisplayDate = v);
         public static readonly DirectProperty<DatePicker, DateTime?> DisplayDateStartProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, DateTime?>(
+            DependencyProperty.RegisterDirect<DatePicker, DateTime?>(
                 nameof(DisplayDateStart),
                 o => o.DisplayDateStart,
                 (o, v) => o.DisplayDateStart = v);
         public static readonly DirectProperty<DatePicker, DateTime?> DisplayDateEndProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, DateTime?>(
+            DependencyProperty.RegisterDirect<DatePicker, DateTime?>(
                 nameof(DisplayDateEnd),
                 o => o.DisplayDateEnd,
                 (o, v) => o.DisplayDateEnd = v);
         public static readonly StyledProperty<DayOfWeek> FirstDayOfWeekProperty =
-            AvaloniaProperty.Register<DatePicker, DayOfWeek>(nameof(FirstDayOfWeek));
+            DependencyProperty.Register<DatePicker, DayOfWeek>(nameof(FirstDayOfWeek));
 
         public static readonly DirectProperty<DatePicker, bool> IsDropDownOpenProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, bool>(
+            DependencyProperty.RegisterDirect<DatePicker, bool>(
                 nameof(IsDropDownOpen),
                 o => o.IsDropDownOpen,
                 (o, v) => o.IsDropDownOpen = v);
 
         public static readonly StyledProperty<bool> IsTodayHighlightedProperty =
-            AvaloniaProperty.Register<DatePicker, bool>(nameof(IsTodayHighlighted));
+            DependencyProperty.Register<DatePicker, bool>(nameof(IsTodayHighlighted));
         public static readonly DirectProperty<DatePicker, DateTime?> SelectedDateProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, DateTime?>(
+            DependencyProperty.RegisterDirect<DatePicker, DateTime?>(
                 nameof(SelectedDate),
                 o => o.SelectedDate,
                 (o, v) => o.SelectedDate = v);
 
         public static readonly StyledProperty<DatePickerFormat> SelectedDateFormatProperty =
-            AvaloniaProperty.Register<DatePicker, DatePickerFormat>(
+            DependencyProperty.Register<DatePicker, DatePickerFormat>(
                 nameof(SelectedDateFormat),
                 defaultValue: DatePickerFormat.Short,
                 validate: ValidateSelectedDateFormat);
 
         public static readonly StyledProperty<string> CustomDateFormatStringProperty =
-            AvaloniaProperty.Register<DatePicker, string>(
+            DependencyProperty.Register<DatePicker, string>(
                 nameof(CustomDateFormatString),
                 defaultValue: "d",
                 validate: ValidateDateFormatString);
 
         public static readonly DirectProperty<DatePicker, string> TextProperty =
-            AvaloniaProperty.RegisterDirect<DatePicker, string>(
+            DependencyProperty.RegisterDirect<DatePicker, string>(
                 nameof(Text),
                 o => o.Text,
                 (o, v) => o.Text = v);
@@ -512,7 +512,7 @@ namespace Avalonia.Controls
             base.OnTemplateApplied(e);
         }
 
-        protected override void UpdateDataValidation(AvaloniaProperty property, BindingNotification status)
+        protected override void UpdateDataValidation(DependencyProperty property, BindingNotification status)
         {
             if (property == SelectedDateProperty)
             {
@@ -566,7 +566,7 @@ namespace Avalonia.Controls
                 }
             }
         }
-        private void OnDisplayDateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_calendar != null)
             {
@@ -582,7 +582,7 @@ namespace Avalonia.Controls
                 DisplayDateStart = _calendar.DisplayDateStart;
             }
         }
-        private void OnDisplayDateStartChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateStartChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_calendar != null)
             {
@@ -599,7 +599,7 @@ namespace Avalonia.Controls
             }
 
         }
-        private void OnDisplayDateEndChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateEndChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_calendar != null)
             {
@@ -607,7 +607,7 @@ namespace Avalonia.Controls
                 SetCalendarDisplayDateEnd(value);
             }
         }
-        private void OnIsDropDownOpenChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnIsDropDownOpenChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (bool)e.OldValue;
             var value = (bool)e.NewValue;
@@ -633,7 +633,7 @@ namespace Avalonia.Controls
                 }
             }
         }
-        private void OnSelectedDateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedDateChanged(DependencyPropertyChangedEventArgs e)
         {
             var addedDate = (DateTime?)e.NewValue;
             var removedDate = (DateTime?)e.OldValue;
@@ -701,18 +701,18 @@ namespace Avalonia.Controls
                 }
             }
         }
-        private void OnSelectedDateFormatChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedDateFormatChanged(DependencyPropertyChangedEventArgs e)
         {
             OnDateFormatChanged();
         }
-        private void OnCustomDateFormatStringChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnCustomDateFormatStringChanged(DependencyPropertyChangedEventArgs e)
         {
             if(SelectedDateFormat == DatePickerFormat.Custom)
             {
                 OnDateFormatChanged();
             }
         }
-        private void OnTextChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnTextChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldValue = (string)e.OldValue;
             var value = (string)e.NewValue;

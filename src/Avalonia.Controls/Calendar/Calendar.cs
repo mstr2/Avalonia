@@ -258,7 +258,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<DayOfWeek> FirstDayOfWeekProperty =
-            AvaloniaProperty.Register<Calendar, DayOfWeek>(
+            DependencyProperty.Register<Calendar, DayOfWeek>(
                     nameof(FirstDayOfWeek),
                     defaultValue: DateTimeHelper.GetCurrentDateFormat().FirstDayOfWeek);
         /// <summary>
@@ -277,7 +277,7 @@ namespace Avalonia.Controls
         /// FirstDayOfWeekProperty property changed handler.
         /// </summary>
         /// <param name="e">The DependencyPropertyChangedEventArgs.</param>
-        private void OnFirstDayOfWeekChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnFirstDayOfWeekChanged(DependencyPropertyChangedEventArgs e)
         {
 
             if (IsValidFirstDayOfWeek(e.NewValue))
@@ -308,7 +308,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<bool> IsTodayHighlightedProperty =
-            AvaloniaProperty.Register<Calendar, bool>(
+            DependencyProperty.Register<Calendar, bool>(
                 nameof(IsTodayHighlighted),
                 defaultValue: true);
         /// <summary>
@@ -328,7 +328,7 @@ namespace Avalonia.Controls
         /// IsTodayHighlightedProperty property changed handler.
         /// </summary>
         /// <param name="e">The DependencyPropertyChangedEventArgs.</param>
-        private void OnIsTodayHighlightedChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnIsTodayHighlightedChanged(DependencyPropertyChangedEventArgs e)
         {
             if (DisplayDate != null)
             {
@@ -342,7 +342,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<IBrush> HeaderBackgroundProperty =
-            AvaloniaProperty.Register<Calendar, IBrush>(nameof(HeaderBackground));
+            DependencyProperty.Register<Calendar, IBrush>(nameof(HeaderBackground));
         public IBrush HeaderBackground
         {
             get { return GetValue(HeaderBackgroundProperty); }
@@ -350,7 +350,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<CalendarMode> DisplayModeProperty =
-            AvaloniaProperty.Register<Calendar, CalendarMode>(
+            DependencyProperty.Register<Calendar, CalendarMode>(
                 nameof(DisplayMode),
                 validate: ValidateDisplayMode);
         /// <summary>
@@ -370,7 +370,7 @@ namespace Avalonia.Controls
         /// DisplayModeProperty property changed handler.
         /// </summary>
         /// <param name="e">The DependencyPropertyChangedEventArgs.</param>
-        private void OnDisplayModePropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayModePropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             CalendarMode mode = (CalendarMode)e.NewValue;
             CalendarMode oldMode = (CalendarMode)e.OldValue;
@@ -440,7 +440,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly StyledProperty<CalendarSelectionMode> SelectionModeProperty =
-            AvaloniaProperty.Register<Calendar, CalendarSelectionMode>(
+            DependencyProperty.Register<Calendar, CalendarSelectionMode>(
                 nameof(SelectionMode),
                 defaultValue: CalendarSelectionMode.SingleDate);
         /// <summary>
@@ -467,7 +467,7 @@ namespace Avalonia.Controls
             get { return GetValue(SelectionModeProperty); }
             set { SetValue(SelectionModeProperty, value); }
         }
-        private void OnSelectionModeChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectionModeChanged(DependencyPropertyChangedEventArgs e)
         {
             if (IsValidSelectionMode(e.NewValue))
             {
@@ -497,7 +497,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<Calendar, DateTime?> SelectedDateProperty =
-            AvaloniaProperty.RegisterDirect<Calendar, DateTime?>(
+            DependencyProperty.RegisterDirect<Calendar, DateTime?>(
                 nameof(SelectedDate),
                 o => o.SelectedDate,
                 (o, v) => o.SelectedDate = v,
@@ -530,7 +530,7 @@ namespace Avalonia.Controls
             get { return _selectedDate; }
             set { SetAndRaise(SelectedDateProperty, ref _selectedDate, value); }
         }
-        private void OnSelectedDateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedDateChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_displayDateIsChanging)
             {
@@ -725,7 +725,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<Calendar, DateTime> DisplayDateProperty =
-            AvaloniaProperty.RegisterDirect<Calendar, DateTime>(
+            DependencyProperty.RegisterDirect<Calendar, DateTime>(
                 nameof(DisplayDate),
                 o => o.DisplayDate,
                 (o, v) => o.DisplayDate = v,
@@ -762,7 +762,7 @@ namespace Avalonia.Controls
         }
         internal DateTime DisplayDateInternal { get; private set; }
 
-        private void OnDisplayDateChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateDisplayDate(this, (DateTime)e.NewValue, (DateTime)e.OldValue);
         }
@@ -794,7 +794,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<Calendar, DateTime?> DisplayDateStartProperty =
-            AvaloniaProperty.RegisterDirect<Calendar, DateTime?>(
+            DependencyProperty.RegisterDirect<Calendar, DateTime?>(
                 nameof(DisplayDateStart),
                 o => o.DisplayDateStart,
                 (o, v) => o.DisplayDateStart = v,
@@ -814,7 +814,7 @@ namespace Avalonia.Controls
             get { return _displayDateStart; }
             set { SetAndRaise(DisplayDateStartProperty, ref _displayDateStart, value); }
         }
-        private void OnDisplayDateStartChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateStartChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_displayDateIsChanging)
             {
@@ -903,7 +903,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<Calendar, DateTime?> DisplayDateEndProperty =
-            AvaloniaProperty.RegisterDirect<Calendar, DateTime?>(
+            DependencyProperty.RegisterDirect<Calendar, DateTime?>(
                 nameof(DisplayDateEnd),
                 o => o.DisplayDateEnd,
                 (o, v) => o.DisplayDateEnd = v,
@@ -925,7 +925,7 @@ namespace Avalonia.Controls
             set { SetAndRaise(DisplayDateEndProperty, ref _displayDateEnd, value); }
         }
 
-        private void OnDisplayDateEndChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnDisplayDateEndChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_displayDateIsChanging)
             {
@@ -2044,7 +2044,7 @@ namespace Avalonia.Controls
         ///  Called when the IsEnabled property changes.
         /// </summary>
         /// <param name="e">Property changed args.</param>
-        private void OnIsEnabledChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnIsEnabledChanged(DependencyPropertyChangedEventArgs e)
         {
             Debug.Assert(e.NewValue is bool, "NewValue should be a boolean!");
             bool isEnabled = (bool)e.NewValue;

@@ -55,7 +55,7 @@ namespace Avalonia.Data.Core
                                                         || e.InnerException is IndexOutOfRangeException
                                                         || e.InnerException is KeyNotFoundException)
             {
-                return AvaloniaProperty.UnsetValue;
+                return DependencyProperty.UnsetValue;
             }
         }
 

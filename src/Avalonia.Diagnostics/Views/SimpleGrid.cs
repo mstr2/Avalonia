@@ -24,13 +24,13 @@ namespace Avalonia.Diagnostics.Views
         /// Defines the Column attached property.
         /// </summary>
         public static readonly AttachedProperty<int> ColumnProperty =
-            AvaloniaProperty.RegisterAttached<SimpleGrid, Control, int>("Column");
+            DependencyProperty.RegisterAttached<SimpleGrid, Control, int>("Column");
 
         /// <summary>
         /// Defines the Row attached property.
         /// </summary>
         public static readonly AttachedProperty<int> RowProperty =
-            AvaloniaProperty.RegisterAttached<SimpleGrid, Control, int>("Row");
+            DependencyProperty.RegisterAttached<SimpleGrid, Control, int>("Row");
 
         /// <summary>
         /// Gets the value of the Column attached property for a control.

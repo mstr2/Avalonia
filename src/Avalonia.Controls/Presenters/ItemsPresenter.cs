@@ -18,7 +18,7 @@ namespace Avalonia.Controls.Presenters
         /// Defines the <see cref="VirtualizationMode"/> property.
         /// </summary>
         public static readonly StyledProperty<ItemVirtualizationMode> VirtualizationModeProperty =
-            AvaloniaProperty.Register<ItemsPresenter, ItemVirtualizationMode>(
+            DependencyProperty.Register<ItemsPresenter, ItemVirtualizationMode>(
                 nameof(VirtualizationMode),
                 defaultValue: ItemVirtualizationMode.None);
 
@@ -161,7 +161,7 @@ namespace Avalonia.Controls.Presenters
             return new Vector(Clamp(value.X, 0, maxX), Clamp(value.Y, 0, maxY));
         }
 
-        private void VirtualizationModeChanged(AvaloniaPropertyChangedEventArgs e)
+        private void VirtualizationModeChanged(DependencyPropertyChangedEventArgs e)
         {
             Virtualizer?.Dispose();
             Virtualizer = ItemVirtualizer.Create(this);

@@ -71,7 +71,7 @@ namespace Avalonia.Controls.Notifications
         /// Defines the <see cref="IsClosing"/> property.
         /// </summary>
         public static readonly DirectProperty<NotificationCard, bool> IsClosingProperty =
-            AvaloniaProperty.RegisterDirect<NotificationCard, bool>(nameof(IsClosing), o => o.IsClosing);
+            DependencyProperty.RegisterDirect<NotificationCard, bool>(nameof(IsClosing), o => o.IsClosing);
 
         /// <summary>
         /// Determines if the notification is closed.
@@ -86,7 +86,7 @@ namespace Avalonia.Controls.Notifications
         /// Defines the <see cref="IsClosed"/> property.
         /// </summary>
         public static readonly DirectProperty<NotificationCard, bool> IsClosedProperty =
-            AvaloniaProperty.RegisterDirect<NotificationCard, bool>(nameof(IsClosed), o => o.IsClosed, (o, v) => o.IsClosed = v);
+            DependencyProperty.RegisterDirect<NotificationCard, bool>(nameof(IsClosed), o => o.IsClosed, (o, v) => o.IsClosed = v);
 
         /// <summary>
         /// Defines the <see cref="NotificationClosed"/> event.
@@ -117,8 +117,8 @@ namespace Avalonia.Controls.Notifications
         /// <summary>
         /// Defines the CloseOnClick property.
         /// </summary>
-        public static readonly AvaloniaProperty CloseOnClickProperty =
-          AvaloniaProperty.RegisterAttached<Button, bool>("CloseOnClick", typeof(NotificationCard), validate: CloseOnClickChanged);
+        public static readonly DependencyProperty CloseOnClickProperty =
+          DependencyProperty.RegisterAttached<Button, bool>("CloseOnClick", typeof(NotificationCard), validate: CloseOnClickChanged);
 
         private static bool CloseOnClickChanged(Button button, bool value)
         {

@@ -33,10 +33,10 @@ namespace Avalonia
         /// Defines the <see cref="Bounds"/> property.
         /// </summary>
         public static readonly DirectProperty<Visual, Rect> BoundsProperty =
-            AvaloniaProperty.RegisterDirect<Visual, Rect>(nameof(Bounds), o => o.Bounds);
+            DependencyProperty.RegisterDirect<Visual, Rect>(nameof(Bounds), o => o.Bounds);
 
         public static readonly DirectProperty<Visual, TransformedBounds?> TransformedBoundsProperty =
-            AvaloniaProperty.RegisterDirect<Visual, TransformedBounds?>(
+            DependencyProperty.RegisterDirect<Visual, TransformedBounds?>(
                 nameof(TransformedBounds),
                 o => o.TransformedBounds);
 
@@ -44,55 +44,55 @@ namespace Avalonia
         /// Defines the <see cref="ClipToBounds"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> ClipToBoundsProperty =
-            AvaloniaProperty.Register<Visual, bool>(nameof(ClipToBounds));
+            DependencyProperty.Register<Visual, bool>(nameof(ClipToBounds));
 
         /// <summary>
         /// Defines the <see cref="Clip"/> property.
         /// </summary>
         public static readonly StyledProperty<Geometry> ClipProperty =
-            AvaloniaProperty.Register<Visual, Geometry>(nameof(Clip));
+            DependencyProperty.Register<Visual, Geometry>(nameof(Clip));
 
         /// <summary>
         /// Defines the <see cref="IsVisibleProperty"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsVisibleProperty =
-            AvaloniaProperty.Register<Visual, bool>(nameof(IsVisible), true);
+            DependencyProperty.Register<Visual, bool>(nameof(IsVisible), true);
 
         /// <summary>
         /// Defines the <see cref="Opacity"/> property.
         /// </summary>
         public static readonly StyledProperty<double> OpacityProperty =
-            AvaloniaProperty.Register<Visual, double>(nameof(Opacity), 1);
+            DependencyProperty.Register<Visual, double>(nameof(Opacity), 1);
 
         /// <summary>
         /// Defines the <see cref="OpacityMask"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> OpacityMaskProperty =
-            AvaloniaProperty.Register<Visual, IBrush>(nameof(OpacityMask));
+            DependencyProperty.Register<Visual, IBrush>(nameof(OpacityMask));
 
         /// <summary>
         /// Defines the <see cref="RenderTransform"/> property.
         /// </summary>
         public static readonly StyledProperty<Transform> RenderTransformProperty =
-            AvaloniaProperty.Register<Visual, Transform>(nameof(RenderTransform));
+            DependencyProperty.Register<Visual, Transform>(nameof(RenderTransform));
 
         /// <summary>
         /// Defines the <see cref="RenderTransformOrigin"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativePoint> RenderTransformOriginProperty =
-            AvaloniaProperty.Register<Visual, RelativePoint>(nameof(RenderTransformOrigin), defaultValue: RelativePoint.Center);
+            DependencyProperty.Register<Visual, RelativePoint>(nameof(RenderTransformOrigin), defaultValue: RelativePoint.Center);
 
         /// <summary>
         /// Defines the <see cref="IVisual.VisualParent"/> property.
         /// </summary>
         public static readonly DirectProperty<Visual, IVisual> VisualParentProperty =
-            AvaloniaProperty.RegisterDirect<Visual, IVisual>("VisualParent", o => o._visualParent);
+            DependencyProperty.RegisterDirect<Visual, IVisual>("VisualParent", o => o._visualParent);
 
         /// <summary>
         /// Defines the <see cref="ZIndex"/> property.
         /// </summary>
         public static readonly StyledProperty<int> ZIndexProperty =
-            AvaloniaProperty.Register<Visual, int>(nameof(ZIndex));
+            DependencyProperty.Register<Visual, int>(nameof(ZIndex));
 
         private Rect _bounds;
         private TransformedBounds? _transformedBounds;
@@ -303,7 +303,7 @@ namespace Avalonia
         /// FrameworkPropertyMetadata.AffectsRender flag.
         /// </remarks>
         [Obsolete("Use AffectsRender<T> and specify the control type.")]
-        protected static void AffectsRender(params AvaloniaProperty[] properties)
+        protected static void AffectsRender(params DependencyProperty[] properties)
         {
             AffectsRender<Visual>(properties);
         }
@@ -319,10 +319,10 @@ namespace Avalonia
         /// on the control which when changed should cause a redraw. This is similar to WPF's
         /// FrameworkPropertyMetadata.AffectsRender flag.
         /// </remarks>
-        protected static void AffectsRender<T>(params AvaloniaProperty[] properties)
+        protected static void AffectsRender<T>(params DependencyProperty[] properties)
             where T : Visual
         {
-            void Invalidate(AvaloniaPropertyChangedEventArgs e)
+            void Invalidate(DependencyPropertyChangedEventArgs e)
             {
                 if (e.Sender is T sender)
                 {
@@ -436,7 +436,7 @@ namespace Avalonia
             RaisePropertyChanged(VisualParentProperty, oldParent, newParent, BindingPriority.LocalValue);
         }
 
-        protected override sealed void LogBindingError(AvaloniaProperty property, Exception e)
+        protected override sealed void LogBindingError(DependencyProperty property, Exception e)
         {
             // Don't log a binding error unless the control is attached to a logical or visual tree.
             // In theory this should only need to check for logical tree attachment, but in practise
@@ -468,7 +468,7 @@ namespace Avalonia
         /// Called when a visual's <see cref="RenderTransform"/> changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void RenderTransformChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void RenderTransformChanged(DependencyPropertyChangedEventArgs e)
         {
             var sender = e.Sender as Visual;
 
@@ -512,7 +512,7 @@ namespace Avalonia
         /// Called when the <see cref="ZIndex"/> property changes on any control.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void ZIndexChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void ZIndexChanged(DependencyPropertyChangedEventArgs e)
         {
             var sender = e.Sender as IVisual;
             var parent = sender?.VisualParent;

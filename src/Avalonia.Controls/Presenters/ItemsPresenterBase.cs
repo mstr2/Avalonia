@@ -238,7 +238,7 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
-        private void TemplatedParentChanged(AvaloniaPropertyChangedEventArgs e)
+        private void TemplatedParentChanged(DependencyPropertyChangedEventArgs e)
         {
             (e.NewValue as IItemsPresenterHost)?.RegisterItemsPresenter(this);
         }

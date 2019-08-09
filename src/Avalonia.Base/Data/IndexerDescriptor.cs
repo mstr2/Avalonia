@@ -32,7 +32,7 @@ namespace Avalonia.Data
         /// <summary>
         /// Gets or sets the source property.
         /// </summary>
-        public AvaloniaProperty Property
+        public DependencyProperty Property
         {
             get;
             set;

@@ -15,7 +15,7 @@ using Avalonia.Utilities;
 namespace Avalonia
 {
     /// <summary>
-    /// An object with <see cref="AvaloniaProperty"/> support.
+    /// An object with <see cref="DependencyProperty"/> support.
     /// </summary>
     /// <remarks>
     /// This class is analogous to DependencyObject in WPF.
@@ -25,8 +25,8 @@ namespace Avalonia
         private IAvaloniaObject _inheritanceParent;
         private List<DirectBindingSubscription> _directBindings;
         private PropertyChangedEventHandler _inpcChanged;
-        private EventHandler<AvaloniaPropertyChangedEventArgs> _propertyChanged;
-        private EventHandler<AvaloniaPropertyChangedEventArgs> _inheritablePropertyChanged;
+        private EventHandler<DependencyPropertyChangedEventArgs> _propertyChanged;
+        private EventHandler<DependencyPropertyChangedEventArgs> _inheritablePropertyChanged;
         private ValueStore _values;
         private ValueStore Values => _values ?? (_values = new ValueStore(this));
 
@@ -36,20 +36,20 @@ namespace Avalonia
         public AvaloniaObject()
         {
             VerifyAccess();
-            AvaloniaPropertyRegistry.Instance.NotifyInitialized(this);
+            DependencyPropertyRegistry.Instance.NotifyInitialized(this);
         }
 
         /// <summary>
-        /// Raised when a <see cref="AvaloniaProperty"/> value changes on this object.
+        /// Raised when a <see cref="DependencyProperty"/> value changes on this object.
         /// </summary>
-        public event EventHandler<AvaloniaPropertyChangedEventArgs> PropertyChanged
+        public event EventHandler<DependencyPropertyChangedEventArgs> PropertyChanged
         {
             add { _propertyChanged += value; }
             remove { _propertyChanged -= value; }
         }
 
         /// <summary>
-        /// Raised when a <see cref="AvaloniaProperty"/> value changes on this object.
+        /// Raised when a <see cref="DependencyProperty"/> value changes on this object.
         /// </summary>
         event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
         {
@@ -58,16 +58,16 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Raised when an inheritable <see cref="AvaloniaProperty"/> value changes on this object.
+        /// Raised when an inheritable <see cref="DependencyProperty"/> value changes on this object.
         /// </summary>
-        event EventHandler<AvaloniaPropertyChangedEventArgs> IAvaloniaObject.InheritablePropertyChanged
+        event EventHandler<DependencyPropertyChangedEventArgs> IAvaloniaObject.InheritablePropertyChanged
         {
             add { _inheritablePropertyChanged += value; }
             remove { _inheritablePropertyChanged -= value; }
         }
 
         /// <summary>
-        /// Gets or sets the parent object that inherited <see cref="AvaloniaProperty"/> values
+        /// Gets or sets the parent object that inherited <see cref="DependencyProperty"/> values
         /// are inherited from.
         /// </summary>
         /// <value>
@@ -89,8 +89,8 @@ namespace Avalonia
                         _inheritanceParent.InheritablePropertyChanged -= ParentPropertyChanged;
                     }
 
-                    var properties = AvaloniaPropertyRegistry.Instance.GetRegistered(this)
-                        .Concat(AvaloniaPropertyRegistry.Instance.GetRegisteredAttached(this.GetType()));
+                    var properties = DependencyPropertyRegistry.Instance.GetRegistered(this)
+                        .Concat(DependencyPropertyRegistry.Instance.GetRegisteredAttached(this.GetType()));
                     var inherited = (from property in properties
                                      where property.Inherits
                                      select new
@@ -120,17 +120,17 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets or sets the value of a <see cref="AvaloniaProperty"/>.
+        /// Gets or sets the value of a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="property">The property.</param>
-        public object this[AvaloniaProperty property]
+        public object this[DependencyProperty property]
         {
             get { return GetValue(property); }
             set { SetValue(property, value); }
         }
 
         /// <summary>
-        /// Gets or sets a binding for a <see cref="AvaloniaProperty"/>.
+        /// Gets or sets a binding for a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="binding">The binding information.</param>
         public IBinding this[IndexerDescriptor binding]
@@ -152,15 +152,15 @@ namespace Avalonia
         public void VerifyAccess() => Dispatcher.UIThread.VerifyAccess();
 
         /// <summary>
-        /// Clears a <see cref="AvaloniaProperty"/>'s local value.
+        /// Clears a <see cref="DependencyProperty"/>'s local value.
         /// </summary>
         /// <param name="property">The property.</param>
-        public void ClearValue(AvaloniaProperty property)
+        public void ClearValue(DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
 
-            SetValue(property, AvaloniaProperty.UnsetValue);
+            SetValue(property, DependencyProperty.UnsetValue);
         }
 
         /// <summary>
@@ -195,11 +195,11 @@ namespace Avalonia
         public sealed override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
-        /// Gets a <see cref="AvaloniaProperty"/> value.
+        /// Gets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The value.</returns>
-        public object GetValue(AvaloniaProperty property)
+        public object GetValue(DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
@@ -212,7 +212,7 @@ namespace Avalonia
             {
                 var result = Values.GetValue(property);
 
-                if (result == AvaloniaProperty.UnsetValue)
+                if (result == DependencyProperty.UnsetValue)
                 {
                     result = GetDefaultValue(property);
                 }
@@ -226,24 +226,24 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets a <see cref="AvaloniaProperty"/> value.
+        /// Gets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
         /// <returns>The value.</returns>
-        public T GetValue<T>(AvaloniaProperty<T> property)
+        public T GetValue<T>(DependencyProperty<T> property)
         {
             Contract.Requires<ArgumentNullException>(property != null);
 
-            return (T)GetValue((AvaloniaProperty)property);
+            return (T)GetValue((DependencyProperty)property);
         }
 
         /// <summary>
-        /// Checks whether a <see cref="AvaloniaProperty"/> is animating.
+        /// Checks whether a <see cref="DependencyProperty"/> is animating.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>True if the property is animating, otherwise false.</returns>
-        public bool IsAnimating(AvaloniaProperty property)
+        public bool IsAnimating(DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
@@ -252,15 +252,15 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Checks whether a <see cref="AvaloniaProperty"/> is set on this object.
+        /// Checks whether a <see cref="DependencyProperty"/> is set on this object.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>True if the property is set, otherwise false.</returns>
         /// <remarks>
         /// Checks whether a value is assigned to the property, or that there is a binding to the
-        /// property that is producing a value other than <see cref="AvaloniaProperty.UnsetValue"/>.
+        /// property that is producing a value other than <see cref="DependencyProperty.UnsetValue"/>.
         /// </remarks>
-        public bool IsSet(AvaloniaProperty property)
+        public bool IsSet(DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
@@ -269,13 +269,13 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Sets a <see cref="AvaloniaProperty"/> value.
+        /// Sets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         public void SetValue(
-            AvaloniaProperty property,
+            DependencyProperty property,
             object value,
             BindingPriority priority = BindingPriority.LocalValue)
         {
@@ -293,24 +293,24 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Sets a <see cref="AvaloniaProperty"/> value.
+        /// Sets a <see cref="DependencyProperty"/> value.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         public void SetValue<T>(
-            AvaloniaProperty<T> property,
+            DependencyProperty<T> property,
             T value,
             BindingPriority priority = BindingPriority.LocalValue)
         {
             Contract.Requires<ArgumentNullException>(property != null);
 
-            SetValue((AvaloniaProperty)property, value, priority);
+            SetValue((DependencyProperty)property, value, priority);
         }
 
         /// <summary>
-        /// Binds a <see cref="AvaloniaProperty"/> to an observable.
+        /// Binds a <see cref="DependencyProperty"/> to an observable.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="source">The observable.</param>
@@ -319,7 +319,7 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         public IDisposable Bind(
-            AvaloniaProperty property,
+            DependencyProperty property,
             IObservable<object> source,
             BindingPriority priority = BindingPriority.LocalValue)
         {
@@ -332,7 +332,7 @@ namespace Avalonia
 
             if (property.IsDirect)
             {
-                if (property.IsReadOnly)
+                if (property.ReadOnly)
                 {
                     throw new ArgumentException($"The property {property.Name} is readonly.");
                 }
@@ -366,7 +366,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Binds a <see cref="AvaloniaProperty"/> to an observable.
+        /// Binds a <see cref="DependencyProperty"/> to an observable.
         /// </summary>
         /// <typeparam name="T">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
@@ -376,7 +376,7 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         public IDisposable Bind<T>(
-            AvaloniaProperty<T> property,
+            DependencyProperty<T> property,
             IObservable<T> source,
             BindingPriority priority = BindingPriority.LocalValue)
         {
@@ -389,18 +389,18 @@ namespace Avalonia
         /// Forces the specified property to be revalidated.
         /// </summary>
         /// <param name="property">The property.</param>
-        public void Revalidate(AvaloniaProperty property)
+        public void Revalidate(DependencyProperty property)
         {
             VerifyAccess();
             _values?.Revalidate(property);
         }
         
-        internal void PriorityValueChanged(AvaloniaProperty property, int priority, object oldValue, object newValue)
+        internal void PriorityValueChanged(DependencyProperty property, int priority, object oldValue, object newValue)
         {
-            oldValue = (oldValue == AvaloniaProperty.UnsetValue) ?
+            oldValue = (oldValue == DependencyProperty.UnsetValue) ?
                 GetDefaultValue(property) :
                 oldValue;
-            newValue = (newValue == AvaloniaProperty.UnsetValue) ?
+            newValue = (newValue == DependencyProperty.UnsetValue) ?
                 GetDefaultValue(property) :
                 newValue;
 
@@ -419,7 +419,7 @@ namespace Avalonia
             }
         }
         
-        internal void BindingNotificationReceived(AvaloniaProperty property, BindingNotification notification)
+        internal void BindingNotificationReceived(DependencyProperty property, BindingNotification notification)
         {
             LogIfError(property, notification);
             UpdateDataValidation(property, notification);
@@ -435,14 +435,14 @@ namespace Avalonia
         /// Gets all priority values set on the object.
         /// </summary>
         /// <returns>A collection of property/value tuples.</returns>
-        internal IDictionary<AvaloniaProperty, object> GetSetValues() => Values?.GetSetValues();
+        internal IDictionary<DependencyProperty, object> GetSetValues() => Values?.GetSetValues();
 
         /// <summary>
         /// Forces revalidation of properties when a property value changes.
         /// </summary>
         /// <param name="property">The property to that affects validation.</param>
         /// <param name="affected">The affected properties.</param>
-        protected static void AffectsValidation(AvaloniaProperty property, params AvaloniaProperty[] affected)
+        protected static void AffectsValidation(DependencyProperty property, params DependencyProperty[] affected)
         {
             property.Changed.Subscribe(e =>
             {
@@ -458,7 +458,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The property that the error occurred on.</param>
         /// <param name="e">The binding error.</param>
-        protected internal virtual void LogBindingError(AvaloniaProperty property, Exception e)
+        protected internal virtual void LogBindingError(DependencyProperty property, Exception e)
         {
             Logger.Log(
                 LogEventLevel.Warning,
@@ -477,7 +477,7 @@ namespace Avalonia
         /// <param name="property">The property.</param>
         /// <param name="status">The new validation status.</param>
         protected virtual void UpdateDataValidation(
-            AvaloniaProperty property,
+            DependencyProperty property,
             BindingNotification status)
         {
         }
@@ -486,7 +486,7 @@ namespace Avalonia
         /// Called when a avalonia property changes on the object.
         /// </summary>
         /// <param name="e">The event arguments.</param>
-        protected virtual void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        protected virtual void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
         }
 
@@ -498,7 +498,7 @@ namespace Avalonia
         /// <param name="newValue">The new property value.</param>
         /// <param name="priority">The priority of the binding that produced the value.</param>
         protected internal void RaisePropertyChanged(
-            AvaloniaProperty property,
+            DependencyProperty property,
             object oldValue,
             object newValue,
             BindingPriority priority = BindingPriority.LocalValue)
@@ -506,7 +506,7 @@ namespace Avalonia
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
 
-            AvaloniaPropertyChangedEventArgs e = new AvaloniaPropertyChangedEventArgs(
+            DependencyPropertyChangedEventArgs e = new DependencyPropertyChangedEventArgs(
                 this,
                 property,
                 oldValue,
@@ -550,7 +550,7 @@ namespace Avalonia
         /// <returns>
         /// True if the value changed, otherwise false.
         /// </returns>
-        protected bool SetAndRaise<T>(AvaloniaProperty<T> property, ref T field, T value)
+        protected bool SetAndRaise<T>(DependencyProperty<T> property, ref T field, T value)
         {
             VerifyAccess();
 
@@ -595,11 +595,11 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The default value.</returns>
-        private object GetDefaultValue(AvaloniaProperty property)
+        private object GetDefaultValue(DependencyProperty property)
         {
             if (property.Inherits && InheritanceParent is AvaloniaObject aobj)
                 return aobj.GetValue(property);
-            return ((IStyledPropertyAccessor) property).GetDefaultValue(GetType());
+            return ((IPropertyAccessor) property).GetDefaultValue(GetType());
         }
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
-        private void SetDirectValue(AvaloniaProperty property, object value)
+        private void SetDirectValue(DependencyProperty property, object value)
         {
             void Set()
             {
@@ -623,7 +623,7 @@ namespace Avalonia
                 {
                     var metadata = (IDirectPropertyMetadata)property.GetMetadata(GetType());
                     var accessor = (IDirectPropertyAccessor)GetRegistered(property);
-                    var finalValue = value == AvaloniaProperty.UnsetValue ?
+                    var finalValue = value == DependencyProperty.UnsetValue ?
                         metadata.UnsetValue : value;
 
                     LogPropertySet(property, value, BindingPriority.LocalValue);
@@ -653,7 +653,7 @@ namespace Avalonia
         /// <param name="property">The property.</param>
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
-        private void SetStyledValue(AvaloniaProperty property, object value, BindingPriority priority)
+        private void SetStyledValue(DependencyProperty property, object value, BindingPriority priority)
         {
             var notification = value as BindingNotification;
 
@@ -692,7 +692,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The registered property.</returns>
-        private AvaloniaProperty GetRegistered(AvaloniaProperty property)
+        private DependencyProperty GetRegistered(DependencyProperty property)
         {
             var direct = property as IDirectPropertyAccessor;
 
@@ -707,7 +707,7 @@ namespace Avalonia
                 return property;
             }
 
-            var result =  AvaloniaPropertyRegistry.Instance.GetRegistered(this)
+            var result =  DependencyPropertyRegistry.Instance.GetRegistered(this)
                 .FirstOrDefault(x => x == property);
 
             if (result == null)
@@ -726,7 +726,7 @@ namespace Avalonia
         /// <remarks>
         /// Checks for changes in an inherited property value.
         /// </remarks>
-        private void ParentPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        private void ParentPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             Contract.Requires<ArgumentNullException>(e != null);
 
@@ -752,7 +752,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The property being bound.</param>
         /// <param name="notification">The binding notification.</param>
-        private void LogIfError(AvaloniaProperty property, BindingNotification notification)
+        private void LogIfError(DependencyProperty property, BindingNotification notification)
         {
             if (notification.ErrorType == BindingErrorType.Error)
             {
@@ -776,7 +776,7 @@ namespace Avalonia
         /// <param name="property">The property.</param>
         /// <param name="value">The new value.</param>
         /// <param name="priority">The priority.</param>
-        private void LogPropertySet(AvaloniaProperty property, object value, BindingPriority priority)
+        private void LogPropertySet(DependencyProperty property, object value, BindingPriority priority)
         {
             Logger.Verbose(
                 LogArea.Property,
@@ -790,12 +790,12 @@ namespace Avalonia
         private class DirectBindingSubscription : IObserver<object>, IDisposable
         {
             readonly AvaloniaObject _owner;
-            readonly AvaloniaProperty _property;
+            readonly DependencyProperty _property;
             IDisposable _subscription;
 
             public DirectBindingSubscription(
                 AvaloniaObject owner,
-                AvaloniaProperty property,
+                DependencyProperty property,
                 IObservable<object> source)
             {
                 _owner = owner;

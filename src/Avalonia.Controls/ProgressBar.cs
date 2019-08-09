@@ -13,19 +13,19 @@ namespace Avalonia.Controls
     public class ProgressBar : RangeBase
     {
         public static readonly StyledProperty<bool> IsIndeterminateProperty =
-            AvaloniaProperty.Register<ProgressBar, bool>(nameof(IsIndeterminate));
+            DependencyProperty.Register<ProgressBar, bool>(nameof(IsIndeterminate));
 
         public static readonly StyledProperty<Orientation> OrientationProperty =
-            AvaloniaProperty.Register<ProgressBar, Orientation>(nameof(Orientation), Orientation.Horizontal);
+            DependencyProperty.Register<ProgressBar, Orientation>(nameof(Orientation), Orientation.Horizontal);
 
         private static readonly DirectProperty<ProgressBar, double> IndeterminateStartingOffsetProperty =
-            AvaloniaProperty.RegisterDirect<ProgressBar, double>(
+            DependencyProperty.RegisterDirect<ProgressBar, double>(
                 nameof(IndeterminateStartingOffset),
                 p => p.IndeterminateStartingOffset,
                 (p, o) => p.IndeterminateStartingOffset = o);
 
         private static readonly DirectProperty<ProgressBar, double> IndeterminateEndingOffsetProperty =
-            AvaloniaProperty.RegisterDirect<ProgressBar, double>(
+            DependencyProperty.RegisterDirect<ProgressBar, double>(
                 nameof(IndeterminateEndingOffset),
                 p => p.IndeterminateEndingOffset,
                 (p, o) => p.IndeterminateEndingOffset = o);
@@ -116,7 +116,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void UpdateIndicatorWhenPropChanged(AvaloniaPropertyChangedEventArgs e)
+        private void UpdateIndicatorWhenPropChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateIndicator(Bounds.Size);
         }

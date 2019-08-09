@@ -15,13 +15,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Source"/> property.
         /// </summary>
         public static readonly StyledProperty<IBitmap> SourceProperty =
-            AvaloniaProperty.Register<Image, IBitmap>(nameof(Source));
+            DependencyProperty.Register<Image, IBitmap>(nameof(Source));
 
         /// <summary>
         /// Defines the <see cref="Stretch"/> property.
         /// </summary>
         public static readonly StyledProperty<Stretch> StretchProperty =
-            AvaloniaProperty.Register<Image, Stretch>(nameof(Stretch), Stretch.Uniform);
+            DependencyProperty.Register<Image, Stretch>(nameof(Stretch), Stretch.Uniform);
 
         static Image()
         {

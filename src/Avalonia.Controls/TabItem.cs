@@ -56,7 +56,7 @@ namespace Avalonia.Controls
 
         internal TabControl ParentTabControl { get; set; }
 
-        private void UpdateHeader(AvaloniaPropertyChangedEventArgs obj)
+        private void UpdateHeader(DependencyPropertyChangedEventArgs obj)
         {
             if (Header == null)
             {
@@ -84,7 +84,7 @@ namespace Avalonia.Controls
             }          
         }
 
-        private void UpdateSelectedContent(AvaloniaPropertyChangedEventArgs e)
+        private void UpdateSelectedContent(DependencyPropertyChangedEventArgs e)
         {
             if (!IsSelected)
             {

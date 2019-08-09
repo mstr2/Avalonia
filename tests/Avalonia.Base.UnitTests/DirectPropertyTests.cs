@@ -17,7 +17,7 @@ namespace Avalonia.Base.UnitTests
 
             Class1.FooProperty.Initialized.Subscribe(x =>
             {
-                Assert.Equal(AvaloniaProperty.UnsetValue, x.OldValue);
+                Assert.Equal(DependencyProperty.UnsetValue, x.OldValue);
                 Assert.Equal("foo", x.NewValue);
                 Assert.Equal(BindingPriority.Unset, x.Priority);
                 invoked = true;
@@ -85,7 +85,7 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly DirectProperty<Class1, string> FooProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>(nameof(Foo), o => o.Foo, (o, v) => o.Foo = v);
+                DependencyProperty.RegisterDirect<Class1, string>(nameof(Foo), o => o.Foo, (o, v) => o.Foo = v);
 
             private string _foo = "foo";
 

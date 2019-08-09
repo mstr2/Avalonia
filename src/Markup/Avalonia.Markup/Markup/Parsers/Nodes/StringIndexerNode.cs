@@ -146,7 +146,7 @@ namespace Avalonia.Markup.Parsers.Nodes
 
                     if (!TypeUtilities.TryConvert(indexerParameters[i].ParameterType, Arguments[i], CultureInfo.InvariantCulture, out temp))
                     {
-                        return AvaloniaProperty.UnsetValue;
+                        return DependencyProperty.UnsetValue;
                     }
 
                     convertedObjectArray[i] = temp;
@@ -168,7 +168,7 @@ namespace Avalonia.Markup.Parsers.Nodes
                             return list[intArgs[0]];
                         }
 
-                        return AvaloniaProperty.UnsetValue;
+                        return DependencyProperty.UnsetValue;
                     }
                     else if (dictionary != null)
                     {
@@ -177,7 +177,7 @@ namespace Avalonia.Markup.Parsers.Nodes
                             return dictionary[convertedObjectArray[0]];
                         }
 
-                        return AvaloniaProperty.UnsetValue;
+                        return DependencyProperty.UnsetValue;
                     }
                     else
                     {
@@ -198,14 +198,14 @@ namespace Avalonia.Markup.Parsers.Nodes
                 return GetValueFromArray((Array)target);
             }
 
-            return AvaloniaProperty.UnsetValue;
+            return DependencyProperty.UnsetValue;
         }
 
         private object GetValueFromArray(Array array)
         {
             int[] intArgs;
             if (!ConvertArgumentsToInts(out intArgs))
-                return AvaloniaProperty.UnsetValue;
+                return DependencyProperty.UnsetValue;
             return GetValueFromArray(array, intArgs);
         }
 
@@ -215,7 +215,7 @@ namespace Avalonia.Markup.Parsers.Nodes
             {
                 return array.GetValue(indices);
             }
-            return AvaloniaProperty.UnsetValue;
+            return DependencyProperty.UnsetValue;
         }
 
         private bool ConvertArgumentsToInts(out int[] intArgs)

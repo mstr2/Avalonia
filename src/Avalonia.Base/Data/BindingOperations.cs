@@ -27,7 +27,7 @@ namespace Avalonia.Data
         /// <returns>An <see cref="IDisposable"/> which can be used to cancel the binding.</returns>
         public static IDisposable Apply(
             IAvaloniaObject target,
-            AvaloniaProperty property,
+            DependencyProperty property,
             InstancedBinding binding,
             object anchor)
         {
@@ -57,7 +57,7 @@ namespace Avalonia.Data
                     if (source != null)
                     {
                         return source
-                            .Where(x => BindingNotification.ExtractValue(x) != AvaloniaProperty.UnsetValue)
+                            .Where(x => BindingNotification.ExtractValue(x) != DependencyProperty.UnsetValue)
                             .Take(1)
                             .Subscribe(x => target.SetValue(property, x, binding.Priority));
                     }

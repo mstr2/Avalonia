@@ -16,25 +16,25 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Background"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> BackgroundProperty =
-            AvaloniaProperty.Register<Border, IBrush>(nameof(Background));
+            DependencyProperty.Register<Border, IBrush>(nameof(Background));
 
         /// <summary>
         /// Defines the <see cref="BorderBrush"/> property.
         /// </summary>
         public static readonly StyledProperty<IBrush> BorderBrushProperty =
-            AvaloniaProperty.Register<Border, IBrush>(nameof(BorderBrush));
+            DependencyProperty.Register<Border, IBrush>(nameof(BorderBrush));
 
         /// <summary>
         /// Defines the <see cref="BorderThickness"/> property.
         /// </summary>
         public static readonly StyledProperty<Thickness> BorderThicknessProperty =
-            AvaloniaProperty.Register<Border, Thickness>(nameof(BorderThickness));
+            DependencyProperty.Register<Border, Thickness>(nameof(BorderThickness));
 
         /// <summary>
         /// Defines the <see cref="CornerRadius"/> property.
         /// </summary>
         public static readonly StyledProperty<CornerRadius> CornerRadiusProperty =
-            AvaloniaProperty.Register<Border, CornerRadius>(nameof(CornerRadius));
+            DependencyProperty.Register<Border, CornerRadius>(nameof(CornerRadius));
 
         private readonly BorderRenderHelper _borderRenderHelper = new BorderRenderHelper();
 

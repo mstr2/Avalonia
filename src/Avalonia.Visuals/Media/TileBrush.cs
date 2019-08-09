@@ -45,37 +45,37 @@ namespace Avalonia.Media
         /// Defines the <see cref="AlignmentX"/> property.
         /// </summary>
         public static readonly StyledProperty<AlignmentX> AlignmentXProperty =
-            AvaloniaProperty.Register<TileBrush, AlignmentX>(nameof(AlignmentX), AlignmentX.Center);
+            DependencyProperty.Register<TileBrush, AlignmentX>(nameof(AlignmentX), AlignmentX.Center);
 
         /// <summary>
         /// Defines the <see cref="AlignmentY"/> property.
         /// </summary>
         public static readonly StyledProperty<AlignmentY> AlignmentYProperty =
-            AvaloniaProperty.Register<TileBrush, AlignmentY>(nameof(AlignmentY), AlignmentY.Center);
+            DependencyProperty.Register<TileBrush, AlignmentY>(nameof(AlignmentY), AlignmentY.Center);
 
         /// <summary>
         /// Defines the <see cref="DestinationRect"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativeRect> DestinationRectProperty =
-            AvaloniaProperty.Register<TileBrush, RelativeRect>(nameof(DestinationRect), RelativeRect.Fill);
+            DependencyProperty.Register<TileBrush, RelativeRect>(nameof(DestinationRect), RelativeRect.Fill);
 
         /// <summary>
         /// Defines the <see cref="SourceRect"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativeRect> SourceRectProperty =
-            AvaloniaProperty.Register<TileBrush, RelativeRect>(nameof(SourceRect), RelativeRect.Fill);
+            DependencyProperty.Register<TileBrush, RelativeRect>(nameof(SourceRect), RelativeRect.Fill);
 
         /// <summary>
         /// Defines the <see cref="Stretch"/> property.
         /// </summary>
         public static readonly StyledProperty<Stretch> StretchProperty =
-            AvaloniaProperty.Register<TileBrush, Stretch>(nameof(Stretch), Stretch.Uniform);
+            DependencyProperty.Register<TileBrush, Stretch>(nameof(Stretch), Stretch.Uniform);
 
         /// <summary>
         /// Defines the <see cref="TileMode"/> property.
         /// </summary>
         public static readonly StyledProperty<TileMode> TileModeProperty =
-            AvaloniaProperty.Register<TileBrush, TileMode>(nameof(TileMode));
+            DependencyProperty.Register<TileBrush, TileMode>(nameof(TileMode));
 
         static TileBrush()
         {

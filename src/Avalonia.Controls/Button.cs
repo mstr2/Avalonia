@@ -37,13 +37,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="ClickMode"/> property.
         /// </summary>
         public static readonly StyledProperty<ClickMode> ClickModeProperty =
-            AvaloniaProperty.Register<Button, ClickMode>(nameof(ClickMode));
+            DependencyProperty.Register<Button, ClickMode>(nameof(ClickMode));
 
         /// <summary>
         /// Defines the <see cref="Command"/> property.
         /// </summary>
         public static readonly DirectProperty<Button, ICommand> CommandProperty =
-            AvaloniaProperty.RegisterDirect<Button, ICommand>(nameof(Command),
+            DependencyProperty.RegisterDirect<Button, ICommand>(nameof(Command),
                 button => button.Command, (button, command) => button.Command = command, enableDataValidation: true);
 
         /// <summary>
@@ -56,13 +56,13 @@ namespace Avalonia.Controls
         /// Defines the <see cref="CommandParameter"/> property.
         /// </summary>
         public static readonly StyledProperty<object> CommandParameterProperty =
-            AvaloniaProperty.Register<Button, object>(nameof(CommandParameter));
+            DependencyProperty.Register<Button, object>(nameof(CommandParameter));
 
         /// <summary>
         /// Defines the <see cref="IsDefaultProperty"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsDefaultProperty =
-            AvaloniaProperty.Register<Button, bool>(nameof(IsDefault));
+            DependencyProperty.Register<Button, bool>(nameof(IsDefault));
 
         /// <summary>
         /// Defines the <see cref="Click"/> event.
@@ -71,7 +71,7 @@ namespace Avalonia.Controls
             RoutedEvent.Register<Button, RoutedEventArgs>(nameof(Click), RoutingStrategies.Bubble);
 
         public static readonly StyledProperty<bool> IsPressedProperty =
-            AvaloniaProperty.Register<Button, bool>(nameof(IsPressed));
+            DependencyProperty.Register<Button, bool>(nameof(IsPressed));
 
         private ICommand _command;
         private bool _commandCanExecute = true;
@@ -288,7 +288,7 @@ namespace Avalonia.Controls
             IsPressed = false;
         }
 
-        protected override void UpdateDataValidation(AvaloniaProperty property, BindingNotification status)
+        protected override void UpdateDataValidation(DependencyProperty property, BindingNotification status)
         {
             base.UpdateDataValidation(property, status);
             if (property == CommandProperty)
@@ -308,7 +308,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="Command"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void CommandChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void CommandChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is Button button)
             {
@@ -333,7 +333,7 @@ namespace Avalonia.Controls
         /// Called when the <see cref="IsDefault"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private static void IsDefaultChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void IsDefaultChanged(DependencyPropertyChangedEventArgs e)
         {
             var button = e.Sender as Button;
             var isDefault = (bool)e.NewValue;

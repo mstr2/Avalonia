@@ -39,10 +39,10 @@ namespace Avalonia.Data
             new BindingNotification(null);
 
         /// <summary>
-        /// A binding notification representing <see cref="AvaloniaProperty.UnsetValue"/>.
+        /// A binding notification representing <see cref="DependencyProperty.UnsetValue"/>.
         /// </summary>
         public static readonly BindingNotification UnsetValue =
-            new BindingNotification(AvaloniaProperty.UnsetValue);
+            new BindingNotification(DependencyProperty.UnsetValue);
 
         private object _value;
 
@@ -69,7 +69,7 @@ namespace Avalonia.Data
 
             Error = error;
             ErrorType = errorType;
-            _value = AvaloniaProperty.UnsetValue;
+            _value = DependencyProperty.UnsetValue;
         }
 
         /// <summary>
@@ -90,14 +90,14 @@ namespace Avalonia.Data
         /// </summary>
         /// <remarks>
         /// If this property is read when <see cref="HasValue"/> is false then it will return
-        /// <see cref="AvaloniaProperty.UnsetValue"/>.
+        /// <see cref="DependencyProperty.UnsetValue"/>.
         /// </remarks>
         public object Value => _value;
 
         /// <summary>
         /// Gets a value indicating whether <see cref="Value"/> should be pushed to the target.
         /// </summary>
-        public bool HasValue => _value != AvaloniaProperty.UnsetValue;
+        public bool HasValue => _value != DependencyProperty.UnsetValue;
 
         /// <summary>
         /// Gets the error that occurred on the source, if any.
@@ -225,7 +225,7 @@ namespace Avalonia.Data
         /// </summary>
         public void ClearValue()
         {
-            _value = AvaloniaProperty.UnsetValue;
+            _value = DependencyProperty.UnsetValue;
         }
 
         /// <summary>

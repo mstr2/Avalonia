@@ -195,7 +195,7 @@ namespace Avalonia.Styling.UnitTests
         private class Class1 : Control
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>(nameof(Foo), "foodefault");
+                DependencyProperty.Register<Class1, string>(nameof(Foo), "foodefault");
 
             public string Foo
             {

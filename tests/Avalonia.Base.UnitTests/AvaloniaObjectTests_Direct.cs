@@ -34,7 +34,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class1();
 
-            Assert.Equal("initial", target.GetValue((AvaloniaProperty)Class1.FooProperty));
+            Assert.Equal("initial", target.GetValue((DependencyProperty)Class1.FooProperty));
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class1();
 
-            target.SetValue((AvaloniaProperty)Class1.FooProperty, "newvalue");
+            target.SetValue((DependencyProperty)Class1.FooProperty, "newvalue");
 
             Assert.Equal("newvalue", target.Foo);
         }
@@ -70,7 +70,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class1();
 
-            target.SetValue((AvaloniaProperty)Class1.BazProperty, AvaloniaProperty.UnsetValue);
+            target.SetValue((DependencyProperty)Class1.BazProperty, DependencyProperty.UnsetValue);
 
             Assert.Equal(-1, target.Baz);
         }
@@ -155,7 +155,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
             var source = new Subject<string>();
 
-            var sub = target.Bind((AvaloniaProperty)Class1.FooProperty, source);
+            var sub = target.Bind((DependencyProperty)Class1.FooProperty, source);
 
             Assert.Equal("initial", target.Foo);
             source.OnNext("first");
@@ -175,12 +175,12 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
             var source = new Subject<object>();
 
-            var sub = target.Bind((AvaloniaProperty)Class1.BazProperty, source);
+            var sub = target.Bind((DependencyProperty)Class1.BazProperty, source);
 
             Assert.Equal(5, target.Baz);
             source.OnNext(6);
             Assert.Equal(6, target.Baz);
-            source.OnNext(AvaloniaProperty.UnsetValue);
+            source.OnNext(DependencyProperty.UnsetValue);
             Assert.Equal(-1, target.Baz);
         }
 
@@ -225,7 +225,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
 
             Assert.Throws<ArgumentException>(() =>
-                target.SetValue((AvaloniaProperty)Class1.BarProperty, "newvalue"));
+                target.SetValue((DependencyProperty)Class1.BarProperty, "newvalue"));
         }
 
         [Fact]
@@ -269,7 +269,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class2();
 
-            Assert.Equal("initial2", target.GetValue((AvaloniaProperty)Class1.FooProperty));
+            Assert.Equal("initial2", target.GetValue((DependencyProperty)Class1.FooProperty));
         }
 
         [Fact]
@@ -287,7 +287,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class2();
 
-            target.SetValue((AvaloniaProperty)Class1.FooProperty, "newvalue");
+            target.SetValue((DependencyProperty)Class1.FooProperty, "newvalue");
 
             Assert.Equal("newvalue", target.Foo);
         }
@@ -297,7 +297,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class2();
 
-            target.SetValue((AvaloniaProperty)Class1.FooProperty, AvaloniaProperty.UnsetValue);
+            target.SetValue((DependencyProperty)Class1.FooProperty, DependencyProperty.UnsetValue);
 
             Assert.Equal("unset", target.Foo);
         }
@@ -328,7 +328,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class2();
             var source = new Subject<string>();
 
-            var sub = target.Bind((AvaloniaProperty)Class1.FooProperty, source);
+            var sub = target.Bind((DependencyProperty)Class1.FooProperty, source);
 
             Assert.Equal("initial2", target.Foo);
             source.OnNext("first");
@@ -349,7 +349,7 @@ namespace Avalonia.Base.UnitTests
 
             Class1.FooProperty.Initialized.Subscribe(e =>
                 raised = e.Property == Class1.FooProperty &&
-                         e.OldValue == AvaloniaProperty.UnsetValue &&
+                         e.OldValue == DependencyProperty.UnsetValue &&
                          (string)e.NewValue == "initial" &&
                          e.Priority == BindingPriority.Unset);
 
@@ -505,24 +505,24 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly DirectProperty<Class1, string> FooProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>(
+                DependencyProperty.RegisterDirect<Class1, string>(
                     nameof(Foo),
                     o => o.Foo,
                     (o, v) => o.Foo = v,
                     unsetValue: "unset");
 
             public static readonly DirectProperty<Class1, string> BarProperty =
-                AvaloniaProperty.RegisterDirect<Class1, string>(nameof(Bar), o => o.Bar);
+                DependencyProperty.RegisterDirect<Class1, string>(nameof(Bar), o => o.Bar);
 
             public static readonly DirectProperty<Class1, int> BazProperty =
-                AvaloniaProperty.RegisterDirect<Class1, int>(
+                DependencyProperty.RegisterDirect<Class1, int>(
                     nameof(Baz),
                     o => o.Baz,
                     (o, v) => o.Baz = v,
                     unsetValue: -1);
 
             public static readonly DirectProperty<Class1, double> DoubleValueProperty =
-                AvaloniaProperty.RegisterDirect<Class1, double>(
+                DependencyProperty.RegisterDirect<Class1, double>(
                     nameof(DoubleValue),
                     o => o.DoubleValue,
                     (o, v) => o.DoubleValue = v);

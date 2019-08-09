@@ -71,7 +71,7 @@ namespace Avalonia.Data.Core
             ExpressionNode node,
             string description = null)
         {
-            if (root == AvaloniaProperty.UnsetValue)
+            if (root == DependencyProperty.UnsetValue)
             {
                 root = null;
             }
@@ -285,7 +285,7 @@ namespace Avalonia.Data.Core
             if (_root is IObservable<object> observable)
             {
                 _rootSubscription = observable.Subscribe(
-                    x => _node.Target = new WeakReference(x != AvaloniaProperty.UnsetValue ? x : null),
+                    x => _node.Target = new WeakReference(x != DependencyProperty.UnsetValue ? x : null),
                     x => PublishCompleted(),
                     () => PublishCompleted());
             }

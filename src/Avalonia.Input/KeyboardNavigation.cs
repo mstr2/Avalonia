@@ -16,7 +16,7 @@ namespace Avalonia.Input
         /// be navigated between the children of the container.
         /// </remarks>
         public static readonly AttachedProperty<KeyboardNavigationMode> TabNavigationProperty =
-            AvaloniaProperty.RegisterAttached<InputElement, KeyboardNavigationMode>(
+            DependencyProperty.RegisterAttached<InputElement, KeyboardNavigationMode>(
                 "TabNavigation",
                 typeof(KeyboardNavigation));
 
@@ -29,7 +29,7 @@ namespace Avalonia.Input
         /// defines to which child the focus should move.
         /// </remarks>
         public static readonly AttachedProperty<IInputElement> TabOnceActiveElementProperty =
-            AvaloniaProperty.RegisterAttached<InputElement, IInputElement>(
+            DependencyProperty.RegisterAttached<InputElement, IInputElement>(
                 "TabOnceActiveElement",
                 typeof(KeyboardNavigation));
 

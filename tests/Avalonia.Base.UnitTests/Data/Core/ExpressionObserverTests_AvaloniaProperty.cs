@@ -79,7 +79,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", defaultValue: "foo");
+                DependencyProperty.Register<Class1, string>("Foo", defaultValue: "foo");
 
             public string Foo { get => GetValue(FooProperty); set => SetValue(FooProperty, value); }
 

@@ -12,13 +12,13 @@ namespace Avalonia.Media
         /// Describes the <see cref="Offset"/> property.
         /// </summary>
         public static readonly StyledProperty<double> OffsetProperty =
-            AvaloniaProperty.Register<GradientStop, double>(nameof(Offset));
+            DependencyProperty.Register<GradientStop, double>(nameof(Offset));
 
         /// <summary>
         /// Describes the <see cref="Color"/> property.
         /// </summary>
         public static readonly StyledProperty<Color> ColorProperty =
-            AvaloniaProperty.Register<GradientStop, Color>(nameof(Color));
+            DependencyProperty.Register<GradientStop, Color>(nameof(Color));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GradientStop"/> class.

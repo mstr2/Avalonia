@@ -20,7 +20,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="IsExpanded"/> property.
         /// </summary>
         public static readonly DirectProperty<TreeViewItem, bool> IsExpandedProperty =
-            AvaloniaProperty.RegisterDirect<TreeViewItem, bool>(
+            DependencyProperty.RegisterDirect<TreeViewItem, bool>(
                 nameof(IsExpanded),
                 o => o.IsExpanded,
                 (o, v) => o.IsExpanded = v);
@@ -35,7 +35,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Level"/> property.
         /// </summary>
         public static readonly DirectProperty<TreeViewItem, int> LevelProperty =
-            AvaloniaProperty.RegisterDirect<TreeViewItem, int>(
+            DependencyProperty.RegisterDirect<TreeViewItem, int>(
                 nameof(Level), o => o.Level);
 
         private static readonly ITemplate<IPanel> DefaultPanel =

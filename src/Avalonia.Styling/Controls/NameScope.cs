@@ -18,7 +18,7 @@ namespace Avalonia.Controls
         /// Defines the NameScope attached property.
         /// </summary>
         public static readonly AttachedProperty<INameScope> NameScopeProperty =
-            AvaloniaProperty.RegisterAttached<NameScope, StyledElement, INameScope>("NameScope");
+            DependencyProperty.RegisterAttached<NameScope, StyledElement, INameScope>("NameScope");
 
         /// <inheritdoc/>
         public bool IsCompleted { get; private set; }

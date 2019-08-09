@@ -30,7 +30,7 @@ namespace Avalonia
         /// Defines the <see cref="DataContext"/> property.
         /// </summary>
         public static readonly StyledProperty<object> DataContextProperty =
-            AvaloniaProperty.Register<StyledElement, object>(
+            DependencyProperty.Register<StyledElement, object>(
                 nameof(DataContext),
                 inherits: true,
                 notifying: DataContextNotifying);
@@ -39,19 +39,19 @@ namespace Avalonia
         /// Defines the <see cref="Name"/> property.
         /// </summary>
         public static readonly DirectProperty<StyledElement, string> NameProperty =
-            AvaloniaProperty.RegisterDirect<StyledElement, string>(nameof(Name), o => o.Name, (o, v) => o.Name = v);
+            DependencyProperty.RegisterDirect<StyledElement, string>(nameof(Name), o => o.Name, (o, v) => o.Name = v);
         
         /// <summary>
         /// Defines the <see cref="Parent"/> property.
         /// </summary>
         public static readonly DirectProperty<StyledElement, IStyledElement> ParentProperty =
-            AvaloniaProperty.RegisterDirect<StyledElement, IStyledElement>(nameof(Parent), o => o.Parent);
+            DependencyProperty.RegisterDirect<StyledElement, IStyledElement>(nameof(Parent), o => o.Parent);
 
         /// <summary>
         /// Defines the <see cref="TemplatedParent"/> property.
         /// </summary>
         public static readonly DirectProperty<StyledElement, ITemplatedControl> TemplatedParentProperty =
-            AvaloniaProperty.RegisterDirect<StyledElement, ITemplatedControl>(
+            DependencyProperty.RegisterDirect<StyledElement, ITemplatedControl>(
                 nameof(TemplatedParent),
                 o => o.TemplatedParent,
                 (o ,v) => o.TemplatedParent = v);
@@ -497,7 +497,7 @@ namespace Avalonia
         /// <param name="property">The property.</param>
         /// <param name="className">The pseudo-class.</param>
         [Obsolete("Use PseudoClass<TOwner> and specify the control type.")]
-        protected static void PseudoClass(AvaloniaProperty<bool> property, string className)
+        protected static void PseudoClass(DependencyProperty<bool> property, string className)
         {
             PseudoClass<StyledElement>(property, className);
         }
@@ -508,7 +508,7 @@ namespace Avalonia
         /// <typeparam name="TOwner">The type to apply the pseudo-class to.</typeparam>
         /// <param name="property">The property.</param>
         /// <param name="className">The pseudo-class.</param>
-        protected static void PseudoClass<TOwner>(AvaloniaProperty<bool> property, string className)
+        protected static void PseudoClass<TOwner>(DependencyProperty<bool> property, string className)
             where TOwner : class, IStyledElement
         {
             PseudoClass<TOwner, bool>(property, x => x, className);
@@ -523,7 +523,7 @@ namespace Avalonia
         /// <param name="className">The pseudo-class.</param>
         [Obsolete("Use PseudoClass<TOwner, TProperty> and specify the control type.")]
         protected static void PseudoClass<TProperty>(
-            AvaloniaProperty<TProperty> property,
+            DependencyProperty<TProperty> property,
             Func<TProperty, bool> selector,
             string className)
         {
@@ -539,7 +539,7 @@ namespace Avalonia
         /// <param name="selector">Returns a boolean value based on the property value.</param>
         /// <param name="className">The pseudo-class.</param>
         protected static void PseudoClass<TOwner, TProperty>(
-            AvaloniaProperty<TProperty> property,
+            DependencyProperty<TProperty> property,
             Func<TProperty, bool> selector,
             string className)
                 where TOwner : class, IStyledElement
@@ -753,7 +753,7 @@ namespace Avalonia
             }
         }
 
-        private void OnDataContextChangedCore(AvaloniaPropertyChangedEventArgs e)
+        private void OnDataContextChangedCore(DependencyPropertyChangedEventArgs e)
         {
             OnDataContextChanged(EventArgs.Empty);
         }

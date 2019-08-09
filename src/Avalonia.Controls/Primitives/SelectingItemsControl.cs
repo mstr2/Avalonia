@@ -43,7 +43,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="AutoScrollToSelectedItem"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> AutoScrollToSelectedItemProperty =
-            AvaloniaProperty.Register<SelectingItemsControl, bool>(
+            DependencyProperty.Register<SelectingItemsControl, bool>(
                 nameof(AutoScrollToSelectedItem),
                 defaultValue: true);
 
@@ -51,7 +51,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="SelectedIndex"/> property.
         /// </summary>
         public static readonly DirectProperty<SelectingItemsControl, int> SelectedIndexProperty =
-            AvaloniaProperty.RegisterDirect<SelectingItemsControl, int>(
+            DependencyProperty.RegisterDirect<SelectingItemsControl, int>(
                 nameof(SelectedIndex),
                 o => o.SelectedIndex,
                 (o, v) => o.SelectedIndex = v,
@@ -62,7 +62,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="SelectedItem"/> property.
         /// </summary>
         public static readonly DirectProperty<SelectingItemsControl, object> SelectedItemProperty =
-            AvaloniaProperty.RegisterDirect<SelectingItemsControl, object>(
+            DependencyProperty.RegisterDirect<SelectingItemsControl, object>(
                 nameof(SelectedItem),
                 o => o.SelectedItem,
                 (o, v) => o.SelectedItem = v,
@@ -72,7 +72,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="SelectedItems"/> property.
         /// </summary>
         protected static readonly DirectProperty<SelectingItemsControl, IList> SelectedItemsProperty =
-            AvaloniaProperty.RegisterDirect<SelectingItemsControl, IList>(
+            DependencyProperty.RegisterDirect<SelectingItemsControl, IList>(
                 nameof(SelectedItems),
                 o => o.SelectedItems,
                 (o, v) => o.SelectedItems = v);
@@ -81,7 +81,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="SelectionMode"/> property.
         /// </summary>
         protected static readonly StyledProperty<SelectionMode> SelectionModeProperty =
-            AvaloniaProperty.Register<SelectingItemsControl, SelectionMode>(
+            DependencyProperty.Register<SelectingItemsControl, SelectionMode>(
                 nameof(SelectionMode));
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Avalonia.Controls.Primitives
         }
 
         /// <inheritdoc/>
-        protected override void ItemsChanged(AvaloniaPropertyChangedEventArgs e)
+        protected override void ItemsChanged(DependencyPropertyChangedEventArgs e)
         {
             base.ItemsChanged(e);
 

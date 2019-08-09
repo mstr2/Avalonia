@@ -14,11 +14,11 @@ namespace Avalonia.Styling
     internal class PropertyEqualsSelector : Selector
     {
         private readonly Selector _previous;
-        private readonly AvaloniaProperty _property;
+        private readonly DependencyProperty _property;
         private readonly object _value;
         private string _selectorString;
 
-        public PropertyEqualsSelector(Selector previous, AvaloniaProperty property, object value)
+        public PropertyEqualsSelector(Selector previous, DependencyProperty property, object value)
         {
             Contract.Requires<ArgumentNullException>(property != null);
 

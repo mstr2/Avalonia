@@ -97,7 +97,7 @@ namespace Avalonia.Platform
             {
                 if (_lastRoot is InputElement ieLast)
                 {
-                    if (_originalCursor == AvaloniaProperty.UnsetValue)
+                    if (_originalCursor == DependencyProperty.UnsetValue)
                         ieLast.ClearValue(InputElement.CursorProperty);
                     else
                         ieLast.Cursor = _originalCursor as Cursor;
@@ -106,7 +106,7 @@ namespace Avalonia.Platform
                 if (root is InputElement ieNew)
                 {
                     if (!ieNew.IsSet(InputElement.CursorProperty))
-                        _originalCursor = AvaloniaProperty.UnsetValue;
+                        _originalCursor = DependencyProperty.UnsetValue;
                     else
                         _originalCursor = root.Cursor;
                 }

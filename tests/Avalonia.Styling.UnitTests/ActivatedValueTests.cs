@@ -24,7 +24,7 @@ namespace Avalonia.Styling.UnitTests
             activator.OnNext(true);
             activator.OnNext(false);
 
-            Assert.Equal(new[] { AvaloniaProperty.UnsetValue, 1, AvaloniaProperty.UnsetValue }, result);
+            Assert.Equal(new[] { DependencyProperty.UnsetValue, 1, DependencyProperty.UnsetValue }, result);
         }
 
         [Fact]

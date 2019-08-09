@@ -35,8 +35,8 @@ namespace Avalonia.Benchmarks.Base
 
         class Class1 : AvaloniaObject
         {
-            public static readonly AvaloniaProperty<int> IntProperty =
-                AvaloniaProperty.Register<Class1, int>("Int");
+            public static readonly DependencyProperty<int> IntProperty =
+                DependencyProperty.Register<Class1, int>("Int");
         }
     }
 }

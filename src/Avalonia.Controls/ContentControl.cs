@@ -19,25 +19,25 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Content"/> property.
         /// </summary>
         public static readonly StyledProperty<object> ContentProperty =
-            AvaloniaProperty.Register<ContentControl, object>(nameof(Content));
+            DependencyProperty.Register<ContentControl, object>(nameof(Content));
 
         /// <summary>
         /// Defines the <see cref="ContentTemplate"/> property.
         /// </summary>
         public static readonly StyledProperty<IDataTemplate> ContentTemplateProperty =
-            AvaloniaProperty.Register<ContentControl, IDataTemplate>(nameof(ContentTemplate));
+            DependencyProperty.Register<ContentControl, IDataTemplate>(nameof(ContentTemplate));
 
         /// <summary>
         /// Defines the <see cref="HorizontalContentAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<HorizontalAlignment> HorizontalContentAlignmentProperty =
-            AvaloniaProperty.Register<ContentControl, HorizontalAlignment>(nameof(HorizontalContentAlignment));
+            DependencyProperty.Register<ContentControl, HorizontalAlignment>(nameof(HorizontalContentAlignment));
 
         /// <summary>
         /// Defines the <see cref="VerticalContentAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<VerticalAlignment> VerticalContentAlignmentProperty =
-            AvaloniaProperty.Register<ContentControl, VerticalAlignment>(nameof(VerticalContentAlignment));
+            DependencyProperty.Register<ContentControl, VerticalAlignment>(nameof(VerticalContentAlignment));
 
         /// <summary>
         /// Initializes static members of the <see cref="ContentControl"/> class.

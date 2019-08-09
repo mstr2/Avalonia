@@ -25,7 +25,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="Scroll"/> property.
         /// </summary>
         public static readonly DirectProperty<ListBox, IScrollable> ScrollProperty =
-            AvaloniaProperty.RegisterDirect<ListBox, IScrollable>(nameof(Scroll), o => o.Scroll);
+            DependencyProperty.RegisterDirect<ListBox, IScrollable>(nameof(Scroll), o => o.Scroll);
 
         /// <summary>
         /// Defines the <see cref="SelectedItems"/> property.

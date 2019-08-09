@@ -28,7 +28,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets an observable for a <see cref="AvaloniaProperty"/>.
+        /// Gets an observable for a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="o">The object.</param>
         /// <param name="property">The property.</param>
@@ -39,7 +39,7 @@ namespace Avalonia
         /// <remarks>
         /// The subscription to <paramref name="o"/> is created using a weak reference.
         /// </remarks>
-        public static IObservable<object> GetObservable(this IAvaloniaObject o, AvaloniaProperty property)
+        public static IObservable<object> GetObservable(this IAvaloniaObject o, DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(o != null);
             Contract.Requires<ArgumentNullException>(property != null);
@@ -48,7 +48,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets an observable for a <see cref="AvaloniaProperty"/>.
+        /// Gets an observable for a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="o">The object.</param>
         /// <typeparam name="T">The property type.</typeparam>
@@ -60,7 +60,7 @@ namespace Avalonia
         /// <remarks>
         /// The subscription to <paramref name="o"/> is created using a weak reference.
         /// </remarks>
-        public static IObservable<T> GetObservable<T>(this IAvaloniaObject o, AvaloniaProperty<T> property)
+        public static IObservable<T> GetObservable<T>(this IAvaloniaObject o, DependencyProperty<T> property)
         {
             Contract.Requires<ArgumentNullException>(o != null);
             Contract.Requires<ArgumentNullException>(property != null);
@@ -70,7 +70,7 @@ namespace Avalonia
 
         /// <summary>
         /// Gets an observable that listens for property changed events for an
-        /// <see cref="AvaloniaProperty"/>.
+        /// <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="o">The object.</param>
         /// <param name="property">The property.</param>
@@ -79,9 +79,9 @@ namespace Avalonia
         /// each time a <see cref="IAvaloniaObject.PropertyChanged"/> event is raised
         /// for the specified property.
         /// </returns>
-        public static IObservable<AvaloniaPropertyChangedEventArgs> GetPropertyChangedObservable(
+        public static IObservable<DependencyPropertyChangedEventArgs> GetPropertyChangedObservable(
             this IAvaloniaObject o, 
-            AvaloniaProperty property)
+            DependencyProperty property)
         {
             Contract.Requires<ArgumentNullException>(o != null);
             Contract.Requires<ArgumentNullException>(property != null);
@@ -90,7 +90,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets a subject for a <see cref="AvaloniaProperty"/>.
+        /// Gets a subject for a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <param name="o">The object.</param>
         /// <param name="property">The property.</param>
@@ -103,7 +103,7 @@ namespace Avalonia
         /// </returns>
         public static ISubject<object> GetSubject(
             this IAvaloniaObject o,
-            AvaloniaProperty property,
+            DependencyProperty property,
             BindingPriority priority = BindingPriority.LocalValue)
         {
             return Subject.Create<object>(
@@ -112,7 +112,7 @@ namespace Avalonia
         }
 
         /// <summary>
-        /// Gets a subject for a <see cref="AvaloniaProperty"/>.
+        /// Gets a subject for a <see cref="DependencyProperty"/>.
         /// </summary>
         /// <typeparam name="T">The property type.</typeparam>
         /// <param name="o">The object.</param>
@@ -126,7 +126,7 @@ namespace Avalonia
         /// </returns>
         public static ISubject<T> GetSubject<T>(
             this IAvaloniaObject o,
-            AvaloniaProperty<T> property,
+            DependencyProperty<T> property,
             BindingPriority priority = BindingPriority.LocalValue)
         {
             return Subject.Create<T>(
@@ -149,7 +149,7 @@ namespace Avalonia
         /// <returns>An <see cref="IDisposable"/> which can be used to cancel the binding.</returns>
         public static IDisposable Bind(
             this IAvaloniaObject target,
-            AvaloniaProperty property,
+            DependencyProperty property,
             IBinding binding,
             object anchor = null)
         {
@@ -186,8 +186,8 @@ namespace Avalonia
         /// </param>
         /// <returns>A disposable that can be used to terminate the subscription.</returns>
         public static IDisposable AddClassHandler<TTarget>(
-            this IObservable<AvaloniaPropertyChangedEventArgs> observable,
-            Action<TTarget, AvaloniaPropertyChangedEventArgs> action)
+            this IObservable<DependencyPropertyChangedEventArgs> observable,
+            Action<TTarget, DependencyPropertyChangedEventArgs> action)
             where TTarget : AvaloniaObject
         {
             return observable.Subscribe(e =>
@@ -208,8 +208,8 @@ namespace Avalonia
         /// <param name="handler">Given a TTarget, returns the handler.</param>
         /// <returns>A disposable that can be used to terminate the subscription.</returns>
         public static IDisposable AddClassHandler<TTarget>(
-            this IObservable<AvaloniaPropertyChangedEventArgs> observable,
-            Func<TTarget, Action<AvaloniaPropertyChangedEventArgs>> handler)
+            this IObservable<DependencyPropertyChangedEventArgs> observable,
+            Func<TTarget, Action<DependencyPropertyChangedEventArgs>> handler)
             where TTarget : class
         {
             return observable.Subscribe(e => SubscribeAdapter(e, handler));
@@ -221,21 +221,21 @@ namespace Avalonia
         /// <param name="o">The object.</param>
         /// <param name="property">The property</param>
         /// <returns>The description.</returns>
-        private static string GetDescription(IAvaloniaObject o, AvaloniaProperty property)
+        private static string GetDescription(IAvaloniaObject o, DependencyProperty property)
         {
             return $"{o.GetType().Name}.{property.Name}";
         }
 
         /// <summary>
-        /// Observer method for <see cref="AddClassHandler{TTarget}(IObservable{AvaloniaPropertyChangedEventArgs},
-        /// Func{TTarget, Action{AvaloniaPropertyChangedEventArgs}})"/>.
+        /// Observer method for <see cref="AddClassHandler{TTarget}(IObservable{DependencyPropertyChangedEventArgs},
+        /// Func{TTarget, Action{DependencyPropertyChangedEventArgs}})"/>.
         /// </summary>
         /// <typeparam name="TTarget">The sender type to accept.</typeparam>
         /// <param name="e">The event args.</param>
         /// <param name="handler">Given a TTarget, returns the handler.</param>
         private static void SubscribeAdapter<TTarget>(
-            AvaloniaPropertyChangedEventArgs e,
-            Func<TTarget, Action<AvaloniaPropertyChangedEventArgs>> handler)
+            DependencyPropertyChangedEventArgs e,
+            Func<TTarget, Action<DependencyPropertyChangedEventArgs>> handler)
             where TTarget : class
         {
             var target = e.Sender as TTarget;
@@ -257,7 +257,7 @@ namespace Avalonia
 
             public InstancedBinding Initiate(
                 IAvaloniaObject target,
-                AvaloniaProperty targetProperty,
+                DependencyProperty targetProperty,
                 object anchor = null,
                 bool enableDataValidation = false)
             {

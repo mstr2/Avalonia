@@ -11,7 +11,7 @@ namespace Avalonia.Data.Core
     public class PropertyAccessorNode : SettableNode
     {
         private readonly bool _enableValidation;
-        private IPropertyAccessor _accessor;
+        private Plugins.IPropertyAccessor _accessor;
 
         public PropertyAccessorNode(string propertyName, bool enableValidation)
         {

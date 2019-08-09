@@ -9,7 +9,7 @@ namespace Avalonia
     public interface IDirectPropertyMetadata
     {
         /// <summary>
-        /// Gets the to use when the property is set to <see cref="AvaloniaProperty.UnsetValue"/>.
+        /// Gets the to use when the property is set to <see cref="DependencyProperty.UnsetValue"/>.
         /// </summary>
         object UnsetValue { get; }
 

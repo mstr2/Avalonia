@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 namespace Avalonia.Animation
 {
     /// <summary>
-    /// Transition class that handles <see cref="AvaloniaProperty"/> with <see cref="double"/> types.
+    /// Transition class that handles <see cref="DependencyProperty"/> with <see cref="double"/> types.
     /// </summary>  
     public class DoubleTransition : Transition<double>
     {

@@ -9,17 +9,17 @@ namespace Avalonia.Media
         /// Defines the <see cref="Point1"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> Point1Property
-                        = AvaloniaProperty.Register<BezierSegment, Point>(nameof(Point1));
+                        = DependencyProperty.Register<BezierSegment, Point>(nameof(Point1));
         /// <summary>
         /// Defines the <see cref="Point2"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> Point2Property
-                        = AvaloniaProperty.Register<BezierSegment, Point>(nameof(Point2));
+                        = DependencyProperty.Register<BezierSegment, Point>(nameof(Point2));
         /// <summary>
         /// Defines the <see cref="Point3"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> Point3Property
-                        = AvaloniaProperty.Register<BezierSegment, Point>(nameof(Point3));
+                        = DependencyProperty.Register<BezierSegment, Point>(nameof(Point3));
 
         /// <summary>
         /// Gets or sets the point1.

@@ -134,10 +134,10 @@ namespace Avalonia.Base.UnitTests
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<string> FooProperty =
-                AvaloniaProperty.Register<Class1, string>("Foo", "foodefault");
+                DependencyProperty.Register<Class1, string>("Foo", "foodefault");
 
             public static readonly StyledProperty<string> BazProperty =
-                AvaloniaProperty.Register<Class1, string>("Baz", "bazdefault", true);
+                DependencyProperty.Register<Class1, string>("Baz", "bazdefault", true);
         }
 
         private class Class2 : Class1
@@ -157,7 +157,7 @@ namespace Avalonia.Base.UnitTests
         private class AttachedOwner : AvaloniaObject
         {
             public static readonly AttachedProperty<string> AttachedProperty =
-                AvaloniaProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached", inherits: true);
+                DependencyProperty.RegisterAttached<AttachedOwner, Class1, string>("Attached", inherits: true);
         }
     }
 }

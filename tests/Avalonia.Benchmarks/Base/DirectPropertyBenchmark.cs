@@ -32,7 +32,7 @@ namespace Avalonia.Benchmarks.Base
             private int _intValue;
 
             public static readonly DirectProperty<DirectClass, int> IntValueProperty =
-                AvaloniaProperty.RegisterDirect<DirectClass, int>(nameof(IntValue),
+                DependencyProperty.RegisterDirect<DirectClass, int>(nameof(IntValue),
                     o => o.IntValue,
                     (o, v) => o.IntValue = v);
 

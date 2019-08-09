@@ -104,7 +104,7 @@ namespace Avalonia.Controls
             return element;
         } 
 
-        private static ICellEditBinding BindEditingElement(IAvaloniaObject target, AvaloniaProperty property, IBinding binding)
+        private static ICellEditBinding BindEditingElement(IAvaloniaObject target, DependencyProperty property, IBinding binding)
         {
             var result = binding.Initiate(target, property, enableDataValidation: true); 
 
@@ -127,7 +127,7 @@ namespace Avalonia.Controls
 
         protected abstract IControl GenerateEditingElementDirect(DataGridCell cell, object dataItem); 
 
-        internal AvaloniaProperty BindingTarget { get; set; } 
+        internal DependencyProperty BindingTarget { get; set; } 
 
         internal void SetHeaderFromBinding()
         {

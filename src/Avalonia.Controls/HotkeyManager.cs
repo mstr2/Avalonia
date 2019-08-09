@@ -8,7 +8,7 @@ namespace Avalonia.Controls
     public class HotKeyManager
     {
         public static readonly AttachedProperty<KeyGesture> HotKeyProperty
-            = AvaloniaProperty.RegisterAttached<Control, KeyGesture>("HotKey", typeof(HotKeyManager));
+            = DependencyProperty.RegisterAttached<Control, KeyGesture>("HotKey", typeof(HotKeyManager));
 
         class HotkeyCommandWrapper : ICommand
         {

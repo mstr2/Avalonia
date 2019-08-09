@@ -19,13 +19,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="SpreadMethod"/> property.
         /// </summary>
         public static readonly StyledProperty<GradientSpreadMethod> SpreadMethodProperty =
-            AvaloniaProperty.Register<GradientBrush, GradientSpreadMethod>(nameof(SpreadMethod));
+            DependencyProperty.Register<GradientBrush, GradientSpreadMethod>(nameof(SpreadMethod));
 
         /// <summary>
         /// Defines the <see cref="GradientStops"/> property.
         /// </summary>
         public static readonly StyledProperty<GradientStops> GradientStopsProperty =
-            AvaloniaProperty.Register<GradientBrush, GradientStops>(nameof(GradientStops));
+            DependencyProperty.Register<GradientBrush, GradientStops>(nameof(GradientStops));
 
         private IDisposable _gradientStopsSubscription;
 
@@ -61,7 +61,7 @@ namespace Avalonia.Media
         /// <inheritdoc/>
         IReadOnlyList<IGradientStop> IGradientBrush.GradientStops => GradientStops;
 
-        private static void GradientStopsChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void GradientStopsChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Sender is GradientBrush brush)
             {

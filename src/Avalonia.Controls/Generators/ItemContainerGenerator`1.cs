@@ -21,8 +21,8 @@ namespace Avalonia.Controls.Generators
         /// <param name="contentTemplateProperty">The container's ContentTemplate property.</param>
         public ItemContainerGenerator(
             IControl owner, 
-            AvaloniaProperty contentProperty,
-            AvaloniaProperty contentTemplateProperty)
+            DependencyProperty contentProperty,
+            DependencyProperty contentTemplateProperty)
             : base(owner)
         {
             Contract.Requires<ArgumentNullException>(owner != null);
@@ -38,12 +38,12 @@ namespace Avalonia.Controls.Generators
         /// <summary>
         /// Gets the container's Content property.
         /// </summary>
-        protected AvaloniaProperty ContentProperty { get; }
+        protected DependencyProperty ContentProperty { get; }
 
         /// <summary>
         /// Gets the container's ContentTemplate property.
         /// </summary>
-        protected AvaloniaProperty ContentTemplateProperty { get; }
+        protected DependencyProperty ContentTemplateProperty { get; }
 
         /// <inheritdoc/>
         protected override IControl CreateContainer(object item)

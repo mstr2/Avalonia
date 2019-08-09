@@ -56,7 +56,7 @@ namespace Avalonia.Controls.UnitTests.Mixins
         private class TestControl : Control, ISelectable
         {
             public static readonly StyledProperty<bool> IsSelectedProperty =
-                AvaloniaProperty.Register<TestControl, bool>(nameof(IsSelected));
+                DependencyProperty.Register<TestControl, bool>(nameof(IsSelected));
 
             static TestControl()
             {

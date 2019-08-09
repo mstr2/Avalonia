@@ -9,7 +9,7 @@ namespace Avalonia.Data.Core
     {
         private static readonly object CacheInvalid = new object();
         protected static readonly WeakReference UnsetReference = 
-            new WeakReference(AvaloniaProperty.UnsetValue);
+            new WeakReference(DependencyProperty.UnsetValue);
 
         private WeakReference _target = UnsetReference;
         private Action<object> _subscriber;
@@ -132,14 +132,14 @@ namespace Avalonia.Data.Core
                 ValueChanged(TargetNullNotification());
                 _listening = false;
             }
-            else if (target != AvaloniaProperty.UnsetValue)
+            else if (target != DependencyProperty.UnsetValue)
             {
                 StartListeningCore(_target);
                 _listening = true;
             }
             else
             {
-                ValueChanged(AvaloniaProperty.UnsetValue, notify:false);
+                ValueChanged(DependencyProperty.UnsetValue, notify:false);
                 _listening = false;
             }
         }
@@ -155,7 +155,7 @@ namespace Avalonia.Data.Core
             return new BindingNotification(
                 new MarkupBindingChainException("Null value"),
                 BindingErrorType.Error,
-                AvaloniaProperty.UnsetValue);
+                DependencyProperty.UnsetValue);
         }
     }
 }

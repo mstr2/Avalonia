@@ -23,7 +23,7 @@ namespace Avalonia.Markup.Xaml.Converters
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            var registry = AvaloniaPropertyRegistry.Instance;
+            var registry = DependencyPropertyRegistry.Instance;
             var parser = new PropertyParser();
             var (ns, owner, propertyName) = parser.Parse(new CharacterReader(((string)value).AsSpan()));
             var ownerType = TryResolveOwnerByName(context, ns, owner);

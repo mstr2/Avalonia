@@ -16,7 +16,7 @@ namespace Avalonia.Controls
         /// Defines the <see cref="ReverseOrder"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> ReverseOrderProperty =
-            AvaloniaProperty.Register<ReversibleStackPanel, bool>(nameof(ReverseOrder));
+            DependencyProperty.Register<ReversibleStackPanel, bool>(nameof(ReverseOrder));
 
         /// <summary>
         /// Gets or sets if the child controls will be layed out in reverse order.

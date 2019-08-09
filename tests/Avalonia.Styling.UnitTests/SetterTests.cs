@@ -134,7 +134,7 @@ namespace Avalonia.Styling.UnitTests
                 BindingPriority.StyleTrigger));
         }
 
-        private IBinding CreateMockBinding(AvaloniaProperty property)
+        private IBinding CreateMockBinding(DependencyProperty property)
         {
             var subject = new Subject<object>();
             var descriptor = InstancedBinding.OneWay(subject);

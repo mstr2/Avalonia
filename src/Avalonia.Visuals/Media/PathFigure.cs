@@ -11,22 +11,22 @@ namespace Avalonia.Media
         /// Defines the <see cref="IsClosed"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsClosedProperty
-                            = AvaloniaProperty.Register<PathFigure, bool>(nameof(IsClosed), true);
+                            = DependencyProperty.Register<PathFigure, bool>(nameof(IsClosed), true);
         /// <summary>
         /// Defines the <see cref="IsFilled"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsFilledProperty
-                            = AvaloniaProperty.Register<PathFigure, bool>(nameof(IsFilled), true);
+                            = DependencyProperty.Register<PathFigure, bool>(nameof(IsFilled), true);
         /// <summary>
         /// Defines the <see cref="Segments"/> property.
         /// </summary>
         public static readonly DirectProperty<PathFigure, PathSegments> SegmentsProperty
-                        = AvaloniaProperty.RegisterDirect<PathFigure, PathSegments>(nameof(Segments), f => f.Segments, (f, s) => f.Segments = s);
+                        = DependencyProperty.RegisterDirect<PathFigure, PathSegments>(nameof(Segments), f => f.Segments, (f, s) => f.Segments = s);
         /// <summary>
         /// Defines the <see cref="StartPoint"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> StartPointProperty
-                        = AvaloniaProperty.Register<PathFigure, Point>(nameof(StartPoint));
+                        = DependencyProperty.Register<PathFigure, Point>(nameof(StartPoint));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PathFigure"/> class.

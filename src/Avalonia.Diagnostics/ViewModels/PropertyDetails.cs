@@ -12,7 +12,7 @@ namespace Avalonia.Diagnostics.ViewModels
         private string _priority;
         private string _diagnostic;
 
-        public PropertyDetails(AvaloniaObject o, AvaloniaProperty property)
+        public PropertyDetails(AvaloniaObject o, DependencyProperty property)
         {
             Name = property.IsAttached ?
                 $"[{property.OwnerType.Name}.{property.Name}]" :

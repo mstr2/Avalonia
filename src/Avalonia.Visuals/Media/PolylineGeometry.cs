@@ -18,13 +18,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="Points"/> property.
         /// </summary>
         public static readonly DirectProperty<PolylineGeometry, Points> PointsProperty =
-            AvaloniaProperty.RegisterDirect<PolylineGeometry, Points>(nameof(Points), g => g.Points, (g, f) => g.Points = f);
+            DependencyProperty.RegisterDirect<PolylineGeometry, Points>(nameof(Points), g => g.Points, (g, f) => g.Points = f);
 
         /// <summary>
         /// Defines the <see cref="IsFilled"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<bool> IsFilledProperty =
-            AvaloniaProperty.Register<PolylineGeometry, bool>(nameof(IsFilled));
+        public static readonly DependencyProperty<bool> IsFilledProperty =
+            DependencyProperty.Register<PolylineGeometry, bool>(nameof(IsFilled));
 
         private Points _points;
         private IDisposable _pointsObserver;

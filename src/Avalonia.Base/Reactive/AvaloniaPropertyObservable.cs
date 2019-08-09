@@ -5,12 +5,12 @@ namespace Avalonia.Reactive
     internal class AvaloniaPropertyObservable<T> : LightweightObservableBase<T>, IDescription
     {
         private readonly WeakReference<IAvaloniaObject> _target;
-        private readonly AvaloniaProperty _property;
+        private readonly DependencyProperty _property;
         private T _value;
 
         public AvaloniaPropertyObservable(
             IAvaloniaObject target,
-            AvaloniaProperty property)
+            DependencyProperty property)
         {
             _target = new WeakReference<IAvaloniaObject>(target);
             _property = property;
@@ -40,7 +40,7 @@ namespace Avalonia.Reactive
             observer.OnNext(_value);
         }
 
-        private void PropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        private void PropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.Property == _property)
             {

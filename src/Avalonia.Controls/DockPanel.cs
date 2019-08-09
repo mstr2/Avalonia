@@ -27,13 +27,13 @@ namespace Avalonia.Controls
         /// Defines the Dock attached property.
         /// </summary>
         public static readonly AttachedProperty<Dock> DockProperty =
-            AvaloniaProperty.RegisterAttached<DockPanel, Control, Dock>("Dock");
+            DependencyProperty.RegisterAttached<DockPanel, Control, Dock>("Dock");
 
         /// <summary>
         /// Defines the <see cref="LastChildFill"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> LastChildFillProperty =
-            AvaloniaProperty.Register<DockPanel, bool>(
+            DependencyProperty.Register<DockPanel, bool>(
                 nameof(LastChildFillProperty),
                 defaultValue: true);
 

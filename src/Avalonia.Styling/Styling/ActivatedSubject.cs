@@ -69,7 +69,7 @@ namespace Avalonia.Styling
 
             if (!first)
             {
-                Source.OnNext(active ? _pushValue : AvaloniaProperty.UnsetValue);
+                Source.OnNext(active ? _pushValue : DependencyProperty.UnsetValue);
             }
         }
 

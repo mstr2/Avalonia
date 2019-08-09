@@ -27,7 +27,7 @@ namespace Avalonia.Controls.Presenters
         /// <summary>
         /// Defines the <see cref="BorderBrush"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<IBrush> BorderBrushProperty =
+        public static readonly DependencyProperty<IBrush> BorderBrushProperty =
             Border.BorderBrushProperty.AddOwner<ContentPresenter>();
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Avalonia.Controls.Presenters
         /// Defines the <see cref="Child"/> property.
         /// </summary>
         public static readonly DirectProperty<ContentPresenter, IControl> ChildProperty =
-            AvaloniaProperty.RegisterDirect<ContentPresenter, IControl>(
+            DependencyProperty.RegisterDirect<ContentPresenter, IControl>(
                 nameof(Child),
                 o => o.Child);
 
@@ -83,7 +83,7 @@ namespace Avalonia.Controls.Presenters
 
         private IControl _child;
         private bool _createdChild;
-        EventHandler<AvaloniaPropertyChangedEventArgs> _childChanging;
+        EventHandler<DependencyPropertyChangedEventArgs> _childChanging;
         private IDataTemplate _dataTemplate;
         private readonly BorderRenderHelper _borderRenderer = new BorderRenderHelper();
 
@@ -191,7 +191,7 @@ namespace Avalonia.Controls.Presenters
         }
 
         /// <inheritdoc/>
-        event EventHandler<AvaloniaPropertyChangedEventArgs> IContentPresenter.ChildChanging
+        event EventHandler<DependencyPropertyChangedEventArgs> IContentPresenter.ChildChanging
         {
             add => _childChanging += value;
             remove => _childChanging -= value;
@@ -242,7 +242,7 @@ namespace Avalonia.Controls.Presenters
                 {
                     // If we're in a ContentControl's template then invoke ChildChanging to let
                     // ContentControlMixin handle removing the logical child.
-                    _childChanging?.Invoke(this, new AvaloniaPropertyChangedEventArgs(
+                    _childChanging?.Invoke(this, new DependencyPropertyChangedEventArgs(
                         this,
                         ChildProperty,
                         oldChild,
@@ -422,7 +422,7 @@ namespace Avalonia.Controls.Presenters
         /// Called when the <see cref="Content"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void ContentChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ContentChanged(DependencyPropertyChangedEventArgs e)
         {
             _createdChild = false;
 
@@ -453,7 +453,7 @@ namespace Avalonia.Controls.Presenters
             return result;
         }
 
-        private void TemplatedParentChanged(AvaloniaPropertyChangedEventArgs e)
+        private void TemplatedParentChanged(DependencyPropertyChangedEventArgs e)
         {
             (e.NewValue as IContentPresenterHost)?.RegisterContentPresenter(this);
         }

@@ -16,7 +16,7 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="ShowAccessKey"/> attached property.
         /// </summary>
         public static readonly AttachedProperty<bool> ShowAccessKeyProperty =
-            AvaloniaProperty.RegisterAttached<AccessText, Control, bool>("ShowAccessKey", inherits: true);
+            DependencyProperty.RegisterAttached<AccessText, Control, bool>("ShowAccessKey", inherits: true);
 
         /// <summary>
         /// The access key handler for the current window.

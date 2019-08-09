@@ -9,31 +9,31 @@ namespace Avalonia.Media
         /// Defines the <see cref="IsLargeArc"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsLargeArcProperty
-                     = AvaloniaProperty.Register<ArcSegment, bool>(nameof(IsLargeArc), false);
+                     = DependencyProperty.Register<ArcSegment, bool>(nameof(IsLargeArc), false);
 
         /// <summary>
         /// Defines the <see cref="Point"/> property.
         /// </summary>
         public static readonly StyledProperty<Point> PointProperty
-                                = AvaloniaProperty.Register<ArcSegment, Point>(nameof(Point));
+                                = DependencyProperty.Register<ArcSegment, Point>(nameof(Point));
 
         /// <summary>
         /// Defines the <see cref="RotationAngle"/> property.
         /// </summary>
         public static readonly StyledProperty<double> RotationAngleProperty
-                                     = AvaloniaProperty.Register<ArcSegment, double>(nameof(RotationAngle), 0);
+                                     = DependencyProperty.Register<ArcSegment, double>(nameof(RotationAngle), 0);
 
         /// <summary>
         /// Defines the <see cref="Size"/> property.
         /// </summary>
         public static readonly StyledProperty<Size> SizeProperty
-                    = AvaloniaProperty.Register<ArcSegment, Size>(nameof(Size));
+                    = DependencyProperty.Register<ArcSegment, Size>(nameof(Size));
 
         /// <summary>
         /// Defines the <see cref="SweepDirection"/> property.
         /// </summary>
         public static readonly StyledProperty<SweepDirection> SweepDirectionProperty
-                = AvaloniaProperty.Register<ArcSegment, SweepDirection>(nameof(SweepDirection), SweepDirection.Clockwise);
+                = DependencyProperty.Register<ArcSegment, SweepDirection>(nameof(SweepDirection), SweepDirection.Clockwise);
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is large arc.

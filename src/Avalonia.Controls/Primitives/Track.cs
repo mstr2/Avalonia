@@ -26,13 +26,13 @@ namespace Avalonia.Controls.Primitives
             ScrollBar.OrientationProperty.AddOwner<Track>();
 
         public static readonly StyledProperty<Thumb> ThumbProperty =
-            AvaloniaProperty.Register<Track, Thumb>(nameof(Thumb));
+            DependencyProperty.Register<Track, Thumb>(nameof(Thumb));
 
         public static readonly StyledProperty<Button> IncreaseButtonProperty =
-            AvaloniaProperty.Register<Track, Button>(nameof(IncreaseButton));
+            DependencyProperty.Register<Track, Button>(nameof(IncreaseButton));
 
         public static readonly StyledProperty<Button> DecreaseButtonProperty =
-            AvaloniaProperty.Register<Track, Button>(nameof(DecreaseButton));
+            DependencyProperty.Register<Track, Button>(nameof(DecreaseButton));
 
         private double _minimum;
         private double _maximum = 100.0;
@@ -203,7 +203,7 @@ namespace Avalonia.Controls.Primitives
             return finalSize;
         }
 
-        private void ThumbChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ThumbChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldThumb = (Thumb)e.OldValue;
             var newThumb = (Thumb)e.NewValue;
@@ -224,7 +224,7 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        private void ButtonChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ButtonChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldButton = (Button)e.OldValue;
             var newButton = (Button)e.NewValue;

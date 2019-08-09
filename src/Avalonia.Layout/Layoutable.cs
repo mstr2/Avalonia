@@ -69,67 +69,67 @@ namespace Avalonia.Layout
         /// Defines the <see cref="DesiredSize"/> property.
         /// </summary>
         public static readonly DirectProperty<Layoutable, Size> DesiredSizeProperty =
-            AvaloniaProperty.RegisterDirect<Layoutable, Size>(nameof(DesiredSize), o => o.DesiredSize);
+            DependencyProperty.RegisterDirect<Layoutable, Size>(nameof(DesiredSize), o => o.DesiredSize);
 
         /// <summary>
         /// Defines the <see cref="Width"/> property.
         /// </summary>
         public static readonly StyledProperty<double> WidthProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(Width), double.NaN);
+            DependencyProperty.Register<Layoutable, double>(nameof(Width), double.NaN);
 
         /// <summary>
         /// Defines the <see cref="Height"/> property.
         /// </summary>
         public static readonly StyledProperty<double> HeightProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(Height), double.NaN);
+            DependencyProperty.Register<Layoutable, double>(nameof(Height), double.NaN);
 
         /// <summary>
         /// Defines the <see cref="MinWidth"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinWidthProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(MinWidth));
+            DependencyProperty.Register<Layoutable, double>(nameof(MinWidth));
 
         /// <summary>
         /// Defines the <see cref="MaxWidth"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MaxWidthProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(MaxWidth), double.PositiveInfinity);
+            DependencyProperty.Register<Layoutable, double>(nameof(MaxWidth), double.PositiveInfinity);
 
         /// <summary>
         /// Defines the <see cref="MinHeight"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MinHeightProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(MinHeight));
+            DependencyProperty.Register<Layoutable, double>(nameof(MinHeight));
 
         /// <summary>
         /// Defines the <see cref="MaxHeight"/> property.
         /// </summary>
         public static readonly StyledProperty<double> MaxHeightProperty =
-            AvaloniaProperty.Register<Layoutable, double>(nameof(MaxHeight), double.PositiveInfinity);
+            DependencyProperty.Register<Layoutable, double>(nameof(MaxHeight), double.PositiveInfinity);
 
         /// <summary>
         /// Defines the <see cref="Margin"/> property.
         /// </summary>
         public static readonly StyledProperty<Thickness> MarginProperty =
-            AvaloniaProperty.Register<Layoutable, Thickness>(nameof(Margin));
+            DependencyProperty.Register<Layoutable, Thickness>(nameof(Margin));
 
         /// <summary>
         /// Defines the <see cref="HorizontalAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<HorizontalAlignment> HorizontalAlignmentProperty =
-            AvaloniaProperty.Register<Layoutable, HorizontalAlignment>(nameof(HorizontalAlignment));
+            DependencyProperty.Register<Layoutable, HorizontalAlignment>(nameof(HorizontalAlignment));
 
         /// <summary>
         /// Defines the <see cref="VerticalAlignment"/> property.
         /// </summary>
         public static readonly StyledProperty<VerticalAlignment> VerticalAlignmentProperty =
-            AvaloniaProperty.Register<Layoutable, VerticalAlignment>(nameof(VerticalAlignment));
+            DependencyProperty.Register<Layoutable, VerticalAlignment>(nameof(VerticalAlignment));
 
         /// <summary>
         /// Defines the <see cref="UseLayoutRoundingProperty"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> UseLayoutRoundingProperty =
-            AvaloniaProperty.Register<Layoutable, bool>(nameof(UseLayoutRounding), defaultValue: true, inherits: true);
+            DependencyProperty.Register<Layoutable, bool>(nameof(UseLayoutRounding), defaultValue: true, inherits: true);
 
         private bool _measuring;
         private Size? _previousMeasure;
@@ -428,7 +428,7 @@ namespace Avalonia.Layout
         /// property will cause <see cref="InvalidateMeasure"/> to be called on the element.
         /// </remarks>
         [Obsolete("Use AffectsMeasure<T> and specify the control type.")]
-        protected static void AffectsMeasure(params AvaloniaProperty[] properties)
+        protected static void AffectsMeasure(params DependencyProperty[] properties)
         {
             AffectsMeasure<Layoutable>(properties);
         }
@@ -442,10 +442,10 @@ namespace Avalonia.Layout
         /// After a call to this method in a control's static constructor, any change to the
         /// property will cause <see cref="InvalidateMeasure"/> to be called on the element.
         /// </remarks>
-        protected static void AffectsMeasure<T>(params AvaloniaProperty[] properties)
+        protected static void AffectsMeasure<T>(params DependencyProperty[] properties)
             where T : class, ILayoutable
         {
-            void Invalidate(AvaloniaPropertyChangedEventArgs e)
+            void Invalidate(DependencyPropertyChangedEventArgs e)
             {
                 (e.Sender as T)?.InvalidateMeasure();
             }
@@ -465,7 +465,7 @@ namespace Avalonia.Layout
         /// property will cause <see cref="InvalidateArrange"/> to be called on the element.
         /// </remarks>
         [Obsolete("Use AffectsArrange<T> and specify the control type.")]
-        protected static void AffectsArrange(params AvaloniaProperty[] properties)
+        protected static void AffectsArrange(params DependencyProperty[] properties)
         {
             AffectsArrange<Layoutable>(properties);
         }
@@ -479,10 +479,10 @@ namespace Avalonia.Layout
         /// After a call to this method in a control's static constructor, any change to the
         /// property will cause <see cref="InvalidateArrange"/> to be called on the element.
         /// </remarks>
-        protected static void AffectsArrange<T>(params AvaloniaProperty[] properties)
+        protected static void AffectsArrange<T>(params DependencyProperty[] properties)
             where T : class, ILayoutable
         {
-            void Invalidate(AvaloniaPropertyChangedEventArgs e)
+            void Invalidate(DependencyPropertyChangedEventArgs e)
             {
                 (e.Sender as T)?.InvalidateArrange();
             }

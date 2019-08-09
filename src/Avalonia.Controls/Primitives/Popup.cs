@@ -26,13 +26,13 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Child"/> property.
         /// </summary>
         public static readonly StyledProperty<Control> ChildProperty =
-            AvaloniaProperty.Register<Popup, Control>(nameof(Child));
+            DependencyProperty.Register<Popup, Control>(nameof(Child));
 
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
         public static readonly DirectProperty<Popup, bool> IsOpenProperty =
-            AvaloniaProperty.RegisterDirect<Popup, bool>(
+            DependencyProperty.RegisterDirect<Popup, bool>(
                 nameof(IsOpen),
                 o => o.IsOpen,
                 (o, v) => o.IsOpen = v);
@@ -41,43 +41,43 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="PlacementMode"/> property.
         /// </summary>
         public static readonly StyledProperty<PlacementMode> PlacementModeProperty =
-            AvaloniaProperty.Register<Popup, PlacementMode>(nameof(PlacementMode), defaultValue: PlacementMode.Bottom);
+            DependencyProperty.Register<Popup, PlacementMode>(nameof(PlacementMode), defaultValue: PlacementMode.Bottom);
 
         /// <summary>
         /// Defines the <see cref="ObeyScreenEdges"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> ObeyScreenEdgesProperty =
-            AvaloniaProperty.Register<Popup, bool>(nameof(ObeyScreenEdges), true);
+            DependencyProperty.Register<Popup, bool>(nameof(ObeyScreenEdges), true);
 
         /// <summary>
         /// Defines the <see cref="HorizontalOffset"/> property.
         /// </summary>
         public static readonly StyledProperty<double> HorizontalOffsetProperty =
-            AvaloniaProperty.Register<Popup, double>(nameof(HorizontalOffset));
+            DependencyProperty.Register<Popup, double>(nameof(HorizontalOffset));
 
         /// <summary>
         /// Defines the <see cref="VerticalOffset"/> property.
         /// </summary>
         public static readonly StyledProperty<double> VerticalOffsetProperty =
-            AvaloniaProperty.Register<Popup, double>(nameof(VerticalOffset));
+            DependencyProperty.Register<Popup, double>(nameof(VerticalOffset));
 
         /// <summary>
         /// Defines the <see cref="PlacementTarget"/> property.
         /// </summary>
         public static readonly StyledProperty<Control> PlacementTargetProperty =
-            AvaloniaProperty.Register<Popup, Control>(nameof(PlacementTarget));
+            DependencyProperty.Register<Popup, Control>(nameof(PlacementTarget));
 
         /// <summary>
         /// Defines the <see cref="StaysOpen"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> StaysOpenProperty =
-            AvaloniaProperty.Register<Popup, bool>(nameof(StaysOpen), true);
+            DependencyProperty.Register<Popup, bool>(nameof(StaysOpen), true);
 
         /// <summary>
         /// Defines the <see cref="Topmost"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> TopmostProperty =
-            AvaloniaProperty.Register<Popup, bool>(nameof(Topmost));
+            DependencyProperty.Register<Popup, bool>(nameof(Topmost));
 
         private bool _isOpen;
         private IPopupHost _popupHost;
@@ -350,7 +350,7 @@ namespace Avalonia.Controls.Primitives
         /// Called when the <see cref="IsOpen"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void IsOpenChanged(AvaloniaPropertyChangedEventArgs e)
+        private void IsOpenChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_ignoreIsOpenChanged)
             {
@@ -369,7 +369,7 @@ namespace Avalonia.Controls.Primitives
         /// Called when the <see cref="Child"/> property changes.
         /// </summary>
         /// <param name="e">The event args.</param>
-        private void ChildChanged(AvaloniaPropertyChangedEventArgs e)
+        private void ChildChanged(DependencyPropertyChangedEventArgs e)
         {
             LogicalChildren.Clear();
 

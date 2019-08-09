@@ -54,7 +54,7 @@ namespace Avalonia.Markup.Xaml.UnitTests.Converters
 
                 if (i == 0)
                 {
-                    return AvaloniaProperty.UnsetValue;
+                    return DependencyProperty.UnsetValue;
                 }
 
                 return BindingOperations.DoNothing;

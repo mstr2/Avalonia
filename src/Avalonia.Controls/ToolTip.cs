@@ -23,43 +23,43 @@ namespace Avalonia.Controls
         /// Defines the ToolTip.Tip attached property.
         /// </summary>
         public static readonly AttachedProperty<object> TipProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, object>("Tip");
+            DependencyProperty.RegisterAttached<ToolTip, Control, object>("Tip");
 
         /// <summary>
         /// Defines the ToolTip.IsOpen attached property.
         /// </summary>
         public static readonly AttachedProperty<bool> IsOpenProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, bool>("IsOpen");
+            DependencyProperty.RegisterAttached<ToolTip, Control, bool>("IsOpen");
 
         /// <summary>
         /// Defines the ToolTip.Placement property.
         /// </summary>
         public static readonly AttachedProperty<PlacementMode> PlacementProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, PlacementMode>("Placement", defaultValue: PlacementMode.Pointer);
+            DependencyProperty.RegisterAttached<ToolTip, Control, PlacementMode>("Placement", defaultValue: PlacementMode.Pointer);
 
         /// <summary>
         /// Defines the ToolTip.HorizontalOffset property.
         /// </summary>
         public static readonly AttachedProperty<double> HorizontalOffsetProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, double>("HorizontalOffset");
+            DependencyProperty.RegisterAttached<ToolTip, Control, double>("HorizontalOffset");
 
         /// <summary>
         /// Defines the ToolTip.VerticalOffset property.
         /// </summary>
         public static readonly AttachedProperty<double> VerticalOffsetProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, double>("VerticalOffset", 20);
+            DependencyProperty.RegisterAttached<ToolTip, Control, double>("VerticalOffset", 20);
 
         /// <summary>
         /// Defines the ToolTip.ShowDelay property.
         /// </summary>
         public static readonly AttachedProperty<int> ShowDelayProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, int>("ShowDelay", 400);
+            DependencyProperty.RegisterAttached<ToolTip, Control, int>("ShowDelay", 400);
 
         /// <summary>
         /// Stores the current <see cref="ToolTip"/> instance in the control.
         /// </summary>
         private static readonly AttachedProperty<ToolTip> ToolTipProperty =
-            AvaloniaProperty.RegisterAttached<ToolTip, Control, ToolTip>("ToolTip");
+            DependencyProperty.RegisterAttached<ToolTip, Control, ToolTip>("ToolTip");
 
         private IPopupHost _popup;
 
@@ -204,7 +204,7 @@ namespace Avalonia.Controls
             element.SetValue(ShowDelayProperty, value);
         }
 
-        private static void IsOpenChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void IsOpenChanged(DependencyPropertyChangedEventArgs e)
         {
             var control = (Control)e.Sender;
 

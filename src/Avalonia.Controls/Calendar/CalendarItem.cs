@@ -60,7 +60,7 @@ namespace Avalonia.Controls.Primitives
             set { SetValue(HeaderBackgroundProperty, value); }
         }
         public static readonly DirectProperty<CalendarItem, ITemplate<IControl>> DayTitleTemplateProperty =
-                AvaloniaProperty.RegisterDirect<CalendarItem, ITemplate<IControl>>(
+                DependencyProperty.RegisterDirect<CalendarItem, ITemplate<IControl>>(
                     nameof(DayTitleTemplate),
                     o => o.DayTitleTemplate,
                     (o,v) => o.DayTitleTemplate = v,

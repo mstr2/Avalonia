@@ -14,7 +14,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="StartPoint"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativePoint> StartPointProperty =
-            AvaloniaProperty.Register<LinearGradientBrush, RelativePoint>(
+            DependencyProperty.Register<LinearGradientBrush, RelativePoint>(
                 nameof(StartPoint),
                 RelativePoint.TopLeft);
 
@@ -22,7 +22,7 @@ namespace Avalonia.Media
         /// Defines the <see cref="EndPoint"/> property.
         /// </summary>
         public static readonly StyledProperty<RelativePoint> EndPointProperty =
-            AvaloniaProperty.Register<LinearGradientBrush, RelativePoint>(
+            DependencyProperty.Register<LinearGradientBrush, RelativePoint>(
                 nameof(EndPoint), 
                 RelativePoint.BottomRight);
 

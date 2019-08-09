@@ -15,13 +15,13 @@ namespace Avalonia.Media
         /// Defines the <see cref="Figures"/> property.
         /// </summary>
         public static readonly DirectProperty<PathGeometry, PathFigures> FiguresProperty =
-            AvaloniaProperty.RegisterDirect<PathGeometry, PathFigures>(nameof(Figures), g => g.Figures, (g, f) => g.Figures = f);
+            DependencyProperty.RegisterDirect<PathGeometry, PathFigures>(nameof(Figures), g => g.Figures, (g, f) => g.Figures = f);
 
         /// <summary>
         /// Defines the <see cref="FillRule"/> property.
         /// </summary>
         public static readonly StyledProperty<FillRule> FillRuleProperty =
-                                 AvaloniaProperty.Register<PathGeometry, FillRule>(nameof(FillRule));
+                                 DependencyProperty.Register<PathGeometry, FillRule>(nameof(FillRule));
 
         private PathFigures _figures;
         private IDisposable _figuresObserver;

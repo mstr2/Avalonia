@@ -1153,7 +1153,7 @@ namespace Avalonia.Controls.UnitTests.Primitives
 
         private class TestSelector : SelectingItemsControl
         {
-            public static readonly new AvaloniaProperty<IList> SelectedItemsProperty = 
+            public static readonly new DependencyProperty<IList> SelectedItemsProperty = 
                 SelectingItemsControl.SelectedItemsProperty;
 
             public new IList SelectedItems

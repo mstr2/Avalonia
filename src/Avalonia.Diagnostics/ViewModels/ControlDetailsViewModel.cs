@@ -13,7 +13,7 @@ namespace Avalonia.Diagnostics.ViewModels
         {
             if (control is AvaloniaObject avaloniaObject)
             {
-                Properties = AvaloniaPropertyRegistry.Instance.GetRegistered(avaloniaObject)
+                Properties = DependencyPropertyRegistry.Instance.GetRegistered(avaloniaObject)
                     .Select(x => new PropertyDetails(avaloniaObject, x))
                     .OrderBy(x => x.IsAttached)
                     .ThenBy(x => x.Name);

@@ -376,7 +376,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.MinimumPrefixLength" />
         /// dependency property.</value>
         public static readonly StyledProperty<int> MinimumPrefixLengthProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, int>(
+            DependencyProperty.Register<AutoCompleteBox, int>(
                 nameof(MinimumPrefixLength), 1,
                 validate: ValidateMinimumPrefixLength);
 
@@ -389,7 +389,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.MinimumPopulateDelay" />
         /// dependency property.</value>
         public static readonly StyledProperty<TimeSpan> MinimumPopulateDelayProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, TimeSpan>(
+            DependencyProperty.Register<AutoCompleteBox, TimeSpan>(
                 nameof(MinimumPopulateDelay),
                 TimeSpan.Zero,
                 validate: ValidateMinimumPopulateDelay);
@@ -403,7 +403,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.MaxDropDownHeight" />
         /// dependency property.</value>
         public static readonly StyledProperty<double> MaxDropDownHeightProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, double>(
+            DependencyProperty.Register<AutoCompleteBox, double>(
                 nameof(MaxDropDownHeight),
                 double.PositiveInfinity,
                 validate: ValidateMaxDropDownHeight);
@@ -417,7 +417,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.IsTextCompletionEnabled" />
         /// dependency property.</value>
         public static readonly StyledProperty<bool> IsTextCompletionEnabledProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, bool>(nameof(IsTextCompletionEnabled));
+            DependencyProperty.Register<AutoCompleteBox, bool>(nameof(IsTextCompletionEnabled));
 
         /// <summary>
         /// Identifies the
@@ -428,7 +428,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.ItemTemplate" />
         /// dependency property.</value>
         public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, IDataTemplate>(nameof(ItemTemplate));
+            DependencyProperty.Register<AutoCompleteBox, IDataTemplate>(nameof(ItemTemplate));
 
         /// <summary>
         /// Identifies the
@@ -439,7 +439,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.IsDropDownOpen" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, bool> IsDropDownOpenProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, bool>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, bool>(
                 nameof(IsDropDownOpen),
                 o => o.IsDropDownOpen,
                 (o, v) => o.IsDropDownOpen = v);
@@ -453,7 +453,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.SelectedItem" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, object> SelectedItemProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, object>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, object>(
                 nameof(SelectedItem),
                 o => o.SelectedItem,
                 (o, v) => o.SelectedItem = v);
@@ -467,7 +467,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.Text" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, string> TextProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, string>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, string>(
                 nameof(Text),
                 o => o.Text,
                 (o, v) => o.Text = v);
@@ -481,7 +481,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.SearchText" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, string> SearchTextProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, string>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, string>(
                 nameof(SearchText),
                 o => o.SearchText,
                 unsetValue: string.Empty);
@@ -492,7 +492,7 @@ namespace Avalonia.Controls
         /// dependency property.
         /// </summary>
         public static readonly StyledProperty<AutoCompleteFilterMode> FilterModeProperty =
-            AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterMode>(
+            DependencyProperty.Register<AutoCompleteBox, AutoCompleteFilterMode>(
                 nameof(FilterMode),
                 defaultValue: AutoCompleteFilterMode.StartsWith,
                 validate: ValidateFilterMode);
@@ -506,7 +506,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.ItemFilter" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, AutoCompleteFilterPredicate<object>> ItemFilterProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, AutoCompleteFilterPredicate<object>>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, AutoCompleteFilterPredicate<object>>(
                 nameof(ItemFilter),
                 o => o.ItemFilter,
                 (o, v) => o.ItemFilter = v);
@@ -520,7 +520,7 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.TextFilter" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, AutoCompleteFilterPredicate<string>> TextFilterProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, AutoCompleteFilterPredicate<string>>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, AutoCompleteFilterPredicate<string>>(
                 nameof(TextFilter),
                 o => o.TextFilter,
                 (o, v) => o.TextFilter = v,
@@ -535,13 +535,13 @@ namespace Avalonia.Controls
         /// <see cref="P:Avalonia.Controls.AutoCompleteBox.ItemsSource" />
         /// dependency property.</value>
         public static readonly DirectProperty<AutoCompleteBox, IEnumerable> ItemsProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, IEnumerable>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, IEnumerable>(
                 nameof(Items),
                 o => o.Items,
                 (o, v) => o.Items = v);
 
         public static readonly DirectProperty<AutoCompleteBox, Func<string, CancellationToken, Task<IEnumerable<object>>>> AsyncPopulatorProperty =
-            AvaloniaProperty.RegisterDirect<AutoCompleteBox, Func<string, CancellationToken, Task<IEnumerable<object>>>>(
+            DependencyProperty.RegisterDirect<AutoCompleteBox, Func<string, CancellationToken, Task<IEnumerable<object>>>>(
                 nameof(AsyncPopulator),
                 o => o.AsyncPopulator,
                 (o, v) => o.AsyncPopulator = v);
@@ -601,7 +601,7 @@ namespace Avalonia.Controls
         /// Handle the change of the IsEnabled property.
         /// </summary>
         /// <param name="e">The event data.</param>
-        private void OnControlIsEnabledChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnControlIsEnabledChanged(DependencyPropertyChangedEventArgs e)
         {
             bool isEnabled = (bool)e.NewValue;
             if (!isEnabled)
@@ -616,7 +616,7 @@ namespace Avalonia.Controls
         /// until the next TextUpdate call by the user.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnMinimumPopulateDelayChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnMinimumPopulateDelayChanged(DependencyPropertyChangedEventArgs e)
         {
             var newValue = (TimeSpan)e.NewValue;
 
@@ -649,7 +649,7 @@ namespace Avalonia.Controls
         /// IsDropDownOpenProperty property changed handler.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnIsDropDownOpenChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnIsDropDownOpenChanged(DependencyPropertyChangedEventArgs e)
         {
             // Ignore the change if requested
             if (_ignorePropertyChange)
@@ -673,7 +673,7 @@ namespace Avalonia.Controls
             UpdatePseudoClasses();
         }
 
-        private void OnSelectedItemPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSelectedItemPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_ignorePropertyChange)
             {
@@ -711,12 +711,12 @@ namespace Avalonia.Controls
         /// TextProperty property changed handler.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnTextPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnTextPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             TextUpdated((string)e.NewValue, false);
         }
 
-        private void OnSearchTextPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnSearchTextPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (_ignorePropertyChange)
             {
@@ -739,7 +739,7 @@ namespace Avalonia.Controls
         /// FilterModeProperty property changed handler.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnFilterModePropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnFilterModePropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             AutoCompleteFilterMode mode = (AutoCompleteFilterMode)e.NewValue;
 
@@ -751,7 +751,7 @@ namespace Avalonia.Controls
         /// ItemFilterProperty property changed handler.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnItemFilterPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnItemFilterPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             AutoCompleteFilterPredicate<object> value = e.NewValue as AutoCompleteFilterPredicate<object>;
 
@@ -771,12 +771,12 @@ namespace Avalonia.Controls
         /// ItemsSourceProperty property changed handler.
         /// </summary>
         /// <param name="e">Event arguments.</param>
-        private void OnItemsPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnItemsPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             OnItemsChanged((IEnumerable)e.NewValue);
         }
 
-        private void OnItemTemplatePropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnItemTemplatePropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (!_settingItemTemplateFromValueMemberBinding)
                 _itemTemplateIsFromValueMemberBinding = false;
@@ -2612,7 +2612,7 @@ namespace Avalonia.Controls
             /// Identifies the Value dependency property.
             /// </summary>
             public static readonly StyledProperty<T> ValueProperty =
-                AvaloniaProperty.Register<BindingEvaluator<T>, T>(nameof(Value));
+                DependencyProperty.Register<BindingEvaluator<T>, T>(nameof(Value));
 
             /// <summary>
             /// Gets or sets the data item value.

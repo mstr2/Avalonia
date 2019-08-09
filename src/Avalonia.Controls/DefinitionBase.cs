@@ -101,7 +101,7 @@ namespace Avalonia.Controls
         /// dynamic property PrivateSharedSizeScopeProperty. Value of PrivateSharedSizeScopeProperty
         /// is a collection of SharedSizeState objects for the scope.
         /// </remarks>
-        internal static void OnIsSharedSizeScopePropertyChanged(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e)
+        internal static void OnIsSharedSizeScopePropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue)
             {
@@ -289,7 +289,7 @@ namespace Avalonia.Controls
             return ((_flags & flags) == flags);
         }
 
-        private static void OnSharedSizeGroupPropertyChanged(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e)
+        private static void OnSharedSizeGroupPropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             DefinitionBase definition = (DefinitionBase)d;
 
@@ -361,7 +361,7 @@ namespace Avalonia.Controls
         /// existing scope just left. In both cases if the DefinitionBase object is already registered
         /// in SharedSizeState, it should un-register and register itself in a new one.
         /// </remark>
-        private static void OnPrivateSharedSizeScopePropertyChanged(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e)
+        private static void OnPrivateSharedSizeScopePropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             DefinitionBase definition = (DefinitionBase)d;
 
@@ -695,7 +695,7 @@ namespace Avalonia.Controls
         /// <see cref="OnIsSharedSizeScopePropertyChanged"/>
         /// </summary>
         internal static readonly AttachedProperty<SharedSizeScope> PrivateSharedSizeScopeProperty =
-            AvaloniaProperty.RegisterAttached<DefinitionBase, Control, SharedSizeScope>(
+            DependencyProperty.RegisterAttached<DefinitionBase, Control, SharedSizeScope>(
                 "PrivateSharedSizeScope",
                 defaultValue: null,
                 inherits: true);
@@ -718,7 +718,7 @@ namespace Avalonia.Controls
         /// </list>
         /// </remarks> 
         public static readonly AttachedProperty<string> SharedSizeGroupProperty =
-            AvaloniaProperty.RegisterAttached<DefinitionBase, Control, string>(
+            DependencyProperty.RegisterAttached<DefinitionBase, Control, string>(
                 "SharedSizeGroup",
                 validate: SharedSizeGroupPropertyValueValid);
 

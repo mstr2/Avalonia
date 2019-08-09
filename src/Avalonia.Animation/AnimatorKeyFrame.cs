@@ -13,7 +13,7 @@ namespace Avalonia.Animation
     public class AnimatorKeyFrame : AvaloniaObject
     {
         public static readonly DirectProperty<AnimatorKeyFrame, object> ValueProperty =
-            AvaloniaProperty.RegisterDirect<AnimatorKeyFrame, object>(nameof(Value), k => k.Value, (k, v) => k.Value = v);
+            DependencyProperty.RegisterDirect<AnimatorKeyFrame, object>(nameof(Value), k => k.Value, (k, v) => k.Value = v);
 
         public AnimatorKeyFrame()
         {
@@ -29,7 +29,7 @@ namespace Avalonia.Animation
         internal bool isNeutral;
         public Type AnimatorType { get; }
         public Cue Cue { get; }
-        public AvaloniaProperty Property { get; private set; }
+        public DependencyProperty Property { get; private set; }
 
         private object _value;
 

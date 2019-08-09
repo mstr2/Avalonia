@@ -17,11 +17,11 @@ namespace Avalonia.Controls
     /// </summary>
     public class LayoutTransformControl : Decorator
     {
-        public static readonly AvaloniaProperty<Transform> LayoutTransformProperty =
-            AvaloniaProperty.Register<LayoutTransformControl, Transform>(nameof(LayoutTransform));
+        public static readonly DependencyProperty<Transform> LayoutTransformProperty =
+            DependencyProperty.Register<LayoutTransformControl, Transform>(nameof(LayoutTransform));
 
-        public static readonly AvaloniaProperty<bool> UseRenderTransformProperty =
-            AvaloniaProperty.Register<LayoutTransformControl, bool>(nameof(LayoutTransform));
+        public static readonly DependencyProperty<bool> UseRenderTransformProperty =
+            DependencyProperty.Register<LayoutTransformControl, bool>(nameof(LayoutTransform));
 
         static LayoutTransformControl()
         {
@@ -149,7 +149,7 @@ namespace Avalonia.Controls
 
         IDisposable _renderTransformChangedEvent;
 
-        private void OnUseRenderTransformPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnUseRenderTransformPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             // HACK: In theory, this method and the UseRenderTransform shouldn't exist but
             //       it's hard to animate this particular control with style animations without
@@ -183,7 +183,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private void OnChildChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnChildChanged(DependencyPropertyChangedEventArgs e)
         {
             if (null != TransformRoot)
             {
@@ -416,7 +416,7 @@ namespace Avalonia.Controls
             return computedSize;
         }
 
-        private void OnLayoutTransformChanged(AvaloniaPropertyChangedEventArgs e)
+        private void OnLayoutTransformChanged(DependencyPropertyChangedEventArgs e)
         {
             var newTransform = e.NewValue as Transform;
 

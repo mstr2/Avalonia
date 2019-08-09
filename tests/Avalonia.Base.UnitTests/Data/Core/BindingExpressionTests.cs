@@ -88,7 +88,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
             var target = new BindingExpression(ExpressionObserver.Create(data, o => o.StringValue), typeof(double));
             var result = await target.Take(1);
 
-            Assert.Equal(AvaloniaProperty.UnsetValue, result);
+            Assert.Equal(DependencyProperty.UnsetValue, result);
 
             GC.KeepAlive(data);
         }
@@ -266,7 +266,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
             var data = new Class1 { DoubleValue = 5.6 };
             var target = new BindingExpression(ExpressionObserver.Create(data, o => o.DoubleValue), typeof(string));
 
-            target.OnNext(AvaloniaProperty.UnsetValue);
+            target.OnNext(DependencyProperty.UnsetValue);
 
             Assert.Equal(0, data.DoubleValue);
 

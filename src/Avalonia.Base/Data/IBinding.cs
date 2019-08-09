@@ -25,7 +25,7 @@ namespace Avalonia.Data
         /// </returns>
         InstancedBinding Initiate(
             IAvaloniaObject target, 
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor = null,
             bool enableDataValidation = false);
     }

@@ -12,8 +12,8 @@ namespace Avalonia.Controls
         /// <summary>
         /// The stretch property
         /// </summary>
-        public static readonly AvaloniaProperty<Stretch> StretchProperty =
-                AvaloniaProperty.RegisterDirect<Viewbox, Stretch>(nameof(Stretch),
+        public static readonly DependencyProperty<Stretch> StretchProperty =
+                DependencyProperty.RegisterDirect<Viewbox, Stretch>(nameof(Stretch),
                     v => v.Stretch, (c, v) => c.Stretch = v, Stretch.Uniform);
 
         private Stretch _stretch = Stretch.Uniform;

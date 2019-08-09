@@ -6,7 +6,7 @@ using Avalonia.Data;
 namespace Avalonia.Diagnostics
 {
     /// <summary>
-    /// Holds diagnostic-related information about the value of a <see cref="AvaloniaProperty"/>
+    /// Holds diagnostic-related information about the value of a <see cref="DependencyProperty"/>
     /// on a <see cref="AvaloniaObject"/>.
     /// </summary>
     public class AvaloniaPropertyValue
@@ -19,7 +19,7 @@ namespace Avalonia.Diagnostics
         /// <param name="priority">The priority of the current value.</param>
         /// <param name="diagnostic">A diagnostic string.</param>
         public AvaloniaPropertyValue(
-            AvaloniaProperty property,
+            DependencyProperty property,
             object value,
             BindingPriority priority,
             string diagnostic)
@@ -33,7 +33,7 @@ namespace Avalonia.Diagnostics
         /// <summary>
         /// Gets the property.
         /// </summary>
-        public AvaloniaProperty Property { get; }
+        public DependencyProperty Property { get; }
 
         /// <summary>
         /// Gets the current property value.

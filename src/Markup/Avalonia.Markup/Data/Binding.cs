@@ -25,7 +25,7 @@ namespace Avalonia.Data
         /// </summary>
         public Binding()
         {
-            FallbackValue = AvaloniaProperty.UnsetValue;
+            FallbackValue = DependencyProperty.UnsetValue;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Avalonia.Data
         /// <inheritdoc/>
         public InstancedBinding Initiate(
             IAvaloniaObject target,
-            AvaloniaProperty targetProperty,
+            DependencyProperty targetProperty,
             object anchor = null,
             bool enableDataValidation = false)
         {
@@ -188,7 +188,7 @@ namespace Avalonia.Data
             // the fallback value to null, as broken bindings to DataContext must reset the
             // DataContext in order to not propagate incorrect DataContexts to child controls.
             // See Avalonia.Markup.UnitTests.Data.DataContext_Binding_Should_Produce_Correct_Results.
-            if (targetProperty == StyledElement.DataContextProperty && fallback == AvaloniaProperty.UnsetValue)
+            if (targetProperty == StyledElement.DataContextProperty && fallback == DependencyProperty.UnsetValue)
             {
                 fallback = null;
             }
@@ -346,9 +346,9 @@ namespace Avalonia.Data
         private class UpdateSignal : SingleSubscriberObservableBase<Unit>
         {
             private readonly IAvaloniaObject _target;
-            private readonly AvaloniaProperty _property;
+            private readonly DependencyProperty _property;
 
-            public UpdateSignal(IAvaloniaObject target, AvaloniaProperty property)
+            public UpdateSignal(IAvaloniaObject target, DependencyProperty property)
             {
                 _target = target;
                 _property = property;
@@ -364,7 +364,7 @@ namespace Avalonia.Data
                 _target.PropertyChanged -= PropertyChanged;
             }
 
-            private void PropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+            private void PropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
             {
                 if (e.Property == _property)
                 {

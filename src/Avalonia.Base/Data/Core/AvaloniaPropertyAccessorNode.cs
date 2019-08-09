@@ -8,9 +8,9 @@ namespace Avalonia.Data.Core
     {
         private IDisposable _subscription;
         private readonly bool _enableValidation;
-        private readonly AvaloniaProperty _property;
+        private readonly DependencyProperty _property;
 
-        public AvaloniaPropertyAccessorNode(AvaloniaProperty property, bool enableValidation)
+        public AvaloniaPropertyAccessorNode(DependencyProperty property, bool enableValidation)
         {
             _property = property;
             _enableValidation = enableValidation;

@@ -96,7 +96,7 @@ namespace Avalonia.Controls
         }
 
         public static readonly DirectProperty<RadioButton, string> GroupNameProperty =
-            AvaloniaProperty.RegisterDirect<RadioButton, string>(
+            DependencyProperty.RegisterDirect<RadioButton, string>(
                 nameof(GroupName),
                 o => o.GroupName,
                 (o, v) => o.GroupName = v);

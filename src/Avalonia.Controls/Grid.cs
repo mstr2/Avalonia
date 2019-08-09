@@ -2360,7 +2360,7 @@ namespace Avalonia.Controls
             return (flags == 0 || (_flags & flags) != 0);
         }
 
-        private static void OnShowGridLinesPropertyChanged(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e)
+        private static void OnShowGridLinesPropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             Grid grid = (Grid)d;
 
@@ -2373,7 +2373,7 @@ namespace Avalonia.Controls
             grid.SetFlags((bool)e.NewValue, Flags.ShowGridLinesPropertyValue);
         }
 
-        private static void OnCellAttachedPropertyChanged(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e)
+        private static void OnCellAttachedPropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             Visual child = d as Visual;
 
@@ -2711,7 +2711,7 @@ namespace Avalonia.Controls
         /// of grid lines.
         /// </summary>
         public static readonly StyledProperty<bool> ShowGridLinesProperty =
-            AvaloniaProperty.Register<Grid, bool>(nameof(ShowGridLines));
+            DependencyProperty.Register<Grid, bool>(nameof(ShowGridLines));
 
         /// <summary>
         /// Column property. This is an attached property.
@@ -2725,7 +2725,7 @@ namespace Avalonia.Controls
         /// <para> Default value for the property is <c>0</c>. </para>
         /// </remarks>
         public static readonly AttachedProperty<int> ColumnProperty =
-            AvaloniaProperty.RegisterAttached<Grid, Control, int>(
+            DependencyProperty.RegisterAttached<Grid, Control, int>(
                 "Column",
                 defaultValue: 0,
                 validate: (_, v) =>
@@ -2746,7 +2746,7 @@ namespace Avalonia.Controls
         /// </remarks>
         /// </summary>
         public static readonly AttachedProperty<int> RowProperty =
-            AvaloniaProperty.RegisterAttached<Grid, Control, int>(
+            DependencyProperty.RegisterAttached<Grid, Control, int>(
                 "Row",
                 defaultValue: 0,
                 validate: (_, v) =>
@@ -2766,7 +2766,7 @@ namespace Avalonia.Controls
         /// Default value for the property is <c>1</c>.
         /// </remarks>
         public static readonly AttachedProperty<int> ColumnSpanProperty =
-            AvaloniaProperty.RegisterAttached<Grid, Control, int>(
+            DependencyProperty.RegisterAttached<Grid, Control, int>(
                 "ColumnSpan",
                 defaultValue: 1,
                 validate: (_, v) =>
@@ -2786,7 +2786,7 @@ namespace Avalonia.Controls
         /// Default value for the property is <c>1</c>.
         /// </remarks>
         public static readonly AttachedProperty<int> RowSpanProperty =
-            AvaloniaProperty.RegisterAttached<Grid, Control, int>(
+            DependencyProperty.RegisterAttached<Grid, Control, int>(
                 "RowSpan",
                 defaultValue: 1,
                 validate: (_, v) =>
@@ -2799,7 +2799,7 @@ namespace Avalonia.Controls
         /// IsSharedSizeScope property marks scoping element for shared size.
         /// </summary>
         public static readonly AttachedProperty<bool> IsSharedSizeScopeProperty =
-            AvaloniaProperty.RegisterAttached<Grid, Control, bool>(
+            DependencyProperty.RegisterAttached<Grid, Control, bool>(
                 "IsSharedSizeScope");
 
         /// <summary>

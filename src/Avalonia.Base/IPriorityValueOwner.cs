@@ -19,7 +19,7 @@ namespace Avalonia
         /// <param name="priority">The priority of the value.</param>
         /// <param name="oldValue">The old value.</param>
         /// <param name="newValue">The new value.</param>
-        void Changed(AvaloniaProperty property, int priority, object oldValue, object newValue);
+        void Changed(DependencyProperty property, int priority, object oldValue, object newValue);
 
         /// <summary>
         /// Called when a <see cref="BindingNotification"/> is received by a 
@@ -27,21 +27,21 @@ namespace Avalonia
         /// </summary>
         /// <param name="property">The the property that has changed.</param>
         /// <param name="notification">The notification.</param>
-        void BindingNotificationReceived(AvaloniaProperty property, BindingNotification notification);
+        void BindingNotificationReceived(DependencyProperty property, BindingNotification notification);
 
         /// <summary>
         /// Returns deferred setter for given non-direct property.
         /// </summary>
         /// <param name="property">Property.</param>
         /// <returns>Deferred setter for given property.</returns>
-        DeferredSetter<object> GetNonDirectDeferredSetter(AvaloniaProperty property);
+        DeferredSetter<object> GetNonDirectDeferredSetter(DependencyProperty property);
 
         /// <summary>
         /// Logs a binding error.
         /// </summary>
         /// <param name="property">The property the error occurred on.</param>
         /// <param name="e">The binding error.</param>
-        void LogError(AvaloniaProperty property, Exception e);
+        void LogError(DependencyProperty property, Exception e);
 
         /// <summary>
         /// Ensures that the current thread is the UI thread.

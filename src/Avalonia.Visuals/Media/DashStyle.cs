@@ -14,14 +14,14 @@ namespace Avalonia.Media
         /// <summary>
         /// Defines the <see cref="Dashes"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<IReadOnlyList<double>> DashesProperty =
-            AvaloniaProperty.Register<DashStyle, IReadOnlyList<double>>(nameof(Dashes));
+        public static readonly DependencyProperty<IReadOnlyList<double>> DashesProperty =
+            DependencyProperty.Register<DashStyle, IReadOnlyList<double>>(nameof(Dashes));
 
         /// <summary>
         /// Defines the <see cref="Offset"/> property.
         /// </summary>
-        public static readonly AvaloniaProperty<double> OffsetProperty =
-            AvaloniaProperty.Register<DashStyle, double>(nameof(Offset));
+        public static readonly DependencyProperty<double> OffsetProperty =
+            DependencyProperty.Register<DashStyle, double>(nameof(Offset));
 
         private static ImmutableDashStyle s_dash;
         private static ImmutableDashStyle s_dot;
@@ -49,7 +49,7 @@ namespace Avalonia.Media
 
         static DashStyle()
         {
-            void RaiseInvalidated(AvaloniaPropertyChangedEventArgs e)
+            void RaiseInvalidated(DependencyPropertyChangedEventArgs e)
             {
                 ((DashStyle)e.Sender).Invalidated?.Invoke(e.Sender, EventArgs.Empty);
             }

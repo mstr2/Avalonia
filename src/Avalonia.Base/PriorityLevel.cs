@@ -15,7 +15,7 @@ namespace Avalonia
     /// <para>
     /// Each priority level in a <see cref="PriorityValue"/> has a current <see cref="Value"/>,
     /// a list of <see cref="Bindings"/> and a <see cref="DirectValue"/>. When there are no
-    /// bindings present, or all bindings return <see cref="AvaloniaProperty.UnsetValue"/> then
+    /// bindings present, or all bindings return <see cref="DependencyProperty.UnsetValue"/> then
     /// <code>Value</code> will equal <code>DirectValue</code>.
     /// </para>
     /// <para>
@@ -48,7 +48,7 @@ namespace Avalonia
 
             Owner = owner;
             Priority = priority;
-            Value = _directValue = AvaloniaProperty.UnsetValue;
+            Value = _directValue = DependencyProperty.UnsetValue;
             ActiveBindingIndex = -1;
             Bindings = new LinkedList<PriorityBindingEntry>();
         }
@@ -134,7 +134,7 @@ namespace Avalonia
         {
             if (entry.Index >= ActiveBindingIndex)
             {
-                if (entry.Value != AvaloniaProperty.UnsetValue)
+                if (entry.Value != DependencyProperty.UnsetValue)
                 {
                     Value = entry.Value;
                     ActiveBindingIndex = entry.Index;
@@ -178,7 +178,7 @@ namespace Avalonia
         {
             foreach (var binding in Bindings)
             {
-                if (binding.Value != AvaloniaProperty.UnsetValue)
+                if (binding.Value != DependencyProperty.UnsetValue)
                 {
                     Value = binding.Value;
                     ActiveBindingIndex = binding.Index;

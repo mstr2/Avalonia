@@ -18,7 +18,7 @@ namespace Avalonia
     /// Bindings, in the form of <see cref="IObservable{Object}"/>s are added to the object using
     /// the <see cref="Add"/> method. With the observable is passed a priority, where lower values
     /// represent higher priorities. The current <see cref="Value"/> is selected from the highest
-    /// priority binding that doesn't return <see cref="AvaloniaProperty.UnsetValue"/>. Where there
+    /// priority binding that doesn't return <see cref="DependencyProperty.UnsetValue"/>. Where there
     /// are multiple bindings registered with the same priority, the most recently added binding
     /// has a higher priority. Each time the value changes, the 
     /// <see cref="IPriorityValueOwner.Changed"/> method on the 
@@ -43,14 +43,14 @@ namespace Avalonia
         /// <param name="validate">An optional validation function.</param>
         public PriorityValue(
             IPriorityValueOwner owner,
-            AvaloniaProperty property, 
+            DependencyProperty property, 
             Type valueType,
             Func<object, object> validate = null)
         {
             Owner = owner;
             Property = property;
             _valueType = valueType;
-            _value = (AvaloniaProperty.UnsetValue, int.MaxValue);
+            _value = (DependencyProperty.UnsetValue, int.MaxValue);
             _validate = validate;
             _setAndNotifyCallback = SetAndNotify;
         }
@@ -75,7 +75,7 @@ namespace Avalonia
         /// <summary>
         /// Gets the property that the value represents.
         /// </summary>
-        public AvaloniaProperty Property { get; }
+        public DependencyProperty Property { get; }
 
         /// <summary>
         /// Gets the current value.
@@ -173,7 +173,7 @@ namespace Avalonia
         {
             if (level.Priority <= ValuePriority)
             {
-                if (level.Value != AvaloniaProperty.UnsetValue)
+                if (level.Value != DependencyProperty.UnsetValue)
                 {
                     UpdateValue(level.Value, level.Priority);
                 }
@@ -181,14 +181,14 @@ namespace Avalonia
                 {
                     foreach (var i in _levels.Values.OrderBy(x => x.Priority))
                     {
-                        if (i.Value != AvaloniaProperty.UnsetValue)
+                        if (i.Value != DependencyProperty.UnsetValue)
                         {
                             UpdateValue(i.Value, i.Priority);
                             return;
                         }
                     }
 
-                    UpdateValue(AvaloniaProperty.UnsetValue, int.MaxValue);
+                    UpdateValue(DependencyProperty.UnsetValue, int.MaxValue);
                 }
             }
         }
@@ -260,7 +260,7 @@ namespace Avalonia
             _setter.SetAndNotifyCallback(Property, _setAndNotifyCallback, ref _value, newValue);
         }
 
-        private void SetAndNotify(AvaloniaProperty property, ref (object value, int priority) backing, (object value, int priority) update)
+        private void SetAndNotify(DependencyProperty property, ref (object value, int priority) backing, (object value, int priority) update)
         {
             var val = update.value;
             var notification = val as BindingNotification;
@@ -275,7 +275,7 @@ namespace Avalonia
             {
                 var old = backing.value;
 
-                if (_validate != null && castValue != AvaloniaProperty.UnsetValue)
+                if (_validate != null && castValue != DependencyProperty.UnsetValue)
                 {
                     castValue = _validate(castValue);
                 }

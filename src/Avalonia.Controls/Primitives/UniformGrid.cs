@@ -11,19 +11,19 @@ namespace Avalonia.Controls.Primitives
         /// Defines the <see cref="Rows"/> property.
         /// </summary>
         public static readonly StyledProperty<int> RowsProperty =
-            AvaloniaProperty.Register<UniformGrid, int>(nameof(Rows));
+            DependencyProperty.Register<UniformGrid, int>(nameof(Rows));
 
         /// <summary>
         /// Defines the <see cref="Columns"/> property.
         /// </summary>
         public static readonly StyledProperty<int> ColumnsProperty =
-            AvaloniaProperty.Register<UniformGrid, int>(nameof(Columns));
+            DependencyProperty.Register<UniformGrid, int>(nameof(Columns));
 
         /// <summary>
         /// Defines the <see cref="FirstColumn"/> property.
         /// </summary>
         public static readonly StyledProperty<int> FirstColumnProperty =
-            AvaloniaProperty.Register<UniformGrid, int>(nameof(FirstColumn));
+            DependencyProperty.Register<UniformGrid, int>(nameof(FirstColumn));
 
         private int _rows;
         private int _columns;

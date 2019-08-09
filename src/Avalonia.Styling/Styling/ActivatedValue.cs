@@ -13,7 +13,7 @@ namespace Avalonia.Styling
     /// An <see cref="ActivatedValue"/> has two inputs: an activator observable and an
     /// <see cref="Value"/>. When the activator produces true, the 
     /// <see cref="ActivatedValue"/> will produce the current value. When the activator 
-    /// produces false it will produce <see cref="AvaloniaProperty.UnsetValue"/>.
+    /// produces false it will produce <see cref="DependencyProperty.UnsetValue"/>.
     /// </remarks>
     internal class ActivatedValue : LightweightObservableBase<object>, IDescription
     {
@@ -106,7 +106,7 @@ namespace Avalonia.Styling
         {
             if (IsActive.HasValue)
             {
-                var v = IsActive.Value ? Value : AvaloniaProperty.UnsetValue;
+                var v = IsActive.Value ? Value : DependencyProperty.UnsetValue;
 
                 if (!Equals(v, _last))
                 {

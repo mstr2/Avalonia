@@ -13,7 +13,7 @@ namespace Avalonia.Animation
     /// </summary>
     public abstract class Transition<T> : AvaloniaObject, ITransition
     {
-        private AvaloniaProperty _prop;
+        private DependencyProperty _prop;
 
         /// <summary>
         /// Gets the duration of the animation.
@@ -26,7 +26,7 @@ namespace Avalonia.Animation
         public Easing Easing { get; set; } = new LinearEasing();
 
         /// <inheritdocs/>
-        public AvaloniaProperty Property
+        public DependencyProperty Property
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Avalonia.Animation
         public virtual IDisposable Apply(Animatable control, IClock clock, object oldValue, object newValue)
         {
             var transition = DoTransition(new TransitionInstance(clock, Duration), (T)oldValue, (T)newValue);
-            return control.Bind<T>((AvaloniaProperty<T>)Property, transition, Data.BindingPriority.Animation);
+            return control.Bind<T>((DependencyProperty<T>)Property, transition, Data.BindingPriority.Animation);
         }
     }
 }

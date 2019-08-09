@@ -107,7 +107,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
         private static class Owner
         {
             public static readonly AttachedProperty<string> FooProperty =
-                AvaloniaProperty.RegisterAttached<Class1, string>(
+                DependencyProperty.RegisterAttached<Class1, string>(
                     "Foo", 
                     typeof(Owner), 
                     defaultValue: "foo");
@@ -116,7 +116,7 @@ namespace Avalonia.Base.UnitTests.Data.Core
         private class Class1 : AvaloniaObject
         {
             public static readonly StyledProperty<Class1> NextProperty =
-                AvaloniaProperty.Register<Class1, Class1>(nameof(Next));
+                DependencyProperty.Register<Class1, Class1>(nameof(Next));
 
             public Class1 Next
             {

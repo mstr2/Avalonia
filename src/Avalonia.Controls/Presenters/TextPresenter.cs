@@ -17,16 +17,16 @@ namespace Avalonia.Controls.Presenters
                 (o, v) => o.CaretIndex = v);
 
         public static readonly StyledProperty<char> PasswordCharProperty =
-            AvaloniaProperty.Register<TextPresenter, char>(nameof(PasswordChar));
+            DependencyProperty.Register<TextPresenter, char>(nameof(PasswordChar));
 
         public static readonly StyledProperty<IBrush> SelectionBrushProperty =
-            AvaloniaProperty.Register<TextPresenter, IBrush>(nameof(SelectionBrushProperty));
+            DependencyProperty.Register<TextPresenter, IBrush>(nameof(SelectionBrushProperty));
 
         public static readonly StyledProperty<IBrush> SelectionForegroundBrushProperty =
-            AvaloniaProperty.Register<TextPresenter, IBrush>(nameof(SelectionForegroundBrushProperty));
+            DependencyProperty.Register<TextPresenter, IBrush>(nameof(SelectionForegroundBrushProperty));
 
         public static readonly StyledProperty<IBrush> CaretBrushProperty =
-            AvaloniaProperty.Register<TextPresenter, IBrush>(nameof(CaretBrushProperty));
+            DependencyProperty.Register<TextPresenter, IBrush>(nameof(CaretBrushProperty));
 
         public static readonly DirectProperty<TextPresenter, int> SelectionStartProperty =
             TextBox.SelectionStartProperty.AddOwner<TextPresenter>(

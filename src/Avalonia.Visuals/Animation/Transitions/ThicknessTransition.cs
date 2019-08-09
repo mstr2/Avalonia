@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 namespace Avalonia.Animation
 {
     /// <summary>
-    /// Transition class that handles <see cref="AvaloniaProperty"/> with <see cref="Thickness"/> type.
+    /// Transition class that handles <see cref="DependencyProperty"/> with <see cref="Thickness"/> type.
     /// </summary>  
     public class ThicknessTransition : Transition<Thickness>
     {

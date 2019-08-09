@@ -19,19 +19,19 @@ namespace Avalonia.Input
         /// Defines the <see cref="Focusable"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> FocusableProperty =
-            AvaloniaProperty.Register<InputElement, bool>(nameof(Focusable));
+            DependencyProperty.Register<InputElement, bool>(nameof(Focusable));
 
         /// <summary>
         /// Defines the <see cref="IsEnabled"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsEnabledProperty =
-            AvaloniaProperty.Register<InputElement, bool>(nameof(IsEnabled), true);
+            DependencyProperty.Register<InputElement, bool>(nameof(IsEnabled), true);
 
         /// <summary>
         /// Defines the <see cref="IsEffectivelyEnabled"/> property.
         /// </summary>
         public static readonly DirectProperty<InputElement, bool> IsEffectivelyEnabledProperty =
-            AvaloniaProperty.RegisterDirect<InputElement, bool>(
+            DependencyProperty.RegisterDirect<InputElement, bool>(
                 nameof(IsEffectivelyEnabled),
                 o => o.IsEffectivelyEnabled);
 
@@ -39,25 +39,25 @@ namespace Avalonia.Input
         /// Gets or sets associated mouse cursor.
         /// </summary>
         public static readonly StyledProperty<Cursor> CursorProperty =
-            AvaloniaProperty.Register<InputElement, Cursor>(nameof(Cursor), null, true);
+            DependencyProperty.Register<InputElement, Cursor>(nameof(Cursor), null, true);
 
         /// <summary>
         /// Defines the <see cref="IsFocused"/> property.
         /// </summary>
         public static readonly DirectProperty<InputElement, bool> IsFocusedProperty =
-            AvaloniaProperty.RegisterDirect<InputElement, bool>(nameof(IsFocused), o => o.IsFocused);
+            DependencyProperty.RegisterDirect<InputElement, bool>(nameof(IsFocused), o => o.IsFocused);
 
         /// <summary>
         /// Defines the <see cref="IsHitTestVisible"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsHitTestVisibleProperty =
-            AvaloniaProperty.Register<InputElement, bool>(nameof(IsHitTestVisible), true);
+            DependencyProperty.Register<InputElement, bool>(nameof(IsHitTestVisible), true);
 
         /// <summary>
         /// Defines the <see cref="IsPointerOver"/> property.
         /// </summary>
         public static readonly DirectProperty<InputElement, bool> IsPointerOverProperty =
-            AvaloniaProperty.RegisterDirect<InputElement, bool>(nameof(IsPointerOver), o => o.IsPointerOver);
+            DependencyProperty.RegisterDirect<InputElement, bool>(nameof(IsPointerOver), o => o.IsPointerOver);
 
         /// <summary>
         /// Defines the <see cref="GotFocus"/> event.
@@ -531,7 +531,7 @@ namespace Avalonia.Input
             UpdateIsEffectivelyEnabled(this.GetVisualParent<InputElement>());
         }
 
-        private static void IsEnabledChanged(AvaloniaPropertyChangedEventArgs e)
+        private static void IsEnabledChanged(DependencyPropertyChangedEventArgs e)
         {
             ((InputElement)e.Sender).UpdateIsEffectivelyEnabled();
         }
