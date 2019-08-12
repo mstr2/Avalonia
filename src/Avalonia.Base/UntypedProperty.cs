@@ -11,13 +11,13 @@ namespace Avalonia
     /// <summary>
     /// A property class that is similar to WPF-style dependency properties.
     /// </summary>
-    internal class UntyedProperty : DependencyProperty, IPropertyAccessor
+    internal class UntypedProperty : DependencyProperty, IPropertyAccessor
     {
         private readonly bool _inherits;
         private readonly Func<IAvaloniaObject, object, object> _validation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UntyedProperty"/> class.
+        /// Initializes a new instance of the <see cref="UntypedProperty"/> class.
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="propertyType">The type of the property.</param>
@@ -26,7 +26,7 @@ namespace Avalonia
         /// <param name="validateValueCallback">The validation function.</param>
         /// <param name="inherits">Whether the property inherits its value.</param>
         /// <param name="notifying">A <see cref="DependencyProperty.Notifying"/> callback.</param>
-        internal UntyedProperty(
+        internal UntypedProperty(
             string name,
             Type propertyType,
             Type ownerType,            
@@ -57,7 +57,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="source">The property to add the owner to.</param>
         /// <param name="ownerType">The type of the class that registers the property.</param>
-        protected UntyedProperty(UntyedProperty source, Type ownerType)
+        protected UntypedProperty(UntypedProperty source, Type ownerType)
             : base(source, ownerType, null)
         {
             _inherits = source.Inherits;

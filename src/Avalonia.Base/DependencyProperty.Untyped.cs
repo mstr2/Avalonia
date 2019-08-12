@@ -32,7 +32,7 @@ namespace Avalonia
             Contract.Requires<ArgumentNullException>(propertyType != null);
             Contract.Requires<ArgumentNullException>(ownerType != null);
             
-            var result = new UntyedProperty(
+            var result = new UntypedProperty(
                 name,
                 propertyType,
                 ownerType,
@@ -65,7 +65,7 @@ namespace Avalonia
             if (!ownerType.IsAssignableFrom(typeof(IAvaloniaObject)))
             {
                 throw new ArgumentException(
-                    $"The owner of a dependency property must be an {nameof(IAvaloniaObject)} instance.");
+                    $"The owner of a dependency property must implement {nameof(IAvaloniaObject)}.");
             }
 
             if (metadata != null)

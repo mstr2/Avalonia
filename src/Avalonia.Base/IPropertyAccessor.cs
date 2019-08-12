@@ -6,7 +6,7 @@ using System;
 namespace Avalonia
 {
     /// <summary>
-    /// Provides a runtime interface for interfacing with <see cref="StyledProperty{TValue}"/> and <see cref="UntyedProperty"/>.
+    /// Provides a runtime interface for interfacing with <see cref="StyledProperty{TValue}"/> and <see cref="UntypedProperty"/>.
     /// </summary>
     internal interface IPropertyAccessor
     {
