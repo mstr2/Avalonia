@@ -63,7 +63,7 @@ namespace Avalonia.Layout
     /// <summary>
     /// Implements layout-related functionality for a control.
     /// </summary>
-    public class Layoutable : Visual, ILayoutable
+    public class Layoutable : Visual, ILayoutable, Compat.IFrameworkInvalidatable
     {
         /// <summary>
         /// Defines the <see cref="DesiredSize"/> property.
@@ -365,7 +365,6 @@ namespace Avalonia.Layout
                 LayoutUpdated?.Invoke(this, EventArgs.Empty);
             }
         }
-
 
         /// <summary>
         /// Called by InvalidateMeasure

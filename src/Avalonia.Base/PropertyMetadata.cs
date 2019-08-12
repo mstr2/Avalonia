@@ -11,11 +11,19 @@ namespace Avalonia
     public delegate object CoerceValueCallback(IAvaloniaObject d, object baseValue);
 
     /// <summary>
-    /// Metadata for WPF-style dependency properties.
+    /// Metadata for untyped dependency properties.
     /// </summary>
     public class PropertyMetadata : IPropertyMetadata
     {
+        [Flags]
+        private enum Flags
+        {
+            DefaultValueModified,
+            CoerceValueCallbackModified
+        }
+
         private BindingMode _defaultBindingMode = BindingMode.Default;
+        private Flags _flags;
 
         public PropertyMetadata()
         {
@@ -24,6 +32,7 @@ namespace Avalonia
         public PropertyMetadata(object defaultValue)
         {
             DefaultValue = defaultValue;
+            SetFlag(Flags.DefaultValueModified);
         }
 
         public PropertyMetadata(PropertyChangedCallback propertyChangedCallback)
@@ -35,6 +44,16 @@ namespace Avalonia
         {
             DefaultValue = defaultValue;
             PropertyChangedCallback = propertyChangedCallback;
+            SetFlag(Flags.DefaultValueModified);
+        }
+
+        public PropertyMetadata(
+            PropertyChangedCallback propertyChangedCallback,
+            CoerceValueCallback coerceValueCallback)
+        {
+            PropertyChangedCallback = propertyChangedCallback;
+            CoerceValueCallback = coerceValueCallback;
+            SetFlag(Flags.CoerceValueCallbackModified);
         }
 
         public PropertyMetadata(
@@ -45,14 +64,15 @@ namespace Avalonia
             DefaultValue = defaultValue;
             PropertyChangedCallback = propertyChangedCallback;
             CoerceValueCallback = coerceValueCallback;
+            SetFlag(Flags.DefaultValueModified | Flags.CoerceValueCallbackModified);
         }
 
-        public object DefaultValue { get; set; }
+        public object DefaultValue { get; private set; }
 
-        public PropertyChangedCallback PropertyChangedCallback { get; set; }
+        public PropertyChangedCallback PropertyChangedCallback { get; private set; }
 
-        public CoerceValueCallback CoerceValueCallback { get; set; }
-       
+        public CoerceValueCallback CoerceValueCallback { get; private set; }
+
         /// <summary>
         /// Gets the default binding mode for the property.
         /// </summary>
@@ -83,12 +103,12 @@ namespace Avalonia
 
             if (src != null)
             {
-                if (DefaultValue == null)
+                if (HasFlag(Flags.DefaultValueModified))
                 {
                     DefaultValue = src.DefaultValue;
                 }
 
-                if (CoerceValueCallback == null)
+                if (HasFlag(Flags.CoerceValueCallbackModified))
                 {
                     CoerceValueCallback = src.CoerceValueCallback;
                 }
@@ -106,6 +126,16 @@ namespace Avalonia
                     PropertyChangedCallback = head;
                 }
             }
+        }
+
+        private bool HasFlag(Flags flag)
+        {
+            return (_flags & flag) != 0;
+        }
+
+        private void SetFlag(Flags flag)
+        {
+            _flags &= flag;
         }
     }
 }
