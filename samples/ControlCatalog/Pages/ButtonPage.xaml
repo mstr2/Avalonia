@@ -32,6 +32,42 @@
         <Button BorderBrush="{DynamicResource ThemeAccentBrush}" BorderThickness="4">Thick Border</Button>
         <Button BorderBrush="{DynamicResource ThemeAccentBrush}" BorderThickness="4" IsEnabled="False">Disabled</Button>
       </StackPanel>
-    </StackPanel>    
+    </StackPanel>
+
+    <TextBlock Classes="h1">ButtonBar</TextBlock>
+    <StackPanel>
+      <TextBlock Classes="h2">Windows order</TextBlock>
+      <ButtonBar Name="WindowsButtonBar" Orientation="Horizontal" Spacing="8">
+        <Button ButtonBar.Kind="Help" Content="Help" />
+        <Button ButtonBar.Kind="Dialog" Content="Dialog" />
+        <Button ButtonBar.Kind="No" Content="No" />
+        <Button ButtonBar.Kind="Yes" Content="Yes" />
+        <Button ButtonBar.Kind="Cancel" Content="Cancel" />
+        <Button ButtonBar.Kind="OK" Content="OK" />
+        <Button ButtonBar.Kind="Action" Content="Action" />
+      </ButtonBar>
+
+      <TextBlock Classes="h2">macOS order</TextBlock>
+      <ButtonBar Name="MacOSButtonBar" Orientation="Horizontal" Spacing="8">
+        <Button ButtonBar.Kind="Help" Content="Help" />
+        <Button ButtonBar.Kind="Dialog" Content="Dialog" />
+        <Button ButtonBar.Kind="No" Content="No" />
+        <Button ButtonBar.Kind="Yes" Content="Yes" />
+        <Button ButtonBar.Kind="Cancel" Content="Cancel" />
+        <Button ButtonBar.Kind="OK" Content="OK" />
+        <Button ButtonBar.Kind="Action" Content="Action" />
+      </ButtonBar>
+
+      <TextBlock Classes="h2">Linux order</TextBlock>
+      <ButtonBar Name="LinuxButtonBar" Orientation="Horizontal" Spacing="8">
+        <Button ButtonBar.Kind="Help" Content="Help" />
+        <Button ButtonBar.Kind="Dialog" Content="Dialog" />
+        <Button ButtonBar.Kind="No" Content="No" />
+        <Button ButtonBar.Kind="Yes" Content="Yes" />
+        <Button ButtonBar.Kind="Cancel" Content="Cancel" />
+        <Button ButtonBar.Kind="OK" Content="OK" />
+        <Button ButtonBar.Kind="Action" Content="Action" />
+      </ButtonBar>
+    </StackPanel>
   </StackPanel>
 </UserControl>
