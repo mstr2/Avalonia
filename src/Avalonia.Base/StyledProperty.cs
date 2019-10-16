@@ -28,6 +28,15 @@ namespace Avalonia
         {
         }
 
+        protected StyledProperty(
+            string name,
+            Type valueType,
+            Type ownerType,
+            StyledPropertyMetadata<object> metadata)
+            : base(name, valueType, ownerType, metadata, inherits: false, notifying: null)
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="StyledPropertyBase{T}"/> class.
         /// </summary>

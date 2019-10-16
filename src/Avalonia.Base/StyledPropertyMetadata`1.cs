@@ -10,8 +10,10 @@ namespace Avalonia
     /// <summary>
     /// Metadata for styled avalonia properties.
     /// </summary>
-    public class StyledPropertyMetadata<TValue> : PropertyMetadata, IStyledPropertyMetadata
+    public class StyledPropertyMetadata<TValue> : AvaloniaPropertyMetadata, IStyledPropertyMetadata
     {
+        private Func<IAvaloniaObject, object, object> _validateUntyped;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="StyledPropertyMetadata{TValue}"/> class.
         /// </summary>
@@ -26,6 +28,7 @@ namespace Avalonia
         {
             DefaultValue = new BoxedValue<TValue>(defaultValue);
             Validate = validate;
+            _validateUntyped = Cast(validate);
         }
 
         /// <summary>
@@ -40,10 +43,10 @@ namespace Avalonia
 
         object IStyledPropertyMetadata.DefaultValue => DefaultValue.Boxed;
 
-        Func<IAvaloniaObject, object, object> IStyledPropertyMetadata.Validate => Cast(Validate);
+        Func<IAvaloniaObject, object, object> IStyledPropertyMetadata.Validate => _validateUntyped;
 
         /// <inheritdoc/>
-        public override void Merge(PropertyMetadata baseMetadata, AvaloniaProperty property)
+        public override void Merge(AvaloniaPropertyMetadata baseMetadata, AvaloniaProperty property)
         {
             base.Merge(baseMetadata, property);
 
@@ -57,6 +60,7 @@ namespace Avalonia
                 if (Validate == null)
                 {
                     Validate = src.Validate;
+                    _validateUntyped = src._validateUntyped;
                 }
             }
         }
@@ -68,10 +72,13 @@ namespace Avalonia
             {
                 return null;
             }
-            else
+
+            if (typeof(TValue) == typeof(object))
             {
-                return (o, v) => f(o, (TValue)v);
+                return (Func<IAvaloniaObject, object, object>)(object)f;
             }
+
+            return (o, v) => f(o, (TValue)v);
         }
     }
 }

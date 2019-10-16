@@ -704,10 +704,10 @@ namespace Avalonia
 
             var originalValue = value;
 
-            if (!TypeUtilities.TryConvertImplicit(property.PropertyType, value, out value))
+            if (value != AvaloniaProperty.UnsetValue && !property.IsValidValue(value))
             {
                 throw new ArgumentException(string.Format(
-                    "Invalid value for Property '{0}': '{1}' ({2})",
+                    "Invalid value for property '{0}': '{1}' ({2})",
                     property.Name,
                     originalValue,
                     originalValue?.GetType().FullName ?? "(null)"));
@@ -759,7 +759,7 @@ namespace Avalonia
         /// </remarks>
         private void ParentPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null);
+            //Contract.Requires<ArgumentNullException>(e != null);
 
             if (e.Property.Inherits && !IsSet(e.Property))
             {

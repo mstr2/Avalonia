@@ -29,14 +29,18 @@ namespace Avalonia
             Action<IAvaloniaObject, bool> notifying = null)
                 : base(name, ownerType, metadata, notifying)
         {
-            Contract.Requires<ArgumentNullException>(name != null);
-            Contract.Requires<ArgumentNullException>(ownerType != null);
+            _inherits = inherits;
+        }
 
-            if (name.Contains("."))
-            {
-                throw new ArgumentException("'name' may not contain periods.");
-            }
-
+        protected StyledPropertyBase(
+            string name,
+            Type valueType,
+            Type ownerType,
+            StyledPropertyMetadata<object> metadata,
+            bool inherits = false,
+            Action<IAvaloniaObject, bool> notifying = null)
+                : base(name, valueType, ownerType, metadata, notifying)
+        {
             _inherits = inherits;
         }
 
@@ -166,7 +170,7 @@ namespace Avalonia
         /// <inheritdoc/>
         object IStyledPropertyAccessor.GetDefaultValue(Type type) => GetDefaultBoxedValue(type);
 
-        private object GetDefaultBoxedValue(Type type)
+        protected virtual object GetDefaultBoxedValue(Type type)
         {
             Contract.Requires<ArgumentNullException>(type != null);
 

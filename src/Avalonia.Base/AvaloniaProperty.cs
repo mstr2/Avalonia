@@ -24,9 +24,9 @@ namespace Avalonia
         private static int s_nextId;
         private readonly Subject<AvaloniaPropertyChangedEventArgs> _initialized;
         private readonly Subject<AvaloniaPropertyChangedEventArgs> _changed;
-        private readonly PropertyMetadata _defaultMetadata;
-        private readonly Dictionary<Type, PropertyMetadata> _metadata;
-        private readonly Dictionary<Type, PropertyMetadata> _metadataCache = new Dictionary<Type, PropertyMetadata>();
+        private readonly AvaloniaPropertyMetadata _defaultMetadata;
+        private readonly Dictionary<Type, AvaloniaPropertyMetadata> _metadata;
+        private readonly Dictionary<Type, AvaloniaPropertyMetadata> _metadataCache = new Dictionary<Type, AvaloniaPropertyMetadata>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AvaloniaProperty"/> class.
@@ -40,7 +40,7 @@ namespace Avalonia
             string name,
             Type valueType,
             Type ownerType,
-            PropertyMetadata metadata,
+            AvaloniaPropertyMetadata metadata,
             Action<IAvaloniaObject, bool> notifying = null)
         {
             Contract.Requires<ArgumentNullException>(name != null);
@@ -55,7 +55,7 @@ namespace Avalonia
 
             _initialized = new Subject<AvaloniaPropertyChangedEventArgs>();
             _changed = new Subject<AvaloniaPropertyChangedEventArgs>();
-            _metadata = new Dictionary<Type, PropertyMetadata>();
+            _metadata = new Dictionary<Type, AvaloniaPropertyMetadata>();
 
             Name = name;
             PropertyType = valueType;
@@ -76,14 +76,14 @@ namespace Avalonia
         protected AvaloniaProperty(
             AvaloniaProperty source,
             Type ownerType,
-            PropertyMetadata metadata)
+            AvaloniaPropertyMetadata metadata)
         {
             Contract.Requires<ArgumentNullException>(source != null);
             Contract.Requires<ArgumentNullException>(ownerType != null);
 
             _initialized = source._initialized;
             _changed = source._changed;
-            _metadata = new Dictionary<Type, PropertyMetadata>();
+            _metadata = new Dictionary<Type, AvaloniaPropertyMetadata>();
 
             Name = source.Name;
             PropertyType = source.PropertyType;
@@ -431,7 +431,7 @@ namespace Avalonia
         /// <returns>
         /// The property metadata.
         /// </returns>
-        public PropertyMetadata GetMetadata<T>() where T : IAvaloniaObject
+        public AvaloniaPropertyMetadata GetMetadata<T>() where T : IAvaloniaObject
         {
             return GetMetadata(typeof(T));
         }
@@ -444,11 +444,11 @@ namespace Avalonia
         /// The property metadata.
         /// </returns>
         ///
-        public PropertyMetadata GetMetadata(Type type)
+        public AvaloniaPropertyMetadata GetMetadata(Type type)
         {
             Contract.Requires<ArgumentNullException>(type != null);
 
-            PropertyMetadata result;
+            AvaloniaPropertyMetadata result;
             Type currentType = type;
 
             if (_metadataCache.TryGetValue(type, out result))
@@ -478,7 +478,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>True if the value is valid, otherwise false.</returns>
-        public bool IsValidValue(object value)
+        public virtual bool IsValidValue(object value)
         {
             return TypeUtilities.TryConvertImplicit(PropertyType, value, out value);
         }
@@ -520,7 +520,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="metadata">The metadata.</param>
-        protected void OverrideMetadata(Type type, PropertyMetadata metadata)
+        protected virtual void OverrideMetadata(Type type, AvaloniaPropertyMetadata metadata)
         {
             Contract.Requires<ArgumentNullException>(type != null);
             Contract.Requires<ArgumentNullException>(metadata != null);
