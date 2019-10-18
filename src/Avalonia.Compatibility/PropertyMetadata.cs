@@ -2,18 +2,21 @@
 
 namespace Avalonia
 {
-    public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
+    public delegate object CoerceValueCallback(AvaloniaObject d, object baseValue);
 
-    public delegate void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e);
+    public delegate void PropertyChangedCallback(AvaloniaObject d, AvaloniaPropertyChangedEventArgs e);
 
     public class PropertyMetadata : StyledPropertyMetadata<object>
     {
+        private readonly bool _defaultValueModified;
+
         public PropertyMetadata()
         {
         }
 
         public PropertyMetadata(object defaultValue) : base(defaultValue)
         {
+            _defaultValueModified = true;
         }
 
         public PropertyMetadata(PropertyChangedCallback propertyChangedCallback)
@@ -26,6 +29,7 @@ namespace Avalonia
             PropertyChangedCallback propertyChangedCallback)
             : base(defaultValue)
         {
+            _defaultValueModified = true;
             PropertyChangedCallback = propertyChangedCallback;
         }
 
@@ -33,8 +37,9 @@ namespace Avalonia
             object defaultValue,
             PropertyChangedCallback propertyChangedCallback,
             CoerceValueCallback coerceValueCallback)
-            : base(defaultValue, (o, v) => coerceValueCallback((DependencyObject)o, v))
+            : base(defaultValue, (o, v) => coerceValueCallback((AvaloniaObject)o, v))
         {
+            _defaultValueModified = true;
             PropertyChangedCallback = propertyChangedCallback;
             CoerceValueCallback = coerceValueCallback;
         }
@@ -45,10 +50,16 @@ namespace Avalonia
 
         public override void Merge(AvaloniaPropertyMetadata baseMetadata, AvaloniaProperty property)
         {
+            var currentDefaultValue = DefaultValue;
+            
             base.Merge(baseMetadata, property);
 
-            var propertyMetadata = baseMetadata as PropertyMetadata;
-            if (propertyMetadata != null)
+            if (baseMetadata is StyledPropertyMetadata<object> styledPropertyMetadata)
+            {
+                DefaultValue = _defaultValueModified ? currentDefaultValue : styledPropertyMetadata.DefaultValue;
+            }
+
+            if (baseMetadata is PropertyMetadata propertyMetadata)
             {
                 if (propertyMetadata.PropertyChangedCallback != null)
                 {

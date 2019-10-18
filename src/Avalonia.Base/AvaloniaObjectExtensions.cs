@@ -149,7 +149,7 @@ namespace Avalonia
         /// <returns>An <see cref="IDisposable"/> which can be used to cancel the binding.</returns>
         public static IDisposable Bind(
             this IAvaloniaObject target,
-            AvaloniaProperty property,
+            IAvaloniaProperty property,
             IBinding binding,
             object anchor = null)
         {
@@ -157,17 +157,31 @@ namespace Avalonia
             Contract.Requires<ArgumentNullException>(property != null);
             Contract.Requires<ArgumentNullException>(binding != null);
 
-            var metadata = property.GetMetadata(target.GetType()) as IDirectPropertyMetadata;
+            bool hasKey = false;
+            AvaloniaProperty p = property as AvaloniaProperty;
+
+            if (p == null && property is IAvaloniaPropertyKey key)
+            {
+                p = key.Property;
+                hasKey = true;
+            }
+
+            if (p.IsReadOnly && !hasKey)
+            {
+                throw new InvalidOperationException($"The property {p.Name} is read-only.");
+            }
+
+            var metadata = p.GetMetadata(target.GetType()) as IDirectPropertyMetadata;
 
             var result = binding.Initiate(
                 target,
-                property,
+                p,
                 anchor, 
                 metadata?.EnableDataValidation ?? false);
 
             if (result != null)
             {
-                return BindingOperations.Apply(target, property, result, anchor);
+                return BindingOperations.Apply(target, p, result, anchor);
             }
             else
             {

@@ -1,9 +1,0 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="CompatApiDemo.MainWindow"
-        Width="600" Height="500" Title="CompatApiDemo">
-    <StackPanel Orientation="Vertical">
-      <Slider Value="{Binding Value}" Minimum="0" Maximum="15"/>
-      <TextBlock Text="{Binding Value}"/>
-    </StackPanel>
-</Window>

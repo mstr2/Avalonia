@@ -128,7 +128,7 @@ namespace Avalonia
         {
             if (Setter == null)
             {
-                throw new ArgumentException($"The property {Name} is readonly.");
+                throw new ArgumentException($"The property {Name} is read-only.");
             }
 
             Setter((TOwner)instance, (TValue)value);

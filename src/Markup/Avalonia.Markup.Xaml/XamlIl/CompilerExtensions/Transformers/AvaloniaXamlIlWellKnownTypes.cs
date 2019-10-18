@@ -9,6 +9,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
         public IXamlIlType IAvaloniaObject { get; }
         public IXamlIlType BindingPriority { get; }
         public IXamlIlType AvaloniaObjectExtensions { get; }
+        public IXamlIlType IAvaloniaProperty { get; }
         public IXamlIlType AvaloniaProperty { get; }
         public IXamlIlType AvaloniaPropertyT { get; }
         public IXamlIlType IBinding { get; }
@@ -34,6 +35,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
             AvaloniaObject = ctx.Configuration.TypeSystem.GetType("Avalonia.AvaloniaObject");
             IAvaloniaObject = ctx.Configuration.TypeSystem.GetType("Avalonia.IAvaloniaObject");
             AvaloniaObjectExtensions = ctx.Configuration.TypeSystem.GetType("Avalonia.AvaloniaObjectExtensions");
+            IAvaloniaProperty = ctx.Configuration.TypeSystem.GetType("Avalonia.IAvaloniaProperty");
             AvaloniaProperty = ctx.Configuration.TypeSystem.GetType("Avalonia.AvaloniaProperty");
             AvaloniaPropertyT = ctx.Configuration.TypeSystem.GetType("Avalonia.AvaloniaProperty`1");
             BindingPriority = ctx.Configuration.TypeSystem.GetType("Avalonia.Data.BindingPriority");
@@ -42,7 +44,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
             Transitions = ctx.Configuration.TypeSystem.GetType("Avalonia.Animation.Transitions");
             AssignBindingAttribute = ctx.Configuration.TypeSystem.GetType("Avalonia.Data.AssignBindingAttribute");
             AvaloniaObjectBindMethod = AvaloniaObjectExtensions.FindMethod("Bind", IDisposable, false, IAvaloniaObject,
-                AvaloniaProperty,
+                IAvaloniaProperty,
                 IBinding, ctx.Configuration.WellKnownTypes.Object);
             UnsetValueType = ctx.Configuration.TypeSystem.GetType("Avalonia.UnsetValueType");
             StyledElement = ctx.Configuration.TypeSystem.GetType("Avalonia.StyledElement");
@@ -63,7 +65,7 @@ namespace Avalonia.Markup.Xaml.XamlIl.CompilerExtensions.Transformers
                 XamlIlTypes.Void, StyledElement, INameScope) {IsStatic = true});
 
             AvaloniaObjectSetValueMethod = AvaloniaObject.FindMethod("SetValue", XamlIlTypes.Void,
-                false, AvaloniaProperty, XamlIlTypes.Object, BindingPriority);
+                false, IAvaloniaProperty, XamlIlTypes.Object, BindingPriority);
             
         }
     }

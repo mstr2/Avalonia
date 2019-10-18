@@ -1,5 +1,7 @@
 using System;
 using Xunit;
+using DependencyObject = Avalonia.AvaloniaObject;
+using DependencyPropertyChangedEventArgs = Avalonia.AvaloniaPropertyChangedEventArgs;
 
 namespace Avalonia.Compatibility.UnitTests
 {
@@ -9,6 +11,11 @@ namespace Avalonia.Compatibility.UnitTests
         {
             public static readonly DependencyProperty DefaultValueTestProperty = DependencyProperty.Register(
                 "DefaultValueTest", typeof(double), typeof(TestClass));
+
+            public static readonly DependencyPropertyKey ReadOnlyTestPropertyKey = DependencyProperty.RegisterReadOnly(
+                "ReadOnlyTest", typeof(double), typeof(TestClass), new PropertyMetadata());
+
+            public static readonly DependencyProperty ReadOnlyTestProperty = ReadOnlyTestPropertyKey.DependencyProperty;
 
             public static readonly DependencyProperty ValidateValueTestProperty = DependencyProperty.Register(
                 "ValidateValueTest", typeof(double), typeof(TestClass), new PropertyMetadata(), ValidateValueNotNegative);
@@ -58,6 +65,34 @@ namespace Avalonia.Compatibility.UnitTests
             var testClass = new TestClass();
             Assert.Throws<ArgumentException>(
                 () => testClass.SetValue(TestClass.DefaultValueTestProperty, 0));
+        }
+
+        [Fact]
+        public void Changing_ReadOnly_DependencyProperty_Without_Key_Fails()
+        {
+            var testClass = new TestClass();
+
+            Assert.Throws<InvalidOperationException>(
+                () => testClass.SetValue(TestClass.ReadOnlyTestProperty, 1.0));
+
+            Assert.Throws<InvalidOperationException>(() =>
+                testClass.Bind(
+                    TestClass.ReadOnlyTestProperty,
+                    testClass.GetObservable(TestClass.DefaultValueTestProperty)));
+        }
+
+        [Fact]
+        public void Changing_ReadOnly_DependencyProperty_With_Key_Succeeds()
+        {
+            var testClass = new TestClass();
+
+            testClass.SetValue(TestClass.ReadOnlyTestPropertyKey, 1.0);
+            Assert.Equal(1.0, testClass.GetValue(TestClass.ReadOnlyTestProperty));
+
+            testClass.Bind(
+                TestClass.ReadOnlyTestPropertyKey,
+                testClass.GetObservable(TestClass.DefaultValueTestProperty));
+            Assert.Equal(0.0, testClass.GetValue(TestClass.ReadOnlyTestProperty));
         }
 
         [Fact]

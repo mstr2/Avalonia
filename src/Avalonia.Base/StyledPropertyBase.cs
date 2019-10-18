@@ -112,7 +112,7 @@ namespace Avalonia
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="metadata">The metadata.</param>
-        public void OverrideMetadata<T>(StyledPropertyMetadata<TValue> metadata) where T : IAvaloniaObject
+        public virtual void OverrideMetadata<T>(StyledPropertyMetadata<TValue> metadata) where T : IAvaloniaObject
         {
             base.OverrideMetadata(typeof(T), metadata);
         }
@@ -122,7 +122,7 @@ namespace Avalonia
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="metadata">The metadata.</param>
-        public void OverrideMetadata(Type type, StyledPropertyMetadata<TValue> metadata)
+        public virtual void OverrideMetadata(Type type, StyledPropertyMetadata<TValue> metadata)
         {
             base.OverrideMetadata(type, metadata);
         }
@@ -148,7 +148,7 @@ namespace Avalonia
                 f = (o, v) => v;
             }
 
-            base.OverrideMetadata(typeof(THost), new StyledPropertyMetadata<TValue>(validate: f));
+            OverrideMetadata<THost>(new StyledPropertyMetadata<TValue>(validate: f));
         }
 
         /// <summary>

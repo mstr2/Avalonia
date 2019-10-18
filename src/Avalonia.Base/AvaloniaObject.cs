@@ -273,20 +273,34 @@ namespace Avalonia
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         public void SetValue(
-            AvaloniaProperty property,
+            IAvaloniaProperty property,
             object value,
             BindingPriority priority = BindingPriority.LocalValue)
         {
             Contract.Requires<ArgumentNullException>(property != null);
             VerifyAccess();
 
-            if (property.IsDirect)
+            bool hasKey = false;
+            AvaloniaProperty p = property as AvaloniaProperty;
+
+            if (p == null && property is IAvaloniaPropertyKey key)
             {
-                SetDirectValue(property, value);
+                p = key.Property;
+                hasKey = true;
+            }
+
+            if (p.IsReadOnly && !hasKey)
+            {
+                throw new InvalidOperationException($"The property {p.Name} is read-only.");
+            }
+
+            if (p.IsDirect)
+            {
+                SetDirectValue(p, value);
             }
             else
             {
-                SetStyledValue(property, value, priority);
+                SetStyledValue(p, value, priority);
             }
         }
 
@@ -317,7 +331,7 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         public IDisposable Bind(
-            AvaloniaProperty property,
+            IAvaloniaProperty property,
             IObservable<object> source,
             BindingPriority priority = BindingPriority.LocalValue)
         {
@@ -326,18 +340,27 @@ namespace Avalonia
 
             VerifyAccess();
 
-            if (property.IsDirect)
-            {
-                if (property.IsReadOnly)
-                {
-                    throw new ArgumentException($"The property {property.Name} is readonly.");
-                }
+            bool hasKey = false;
+            AvaloniaProperty p = property as AvaloniaProperty;
 
+            if (p == null && property is IAvaloniaPropertyKey key)
+            {
+                p = key.Property;
+                hasKey = true;
+            }
+
+            if (p.IsReadOnly && !hasKey)
+            {
+                throw new InvalidOperationException($"The property {p.Name} is read-only.");
+            }
+
+            if (p.IsDirect)
+            {
                 Logger.TryGet(LogEventLevel.Verbose)?.Log(
                     LogArea.Property,
                     this,
                     "Bound {Property} to {Binding} with priority LocalValue",
-                    property,
+                    p,
                     GetDescription(source));
 
                 if (_directBindings == null)
@@ -345,7 +368,7 @@ namespace Avalonia
                     _directBindings = new List<DirectBindingSubscription>();
                 }
 
-                return new DirectBindingSubscription(this, property, source);
+                return new DirectBindingSubscription(this, p, source);
             }
             else
             {
@@ -353,11 +376,11 @@ namespace Avalonia
                     LogArea.Property,
                     this,
                     "Bound {Property} to {Binding} with priority {Priority}",
-                    property,
+                    p,
                     GetDescription(source),
                     priority);
 
-                return Values.AddBinding(property, source, priority);
+                return Values.AddBinding(p, source, priority);
             }
         }
 
@@ -704,7 +727,7 @@ namespace Avalonia
 
             var originalValue = value;
 
-            if (value != AvaloniaProperty.UnsetValue && !property.IsValidValue(value))
+            if (!property.TryConvertValue(ref value))
             {
                 throw new ArgumentException(string.Format(
                     "Invalid value for property '{0}': '{1}' ({2})",

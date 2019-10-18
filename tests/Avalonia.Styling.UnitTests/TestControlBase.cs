@@ -50,7 +50,7 @@ namespace Avalonia.Styling.UnitTests
             throw new NotImplementedException();
         }
 
-        public void SetValue(AvaloniaProperty property, object value, BindingPriority priority)
+        public void SetValue(IAvaloniaProperty property, object value, BindingPriority priority)
         {
             throw new NotImplementedException();
         }
@@ -70,7 +70,7 @@ namespace Avalonia.Styling.UnitTests
             throw new NotImplementedException();
         }
 
-        public IDisposable Bind(AvaloniaProperty property, IObservable<object> source, BindingPriority priority = BindingPriority.LocalValue)
+        public IDisposable Bind(IAvaloniaProperty property, IObservable<object> source, BindingPriority priority = BindingPriority.LocalValue)
         {
             throw new NotImplementedException();
         }

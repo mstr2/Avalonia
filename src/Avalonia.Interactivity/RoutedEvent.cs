@@ -92,6 +92,10 @@ namespace Avalonia.Interactivity
             });
         }
 
+        protected internal virtual void VerifyHandler(Delegate handler)
+        {
+        }
+
         internal void InvokeRaised(object sender, RoutedEventArgs e)
         {
             _raised.OnNext((sender, e));

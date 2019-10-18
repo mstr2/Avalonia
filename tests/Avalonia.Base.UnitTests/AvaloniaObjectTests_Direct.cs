@@ -114,7 +114,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class2();
 
-            Assert.Throws<ArgumentException>(() => target.SetValue(Class1.BarProperty, "value"));
+            Assert.Throws<InvalidOperationException>(() => target.SetValue(Class1.BarProperty, "value"));
         }
 
         [Fact]
@@ -215,7 +215,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class1();
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<InvalidOperationException>(() =>
                 target.SetValue(Class1.BarProperty, "newvalue"));
         }
 
@@ -224,7 +224,7 @@ namespace Avalonia.Base.UnitTests
         {
             var target = new Class1();
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<InvalidOperationException>(() =>
                 target.SetValue((AvaloniaProperty)Class1.BarProperty, "newvalue"));
         }
 
@@ -234,7 +234,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
             var source = new Subject<string>();
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<InvalidOperationException>(() =>
                 target.Bind(Class1.BarProperty, source));
         }
 
@@ -244,7 +244,7 @@ namespace Avalonia.Base.UnitTests
             var target = new Class1();
             var source = new Subject<string>();
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<InvalidOperationException>(() =>
                 target.Bind(Class1.BarProperty, source));
         }
 

@@ -14,7 +14,7 @@ namespace Avalonia
     /// <summary>
     /// Base class for avalonia properties.
     /// </summary>
-    public class AvaloniaProperty : IEquatable<AvaloniaProperty>
+    public class AvaloniaProperty : IAvaloniaProperty, IEquatable<AvaloniaProperty>
     {
         /// <summary>
         /// Represents an unset property value.
@@ -478,7 +478,12 @@ namespace Avalonia
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>True if the value is valid, otherwise false.</returns>
-        public virtual bool IsValidValue(object value)
+        public bool IsValidValue(object value)
+        {
+            return TryConvertValue(ref value);
+        }
+
+        protected internal virtual bool TryConvertValue(ref object value)
         {
             return TypeUtilities.TryConvertImplicit(PropertyType, value, out value);
         }

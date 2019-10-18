@@ -32,6 +32,8 @@ namespace Avalonia
                 return _defaultBindingMode == BindingMode.Default ?
                     BindingMode.OneWay : _defaultBindingMode;
             }
+
+            internal set { _defaultBindingMode = value; }
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace Avalonia
         /// <param name="baseMetadata">The base metadata to merge.</param>
         /// <param name="property">The property to which the metadata is being applied.</param>
         public virtual void Merge(
-            AvaloniaPropertyMetadata baseMetadata, 
+            AvaloniaPropertyMetadata baseMetadata,
             AvaloniaProperty property)
         {
             if (_defaultBindingMode == BindingMode.Default)

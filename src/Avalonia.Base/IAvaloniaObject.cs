@@ -57,7 +57,7 @@ namespace Avalonia
         /// <param name="value">The value.</param>
         /// <param name="priority">The priority of the value.</param>
         void SetValue(
-            AvaloniaProperty property, 
+            IAvaloniaProperty property, 
             object value, 
             BindingPriority priority = BindingPriority.LocalValue);
 
@@ -83,7 +83,7 @@ namespace Avalonia
         /// A disposable which can be used to terminate the binding.
         /// </returns>
         IDisposable Bind(
-            AvaloniaProperty property,
+            IAvaloniaProperty property,
             IObservable<object> source,
             BindingPriority priority = BindingPriority.LocalValue);
 

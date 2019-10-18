@@ -43,6 +43,8 @@ namespace Avalonia.Interactivity
             Contract.Requires<ArgumentNullException>(routedEvent != null);
             Contract.Requires<ArgumentNullException>(handler != null);
 
+            routedEvent.VerifyHandler(handler);
+
             var subscription = new EventSubscription
             {
                 Handler = handler,

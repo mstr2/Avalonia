@@ -34,7 +34,7 @@ namespace Avalonia
         /// <summary>
         /// Gets the default value for the property.
         /// </summary>
-        internal BoxedValue<TValue> DefaultValue { get; private set; }
+        internal BoxedValue<TValue> DefaultValue { get; set; }
 
         /// <summary>
         /// Gets the validation callback.

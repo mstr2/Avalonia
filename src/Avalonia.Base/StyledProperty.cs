@@ -32,8 +32,9 @@ namespace Avalonia
             string name,
             Type valueType,
             Type ownerType,
-            StyledPropertyMetadata<object> metadata)
-            : base(name, valueType, ownerType, metadata, inherits: false, notifying: null)
+            StyledPropertyMetadata<object> metadata,
+            bool inherits)
+            : base(name, valueType, ownerType, metadata, inherits, notifying: null)
         {
         }
 
