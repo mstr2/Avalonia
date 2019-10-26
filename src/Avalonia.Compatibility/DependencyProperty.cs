@@ -1,6 +1,7 @@
 ﻿using System;
 using Avalonia.Layout;
 using Avalonia.Utilities;
+using Avalonia.VisualTree;
 
 namespace Avalonia
 {
@@ -249,13 +250,33 @@ namespace Avalonia
                 PropertyMetadata metadata = (PropertyMetadata)e.Property.GetMetadata(e.Sender.GetType());
                 metadata.PropertyChangedCallback?.Invoke(e.Sender, e);
 
-                ILayoutable layoutable = e.Sender as ILayoutable;
-                if (layoutable == null)
+                IVisual visual = e.Sender as IVisual;
+                if (visual == null)
                 {
                     return;
                 }
 
-                if (metadata is FrameworkPropertyMetadata frameworkMetadata)
+                FrameworkPropertyMetadata frameworkMetadata = metadata as FrameworkPropertyMetadata;
+                if (frameworkMetadata == null)
+                {
+                    return;
+                }
+
+                ILayoutable parent = visual.VisualParent as ILayoutable;
+                if (parent != null)
+                {
+                    if (frameworkMetadata.AffectsParentMeasure)
+                    {
+                        parent.InvalidateMeasure();
+                    }
+
+                    if (frameworkMetadata.AffectsParentArrange)
+                    {
+                        parent.InvalidateArrange();
+                    }
+                }
+
+                if (visual is ILayoutable layoutable)
                 {
                     if (frameworkMetadata.AffectsMeasure)
                     {

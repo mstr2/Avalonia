@@ -68,6 +68,10 @@ namespace Avalonia
 
         public bool AffectsArrange { get; private set; }
 
+        public bool AffectsParentMeasure { get; private set; }
+
+        public bool AffectsParentArrange { get; private set; }
+
         public bool Inherits { get; private set; }
 
         public bool BindsTwoWayByDefault => DefaultBindingMode == BindingMode.TwoWay;
@@ -92,6 +96,16 @@ namespace Avalonia
                 {
                     AffectsArrange = src.AffectsArrange;
                 }
+
+                if (!AffectsParentMeasure)
+                {
+                    AffectsParentMeasure = src.AffectsParentMeasure;
+                }
+
+                if (!AffectsParentArrange)
+                {
+                    AffectsParentArrange = src.AffectsParentArrange;
+                }
             }
         }
 
@@ -100,6 +114,8 @@ namespace Avalonia
             Inherits = (flags & FrameworkPropertyMetadataOptions.Inherits) != 0;
             AffectsMeasure = (flags & FrameworkPropertyMetadataOptions.AffectsMeasure) != 0;
             AffectsArrange = (flags & FrameworkPropertyMetadataOptions.AffectsArrange) != 0;
+            AffectsParentMeasure = (flags & FrameworkPropertyMetadataOptions.AffectsParentMeasure) != 0;
+            AffectsParentArrange = (flags & FrameworkPropertyMetadataOptions.AffectsParentArrange) != 0;
 
             if ((flags & FrameworkPropertyMetadataOptions.BindsTwoWayByDefault) != 0)
             {
