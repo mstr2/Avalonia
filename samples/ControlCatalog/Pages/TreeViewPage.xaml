@@ -11,6 +11,9 @@
                 Spacing="16">
       <StackPanel Orientation="Vertical" Spacing="8">
         <TreeView Items="{Binding Items}" SelectedItems="{Binding SelectedItems}" SelectionMode="{Binding SelectionMode}" Width="250" Height="350">
+          <TreeView.ItemContainerTransitions>
+            <EntranceTransition/>
+          </TreeView.ItemContainerTransitions>
           <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding Children}">
               <TextBlock Text="{Binding Header}"/>

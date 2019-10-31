@@ -13,7 +13,7 @@ namespace Avalonia.Animation
     /// <summary>
     /// Handles the timing and lifetime of a <see cref="Transition{T}"/>.
     /// </summary>
-    internal class TransitionInstance : SingleSubscriberObservableBase<double>
+    public class TransitionInstance : SingleSubscriberObservableBase<double>
     {
         private IDisposable _timerSubscription;
         private TimeSpan _duration;

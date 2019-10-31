@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Avalonia.Animation;
 using Avalonia.Collections;
 using Avalonia.Controls.Generators;
 using Avalonia.Controls.Presenters;
@@ -54,10 +55,21 @@ namespace Avalonia.Controls
         public static readonly StyledProperty<IDataTemplate> ItemTemplateProperty =
             AvaloniaProperty.Register<ItemsControl, IDataTemplate>(nameof(ItemTemplate));
 
+        /// <summary>
+        /// Defines the <see cref="Transitions"/> property.
+        /// </summary>
+        public static readonly DirectProperty<ItemsControl, ItemContainerTransitions> ItemContainerTransitionsProperty =
+            AvaloniaProperty.RegisterDirect<ItemsControl, ItemContainerTransitions>(
+                nameof(ItemContainerTransitions),
+                o => o.ItemContainerTransitions,
+                (o, v) => o.ItemContainerTransitions = v);
+
         private IEnumerable _items = new AvaloniaList<object>();
         private int _itemCount;
         private IItemContainerGenerator _itemContainerGenerator;
         private IDisposable _itemsCollectionChangedSubscription;
+        private ItemContainerTransitions _itemContainerTransitions;
+        private IList<IDisposable> _previousItemContainerTransitions;
 
         /// <summary>
         /// Initializes static members of the <see cref="ItemsControl"/> class.
@@ -136,6 +148,33 @@ namespace Avalonia.Controls
         {
             get { return GetValue(ItemTemplateProperty); }
             set { SetValue(ItemTemplateProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the property transitions for the control.
+        /// </summary>
+        public ItemContainerTransitions ItemContainerTransitions
+        {
+            get
+            {
+                if (_itemContainerTransitions is null)
+                    _itemContainerTransitions = new ItemContainerTransitions();
+
+                if (_previousItemContainerTransitions is null)
+                    _previousItemContainerTransitions = new List<IDisposable>();
+
+                return _itemContainerTransitions;
+            }
+            set
+            {
+                if (value is null)
+                    return;
+
+                if (_previousItemContainerTransitions is null)
+                    _previousItemContainerTransitions = new List<IDisposable>();
+
+                SetAndRaise(ItemContainerTransitionsProperty, ref _itemContainerTransitions, value);
+            }
         }
 
         /// <summary>
@@ -385,7 +424,28 @@ namespace Avalonia.Controls
 
             var collection = sender as ICollection;
             PseudoClasses.Set(":empty", collection == null || collection.Count == 0);
-            PseudoClasses.Set(":singleitem", collection != null && collection.Count == 1);
+            PseudoClasses.Set(":singleitem", collection != null && collection.Count == 1);   
+        }
+
+        protected override void LogicalChildrenCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            base.LogicalChildrenCollectionChanged(sender, e);
+
+            if (_itemContainerTransitions is null || _previousItemContainerTransitions is null)
+            {
+                return;
+            }
+
+            foreach (var transition in _itemContainerTransitions)
+            {
+                foreach (var previousTransition in _previousItemContainerTransitions)
+                {
+                    previousTransition.Dispose();
+                }
+
+                var instance = transition.Apply(this, Clock ?? Animation.Clock.GlobalClock, e.OldItems, e.NewItems);
+                _previousItemContainerTransitions.Add(instance);
+            }
         }
 
         /// <summary>
