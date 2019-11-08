@@ -82,7 +82,7 @@ namespace Avalonia.Input.Navigation
         /// <returns>The element's focusable descendants.</returns>
         private static IEnumerable<IInputElement> GetTabReachableDescendants(IInputElement element, NavigationDirection direction)
         {
-            if (!KeyboardNavigation.GetIsTabStop((InputElement)element))
+            if (!element.IsTabStop)
             {
                 yield break;
             }
@@ -121,7 +121,7 @@ namespace Avalonia.Input.Navigation
                 }
                 else
                 {
-                    if (child.CanFocus() && KeyboardNavigation.GetIsTabStop((InputElement)child))
+                    if (child.CanFocus() && child.IsTabStop)
                     {
                         yield return child;
                     }
@@ -175,7 +175,7 @@ namespace Avalonia.Input.Navigation
                     {
                         element = navigable.GetControl(direction, element, false);
 
-                        if (element != null && element.CanFocus() && KeyboardNavigation.GetIsTabStop((InputElement)element))
+                        if (element != null && element.CanFocus() && element.IsTabStop)
                         {
                             break;
                         }
@@ -221,9 +221,7 @@ namespace Avalonia.Input.Navigation
 
             if (parent != null)
             {
-                if (direction == NavigationDirection.Previous &&
-                    parent.CanFocus() &&
-                    KeyboardNavigation.GetIsTabStop((InputElement)parent))
+                if (direction == NavigationDirection.Previous && parent.CanFocus() && parent.IsTabStop)
                 {
                     return parent;
                 }
@@ -243,7 +241,7 @@ namespace Avalonia.Input.Navigation
                         return customNext.next;
                     }
 
-                    if (sibling.CanFocus() && KeyboardNavigation.GetIsTabStop((InputElement)sibling))
+                    if (sibling.CanFocus() && sibling.IsTabStop)
                     {
                         return sibling;
                     }

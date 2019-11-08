@@ -98,6 +98,11 @@ namespace Avalonia.Input
         bool IsFocused { get; }
 
         /// <summary>
+        /// Gets a value indicating whether the control is considered for tab navigation.
+        /// </summary>
+        bool IsTabStop { get; }
+
+        /// <summary>
         /// Gets a value indicating whether the control is considered for hit testing.
         /// </summary>
         bool IsHitTestVisible { get; }

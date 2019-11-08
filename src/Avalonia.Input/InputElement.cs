@@ -48,6 +48,12 @@ namespace Avalonia.Input
             AvaloniaProperty.RegisterDirect<InputElement, bool>(nameof(IsFocused), o => o.IsFocused);
 
         /// <summary>
+        /// Defines the <see cref="IsTabStop"/> property.
+        /// </summary>
+        public static readonly AttachedProperty<bool> IsTabStopProperty =
+            KeyboardNavigation.IsTabStopProperty.AddOwner<InputElement>();
+
+        /// <summary>
         /// Defines the <see cref="IsHitTestVisible"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsHitTestVisibleProperty =
@@ -348,6 +354,15 @@ namespace Avalonia.Input
         {
             get { return _isFocused; }
             private set { SetAndRaise(IsFocusedProperty, ref _isFocused, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the control is considered for tab navigation.
+        /// </summary>
+        public bool IsTabStop
+        {
+            get { return GetValue(IsTabStopProperty); }
+            set { SetValue(IsTabStopProperty, value); }
         }
 
         /// <summary>
