@@ -1,8 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using System;
 using Avalonia.Input;
+using System.Collections.Generic;
+using Avalonia.Threading;
 
 namespace ControlCatalog
 {
@@ -14,31 +15,48 @@ namespace ControlCatalog
             this.AttachDevTools();
         }
 
-        void SetupSide(string name, StandardCursorType cursor, WindowEdge edge)
+        void SetupSide(string name, StandardCursorType cursor, WindowRegion edge)
         {
             var ctl = this.FindControl<Control>(name);
             ctl.Cursor = new Cursor(cursor);
-            ctl.PointerPressed += (i, e) =>
-            {
-                PlatformImpl?.BeginResizeDrag(edge, e);
-            };
         }
 
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-            this.FindControl<Control>("TitleBar").PointerPressed += (i, e) =>
+
+            var regions = new Dictionary<Control, WindowRegion>
             {
-                PlatformImpl?.BeginMoveDrag(e);
+                { this.FindControl<Control>("TitleBar"), WindowRegion.Title },
+                { this.FindControl<Control>("TopLeft"), WindowRegion.TopLeft },
+                { this.FindControl<Control>("Top"), WindowRegion.Top },
+                { this.FindControl<Control>("TopRight"), WindowRegion.TopRight },
+                { this.FindControl<Control>("Left"), WindowRegion.Left },
+                { this.FindControl<Control>("Right"), WindowRegion.Right },
+                { this.FindControl<Control>("BottomLeft"), WindowRegion.BottomLeft },
+                { this.FindControl<Control>("Bottom"), WindowRegion.Bottom },
+                { this.FindControl<Control>("BottomRight"), WindowRegion.BottomRight }
             };
-            SetupSide("Left", StandardCursorType.LeftSide, WindowEdge.West);
-            SetupSide("Right", StandardCursorType.RightSide, WindowEdge.East);
-            SetupSide("Top", StandardCursorType.TopSide, WindowEdge.North);
-            SetupSide("Bottom", StandardCursorType.BottomSide, WindowEdge.South);
-            SetupSide("TopLeft", StandardCursorType.TopLeftCorner, WindowEdge.NorthWest);
-            SetupSide("TopRight", StandardCursorType.TopRightCorner, WindowEdge.NorthEast);
-            SetupSide("BottomLeft", StandardCursorType.BottomLeftCorner, WindowEdge.SouthWest);
-            SetupSide("BottomRight", StandardCursorType.BottomRightCorner, WindowEdge.SouthEast);
+
+            PlatformImpl?.SetWindowRegionClassifier(point =>
+            {
+                var a = Dispatcher.UIThread.CheckAccess();
+                if (this.InputHitTest(point) is Control control && regions.TryGetValue(control, out var region))
+                {
+                    return region;
+                }
+
+                return WindowRegion.Client;
+            });
+
+            SetupSide("Left", StandardCursorType.LeftSide, WindowRegion.Left);
+            SetupSide("Right", StandardCursorType.RightSide, WindowRegion.Right);
+            SetupSide("Top", StandardCursorType.TopSide, WindowRegion.Top);
+            SetupSide("Bottom", StandardCursorType.BottomSide, WindowRegion.Bottom);
+            SetupSide("TopLeft", StandardCursorType.TopLeftCorner, WindowRegion.TopLeft);
+            SetupSide("TopRight", StandardCursorType.TopRightCorner, WindowRegion.TopRight);
+            SetupSide("BottomLeft", StandardCursorType.BottomLeftCorner, WindowRegion.BottomLeft);
+            SetupSide("BottomRight", StandardCursorType.BottomRightCorner, WindowRegion.BottomRight);
             this.FindControl<Button>("MinimizeButton").Click += delegate { this.WindowState = WindowState.Minimized; };
             this.FindControl<Button>("MaximizeButton").Click += delegate
             {

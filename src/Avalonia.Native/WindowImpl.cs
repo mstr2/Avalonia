@@ -95,7 +95,7 @@ namespace Avalonia.Native
         }
 
         public Action<WindowState> WindowStateChanged { get; set; }
-
+        
         public void ShowTaskbarIcon(bool value)
         {
             // NO OP On OSX

@@ -44,6 +44,8 @@ namespace Avalonia.X11
         private HashSet<X11Window> _transientChildren = new HashSet<X11Window>();
         private X11Window _transientParent;
         private double? _scalingOverride;
+        private Func<Point, WindowRegion> _windowRegionClassifier;
+
         public object SyncRoot { get; } = new object();
 
         class InputEventContainer
@@ -895,31 +897,36 @@ namespace Avalonia.X11
             e.Pointer.Capture(null);
         }
 
-        public void BeginMoveDrag(PointerPressedEventArgs e)
+        /*public void BeginMoveDrag(PointerPressedEventArgs e)
         {
             BeginMoveResize(NetWmMoveResize._NET_WM_MOVERESIZE_MOVE, e);
         }
 
-        public void BeginResizeDrag(WindowEdge edge, PointerPressedEventArgs e)
+        public void BeginResizeDrag(WindowRegion edge, PointerPressedEventArgs e)
         {
             var side = NetWmMoveResize._NET_WM_MOVERESIZE_CANCEL;
-            if (edge == WindowEdge.East)
+            if (edge == WindowRegion.East)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_RIGHT;
-            if (edge == WindowEdge.North)
+            if (edge == WindowRegion.North)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_TOP;
-            if (edge == WindowEdge.South)
+            if (edge == WindowRegion.South)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_BOTTOM;
-            if (edge == WindowEdge.West)
+            if (edge == WindowRegion.West)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_LEFT;
-            if (edge == WindowEdge.NorthEast)
+            if (edge == WindowRegion.NorthEast)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_TOPRIGHT;
-            if (edge == WindowEdge.NorthWest)
+            if (edge == WindowRegion.NorthWest)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_TOPLEFT;
-            if (edge == WindowEdge.SouthEast)
+            if (edge == WindowRegion.SouthEast)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT;
-            if (edge == WindowEdge.SouthWest)
+            if (edge == WindowRegion.SouthWest)
                 side = NetWmMoveResize._NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT;
             BeginMoveResize(side, e);
+        }*/
+
+        public void SetWindowRegionClassifier(Func<Point, WindowRegion> func)
+        {
+            _windowRegionClassifier = func;
         }
         
         public void SetTitle(string title)

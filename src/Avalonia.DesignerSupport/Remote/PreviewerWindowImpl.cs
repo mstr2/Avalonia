@@ -28,11 +28,7 @@ namespace Avalonia.DesignerSupport.Remote
         {
         }
 
-        public void BeginMoveDrag(PointerPressedEventArgs e)
-        {
-        }
-
-        public void BeginResizeDrag(WindowEdge edge, PointerPressedEventArgs e)
+        public void SetWindowRegionClassifier(Func<Point, WindowRegion> func)
         {
         }
 

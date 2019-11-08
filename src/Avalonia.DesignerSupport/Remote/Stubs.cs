@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Platform;
@@ -75,11 +74,7 @@ namespace Avalonia.DesignerSupport.Remote
         {
         }
 
-        public void BeginMoveDrag(PointerPressedEventArgs e)
-        {
-        }
-
-        public void BeginResizeDrag(WindowEdge edge, PointerPressedEventArgs e)
+        public void SetWindowRegionClassifier(Func<Point, WindowRegion> func)
         {
         }
 

@@ -31,8 +31,8 @@
     <Grid RowDefinitions="5,*,5" ColumnDefinitions="5,*,5">
         <DockPanel  Grid.Column="1"  Grid.Row="1" >
             <Grid Name="TitleBar" Background="LightBlue" DockPanel.Dock="Top" ColumnDefinitions="Auto,*,Auto">
-                <TextBlock VerticalAlignment="Center" Margin="5,0,0,0">Title</TextBlock>
-                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="5,0,0,0" Background="Red">Title</TextBlock>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="Green">
                     <StackPanel.Styles>
                         <Style Selector="Button">
                             <Setter Property="Margin" Value="2"/>

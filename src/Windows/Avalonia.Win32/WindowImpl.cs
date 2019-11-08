@@ -39,6 +39,7 @@ namespace Avalonia.Win32
         private bool _topmost = false;
         private bool _taskbarIcon = true;
         private double _scaling = 1;
+        private Func<Point, WindowRegion> _windowRegionClassifier;
         private WindowState _showWindowState;
         private WindowState _lastWindowState;
         private FramebufferManager _framebuffer;
@@ -48,22 +49,9 @@ namespace Avalonia.Win32
         private Size _maxSize;
         private WindowImpl _parent;
         private readonly List<WindowImpl> _disabledBy = new List<WindowImpl>();
-
-#if USE_MANAGED_DRAG
-        private readonly ManagedWindowResizeDragHelper _managedDrag;
-#endif
-
+        
         public WindowImpl()
         {
-#if USE_MANAGED_DRAG
-            _managedDrag = new ManagedWindowResizeDragHelper(this, capture =>
-            {
-                if (capture)
-                    UnmanagedMethods.SetCapture(Handle.Handle);
-                else
-                    UnmanagedMethods.ReleaseCapture();
-            });
-#endif
             CreateWindow();
             _framebuffer = new FramebufferManager(_hwnd);
             if (Win32GlManager.EglFeature != null)
@@ -143,7 +131,6 @@ namespace Avalonia.Win32
             get;
         } = new ScreenImpl();
 
-
         public IRenderer CreateRenderer(IRenderRoot root)
         {
             var loop = AvaloniaLocator.Current.GetService<IRenderLoop>();
@@ -188,7 +175,6 @@ namespace Avalonia.Win32
             get;
             private set;
         }
-
 
         void UpdateEnabled()
         {
@@ -332,37 +318,6 @@ namespace Avalonia.Win32
             ShowWindow(_showWindowState);
         }
 
-        public void BeginMoveDrag(PointerPressedEventArgs e)
-        {
-            _mouseDevice.Capture(null);
-            UnmanagedMethods.DefWindowProc(_hwnd, (int)UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
-                new IntPtr((int)UnmanagedMethods.HitTestValues.HTCAPTION), IntPtr.Zero);
-            e.Pointer.Capture(null);
-        }
-
-        static readonly Dictionary<WindowEdge, UnmanagedMethods.HitTestValues> EdgeDic = new Dictionary<WindowEdge, UnmanagedMethods.HitTestValues>
-        {
-            {WindowEdge.East, UnmanagedMethods.HitTestValues.HTRIGHT},
-            {WindowEdge.North, UnmanagedMethods.HitTestValues.HTTOP },
-            {WindowEdge.NorthEast, UnmanagedMethods.HitTestValues.HTTOPRIGHT },
-            {WindowEdge.NorthWest, UnmanagedMethods.HitTestValues.HTTOPLEFT },
-            {WindowEdge.South, UnmanagedMethods.HitTestValues.HTBOTTOM },
-            {WindowEdge.SouthEast, UnmanagedMethods.HitTestValues.HTBOTTOMRIGHT },
-            {WindowEdge.SouthWest, UnmanagedMethods.HitTestValues.HTBOTTOMLEFT },
-            {WindowEdge.West, UnmanagedMethods.HitTestValues.HTLEFT}
-        };
-
-        public void BeginResizeDrag(WindowEdge edge, PointerPressedEventArgs e)
-        {
-#if USE_MANAGED_DRAG
-            _managedDrag.BeginResizeDrag(edge, ScreenToClient(MouseDevice.Position));
-#else
-            _mouseDevice.Capture(null);
-            UnmanagedMethods.DefWindowProc(_hwnd, (int)UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
-                new IntPtr((int)EdgeDic[edge]), IntPtr.Zero);
-#endif
-        }
-
         public PixelPoint Position
         {
             get
@@ -401,6 +356,11 @@ namespace Avalonia.Win32
 
             if (_owner.IsPointerOver)
                 UnmanagedMethods.SetCursor(hCursor);
+        }
+
+        public void SetWindowRegionClassifier(Func<Point, WindowRegion> func)
+        {
+            _windowRegionClassifier = func;
         }
 
         protected virtual IntPtr CreateWindowOverride(ushort atom)
@@ -622,6 +582,50 @@ namespace Avalonia.Win32
                         _owner,
                         RawPointerEventType.LeaveWindow,
                         new Point(), WindowsKeyboardDevice.Instance.Modifiers);
+                    break;
+
+                case UnmanagedMethods.WindowsMessage.WM_NCHITTEST:
+                    var windowRegionClassifier = _windowRegionClassifier;
+                    if (windowRegionClassifier != null)
+                    {
+                        long value = lParam.ToInt64();
+                        int x = (short)(value & 0xffff);
+                        int y = (short)(value >> 16);
+                        var point = ScreenToClient(new Point(x, y));
+
+                        switch (windowRegionClassifier(new Point(point.X / _scaling, point.Y / _scaling)))
+                        {
+                            case WindowRegion.TopLeft:
+                                return new IntPtr((int)HitTestValues.HTTOPLEFT);
+
+                            case WindowRegion.Top:
+                                return new IntPtr((int)HitTestValues.HTTOP);
+
+                            case WindowRegion.TopRight:
+                                return new IntPtr((int)HitTestValues.HTTOPRIGHT);
+
+                            case WindowRegion.Left:
+                                return new IntPtr((int)HitTestValues.HTLEFT);
+
+                            case WindowRegion.Right:
+                                return new IntPtr((int)HitTestValues.HTRIGHT);
+
+                            case WindowRegion.BottomLeft:
+                                return new IntPtr((int)HitTestValues.HTBOTTOMLEFT);
+
+                            case WindowRegion.Bottom:
+                                return new IntPtr((int)HitTestValues.HTBOTTOM);
+
+                            case WindowRegion.BottomRight:
+                                return new IntPtr((int)HitTestValues.HTBOTTOMRIGHT);
+
+                            case WindowRegion.Title:
+                                return new IntPtr((int)HitTestValues.HTCAPTION);
+
+                            default:
+                                return new IntPtr((int)HitTestValues.HTCLIENT);
+                        }
+                    }
                     break;
 
                 case UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN:

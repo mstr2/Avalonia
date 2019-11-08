@@ -3,7 +3,6 @@
 
 using System;
 using Avalonia.Controls;
-using Avalonia.Input;
 
 namespace Avalonia.Platform
 {
@@ -60,17 +59,6 @@ namespace Avalonia.Platform
         Func<bool> Closing { get; set; }
 
         /// <summary>
-        /// Starts moving a window with left button being held. Should be called from left mouse button press event handler.
-        /// </summary>
-        void BeginMoveDrag(PointerPressedEventArgs e);
-
-        /// <summary>
-        /// Starts resizing a window. This function is used if an application has window resizing controls. 
-        /// Should be called from left mouse button press event handler
-        /// </summary>
-        void BeginResizeDrag(WindowEdge edge, PointerPressedEventArgs e);
-
-        /// <summary>
         /// Sets the client size of the top level.
         /// </summary>
         void Resize(Size clientSize);
@@ -85,5 +73,11 @@ namespace Avalonia.Platform
         /// </summary>
         /// 
         void SetMinMaxSize(Size minSize, Size maxSize);
+
+        /// <summary>
+        /// Sets the classification function that, given a point in window coordinates, classifies it
+        /// as either the client region or any of the regions that are used for platform interactions.
+        /// </summary>
+        void SetWindowRegionClassifier(Func<Point, WindowRegion> func);
     }
 }
