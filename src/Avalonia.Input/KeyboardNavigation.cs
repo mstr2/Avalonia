@@ -34,6 +34,19 @@ namespace Avalonia.Input
                 typeof(KeyboardNavigation));
 
         /// <summary>
+        /// Defines the IsTabStop attached property.
+        /// </summary>
+        /// <remarks>
+        /// The IsTabStop property defines whether a control can be reached when cycling focus
+        /// using the tab key.
+        /// </remarks>
+        public static readonly AttachedProperty<bool> IsTabStopProperty =
+            AvaloniaProperty.RegisterAttached<InputElement, bool>(
+                "IsTabStop",
+                typeof(KeyboardNavigation),
+                defaultValue: true);
+
+        /// <summary>
         /// Gets the <see cref="TabNavigationProperty"/> for a container.
         /// </summary>
         /// <param name="element">The container.</param>
@@ -71,6 +84,22 @@ namespace Avalonia.Input
         public static void SetTabOnceActiveElement(InputElement element, IInputElement value)
         {
             element.SetValue(TabOnceActiveElementProperty, value);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="IsTabStopProperty"/> for a container.
+        /// </summary>
+        public static bool GetIsTabStop(InputElement element)
+        {
+            return element.GetValue(IsTabStopProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="IsTabStopProperty"/> for a container.
+        /// </summary>
+        public static void SetIsTabStop(InputElement element, bool value)
+        {
+            element.SetValue(IsTabStopProperty, value);
         }
     }
 }

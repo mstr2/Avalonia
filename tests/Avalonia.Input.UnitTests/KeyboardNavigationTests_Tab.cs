@@ -118,6 +118,48 @@ namespace Avalonia.Input.UnitTests
         }
 
         [Fact]
+        public void Next_Skips_NonTabStop_Siblings()
+        {
+            Button current;
+            Button next;
+            Button skip1, skip2;
+
+            var top = new StackPanel
+            {
+                Children =
+                {
+                    new StackPanel
+                    {
+                        Children =
+                        {
+                            new Button { Name = "Button1" },
+                            (current = new Button { Name = "Button2" }),
+                            (skip1 = new Button { Name = "Button3" }),
+                            (skip2 = new Button { Name = "Button4" }),
+                            (next = new Button { Name = "Button5" }),
+                        }
+                    },
+                    new StackPanel
+                    {
+                        Children =
+                        {
+                            new Button { Name = "Button4" },
+                            new Button { Name = "Button5" },
+                            new Button { Name = "Button6" },
+                        }
+                    },
+                }
+            };
+
+            KeyboardNavigation.SetIsTabStop(skip1, false);
+            KeyboardNavigation.SetIsTabStop(skip2, false);
+
+            var result = KeyboardNavigationHandler.GetNext(current, NavigationDirection.Next);
+
+            Assert.Equal(next, result);
+        }
+
+        [Fact]
         public void Next_Continue_Doesnt_Enter_Panel_With_TabNavigation_None()
         {
             Button current;
